@@ -1,0 +1,13 @@
+
+
+.bg-theme {
+    background: #09255D!important
+}
+
+a,
+a:visited {
+
+    webkit-transition: color .5s;
+    transition: color .5s;
+    text-decoration: none
+}

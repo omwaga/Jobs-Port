@@ -1,0 +1,79 @@
+<?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements MustVerifyEmail
+{
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password','provider','provider_id','user_type'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        User::saving(function ($model) {
+            if(!User::where("user_type","=", "Admin")->exists())
+            {
+                $model->user_type = 'Admin';
+            } 
+
+        });
+    }
+    
+    public function biodata()
+    {
+        return $this->hasOne(Biodata::class);
+    }
+    
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+    
+    public function bio()
+    {
+        return $this->hasOne(Bio::class);
+    }
+    
+    public function talentpools()
+    {
+        return $this->hasMany(TalentPool::class);
+    }
+    public function verifyuser(){
+
+        return $this->hasOne('App\VerifyUser');
+    }
+    public function jobapplications(){
+        return $this->hasMany(JobApplication::class);
+    }
+    
+}
