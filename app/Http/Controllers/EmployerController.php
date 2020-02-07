@@ -60,7 +60,7 @@ class EmployerController extends Controller
     }
     
     public function employerdash(){
-        $jobs = Jobposts::where('employer_id',auth()->id())->get();
+        $jobs = Jobposts::where('employer_id',auth()->id())->limit(4)->get();
         $applications=JobApplication::where('employer_id', auth()->id())->get();
         $recentapplications=JobApplication::where('employer_id', auth()->id())->orderBy('created_at', 'DESC')->limit(4)->get();
         $most_applied=JobApplication::where('employer_id', auth()->id())->get();
@@ -196,8 +196,19 @@ public function shortlistedcandidates()
 public function picktemplate()
 {
     $templates = Jobposts::all();
-    
-    return view('empdash.content.templates', compact('templates'));
+    $jobcategories = jobcategories::all();
+    return view('empdash.content.templates', compact('templates', 'jobcategories'));
+}
+
+// use a template
+public function usetemplate($jobtitle)
+{
+   $jobpost = Jobposts::where('jobtitle', $jobtitle)->first();
+   $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+   $industries = Industry::orderBy('name','asc')->get();
+   $towns = Town::orderBy('name','asc')->get();
+
+   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns'));
 }
 
 //Listing all jobs posted
@@ -242,11 +253,23 @@ public function resumedatabase()
     return view('empdash.content.resume-database', compact('industries', 'user_industries'));
 }
 
+// search the rsumes
 public function searchresume(Request $request)
 {
     $industries = Industry::orderBy('name','asc')->get();
     $user_industries = Usercategories::where('industry_id', $request->industry_id)->get();
     
     return view('empdash.content.resume-database', compact('industries', 'user_industries'));
+}
+
+// show the jobs with the applications received
+public function jobwithapplications($jobtitle)
+{
+    $job = Jobposts::where([
+        ['jobtitle', $jobtitle],
+        ['employer_id', '=', Auth::guard('employer')->user()->id]
+        ])->first();
+
+    return view('empdash.content.job-withapplications', compact('job'));
 }
 }

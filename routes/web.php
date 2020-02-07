@@ -72,6 +72,7 @@ Route::resource('/Employer-login','EmployerController');
 Route::get('/Talent-pool','EmployerController@talentp')->name('talentpool');
 Route::post('/jobpost','EmployerController@jobpost')->name('postempjob');
 Route::get('/templates', 'EmployerController@picktemplate')->name('picktemplate');
+Route::get('/use-template/{name}', 'EmployerController@usetemplate')->name('usetemplate');
 Route::patch('/shortlist/{name}', 'EmployerController@shortlist');
 Route::patch('/talentpool/{name}', 'EmployerController@addtalentpool');
 Route::get('/shortlisted-candidates', 'EmployerController@shortlistedcandidates')->name('shortlistedcandidates');
@@ -83,6 +84,7 @@ Route::resource('cvupload', 'CvUploadsController');
 Route::get('talentpool/{name}', 'EmployerController@poolmembers')->name('poolmembers');
 Route::get('resume-database', 'EmployerController@resumedatabase')->name('resumedatabase');
 Route::post('resume-database', 'EmployerController@searchresume')->name('searchresume');
+Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplications')->name('jobwithapplications');
 
 // Admin routes
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
@@ -94,6 +96,9 @@ Route::get('/admin-vacancies', 'AdminController@adminvacancies')->name('adminvac
 Route::get('/admin-applications', 'AdminController@adminapplications')->name('adminapplications');
 Route::resource('resumedomains', 'ResumeDomainController');
 Route::resource('resumesamples', 'ResumeSamplesController');
+Route::get('/admin-resume', 'AdminController@resume')->name('resume');
+Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
+Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
 
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');

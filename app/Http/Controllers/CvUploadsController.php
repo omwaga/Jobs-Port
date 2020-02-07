@@ -16,6 +16,7 @@ public function store(Request $request)
         $request->resume->storeAs('cvs', $book['resume']);
     }
     CvUpload::create($book);
-    return redirect('/Register');
+
+    return redirect()->back()->with('message', 'Your cv has been uploaded successfully');
 }
 }

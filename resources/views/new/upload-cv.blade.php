@@ -5,6 +5,7 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
   	<div class="container">
+      @include('success')
   	    <form action="{{ route('cvupload.store') }}" method="POST" enctype="multipart/form-data">
   	        @csrf
   		<div class="row justify-content-center">
@@ -12,7 +13,7 @@
   		    <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name:') }}</label>
                             <div class="col-md-10">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="full_name" value="{{ old('name') }}" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +56,7 @@
                         </div>
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-info">Submit</button>
+                            <button type="submit" class="btn btn-info text-white">Submit</button>
                         </div>
   		</div>
   		</form>

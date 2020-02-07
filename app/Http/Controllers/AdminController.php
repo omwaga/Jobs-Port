@@ -56,5 +56,23 @@ class AdminController extends Controller
         
         return view('admin.admin-applications', compact('applications'));
     }
+
+    //admin resumes pdf view
+    public function resume()
+    {
+        return view('admin.resume');
+    }
+
+    // manage industries
+    public function industry()
+    {
+        return view('admin.industries');
+    }
+
+    // manage categories
+    public function category()
+    {
+        return view('admin.categories');
+    }
 }
 

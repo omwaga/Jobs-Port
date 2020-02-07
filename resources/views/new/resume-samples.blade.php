@@ -33,7 +33,7 @@
 
                         <!-- Button -->
                         <p class="text-center mb-0" >
-                            <a href="" class="btn text-white " style="background-color:#070A53;">
+                            <a href="{{route('uploadcv')}}" class="btn text-white " style="background-color:#070A53;">
                                 Check your CV score for free
                             </a>
                         </p>
