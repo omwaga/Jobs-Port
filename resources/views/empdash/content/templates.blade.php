@@ -1,7 +1,6 @@
 @extends('layouts.employer.employer')
 @section('content')
 <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
@@ -36,7 +35,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="col-md-12" align="center">
-                                <form class="card card-sm" action="" method="post">
+                                <form class="card card-sm" action="/searchtemplate" method="get">
                                     @csrf
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -44,10 +43,12 @@
                                     </div>
                                     <!--end of col-->
                                     <div class="col">
-                                        <select class="form-control" name="jobtitle" required id="input-select" onchange="if (this.value !=0) {this.form.submit();}">
+                                        <select class="form-control" name="category" required id="input-select" onchange="if (this.value !=0) {this.form.submit();}">
                                                 <option>Sort by selecting template category</option>
                                                 @foreach($jobcategories as $category)
-                                                <option value="{{$category-->id}}">{{$category->jobcategories}}</option>
+                                                @if($category->jobs->count() > 0)
+                                                <option value="{{$category->id}}">{{$category->jobcategories}}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                     </div>
@@ -99,7 +100,4 @@
                     <!-- ============================================================== -->
                 </div>
                     </div>
-                </div>
-            </div>
-</div>
 @endsection

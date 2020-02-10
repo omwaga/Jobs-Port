@@ -8,6 +8,8 @@ use App\JobApplication;
 use App\Jobposts;
 use App\User;
 use App\Cprofile;
+use App\Industry;
+use App\jobcategories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -66,13 +68,17 @@ class AdminController extends Controller
     // manage industries
     public function industry()
     {
-        return view('admin.industries');
+        $industries = Industry::all();
+
+        return view('admin.industries', compact('industries'));
     }
 
     // manage categories
     public function category()
     {
-        return view('admin.categories');
+        $categories = jobcategories::all();
+
+        return view('admin.categories', compact('categories'));
     }
 }
 

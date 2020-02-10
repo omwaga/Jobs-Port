@@ -120,6 +120,11 @@ public function addtalentpool(Request $request, $name)
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname']));
     }
     
+public function decline()
+{
+    dd('hello');
+}
+
     public function cprofile(){
         $profile=Cprofile::where('id',Auth::guard('employer')->user()->id)->get();
         return view('new.cprofile')->with('profile',$profile);
@@ -271,5 +276,14 @@ public function jobwithapplications($jobtitle)
         ])->first();
 
     return view('empdash.content.job-withapplications', compact('job'));
+}
+
+//search the job templates based on the category selected by the employer
+public function searchtemplate(Request $request)
+{
+    $jobs = Jobposts::where('jobcategories_id', $request->category)->get();
+    $jobcategories = jobcategories::all();
+
+    return view('empdash.content.search-template', compact('jobs', 'jobcategories'));
 }
 }
