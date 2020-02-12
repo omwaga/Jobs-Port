@@ -125,6 +125,8 @@ public function addtalentpool(Request $request, $name)
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname']));
     }
     
+
+    //method to decline the applications
 public function decline(Request $request)
 {
     DB::table('job_applications')
@@ -132,6 +134,17 @@ public function decline(Request $request)
             ->update(['status' => 'declined']);
 
     return redirect('/all-applicants')->with('message', 'The candidates application has been declined successfully');
+}
+
+//method to show the declined job applications
+public function declined()
+{
+    $applicants = JobApplication::where([
+        ['employer_id', Auth::guard('employer')->user()->id],
+        ['status', 'declined']
+    ])->get();
+
+    return view('empdash.content.declinedapplications', compact('applicants'));
 }
 
     public function cprofile(){

@@ -77,6 +77,7 @@ Route::get('/use-template/{name}', 'EmployerController@usetemplate')->name('uset
 Route::patch('/shortlist/{name}', 'EmployerController@shortlist');
 Route::patch('/talentpool/{name}', 'EmployerController@addtalentpool');
 Route::post('/decline-application', 'Employercontroller@decline');
+Route::get('decline-applications', 'Employercontroller@declined')->name('declined');
 Route::get('/shortlisted-candidates', 'EmployerController@shortlistedcandidates')->name('shortlistedcandidates');
 Route::get('/all-jobposts', 'EmployerController@alljobs')->name('employerjobs');
 Route::post('/shortlist-jobs', 'EmployerController@shortlistjobs')->name('shortlistjobs');

@@ -143,7 +143,7 @@
                                            <a class="nav-link" href="{{route('pooltalent')}}">Talent Pools</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="">Declined Applications</a>
+                                            <a class="nav-link" href="{{route('declined')}}">Declined Applications</a>
                                         </li>
                                     </ul>
                                 </div>
