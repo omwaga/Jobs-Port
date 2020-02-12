@@ -39,7 +39,10 @@ class EmployerController extends Controller
     }
     
     public function allapplicants(){
-        $application=JobApplication::where('employer_id',Auth::guard('employer')->user()->id)->get();
+        $application=JobApplication::where([
+            ['employer_id',Auth::guard('employer')->user()->id],
+            ['status', 'applied']
+        ])->get();
         return view('empdash.content.allapplicants',compact('application'));
     }
     
@@ -90,18 +93,20 @@ public function newpool(Request $request)
 // Add applicant to talentpool
 public function addtalentpool(Request $request, $name)
 {
- $applicant_id = request()->id;
  $pool_id = request()->pool_name;
- $user_id = Jobseekerdetail::where('id', $applicant_id)->value('id');
  
+ DB::table('job_applications')
+            ->where('user_id', request()->id)
+            ->update(['status' => 'pool']);
+
  $shortlist = new TalentpoolCandidates();
- $shortlist->user_id = $user_id;
+ $shortlist->user_id = request()->id;
  $shortlist->talentpool_id = $pool_id;
  $shortlist->employer_id = Auth::guard('employer')->user()->id;
- 
+
  $shortlist->save();
  
- return back();
+ return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
 }
 
     // view the talent pool members
@@ -120,9 +125,13 @@ public function addtalentpool(Request $request, $name)
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname']));
     }
     
-public function decline()
+public function decline(Request $request)
 {
-    dd('hello');
+    DB::table('job_applications')
+            ->where('user_id', request()->id)
+            ->update(['status' => 'declined']);
+
+    return redirect('/all-applicants')->with('message', 'The candidates application has been declined successfully');
 }
 
     public function cprofile(){
@@ -182,10 +191,14 @@ public function shortlist(Request $request, $name)
  $shortlist = new Shortlist();
  $shortlist->user_id = $user_id;
  $shortlist->employer_id = Auth::guard('employer')->user()->id;
+
+ DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'shortlisted']);
  
  $shortlist->save();
  
- return back();
+ return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
 }
 
 //Method to show all the shorlisted candidates

@@ -379,27 +379,11 @@ return view('content.homesearch',compact(['searchdata']));
     }
   public function show($id)
     {
-        $jobs=Jobposts::find($id);
-        $cname=Jobposts::select('employer_id','location')->get();
-        $cnamee=Jobposts::whereIn('id',$jobs)->get();
-        $expirydate=Jobposts::whereIn('expirydate',$jobs)->select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
-        $jobcat=Jobposts::select('category')->get();
-        $jobcateg=DB::table('jobcategories')->join('jobposts','jobcategories.id','=','jobposts.category')->whereIn('jobcategories.id',$jobs)->limit(1)->get();
-        $jobfind=Jobposts::where('id',$jobs)->where('apply','Yes')->get();
-        $Industry=Industry::all();
-        $towns=DB::table('towns')->select('name')->join('jobposts','towns.id','=','jobposts.location')
-        ->where('jobposts.id',$jobs)->get();
+        $job = Jobposts::where('id', $id)->first();
+        $expirydate=Jobposts::whereIn('expirydate',$job)->select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
         $featured=Jobposts::orderBy('created_at','desc')->limit(4)->get();
-        $categories=jobcategories::all();
-        return view('new.jobview')->with('jobs',$jobs)
-        ->with('industries',$Industry)
-        ->with('categories',$categories)
-        ->with('company',$cnamee)
-        ->with('jobcat',$jobcateg)
-        ->with('towns',$towns)
-        ->with('expiry',$expirydate)
-        ->with('jobfind',$jobfind)
-        ->with('featured',$featured);
+
+        return view('new.jobview', compact('job', 'expirydate', 'featured'));
     } 
     
  public function showindustry(Request $request,$jobcategories){

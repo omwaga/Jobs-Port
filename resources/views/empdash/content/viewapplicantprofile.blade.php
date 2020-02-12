@@ -10,17 +10,6 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title"> Applicant Profile</h2>
-                                <p class="pageheader-text">Staff Recruitmant and Staff Development</p>
-                                    @if (session('success'))
-              <div class="alert alert-success">
-              {{ session('success') }}
-                       </div>
-                       @endif
-                       @if (session('failure'))
-                    <div class="alert alert-danger text-white">
-                    {{ session('failure') }}
-                    </div>
-                    @endif
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">

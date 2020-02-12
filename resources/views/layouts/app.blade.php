@@ -36,6 +36,7 @@
     <link href="{{ asset('css/howit.css') }}" rel="stylesheet">
      <link href="{{ asset('css/package.css') }}" rel="stylesheet">
      <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
      <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
      
      <style>

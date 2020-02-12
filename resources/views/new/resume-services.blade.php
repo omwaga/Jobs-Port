@@ -17,7 +17,7 @@
                 <div class="col-md-10 col-lg-7 ">
                     <div class="banner-content">
                         <!-- Preheading -->
-                        <p class="text-white text-uppercase text-center text-xs">
+                        <p class="text-white text-uppercase text-center text-xs" style=" padding-top: 5rem;">
                           <span><strong>Get a job-winning professional resume from our experts</strong></span>
                         </p>
 
@@ -104,5 +104,57 @@
     </div>
   </div>
 </section>
+
+<!------------------ Hover Effect Style : Demo - 2 --------------->
+        <div class="container mt-40">
+            <h3 class="text-center">Demo</h3>
+            <div class="row mt-30">
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv3.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">For Professionals</h3>
+                                <span class="post">Developers</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv14.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">Managers</h3>
+                                <span class="post">Designer</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv13.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">Graduates</h3>
+                                <span class="post">Web Designer</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection

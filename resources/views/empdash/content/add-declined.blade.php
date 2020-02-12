@@ -3,7 +3,6 @@
     <div class="modal-content">
         <form action="/decline-application" method="POST">
      @csrf 
-     @method('PATCH')
      <input type="hidden" value="{{$jobseekerdetail->user_id}}" name="id">
       <div class="modal-header bg-info text-white">
         <h6 class="modal-title text-white" id="exampleModalLabel">Decline Candidate Application</h6>
@@ -16,7 +15,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No,close</button>
-        <button type="submit" class="btn btn-primary btn-sm">Yes,Shortlist</button>
+        <button type="submit" class="btn btn-primary btn-sm">Yes,Decline</button>
       </div>
       </form>
     </div>

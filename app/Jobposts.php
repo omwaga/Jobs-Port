@@ -26,6 +26,11 @@ class Jobposts extends Model
     public function usercategory(){
         return $this->belongsTo(Usercategories::class,'industry_name');
     }
+
+    public function category()
+    {
+      return $this->belongsTo(jobcategories::class, 'jobcategories_id', 'id');
+    }
     
     public function applications()
     {
