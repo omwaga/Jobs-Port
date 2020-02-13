@@ -74,6 +74,9 @@
     <!-- morris js -->
     <script src="{{ asset('assets/vendor/charts/morris-bundle/raphael.min.js')}}"></script>
     <script src="{{ asset('assets/vendor/charts/morris-bundle/morris.js')}}"></script>
+    
+    <script src="assets/plugins/sweetalert/sweet-alert.js"></script>
+    <script src="assets/pages/jquery.sweet-alert.custom.js"></script>
     <!-- chart c3 js -->
     <script src="{{ asset('assets/vendor/charts/c3charts/c3.min.js')}}"></script>
     <script src="{{ asset('assets/vendor/charts/c3charts/d3-5.4.0.min.js')}}"></script>

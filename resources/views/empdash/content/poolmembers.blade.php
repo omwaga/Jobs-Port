@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <p class="pageheader-text">Staff Recruitmant and Staff Development</p>
+                                <h4 class="pageheader-title">Talent Pool Members</h4>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -31,7 +31,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Talent Pool Members</h5>
+                                @include('success')
                                 <button class="btn btn-info btn-sm text-white float-right" data-id="" data-toggle="modal" data-target="#poolname">
 																<i class="fa fa-plus"></i>Add Pool
 															</button>
@@ -49,7 +49,7 @@
 										    <th style="width: 30%">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>,
                                            @php $column_number = 0; @endphp
 								  @foreach($poolmembers as $member)
 								  @php $column_number = $column_number + 1; @endphp
@@ -62,8 +62,14 @@
 											<a  href="/applicantprofile/{{$member->candidate->user_id}}" class="btn btn-info btn-sm text-white">
 													<i class="fa fa-eye"></i>View Profile
 											</a>
+
+
+                                                            <button type="button" data-toggle="modal" data-id="" class="btn btn-danger btn-sm text-white" data-target="#removetalent-{{$member->id}}">
+                                                                <i class="fa fa-trash"></i>Remove
+                                                            </button>
                                          </td> 
                                   </tr>
+                                  @include('empdash.content.remove-poolmember')
                                   @endforeach
                                         </tbody>
                                     </table>

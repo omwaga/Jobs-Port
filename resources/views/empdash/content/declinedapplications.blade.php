@@ -33,6 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0">Declined Applications</h5>
+                                @include('success')
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -62,13 +63,14 @@
 															<a href="" class="btn btn-primary btn-sm text-white">
 																<i class="fa fa-eye"></i>View Profile
 															</a>
-															<button type="button" data-toggle="modal" title="" class="btn btn-danger btn-sm text-white" data-target="#update">
+															<button type="button" data-toggle="modal" title="" class="btn btn-danger btn-sm text-white" data-target="#removeapplicant-{{$applicant->id}}">
 																<i class="fa fa-trash"></i>Remove
 															</button>
 											 </div>
                                          </td>
                                            </tr>
                                        </tbody>
+                                       @include('empdash.content.remove-declined')
                                        @endforeach
                                        @else
                                        @endif

@@ -82,6 +82,8 @@ Route::get('/shortlisted-candidates', 'EmployerController@shortlistedcandidates'
 Route::get('/all-jobposts', 'EmployerController@alljobs')->name('employerjobs');
 Route::post('/shortlist-jobs', 'EmployerController@shortlistjobs')->name('shortlistjobs');
 Route::delete('/remove-shortlisted', 'EmployerController@removeshortlist')->name('removeshortlist');
+Route::delete('/remove_talentpoolmember', 'EmployerController@removepoolmember')->name('removepoolmember');
+Route::delete('/remove_declined', 'EmployerController@removedeclined')->name('removedeclined');
 Route::post('new-poolname', 'EmployerController@newpool')->name('newpool');
 Route::resource('cvupload', 'CvUploadsController');
 Route::get('talentpool/{name}', 'EmployerController@poolmembers')->name('poolmembers');

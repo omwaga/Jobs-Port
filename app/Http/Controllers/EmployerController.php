@@ -269,10 +269,40 @@ public function shortlistjobs(Request $request)
 public function removeshortlist(Request $request)
 {
     $candidate = Shortlist::where('user_id', $request->id)->first();
+    $user_id = Shortlist::where('user_id', $request->id)->value('user_id');
+
+    DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'applied']);
     
     $candidate->delete();
     
-    return redirect('/shortlisted-candidates');
+    return redirect('/shortlisted-candidates')->with('message', 'The candidate has been removed from the lsit succesfully');
+}
+
+// remove the candidat eform the talent pool
+public function removepoolmember(Request $request)
+{
+    $candidate = TalentpoolCandidates::where('user_id', $request->id)->first();
+    $user_id = TalentpoolCandidates::where('user_id', $request->id)->value('user_id');
+
+    DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'applied']);
+    
+    $candidate->delete();
+    
+    return back()->with('message', 'The candidate has been removed succesfully from the pool');
+}
+
+// remove the declined applicant from the declined applications list
+public function removedeclined(Request $request)
+{
+    DB::table('job_applications')
+            ->where('user_id', $request->id)
+            ->update(['status' => 'applied']);
+    
+    return back()->with('message', 'The candidate has been removed from the list succesfully');
 }
 
 // get all data of users from the database for the resumes
