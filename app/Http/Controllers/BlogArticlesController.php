@@ -65,8 +65,12 @@ class BlogArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $blogarticle)
     {
+
+        $categories = BlogCategory::all();
+
+        return view('admin.edit-article', compact('blogarticle', 'categories'));
     }
     
     /**
@@ -76,9 +80,11 @@ class BlogArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Article $blogarticle)
     {
-        
+        $blogarticle->update(request(['title', 'category_id', 'description']));
+
+        return redirect('/blogarticles')->with('message', 'The article has been updated Succesfully');
     }
 
     /**

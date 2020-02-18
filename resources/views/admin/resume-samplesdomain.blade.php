@@ -38,6 +38,9 @@
                     </div>
                     </div>
                     <div class="table-responsive">
+
+                                    @include('success')
+                                    @include('errors')
                       <table class="table table-hover">
                                 <thead>
                                   <tr>
@@ -52,10 +55,15 @@
                                     @php $column = $column + 1 @endphp
                                   <tr>
                                     <td>{{$column}}</td>
-                                    <td>{{$domain->name}}</td>
+                                    <td><a href="/resumedomains/{{$domain->name}}">{{$domain->name}}</a></td>
                                     <td>
-                                        <button class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
-                                        <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                      <div class="btn-group">
+                                      <form method="POST" action="/resumedomains/{{ $domain->name}}">
+                                          @method('DELETE')
+                                          @csrf
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                      </form>
+                                        </div>
                                     </td>
                                   </tr>
                                   @endforeach

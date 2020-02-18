@@ -9,23 +9,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Employer Dashboard</h2>
-                                <p class="pageheader-text">Staff Recruitmant and Staff Development</p>
-                                    @if (session('success'))
-              <div class="alert alert-success">
-              {{ session('success') }}
-                       </div>
-                       @endif
-                       @if (session('failure'))
-                    <div class="alert alert-danger text-white">
-                    {{ session('failure') }}
-                    </div>
-                    @endif
+                                <h2 class="pageheader-title"> Applicant Profile</h2>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">View Applicant Profile</li>
+                                            <li class="breadcrumb-item active" aria-current="page"> Applicant Profile</li>
                                         </ol>
                                     </nav>
                                     @if(!$jobseekerdetail)
@@ -37,11 +26,12 @@
 															<button type="submit" class="btn btn-info btn-sm text-white" data-id="" data-toggle="modal" data-target="#talent-{{$jobseekerdetail->id}}">
 																<i class="fa fa-plus"></i>Talent Pool
 															</button>
-															<button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#shortlist">
+															<button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#decline-{{$jobseekerdetail->id}}">
 																<i class="fa fa-edit"></i>Decline
 															</button>
 															@include('empdash.content.addshortlist')
-															@include('empdash.content.addtalentpool')
+                                                            @include('empdash.content.addtalentpool')
+                                                            @include('empdash.content.add-declined')
 															</div>
 															@endif
                                 </div>

@@ -45,7 +45,7 @@
                                      <img src="assets/images/users/avatar-1.jpg"  alt=""/>
                                  </div>
                                  <div class="user-info">
-                                    <h4>{{$article->title}}</h4>
+                                    <h4><a href="/blogarticles/{{$article->id}}/edit">{{$article->title}}</a></h4>
                                     <p><strong>Category:</strong>  {{$article->category->name}}</p>
                                     <span><strong>Posted By:</strong>  {{auth()->user()->name}}</span>
                                  </div>

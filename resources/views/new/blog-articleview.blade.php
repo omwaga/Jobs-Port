@@ -11,7 +11,7 @@
             <p>Category: <b class="text-primary">{{$blog->category->name}} | {{$blog->created_at}}</b></p>
 
                         <hr>
-                        <p>{{$blog->description}}</p>
+                        <p>{!!$blog->description!!}</p>
         </div>
         
         <div class="col-lg-4">

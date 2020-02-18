@@ -30,12 +30,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume-samples.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jobseekar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
      <link href="{{ asset('css/accordion.css') }}" rel="stylesheet">
     <link href="{{ asset('css/howit.css') }}" rel="stylesheet">
      <link href="{{ asset('css/package.css') }}" rel="stylesheet">
      <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
+     <link href="{{ asset('js/resume_view.js') }}" rel="stylesheet">
+     <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
      <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
      
      <style>
@@ -108,50 +110,6 @@ function gridView() {
 </script>
 
 
-<!--Start of Tawk.to Script-->
-
-<!--End of Tawk.to Script-->
-   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142371933-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-142371933-1');
-</script>
-<!--endofgoogle analytics-->
-<!--hotjar integration-->
-<!-- Hotjar Tracking Code for https://thenetworkedpros.com/ -->
- <script>
-//     (function(h,o,t,j,a,r){
-//         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-//         h._hjSettings={hjid:1557665,hjsv:6};
-//         a=o.getElementsByTagName('head')[0];
-//         r=o.createElement('script');r.async=1;
-//         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-//         a.appendChild(r);
-//     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-// </script>
-<!--end of hotjar integration-->
-<!--google adsense intergration-->
-
-<script data-ad-client="ca-pub-5156056510965897" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!--<script data-ad-client="ca-pub-9415122333094581" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--end of google adsense integration-->
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5dc0190de4c2fa4b6bd9e3ce/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
     <!--Landbot io-->

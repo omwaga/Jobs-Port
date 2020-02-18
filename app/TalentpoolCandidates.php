@@ -15,6 +15,6 @@ class TalentpoolCandidates extends Model
     
     public function candidate()
     {
-        return $this->belongsTo(JobseekerDetail::class, 'user_id');
+        return $this->belongsTo(JobseekerDetail::class, 'user_id', 'user_id');
     }
 }

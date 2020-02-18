@@ -1,7 +1,6 @@
 @extends('layouts.employer.employer')
 @section('content')
  <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
@@ -102,7 +101,4 @@
                     <!-- ============================================================== -->
                 </div>
                     </div>
-                </div>
-            </div>
-</div>
 @endsection

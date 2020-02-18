@@ -5,18 +5,10 @@
 <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{asset('Images/cv2.jpg')}})">
   <div class="container">
   <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8" style=" padding-top: 5rem;">
       <h2 class=" text-white text-center">Get the best job vacancies <br> & careers from NGO's, Government, & Private Institutions.</h2>
       <h4 class="text-white text-center">Browse for latest jobs and land your dream job.</h4>
   </div>
-  <!--<div class="col-md-3" align="center">-->
-  <!--    <div class="">-->
-  <!--      <h5 class="text-white">New to The NetworkedPros?</h5>-->
-  <!--      <button onclick="window.location.href = '{{route('uploadcv')}}'" class="btn btn-danger text-center text-white">UPLOAD RESUME <br> We will create your profile</button><br>-->
-  <!--      <p class="text-white">OR</p>-->
-  <!--      <a href="/Register" class="btn text-white" style="background-color:#070A53;">Register with Us</a>-->
-  <!--    </div>-->
-  <!--</div>-->
   <div class="col-md-4" align="center">
       <div class="">
         <h5 class="text-white">Free Job Alerts</h5>

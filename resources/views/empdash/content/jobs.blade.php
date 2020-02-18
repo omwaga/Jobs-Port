@@ -1,7 +1,6 @@
 @extends('layouts.employer.employer')
 @section('content')
 <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
@@ -42,8 +41,8 @@
 											  <th>#</th>
 											  <th>Job Title</th>
 										      <th>Job Type</th>
-										   	  <th>Salary</th>
 											  <th>Status</th>
+                                              <th>Applications</th>
 											  <th style="width: 20%">Action</th>
 											</tr>
                                         </thead>
@@ -52,11 +51,11 @@
 											    @foreach($jobs as $job)
 											    @php $column_number = $column_number + 1; @endphp
 												<tr>
-												    <td>{{$column_number}}</td>
-													<td>{{$job->jobtitle}}</td>
+												    <td>{{$column_number}}.</td>
+													<td><a href="/job-withapplications/{{$job->jobtitle}}">{{$job->jobtitle}}</a></td>
 													<td>{{$job->jobtype}}</td>
-													<td>{{$job->salary}}</td>
 													<td>{{$job->status}}</td>
+                                                    <td>{{$job->applications->count()}}</td>
 													<td>
 														<div class="btn-group" role="group" aria-label="Basic example">
 															<a data-hidden="true" href="/jobposts/{{$job->id}}/edit" class="btn btn-primary btn-sm text-white">
@@ -93,7 +92,4 @@
                     <!-- ============================================================== -->
                 </div>
                     </div>
-                </div>
-            </div>
-</div>
 			@endsection

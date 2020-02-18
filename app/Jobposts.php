@@ -18,13 +18,18 @@ class Jobposts extends Model
     }
     public function industries(){
         
-        return $this->belongsTo(Industry::class,'name');
+        return $this->belongsTo(Industry::class,'industry', 'id');
     }
     public function town(){
-        return $this->belongsTo(Town::class);
+        return $this->belongsTo(Town::class, 'location', 'id');
     }
     public function usercategory(){
         return $this->belongsTo(Usercategories::class,'industry_name');
+    }
+
+    public function category()
+    {
+      return $this->belongsTo(jobcategories::class, 'jobcategories_id', 'id');
     }
     
     public function applications()

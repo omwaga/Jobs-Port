@@ -20,6 +20,13 @@ class ResumeDomainController extends Controller
     
        return view('admin.resume-samplesdomain', compact('domains'));
     }
+
+    public function show($name)
+    {
+        $domain = ResumeDomain::where('name', $name)->first();
+
+        return view('admin.view-resumedomain', compact('domain'));
+    }
     
     public function store(Request $request)
     {
@@ -29,10 +36,22 @@ class ResumeDomainController extends Controller
             
         ResumeDomain::create($attributes);
         
-        return back()->withSuccess('The domain has been created successfully');
+        return redirect()->back()->with('message', 'Resume Domain has been created successfully!');
     }
     
-     public function update(Request $request)
+    public function update(ResumeDomain $resumedomain)
     {
+        $resumedomain->update(request(['name']));
+
+        return redirect('/resumedomains')->with('message', 'Resume Domain has been updated successfully!');
+    }
+
+    public function destroy($name)
+    {
+       $domain_name = ResumeDomain::where('name', $name)->first();
+
+       $domain_name->delete();
+
+       return redirect()->back()->with('message', 'Resume Domain has been deleted successfully!');
     }
 }

@@ -1,7 +1,6 @@
 @extends('layouts.employer.employer')
 @section('content')
 <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
@@ -9,13 +8,13 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Employer Dashboard</h2>
-                                <p class="pageheader-text">Staff Recruitmant and Staff Development</p>
+                                <h2 class="pageheader-title"> Declined Applications</h2>
+
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Insights</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Declined Applications</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -34,6 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0">Declined Applications</h5>
+                                @include('success')
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -55,38 +55,26 @@
                                        <tbody>
                                            <tr>
                                             <td>{{$column_number}}</td>
-                                          <td>{{$applicant->name}}</td>
-                                        <td>{{$applicant->position}}</td>
+                                          <td>{{$applicant->user->name}}</td>
+                                        <td>{{$applicant->user->email}}</td>
                                         <td>{{$applicant->created_at}}</td>
                                         <td>
 											<div class="btn-group" role="group" aria-label="Basic example">
-                                                            <button type="button" data-toggle="modal" title="" class="btn btn-success btn-sm text-white" data-target="#update">
-																<i class="fa fa-contact"></i>Contact
-															</button>
 															<a href="" class="btn btn-primary btn-sm text-white">
 																<i class="fa fa-eye"></i>View Profile
 															</a>
-															<button type="button" data-toggle="modal" title="" class="btn btn-danger btn-sm text-white" data-target="#update">
+															<button type="button" data-toggle="modal" title="" class="btn btn-danger btn-sm text-white" data-target="#removeapplicant-{{$applicant->id}}">
 																<i class="fa fa-trash"></i>Remove
 															</button>
 											 </div>
                                          </td>
                                            </tr>
                                        </tbody>
+                                       @include('empdash.content.remove-declined')
                                        @endforeach
                                        @else
                                        @endif
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Applicant Name</th>
-                                                <th>Position Applied</th>
-                                                <th>Category/Field</th>
-                                                <th>Date Created</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -97,7 +85,4 @@
                     <!-- ============================================================== -->
                 </div>
                     </div>
-                </div>
-            </div>
-</div>
 @endsection

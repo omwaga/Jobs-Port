@@ -39,7 +39,10 @@ class EmployerController extends Controller
     }
     
     public function allapplicants(){
-        $application=JobApplication::where('employer_id',Auth::guard('employer')->user()->id)->get();
+        $application=JobApplication::where([
+            ['employer_id',Auth::guard('employer')->user()->id],
+            ['status', 'applied']
+        ])->get();
         return view('empdash.content.allapplicants',compact('application'));
     }
     
@@ -60,7 +63,7 @@ class EmployerController extends Controller
     }
     
     public function employerdash(){
-        $jobs = Jobposts::where('employer_id',auth()->id())->get();
+        $jobs = Jobposts::where('employer_id',auth()->id())->limit(4)->get();
         $applications=JobApplication::where('employer_id', auth()->id())->get();
         $recentapplications=JobApplication::where('employer_id', auth()->id())->orderBy('created_at', 'DESC')->limit(4)->get();
         $most_applied=JobApplication::where('employer_id', auth()->id())->get();
@@ -90,18 +93,20 @@ public function newpool(Request $request)
 // Add applicant to talentpool
 public function addtalentpool(Request $request, $name)
 {
- $applicant_id = request()->id;
  $pool_id = request()->pool_name;
- $user_id = Jobseekerdetail::where('id', $applicant_id)->value('id');
  
+ DB::table('job_applications')
+            ->where('user_id', request()->id)
+            ->update(['status' => 'pool']);
+
  $shortlist = new TalentpoolCandidates();
- $shortlist->user_id = $user_id;
+ $shortlist->user_id = request()->id;
  $shortlist->talentpool_id = $pool_id;
  $shortlist->employer_id = Auth::guard('employer')->user()->id;
- 
+
  $shortlist->save();
  
- return back();
+ return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
 }
 
     // view the talent pool members
@@ -120,6 +125,28 @@ public function addtalentpool(Request $request, $name)
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname']));
     }
     
+
+    //method to decline the applications
+public function decline(Request $request)
+{
+    DB::table('job_applications')
+            ->where('user_id', request()->id)
+            ->update(['status' => 'declined']);
+
+    return redirect('/all-applicants')->with('message', 'The candidates application has been declined successfully');
+}
+
+//method to show the declined job applications
+public function declined()
+{
+    $applicants = JobApplication::where([
+        ['employer_id', Auth::guard('employer')->user()->id],
+        ['status', 'declined']
+    ])->get();
+
+    return view('empdash.content.declinedapplications', compact('applicants'));
+}
+
     public function cprofile(){
         $profile=Cprofile::where('id',Auth::guard('employer')->user()->id)->get();
         return view('new.cprofile')->with('profile',$profile);
@@ -177,10 +204,14 @@ public function shortlist(Request $request, $name)
  $shortlist = new Shortlist();
  $shortlist->user_id = $user_id;
  $shortlist->employer_id = Auth::guard('employer')->user()->id;
+
+ DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'shortlisted']);
  
  $shortlist->save();
  
- return back();
+ return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
 }
 
 //Method to show all the shorlisted candidates
@@ -196,8 +227,19 @@ public function shortlistedcandidates()
 public function picktemplate()
 {
     $templates = Jobposts::all();
-    
-    return view('empdash.content.templates', compact('templates'));
+    $jobcategories = jobcategories::all();
+    return view('empdash.content.templates', compact('templates', 'jobcategories'));
+}
+
+// use a template
+public function usetemplate($jobtitle)
+{
+   $jobpost = Jobposts::where('jobtitle', $jobtitle)->first();
+   $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+   $industries = Industry::orderBy('name','asc')->get();
+   $towns = Town::orderBy('name','asc')->get();
+
+   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns'));
 }
 
 //Listing all jobs posted
@@ -227,10 +269,40 @@ public function shortlistjobs(Request $request)
 public function removeshortlist(Request $request)
 {
     $candidate = Shortlist::where('user_id', $request->id)->first();
+    $user_id = Shortlist::where('user_id', $request->id)->value('user_id');
+
+    DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'applied']);
     
     $candidate->delete();
     
-    return redirect('/shortlisted-candidates');
+    return redirect('/shortlisted-candidates')->with('message', 'The candidate has been removed from the lsit succesfully');
+}
+
+// remove the candidat eform the talent pool
+public function removepoolmember(Request $request)
+{
+    $candidate = TalentpoolCandidates::where('user_id', $request->id)->first();
+    $user_id = TalentpoolCandidates::where('user_id', $request->id)->value('user_id');
+
+    DB::table('job_applications')
+            ->where('user_id', $user_id)
+            ->update(['status' => 'applied']);
+    
+    $candidate->delete();
+    
+    return back()->with('message', 'The candidate has been removed succesfully from the pool');
+}
+
+// remove the declined applicant from the declined applications list
+public function removedeclined(Request $request)
+{
+    DB::table('job_applications')
+            ->where('user_id', $request->id)
+            ->update(['status' => 'applied']);
+    
+    return back()->with('message', 'The candidate has been removed from the list succesfully');
 }
 
 // get all data of users from the database for the resumes
@@ -242,11 +314,32 @@ public function resumedatabase()
     return view('empdash.content.resume-database', compact('industries', 'user_industries'));
 }
 
+// search the rsumes
 public function searchresume(Request $request)
 {
     $industries = Industry::orderBy('name','asc')->get();
     $user_industries = Usercategories::where('industry_id', $request->industry_id)->get();
     
     return view('empdash.content.resume-database', compact('industries', 'user_industries'));
+}
+
+// show the jobs with the applications received
+public function jobwithapplications($jobtitle)
+{
+    $job = Jobposts::where([
+        ['jobtitle', $jobtitle],
+        ['employer_id', '=', Auth::guard('employer')->user()->id]
+        ])->first();
+
+    return view('empdash.content.job-withapplications', compact('job'));
+}
+
+//search the job templates based on the category selected by the employer
+public function searchtemplate(Request $request)
+{
+    $jobs = Jobposts::where('jobcategories_id', $request->category)->get();
+    $jobcategories = jobcategories::all();
+
+    return view('empdash.content.search-template', compact('jobs', 'jobcategories'));
 }
 }

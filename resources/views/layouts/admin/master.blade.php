@@ -16,6 +16,11 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('#description').ckeditor();
+    </script>
 
 </head>
 
@@ -59,6 +64,12 @@
                     <ul class="sub-menu-list">
                         <li><a href="{{route('adminvacancies')}}">All Vacancies</a></li>
                     </ul>
+                    <ul class="sub-menu-list">
+                      <li><a href="{{route('admin-industry')}}">Industries</a></li>
+                    </ul>
+                    <ul class="sub-menu-list">
+                      <li><a href="{{route('admin-category')}}">Categories</a></li>
+                    </ul>
                 </li>
                 
                 
@@ -79,6 +90,7 @@
                     <ul class="sub-menu-list">
                         <li><a href="/resumedomains"> Samples Domain</a></li>
                         <li><a href="/resumesamples"> Samples</a></li>
+                        <li><a href="{{route('resume')}}">Resumes</a></li>
                     </ul>
                 </li>
                 

@@ -6,23 +6,19 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-7">
-             {!!Form::open(['action'=>['PagesController@show',$jobs->id],'method'=>'POST','class'=>'needs-validation'])!!}
-                      {{csrf_field()}} 
-
-
-            <p><b class="h3">{{$jobs->jobtitle}}
+            <p><b class="h3">{{$job->jobtitle}}
              @auth
-             @if( $jobs->expirydate > Carbon\Carbon::now() && $jobs->apply=='Yes')
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('apply',[$jobs->id])}}">Apply with us</a>
-            @elseif($jobs->expirydate < Carbon\Carbon::now() && $jobs->apply=='Yes')
+             @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
+            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('apply',[$job->id])}}">Apply with us</a>
+            @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
             <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
             @else
             ...
             @endif
              @else
-  @if( $jobs->expirydate > Carbon\Carbon::now() && $jobs->apply=='Yes')
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$jobs->id])}}">Apply with us</a>
-            @elseif($jobs->expirydate < Carbon\Carbon::now() && $jobs->apply=='Yes')
+  @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
+            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$job->id])}}">Apply with us</a>
+            @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
             <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
             @else
             ...
@@ -32,25 +28,20 @@
            
             </b>
                 </p>
-            @foreach($company as $comp)
-            <p>Company name: <a href="/CompanyJobs/{{$comp->id}}"><b class="text-primary">{{$comp->companyname}}</b></a></p>
-            @endforeach
-             @foreach($jobcat as $jobc)
-            <p>Category: <b class="text-primary">{{$jobc->jobcategories}}</b></p>
-            @endforeach
-              @foreach($towns as $town)
-            <p>Location: <b class="text-primary">{{$town->name}}</b></p>
-            @endforeach
-            <p>Salary: <b class="text-primary">{{$jobs->salary}}</b></p>
+            <p>Company name: <a href="/CompanyJobs/"><b class="text-primary">{{$job->cprofile->cname}}</b></a></p>
+            <p>Category: <b class="text-primary">{{$job->category->jobcategories}}</b></p>
+            <p>Location: <b class="text-primary">{{$job->town->name}}</b></p>
+            <p>Salary: <b class="text-primary">{{$job->salary}}</b></p>
 
                         <hr>
+                        <div class="container">
                         <h4 class="text-primary">Job summary</h4>
-                        <p>{!!$jobs->summary!!}</p>
+                        <p>{!!$job->summary!!}</p>
                         <h4 class="text-primary">Job description</h4>
-                        <p>{!!html_entity_decode($jobs->description)!!}</p>
+                        <p>{!!html_entity_decode($job->description)!!}</p>
                         <h4 class="text-primary">Steps to Apply</h4>
-                        @if(!$jobs->apply)
-                        <p>{!!$jobs->applicationdet!!}</p>
+                        @if(!$job->apply)
+                        <p>{!!$job->applicationdet!!}</p>
                         @else
                         <ol>
                             <li>Register with the networked pros if not registered or login to your account if you had registered.</li>
@@ -64,8 +55,9 @@
             <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="/jobapplications/create">Apply</a>
 @else
   
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$jobs->id])}}">Apply with us</a>
+            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$job->id])}}">Apply with us</a>
 @endauth
+</div>
         </div>
         
         <div class="col-lg-4">

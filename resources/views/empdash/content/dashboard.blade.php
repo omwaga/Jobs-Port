@@ -237,7 +237,7 @@
 													<td>{{$job->status}}</td>
 													<td>
 													    <div class="btn-group" role="group" aria-label="Basic example">
-                                                           <a data-hidden="true" href="/joblist/{{$job->id}}/edit" class="btn btn-primary btn-btngroup btn-sm text-white">
+                                                           <a data-hidden="true" href="/jobposts/{{$job->id}}/edit" class="btn btn-primary btn-btngroup btn-sm text-white">
 																<i class="fa fa-edit"></i>Update
 															</a>
 															

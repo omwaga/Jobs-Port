@@ -4,7 +4,7 @@
         <form action="/talentpool/{{$jobseekerdetail->name}}" method="POST">
      @method('PATCH')
      @csrf
-     <input type="hidden" value="{{$jobseekerdetail->id}}" name="id">
+     <input type="hidden" value="{{$jobseekerdetail->user_id}}" name="id">
       <div class="modal-header bg-primary text-white">
         <h6 class="modal-title text-white" id="exampleModalLabel">Add to talent pool?</h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

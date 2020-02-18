@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Training;
 use App\jobcategories;
 
-class TrainingSeminarsController extends Controller
+class jobcategoriescontroller extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,9 +20,6 @@ class TrainingSeminarsController extends Controller
      */
     public function index()
     {
-        $locations = Training::distinct()->limit(6)->get(['location']);
-        $trainings  = jobcategories::limit(4)->get();
-        return view('content.training', compact('trainings','locations'));
     }
     
     public function showcategory(jobcategories $category)

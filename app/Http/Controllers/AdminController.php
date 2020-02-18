@@ -8,11 +8,18 @@ use App\JobApplication;
 use App\Jobposts;
 use App\User;
 use App\Cprofile;
+use App\Industry;
+use App\jobcategories;
+use App\CvUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /*
      * Show admin pannel
      * */
@@ -55,6 +62,30 @@ class AdminController extends Controller
         $applications = JobApplication::latest()->paginate(15);
         
         return view('admin.admin-applications', compact('applications'));
+    }
+
+    //admin resumes pdf view
+    public function resume()
+    {
+        $resumes = CvUpload::all();
+
+        return view('admin.resume', compact('resumes'));
+    }
+
+    // manage industries
+    public function industry()
+    {
+        $industries = Industry::all();
+
+        return view('admin.industries', compact('industries'));
+    }
+
+    // manage categories
+    public function category()
+    {
+        $categories = jobcategories::all();
+
+        return view('admin.categories', compact('categories'));
     }
 }
 

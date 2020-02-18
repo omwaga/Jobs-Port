@@ -1,7 +1,6 @@
 @extends('layouts.employer.employer')
 @section('content')
 <div class="dashboard-wrapper">
-            <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                 <div class="row">
 											<div class="modal-content">
@@ -135,18 +134,15 @@
                             </div>
 												</div>
 												<div class="modal-footer no-bd">
-													<button type="submit" id="addRowButton" class="btn btn-primary">Update Job</button>
+													<button type="submit" id="addRowButton" class="btn btn-primary btn-sm">Update Job</button>
         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                         {{session('status')}}
                             </div>
                         @endif
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
 												</div>
                                </form>
 											</div>
 										</div>
-									</div>
-									</div>
-									</div>
 									@endsection
