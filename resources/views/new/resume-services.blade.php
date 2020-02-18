@@ -7,13 +7,10 @@
     <section class="section section-top section-full">
 
         <!-- Cover -->
-<<<<<<< HEAD
         <div class="jumbotron jumbotron-fluid" style="background-color:#2B3856; background-image:url('{{asset('Images/cv2.jpg')}}');">
   <div class="container"><!-- 
     <h5 class="display-4 text-white">Build your job-winning resume in three simple steps</h5> -->
                         <p class="lead text-white text-center">
-=======
-        <div class="jumbotron jumbotron-fluid no-repeat" style="background-color:#2B3856; background-image:url('{{asset('Images/cv2.jpg')}}');">
 
         <!-- Overlay -->
         <div class="bg-overlay"></div>
@@ -34,7 +31,6 @@
 
                         <!-- Subheading -->
                         <p class="lead text-white text-center mb-5">
->>>>>>> afc810da4739132307dd5bd94bc2c29b42658124
                             Grab Employers' attention in an innovative & smart way with a professionally written Resume
                             <br><a href="{{route('resumesamples')}}" class="btn text-white" style="background-color:#070A53;">
                                 Get Started for free
@@ -98,7 +94,6 @@
                 </div>
             </div>
         </div>
-        @include('new.view-resumetemplatemodal')
     </section>
 
 <section class="fdb-block">
@@ -160,9 +155,6 @@
     </div>
   </div>
 </section>
-
-<<<<<<< HEAD
-=======
 <!------------------ Hover Effect Style : Demo - 2 --------------->
         <div class="container mt-40">
             <h3 class="text-center">Demo</h3>
@@ -214,6 +206,5 @@
                 </div>
             </div>
         </div>
->>>>>>> afc810da4739132307dd5bd94bc2c29b42658124
 
 @endsection

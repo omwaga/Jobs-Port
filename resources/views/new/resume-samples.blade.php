@@ -53,7 +53,6 @@
                 <div class="col-md-3 col-sm-6" align="center">
                   <button class="btn btn-info btn-sm text-white" href="#" data-image-id="" data-toggle="modal" data-title="The car i dream about" data-caption="If you sponsor me, I can drive this car" data-target="#resume-{{$sample->id}}"><i class="fas fa-eye"></i>
             </button>
-        @include('new.view-resumetemplatemodal')
                     <div class="box21">
                         <img src="{{ asset('storage/'.$sample->resume)}}" alt="">
                         <div class="box-content">
@@ -63,6 +62,7 @@
                         </div>
                     </div>
                 </div>
+        @include('new.view-resumetemplatemodal')
                 @endforeach
             </div>
         </div>
