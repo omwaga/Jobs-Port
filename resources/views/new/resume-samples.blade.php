@@ -2,15 +2,12 @@
 @extends('layouts.app')
 @section('content')
 <br>
-    <!-- HERO
-    ================================================== -->
     <section class="section section-top section-full">
 
         <!-- Cover -->
         <div class="jumbotron jumbotron-fluid no-repeat" style="background-color:#2B3856; background-image:url('{{asset('Images/cv2.jpg')}}');">
 
         <!-- Overlay -->
-        <div class="bg-overlay"></div>
         <!-- Content -->
         <div class="container">
             <div class="row justify-content-center align-items-center">
@@ -30,12 +27,9 @@
                         <p class="lead text-white text-center mb-5">
                             Know where your Resume stands
                         </p>
-
-                        <!-- Button -->
                           <div class="btn-group">
                             <a href="{{route('uploadcv')}}" class="btn text-white " style="background-color:#070A53;">
                                 Resumes
-                            </a>
                             <a href="{{route('uploadcv')}}" class="btn btn-secondary text-white ">
                                 CVs
                             </a>
@@ -57,8 +51,9 @@
             <div class="row mt-30">
               @foreach($samples as $sample)
                 <div class="col-md-3 col-sm-6" align="center">
-                  <button class="btn btn-info btn-sm text-white" href="#" data-image-id="" data-toggle="modal" data-title="The car i dream about" data-caption="If you sponsor me, I can drive this car" data-target="#image-gallery"><i class="fas fa-eye"></i>
+                  <button class="btn btn-info btn-sm text-white" href="#" data-image-id="" data-toggle="modal" data-title="The car i dream about" data-caption="If you sponsor me, I can drive this car" data-target="#resume-{{$sample->id}}"><i class="fas fa-eye"></i>
             </button>
+        @include('new.view-resumetemplatemodal')
                     <div class="box21">
                         <img src="{{ asset('storage/'.$sample->resume)}}" alt="">
                         <div class="box-content">
@@ -70,72 +65,6 @@
                 </div>
                 @endforeach
             </div>
-        @include('new.view-resumetemplatemodal')
         </div>
 </section>
-<!-- <div class="container">
-    <h4>See the Resume Samples from your Domain</h4>
-  <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-            <div class="our-services-wrapper mb-60">
-              <div class="services-inner">
-                <div class="our-services-img">
-                <img src="{{asset('Images/experts/layer.svg')}}" width="68px" alt="">
-                </div>
-                <div class="our-services-text">
-                  <h4>IT and Software Development</h4>
-                  <ul>
-                      <li><a href="{{route('singleresume')}}">Software Engineer Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Graphic Designer Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Network Engineer Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Project Manager Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">System Administrator Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Business Analyst Resume</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-            <div class="our-services-wrapper mb-60">
-              <div class="services-inner">
-                <div class="our-services-img">
-                <img src="{{asset('Images/experts/layer.svg')}}" width="68px" alt="">
-                </div>
-                <div class="our-services-text">
-                  <h4>sales and Marketing</h4>
-                  <ul>
-                      <li><a href="{{route('singleresume')}}">MBA Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Content Writer Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">SEO Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Marketing Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Digital Marketing Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Business Development Resume</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-            <div class="our-services-wrapper mb-60">
-              <div class="services-inner">
-                <div class="our-services-img">
-                <img src="{{asset('Images/experts/layer.svg')}}" width="68px" alt="">
-                </div>
-                <div class="our-services-text">
-                  <h4>Banking and Finance</h4>
-                  <ul>
-                      <li><a href="{{route('singleresume')}}">Banking and Finance Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Accountant Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Network Engineer Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">Project Manager Resume</a></li>
-                      <li><a href="{{route('singleresume')}}">System Administrator Resume</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-  </div>
-</div> -->
-
 @endsection

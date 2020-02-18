@@ -31,6 +31,7 @@
                              @include('errors')
                              @include('success')
                          <form class="js-validation-bootstrap form-horizontal" action="/blogarticles/{{$blogarticle->id}}" method="POST">
+                         <form class="js-validation-bootstrap form-horizontal" action="/blogarticles/{{$blogarticle->id}}" method="POST">
                              @method('PATCH')
                              @csrf
                           <div class="form-group">

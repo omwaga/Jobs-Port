@@ -574,7 +574,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\Http\\Controllers\\SkillsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SkillsController.php',
         'App\\Http\\Controllers\\TrainingApplicationController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingApplicationController.php',
         'App\\Http\\Controllers\\TrainingInstitutionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingInstitutionController.php',
-        'App\\Http\\Controllers\\TrainingSeminarsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingSeminarsController.php',
+        'App\\Http\\Controllers\\TrainingSeminarsController' => __DIR__ . '/../..' . '/app/Http/Controllers/jobcategoriescontroller.php',
         'App\\Http\\Controllers\\TrainingcController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingcController.php',
         'App\\Http\\Controllers\\WorkExperiencesController' => __DIR__ . '/../..' . '/app/Http/Controllers/WorkExperiencesController.php',
         'App\\Http\\Controllers\\jobcategoriescontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/jobcategoriescontroller.php',

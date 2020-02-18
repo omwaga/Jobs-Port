@@ -85,6 +85,8 @@ class BlogArticlesController extends Controller
         $blogarticle->update(request(['title', 'category_id', 'description']));
 
         return redirect('/blogarticles')->with('message', 'The article has been updated Succesfully');
+        dd('hello');
+        // $blogarticle->update(request('title', 'category_id', 'description'));
     }
 
     /**

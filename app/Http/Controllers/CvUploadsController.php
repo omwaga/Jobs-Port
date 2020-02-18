@@ -28,5 +28,6 @@ public function store(Request $request)
 public function destroy($id)
 {
 	dd('hello');
+    return redirect()->back()->with('message', 'Your cv has been uploaded successfully');
 }
 }

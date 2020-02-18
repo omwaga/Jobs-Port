@@ -55,7 +55,7 @@ return array(
     'App\\Http\\Controllers\\SkillsController' => $baseDir . '/app/Http/Controllers/SkillsController.php',
     'App\\Http\\Controllers\\TrainingApplicationController' => $baseDir . '/app/Http/Controllers/TrainingApplicationController.php',
     'App\\Http\\Controllers\\TrainingInstitutionController' => $baseDir . '/app/Http/Controllers/TrainingInstitutionController.php',
-    'App\\Http\\Controllers\\TrainingSeminarsController' => $baseDir . '/app/Http/Controllers/TrainingSeminarsController.php',
+    'App\\Http\\Controllers\\TrainingSeminarsController' => $baseDir . '/app/Http/Controllers/jobcategoriescontroller.php',
     'App\\Http\\Controllers\\TrainingcController' => $baseDir . '/app/Http/Controllers/TrainingcController.php',
     'App\\Http\\Controllers\\WorkExperiencesController' => $baseDir . '/app/Http/Controllers/WorkExperiencesController.php',
     'App\\Http\\Controllers\\jobcategoriescontroller' => $baseDir . '/app/Http/Controllers/jobcategoriescontroller.php',

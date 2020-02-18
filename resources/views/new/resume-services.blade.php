@@ -7,10 +7,34 @@
     <section class="section section-top section-full">
 
         <!-- Cover -->
+<<<<<<< HEAD
         <div class="jumbotron jumbotron-fluid" style="background-color:#2B3856; background-image:url('{{asset('Images/cv2.jpg')}}');">
   <div class="container"><!-- 
     <h5 class="display-4 text-white">Build your job-winning resume in three simple steps</h5> -->
                         <p class="lead text-white text-center">
+=======
+        <div class="jumbotron jumbotron-fluid no-repeat" style="background-color:#2B3856; background-image:url('{{asset('Images/cv2.jpg')}}');">
+
+        <!-- Overlay -->
+        <div class="bg-overlay"></div>
+        <!-- Content -->
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-10 col-lg-7 ">
+                    <div class="banner-content">
+                        <!-- Preheading -->
+                        <p class="text-white text-uppercase text-center text-xs" style=" padding-top: 5rem;">
+                          <span><strong>Get a job-winning professional resume from our experts</strong></span>
+                        </p>
+
+                        <!-- Heading -->
+                        <!--<h6 class="text-dark text-center mb-4 display-4 font-weight-bold">-->
+                        <!--    Get a job-winning professional resume from our experts-->
+                        <!--</h6>-->
+
+                        <!-- Subheading -->
+                        <p class="lead text-white text-center mb-5">
+>>>>>>> afc810da4739132307dd5bd94bc2c29b42658124
                             Grab Employers' attention in an innovative & smart way with a professionally written Resume
                             <br><a href="{{route('resumesamples')}}" class="btn text-white" style="background-color:#070A53;">
                                 Get Started for free
@@ -137,5 +161,59 @@
   </div>
 </section>
 
+<<<<<<< HEAD
+=======
+<!------------------ Hover Effect Style : Demo - 2 --------------->
+        <div class="container mt-40">
+            <h3 class="text-center">Demo</h3>
+            <div class="row mt-30">
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv3.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">For Professionals</h3>
+                                <span class="post">Developers</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv14.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">Managers</h3>
+                                <span class="post">Designer</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="box2">
+                        <img src="{{asset('Images/cv/cv13.png')}}">
+                        <div class="box-content">
+                            <div class="inner-content">
+                                <h3 class="title">Graduates</h3>
+                                <span class="post">Web Designer</span>
+                                <ul class="icon">
+                                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> afc810da4739132307dd5bd94bc2c29b42658124
 
 @endsection

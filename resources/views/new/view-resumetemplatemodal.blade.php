@@ -1,4 +1,4 @@
-<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="resume-{{$sample->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
                 <h4 class="modal-title" id="image-gallery-title"></h4>
             </div>
             <div class="modal-body">
-                        <img src="{{asset('Images/cv/cv14.png')}}" alt="" style="width: 100%">
+                        <img src="{{ asset('storage/'.$sample->resume)}}" alt="" style="width: 100%">
             </div>
             <div class="modal-footer">
 
@@ -25,3 +25,4 @@
             </div>
         </div>
     </div>
+</div>

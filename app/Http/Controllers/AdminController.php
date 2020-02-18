@@ -10,6 +10,7 @@ use App\User;
 use App\Cprofile;
 use App\Industry;
 use App\jobcategories;
+
 use App\CvUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -70,6 +71,7 @@ class AdminController extends Controller
         $resumes = CvUpload::all();
 
         return view('admin.resume', compact('resumes'));
+        return view('admin.resume');
     }
 
     // manage industries
