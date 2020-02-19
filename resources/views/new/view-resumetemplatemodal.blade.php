@@ -2,9 +2,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-              <button class="btn text-white" style="background-color:#0B0B3B;">Customize</button>
+                <div class="col-md-6">
+              <button class="btn text-white pull-right" style="background-color:#0B0B3B;" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay" data-dismiss="modal">Customize</button>  
+                </div>
+                <div class="col-md-6">
+              <button class="btn text-white pull-left" style="background-color:#0B0B3B;">{{$sample->name}}</button>  
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="image-gallery-title"></h4>
+                </div>
             </div>
             <div class="modal-body">
                         <img src="{{ asset('storage/'.$sample->resume)}}" alt="" style="width: 100%">

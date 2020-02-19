@@ -57,8 +57,8 @@
                         <img src="{{ asset('storage/'.$sample->resume)}}" alt="">
                         <div class="box-content">
                             <h4 class="title">{{$sample->name}}</h4>
-                            <p class="description">{{$sample->description}}</p>
-                            <a class="read-more" href="#">Get Started</a>
+                            <p class="description">{!!$sample->description!!}</p>
+                            <a class="read-more" href="#" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -67,4 +67,5 @@
             </div>
         </div>
 </section>
+@include('new.register-useroptions')
 @endsection

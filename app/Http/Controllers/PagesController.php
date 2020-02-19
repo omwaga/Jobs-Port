@@ -288,7 +288,9 @@ public function filterindustry($name){
     
     // resume services route
     public function resume(){
-        return view('new.resume-services');
+        $samples = CvUpload::limit(4)->get();
+
+        return view('new.resume-services', compact('samples'));
     }
     
     // resume samples page

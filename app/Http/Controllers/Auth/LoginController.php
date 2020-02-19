@@ -37,15 +37,6 @@ class LoginController extends Controller
             return '/admin-dashboard';
         }
         return '/jobseekeraccount';
-// $finduser=Auth()->user()->userlevel;
-// switch($finduser){
-// case '0':
-// return '/jobseekeraccount';
-// break;
-// case '1':
-// return '/jobseekeraccount';
-// break;
-// }
     }
     /**
      * Create a new controller instance.

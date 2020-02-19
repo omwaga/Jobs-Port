@@ -31,10 +31,6 @@ class GoogleController extends Controller
        $authuser= $this->findorcreateuser($user,'google');
         Auth::login($authuser,true);
         return redirect($this->redirectTo);
-       
-        // dd($userr);
-
-        // $user->token;
     }
     public function findorcreateuser($user){
 $authuser=User::where('provider_id',$user->id)->first();

@@ -33,7 +33,7 @@
     <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
      <link href="{{ asset('css/accordion.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/howit.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
      <link href="{{ asset('css/package.css') }}" rel="stylesheet">
      <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
      <link href="{{ asset('js/resume_view.js') }}" rel="stylesheet">
@@ -83,9 +83,6 @@ h3{
         $('#editass').ckeditor();
         // $('.textarea').ckeditor(); // if class is prefered.
     </script>
-<!-- Bootstrap Date-Picker Plugin -->
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>-->
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>-->
 
        <script>
            // Get the elements with class="column"
@@ -138,6 +135,13 @@ function gridView() {
 
 	<script>
   AOS.init();
+</script>
+<script type="text/javascript">
+  $(function() {
+    if(cookieOrLocalStorageVariable) {
+       $('#myModal').modal(options);
+    }
+});
 </script>
 
 </body>
