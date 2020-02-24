@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Companies;
 use App\Worker;
 use App\Jobposts;
-use App\Cvuploads;
+use App\CvUpload;
 use App\Application;
 use App\Training;
 use App\jobcategories;
@@ -305,5 +305,12 @@ return view('dashboard.subscribe')->with('companies',$companies);
         return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
         }
         
+    }
+
+    public function customizeresume()
+    {
+        $samples = CvUpload::all();
+
+        return view('dashboard.customize-resume', compact('samples'));
     }
 }

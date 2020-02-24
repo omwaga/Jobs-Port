@@ -45,7 +45,11 @@
                         <div class="box-content">
                             <h4 class="title">{{$sample->name}}</h4>
                             <p class="description">{!!$sample->description!!}</p>
+                            @guest
                             <a class="read-more" href="#" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay">Get Started</a>
+                            @else
+                            <a class="read-more" href="#">Get Started</a>
+                            @endguest
                         </div>
                     </div>
                 </div>

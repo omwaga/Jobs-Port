@@ -3,7 +3,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-md-6">
-              <button class="btn text-white pull-right" style="background-color:#0B0B3B;" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay" data-dismiss="modal">Customize</button>  
+                    @guest
+              <button class="btn text-white pull-right" style="background-color:#0B0B3B;" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay" data-dismiss="modal">Customize</button> 
+              @else
+              <a href="{{route('customizeresume')}}" class="btn text-white pull-right" style="background-color:#0B0B3B;">Customize</a> 
+              @endguest 
                 </div>
                 <div class="col-md-6">
               <button class="btn text-white pull-left" style="background-color:#0B0B3B;">{{$sample->name}}</button>  

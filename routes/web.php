@@ -45,6 +45,7 @@ Route::get('/joblogin/{id}', 'PagesController@loginform')->name('joblogin');
 Route::post('/authlogin', 'Auth\ApplyjobController@login')->name('authuser');
 Route::get('/applyforjob', 'PagesController@applyjob');
 Route::get('/search-jobs', 'DashboardController@jobsearch')->name('jobsearch');
+Route::get('/customize-resume','DashboardController@customizeresume')->name('customizeresume');
 // learningcentercontroller routes
 Route::get('/Learningdashboard','LearningCenterController@index')->name('learnd');
 Route::get('/PostTraining','LearningCenterController@gettraining')->name('gettraining');
@@ -85,7 +86,6 @@ Route::delete('/remove-shortlisted', 'EmployerController@removeshortlist')->name
 Route::delete('/remove_talentpoolmember', 'EmployerController@removepoolmember')->name('removepoolmember');
 Route::delete('/remove_declined', 'EmployerController@removedeclined')->name('removedeclined');
 Route::post('new-poolname', 'EmployerController@newpool')->name('newpool');
-Route::resource('cvupload', 'CvUploadsController');
 Route::get('talentpool/{name}', 'EmployerController@poolmembers')->name('poolmembers');
 Route::get('resume-database', 'EmployerController@resumedatabase')->name('resumedatabase');
 Route::post('resume-database', 'EmployerController@searchresume')->name('searchresume');
@@ -104,6 +104,7 @@ Route::resource('resumesamples', 'ResumeSamplesController');
 Route::get('/admin-resume', 'AdminController@resume')->name('resume');
 Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
 Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
+Route::resource('cvupload', 'CvUploadsController');
 
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');

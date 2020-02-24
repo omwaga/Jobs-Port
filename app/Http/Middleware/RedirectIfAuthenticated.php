@@ -21,17 +21,12 @@ class RedirectIfAuthenticated
          switch ($guard) {
             case 'employer':
             if (Auth::guard($guard)->check()) {
-                return redirect('/Employer-approval');
-            }
-                break;
-            case 'trainingc':
-            if (Auth::guard($guard)->check()) {
-                return redirect('/trainingcenter');
+                return redirect('/Employer-dashboard');
             }
                 break;
             default:
             if (Auth::guard($guard)->check()) {
-                return redirect('/home');
+                return redirect('/jobseekeraccount');
             }
                 break;
         }

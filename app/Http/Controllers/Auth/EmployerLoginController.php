@@ -24,12 +24,7 @@ class EmployerLoginController extends Controller
     );
  
     if (Auth::guard('employer')->attempt(['username'=>$request->email,'password'=>$request->password],$request->remember)) {
-      if (Cprofile::where('approved', '=', 'Yes')->where('id',Auth::guard('employer')->user()->id)->exists()) {
-                return redirect()->intended(route('employdashboard')); 
-     }
-     else if(Cprofile::where('approved', '=', 'No')->where('id',Auth::guard('employer')->user()->id)->exists()){
-       return redirect()->intended(route('employdashboard'));  
-     }
+            return redirect()->intended(route('employdashboard')); 
      
     }
              return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');

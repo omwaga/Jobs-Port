@@ -78,10 +78,10 @@ h3{
     <script>
         $('#duties').ckeditor();
         $('#edesc').ckeditor();
-        $('#editex').ckeditor();
+        $('#summary').ckeditor();
         $('#article-ckeditor').ckeditor();
         $('#editass').ckeditor();
-        // $('.textarea').ckeditor(); // if class is prefered.
+        $('.textarea').ckeditor(); // if class is prefered.
     </script>
 
        <script>

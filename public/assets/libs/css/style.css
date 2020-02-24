@@ -1258,7 +1258,7 @@ Top Header
 
 .navbar-right-top .nav-item .nav-link {
     padding: 13px 20px;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 2;
     color: #82849f;
 }
@@ -1288,7 +1288,7 @@ Top Header
 }
 
 .notification-title {
-    font-size: 14px;
+    font-size: 18px;
     color: #3d405c;
     text-align: center;
     padding: 8px 0px;
@@ -1690,7 +1690,7 @@ Left Navigation Sidebar
 .nav-left-sidebar .navbar-nav .nav-item {}
 
 .nav-left-sidebar .navbar-nav .nav-link {
-    font-size: 14px;
+    font-size: 18px;
     padding: 12px;
     /* margin-bottom: 2px; */
     color: #71789e;
@@ -1698,7 +1698,7 @@ Left Navigation Sidebar
 }
 
 .nav-left-sidebar .nav-link i {
-    font-size: 14px;
+    font-size: 18px;
     margin-right: 9px;
     text-align: center;
     vertical-align: middle;
@@ -1721,7 +1721,7 @@ Left Navigation Sidebar
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link {
-    font-size: 14px;
+    font-size: 16px;
     padding: 6px 12px;
     transition: 0.3s;
 }
