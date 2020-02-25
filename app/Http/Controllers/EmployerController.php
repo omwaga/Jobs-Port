@@ -66,7 +66,9 @@ class EmployerController extends Controller
         $jobs = Jobposts::where('employer_id',auth()->id())->limit(4)->get();
         $applications=JobApplication::where('employer_id', auth()->id())->get();
         $recentapplications=JobApplication::where('employer_id', auth()->id())->orderBy('created_at', 'DESC')->limit(4)->get();
-        $most_applied=JobApplication::where('employer_id', auth()->id())->get();
+        $most_applied=JobApplication::where('employer_id', auth()->id())->select('job_id', DB::raw('count(*) as total'))
+                 ->groupBy('job_id')
+                 ->get();;
 
         return view('empdash.content.dashboard',compact('jobs','applications','most_applied', 'recentapplications'));
     }

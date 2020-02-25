@@ -59,36 +59,20 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h2 class="header-title">Popup editor </h2>
+                            <h2 class="header-title">Personal Details</h2>
                              <table id="user" class="table table-bordered table-striped">
                               <tbody>
                                 <tr>
-                                  <td width="35%">Simple text field</td>
-                                  <td width="65%"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" data-original-title="" title="">superuser</a></td>
+                                  <td width="35%">Full Name:</td>
+                                  <td width="65%"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" data-original-title="" title="">:</a></td>
                                 </tr>
                                 <tr>
-                                  <td>Empty text field, required</td>
-                                  <td><a href="#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a></td>
+                                  <td>Phone Number</td>
+                                  <td><a href="#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty"></a></td>
                                 </tr>
                                 <tr>
-                                  <td>Select, local array, custom display</td>
-                                  <td><a href="#" id="sex" data-type="select" data-pk="1" data-value="" data-title="Select sex" class="editable editable-click" style="color: gray;">not selected</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Select, remote array, no buttons</td>
-                                  <td><a href="#" id="group" data-type="select" data-pk="1" data-value="5" data-source="/groups" data-title="Select group" class="editable editable-click" data-original-title="" title="" style="">Customer</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Select, error while loading</td>
-                                  <td><a href="#" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Combodate (date)</td>
+                                  <td>Date Of Birth</td>
                                   <td><a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Combodate (datetime)</td>
-                                  <td><a href="#" id="event" data-type="combodate" data-template="D MMM YYYY  HH:mm" data-format="YYYY-MM-DD HH:mm" data-viewformat="MMM D, YYYY, HH:mm" data-pk="1" data-title="Setup event date and time" class="editable editable-click editable-empty">Empty</a></td>
                                 </tr>
                                 <tr>
                                   <td>Textarea, buttons below. Submit by <i>ctrl+enter</i></td>

@@ -61,7 +61,7 @@
                             @guest
                             <a class="read-more" href="#" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay">Get Started</a>
                             @else
-                            <a class="read-more" href="#">Get Started</a>
+                            <a class="read-more" href="{{route('customizeresume')}}">Get Started</a>
                             @endguest
                         </div>
                     </div>

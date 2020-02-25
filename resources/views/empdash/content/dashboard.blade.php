@@ -123,7 +123,7 @@
                                     <div class="card-body">
                                         <h6 class="text-dark">Source Candidates</h6>
                                         <div class="metric-value d-inline-block">
-                                            <a class="btn btn-secondary btn-sm" href="#">Find Candidates</a>
+                                            <a class="btn btn-secondary btn-sm" href="{{route('emppostjob')}}">Find Candidates</a>
                                         </div>
                                     </div>
                                 </div>
@@ -188,14 +188,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach($most_applied as $most)
                                                     <tr>
-                                                        <td>Campaign#1</td>
+                                                        <td>{{$most->job->jobtitle}}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td colspan="3">
-                                                            <a href="#" class="btn btn-outline-light float-right">Details</a>
-                                                        </td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
