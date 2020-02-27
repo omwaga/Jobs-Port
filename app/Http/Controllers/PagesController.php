@@ -175,12 +175,12 @@ else{
         $jobtype=Jobtype::orderBy('name','asc')->get();
         $alljobs=Jobposts::all();
         $jobs=Jobposts::orderBy('created_at','desc')->limit(18)->paginate(6);
-        $towns=Town::orderBy('name','asc')->get();
+        $countries = DB::table('countries')->pluck("name","id");
         $company=Cprofile::orderBy('created_at','desc')->limit(6)->get();
         
         return view('new.home')->with('industry',$industries)
         ->with('jobs',$jobs)
-        ->with('towns',$towns)
+        ->with('countries',$countries)
         ->with('companyy',$company)
         ->with('jobtype',$jobtype)
         ->with('alljobs',$alljobs)
@@ -214,8 +214,9 @@ else{
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
   
-  return view('new.all-jobs',compact('jobs', 'categories', 'locations', 'industries'));
+  return view('new.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries'));
  }
  
 //  jobs after the search
@@ -346,15 +347,11 @@ public function filterindustry($name){
         ->with('industries',$Industry);
     }
     
-    public function searchhome(){
-$getlocation=Input::get('location');
-$getindustry=Input::get('industry');
-$getjobtype=Input::get('function');
-$searchdata=Jobposts::where('industry','LIKE','%'.$getindustry.'%')->where('category','LIKE','%'.$getjobtype.'%')->where('location','LIKE','%'.$getlocation.'%')->get();
-return view('content.homesearch',compact(['searchdata']));
-
+public function searchhome(){
+dd('hello');
     }
-        public function searchjobs(){
+
+public function searchjobs(){
         $application=jobposts::all();
         $towns=Town::all();
         $categories=jobcategories::all();

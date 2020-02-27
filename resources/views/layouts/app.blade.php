@@ -15,9 +15,9 @@
     <script src="{{ asset('js/partners.js') }}" defer></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Qwigley&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Qwigley&display=swap" rel="stylesheet"> -->
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sniglet&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
      <link href="{{ asset('js/resume_view.js') }}" rel="stylesheet">
      <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
      <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
-     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
      <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
@@ -84,28 +84,6 @@ h3{
         $('.textarea').ckeditor(); // if class is prefered.
     </script>
 
-       <script>
-           // Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
-
-// Declare a loop variable
-var i;
-
-// List View
-function listView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "100%";
-  }
-}
-
-// Grid View
-function gridView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "50%";
-  }
-}
-</script>
-
 
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
@@ -133,9 +111,6 @@ function gridView() {
   })
   </script>
 
-	<script>
-  AOS.init();
-</script>
 <script type="text/javascript">
   $(function() {
     if(cookieOrLocalStorageVariable) {

@@ -41,15 +41,20 @@
                   @endforeach
               </select>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <select name="location" class="form-control search-slt">
-                       <option>select location</option>
-                      @foreach($towns as $town)
-                  <option value="{{$town->id}}">{{$town->name}}</option>
-                      @endforeach
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                          <select name="country" class="form-control search-slt">
+                       <option value="">Select Country</option>
+                    @foreach ($countries as $key => $value)
+                    <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
               </select> 
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                          <select name="state" class="form-control search-slt">
+                       <option>State/Region</option>
+              </select> 
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
              <button type="submit" class="btn btn-danger wrn-btn">Search</button>
           </div>
           </div>
@@ -107,35 +112,6 @@ Faster with The NetworkedPros</h5>
 					 </div>
 				</div>
 		</div>
-<!--    <div class="row">-->
-<!--        <div class="col-md-4">-->
-            
-<!--            <img src="{{asset('Images/employer.svg')}}" class="img-fluid img-block">-->
-  
-<!--        </div>-->
-        
-<!--        <div class="col-md-4">-->
-<!--            <div class="container">-->
-<!--    <h5 class="text-center"style="margin-top:2%;"><b>The NetworkedPros Job Posting Services - Get Quality Applications </b></h5>-->
-<!--    <p class="lead text-center">Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services. -->
-<!--    <br>-->
-<!--    <a class="btn btn-danger text-white" style="border-radius:0px;" href="{{route('foremployer')}}">Register Free</a><br>-->
-<!--    </p>  -->
-<!--      </div>-->
-<!--        </div>-->
-        
-<!--        <div class="col-md-4">-->
-<!--            <div class="container">-->
-<!--    <h5 class="text-center"style="margin-top:2%;"><b> Hiring is Simpler, Smarter &-->
-<!--Faster with The NetworkedPros</b></h5>-->
-<!--    <p class="lead text-center">-->
-<!--    Get in touch with our team <br>-->
-<!--    info@thenetworkedpros.com<br>-->
-<!--    To get started with our fast and easy job posting services.-->
-<!--    </p>  -->
-<!--      </div>-->
-<!--        </div>-->
-<!--    </div>-->
     
 </div>
 <br>
@@ -170,4 +146,33 @@ Faster with The NetworkedPros</h5>
     	    <a href="{{route('alljobs')}}" class="btn text-white" style="background-color:#070A53;">Browse the {{$alljobs->count()}} Jobs</a>
     	    </div>
 </div>
+
+      <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="country"]').on('change',function(){
+               var countryID = jQuery(this).val();
+               if(countryID)
+               {
+                  jQuery.ajax({
+                     url : 'dropdownlist/getstates/' +countryID,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="state"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="state"]').empty();
+               }
+            });
+    });
+    </script>
 @endsection
