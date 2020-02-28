@@ -9,7 +9,7 @@
         <p style="font-size:20px;color:#0B0B3B;">You have already applied for this job</p>
         <div class="row">
         <div class="col-sm-12 col-sm-offset-6">
-         <a href="{{route('jobseekerjobs')}}" class="btn btn-danger"><i class="fa fa-backward"></i>Back to all jobs</a>
+         <a href="{{route('alljobs')}}" class="btn btn-danger"><i class="fa fa-backward"></i>Back to all jobs</a>
         <a href="/jobapplications" class="btn btn-success pull right">View your Applications</a>
         </div>
         </div>

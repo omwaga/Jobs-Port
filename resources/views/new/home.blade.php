@@ -128,11 +128,11 @@ Faster with The NetworkedPros</h5>
     		  	   {!! $job->jobtitle !!}
     		  	   </a></p>
     		  	    <p>{{$job->jobtype}} | Expiry Date: {{$job->expirydate}} | Salary Ksh {{$job->salary}}</p>
-    		  	   @if( $job->expirydate > Carbon\Carbon::now() )
+    		  	   <!-- @if( $job->expirydate > Carbon\Carbon::now() )
     		  	   <p class="text-danger">Job expires after <span class="badge badge-primary">{{Carbon\Carbon::parse($job->expirydate)->diffInDays(Carbon\Carbon::now())}} </span> days </p>
     		  	   @else
     		  	   <p class="text-danger">Job has expired</p>
-    		  	   @endif
+    		  	   @endif -->
     		  	</div>
     		  	<br>
     		  	</div>

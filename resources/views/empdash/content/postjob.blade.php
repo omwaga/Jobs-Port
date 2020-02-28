@@ -5,7 +5,7 @@
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
-                    <div class="row">
+                    <div class="row  p-2">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h5 class="pageheader-title">Staff Recruitment and Development</h5>
@@ -28,12 +28,12 @@
                     <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
+                              @include('errors')
+                              @include('success')
              	    <form role="form" method="post" action="{{route('postempjob')}}">
              	        @csrf
-             	        <div class="row">
+             	        <div class="row p-3">
             <div class="col-md-6 col-sm-6 col-xs-12">
-               <div class="panel panel-info">
-                        <div class="panel-body">
                         
                                         <div class="form-group">
                                             <label class="col-form-label">Enter job title:</label>
@@ -58,10 +58,8 @@
                                         </div>
                                          <div class="form-group">
                                             <label>Expiry date:</label>
-                                            <input class="form-control"  type="date" name="expiry" required />
+                                            <input class="form-control" value="{{old('expiry')}}" type="date" name="expiry" required />
                              
-                                        </div>
-                            </div>
                         </div>
                             </div>
                <div class="col-md-6 col-sm-6 col-xs-12">
@@ -77,16 +75,26 @@
                                             </select>
                                         </div>
                                              <div class="form-group">
-                                            <label>Select Town:</label>
-                                            <select class="form-control" name="jlocation" required>
-                                            	@foreach ($towns as $town)
-                                            	<option value="{{$town->id}}">{{$town->name}}</option>
+                                            <label>Select Country:</label>
+                                            <select class="form-control" name="country" required>
+                                                <option>Select Country</option>
+                                            	@foreach ($countries as $country)
+                                            	<option value="{{$country->id}}">{{$country->name}}</option>
                                             	@endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Select Town/County:</label>
+                                            <select class="form-control" name="state" required>
+                                                <option>Select Town/County</option>
+                                                @foreach ($towns as $town)
+                                                <option value="{{$town->id}}">{{$town->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                 <div class="form-group">
                                             <label>Salary Specification:</label>
-                                            <input class="form-control @error('salary') is-invalid @enderror"  type="text" name="salary" required />
+                                            <input class="form-control @error('salary') is-invalid @enderror" value="{{old('salary')}}"  type="text" name="salary" required />
                                             @error('salary')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -113,7 +121,7 @@
                              <div class="panel panel-dark">
                                         <div class="form-group">
                                             <label>Job Summary:</label>
-                                            <textarea class="form-control ckeditor" id="summary-ckeditor" rows="4" name="jsummary" id="summary" required></textarea>
+                                            <textarea class="form-control ckeditor" id="summary-ckeditor" rows="4" name="jsummary" id="summary" required>{{old('jsummary')}}</textarea>
                                         </div> 
                              </div>   
                             </div>
@@ -121,7 +129,7 @@
                              <div class="panel panel-dark">
                                 <div class="form-group">
                                             <label>Job Description:</label>
-                                            <textarea class="form-control @error('jdescription') is-invalid @enderror ckeditor" rows="20" name="jdescription" id="descc" required></textarea>
+                                            <textarea class="form-control @error('jdescription') is-invalid @enderror ckeditor" rows="20" name="jdescription" id="descc" required>{{old('jdescription')}}</textarea>
                                             @error('jdescription')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -144,7 +152,7 @@
                              <div class="panel panel-dark">
                                         <div class="form-group">
                                             <label>Application details</label>
-                                            <textarea class="form-control ckeditor" name="application" rows="3" ></textarea>
+                                            <textarea class="form-control ckeditor" name="application" rows="3" >{{old('application')}}</textarea>
                                         </div>
                              </div>   
                             </div>
@@ -158,4 +166,32 @@
                 </div>
             </div>
                 </div>
+                <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="country"]').on('change',function(){
+               var countryID = jQuery(this).val();
+               if(countryID)
+               {
+                  jQuery.ajax({
+                     url : 'dropdownlist/getstates/' +countryID,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="state"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="state"]').empty();
+               }
+            });
+    });
+    </script>
 @endsection

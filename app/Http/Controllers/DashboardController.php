@@ -309,8 +309,16 @@ return view('dashboard.subscribe')->with('companies',$companies);
 
     public function customizeresume()
     {
-        $samples = CvUpload::all();
-
-        return view('dashboard.customize-resume', compact('samples'));
+        $countries = Countrylist::all();
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        
+        return view('dashboard.customize-resume', compact( 'personalinfo', 'references',
+                  'personalstatements', 'experience', 'education', 'awards', 'skills', 'countries'));
     }
 }

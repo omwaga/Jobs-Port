@@ -3,6 +3,8 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{asset('Images/cv2.jpg')}})" style=" padding-top: 5rem;">
   <div class="container">
+              <form method="get" action="{{route('homesearch')}}">
+                @csrf
              <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                <select name="industry" class="form-control search-slt">
@@ -38,6 +40,7 @@
              <button type="submit" class="btn btn-danger wrn-btn">Search</button>
           </div>
           </div>
+          </form>
     </div>
   </div>
 <div class="container">

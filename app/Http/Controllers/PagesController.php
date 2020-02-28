@@ -347,8 +347,8 @@ public function filterindustry($name){
         ->with('industries',$Industry);
     }
     
-public function searchhome(){
-dd('hello');
+public function searchhome(Request $request){
+    return $request;
     }
 
 public function searchjobs(){
@@ -417,7 +417,7 @@ public function loginform($id)
 {
     $job = Jobposts::where('id', $id)->first();
     
-    return view('content.joblogin', compact('job'));
+    return view('new.joblogin', compact('job'));
 }
 
 function applyjob(){

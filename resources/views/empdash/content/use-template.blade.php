@@ -44,6 +44,16 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                <div class="form-group">
+                                            <label>Salary Specification</label>
+                                            <input class="form-control @error('salary') is-invalid @enderror"  type="text" name="salary" value="{{$jobpost->salary}}" required />
+                                            @error('salary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                 
+                                        </div>
                             </div>
                         </div>
                             </div>
@@ -59,23 +69,23 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                             <div class="form-group">
-                                            <label>Select Town</label>
-                                            <select class="form-control" name="location" required>
-                                            	@foreach ($towns as $town)
-                                            	<option value="{{$town->id}}">{{$town->name}}</option>
-                                            	@endforeach
+                                          <div class="form-group">
+                                            <label>Select Country:</label>
+                                            <select class="form-control" name="country" required>
+                                                <option>Select Country</option>
+                                                @foreach ($countries as $country)
+                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                <div class="form-group">
-                                            <label>Salary Specification</label>
-                                            <input class="form-control @error('salary') is-invalid @enderror"  type="text" name="salary" value="{{$jobpost->salary}}" required />
-                                            @error('salary')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                 
+                                        <div class="form-group">
+                                            <label>Select Town/County:</label>
+                                            <select class="form-control" name="state" required>
+                                                <option>Select Town/County</option>
+                                                @foreach ($towns as $town)
+                                                <option value="{{$town->id}}">{{$town->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                          <div class="form-group">
                                             <label>Expiry date</label>
@@ -137,4 +147,33 @@
 												</div>
                                </form>
                            </div>
+
+                           <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="country"]').on('change',function(){
+               var countryID = jQuery(this).val();
+               if(countryID)
+               {
+                  jQuery.ajax({
+                     url : 'dropdownlist/getstates/' +countryID,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="state"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="state"]').empty();
+               }
+            });
+    });
+    </script>
 									@endsection

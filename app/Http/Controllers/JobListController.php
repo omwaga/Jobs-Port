@@ -7,6 +7,7 @@ use App\Jobposts;
 use App\jobcategories;
 use App\Industry;
 use App\Town;
+use App\Country;
 
 class JobListController extends Controller
 {
@@ -57,9 +58,10 @@ class JobListController extends Controller
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
         $towns=Town::orderBy('name','asc')->get();
+        $countries=Country::all();
         
         
-      return view('empdash.content.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost'));
+      return view('empdash.content.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
     }
 
     /**

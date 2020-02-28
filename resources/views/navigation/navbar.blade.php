@@ -89,7 +89,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="career-profile">
+              <a class="nav-link" href="{{route('career-profile')}}">
                 <i class="fa fa-road">
                 </i>
                 Career Profile

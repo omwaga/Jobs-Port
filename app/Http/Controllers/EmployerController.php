@@ -31,6 +31,8 @@ use Mail;
 use App\Industry;
 use App\Locations;
 use App\Town;
+Use App\Country;
+use App\State;
 class EmployerController extends Controller
 {
     public function __construct()
@@ -119,12 +121,14 @@ public function addtalentpool(Request $request, $name)
         return view('empdash.content.poolmembers', compact('poolmembers'));
     }
     
-    public function postajob(){
+public function postajob(){
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
-        $towns=Town::orderBy('name','asc')->get();
+        $towns=State::orderBy('name','asc')->get();
         $cname=Cprofile::select('cname')->where('id',Auth::guard('employer')->user()->id)->get();
-        return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname']));
+        $countries = Country::all();
+
+        return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));
     }
     
 
@@ -160,10 +164,11 @@ $this->validate($request,[
     'positiontype'=>'required',
     'jfunction'=>'required',
     'industry'=>'required',
-    'jlocation'=>'required',
     'salary'=>'required',
     'expiry'=>'required',
     'jsummary'=>'required',
+    'country' => 'required',
+    'state'=>'required',
     'jdescription'=>'required',
     'application'=>'required',
 ]);
@@ -185,6 +190,7 @@ $jobpost->jobtitle=$request->input('jobtitle');
 $jobpost->jobtype=$request->input('positiontype');
 $jobpost->jobcategories_id=$request->input('jfunction');
 $jobpost->industry=$request->input('industry');
+$jobpost->country_id=$request->input('country');
 $jobpost->location=$request->input('jlocation');
 $jobpost->salary=$request->input('salary');
 $jobpost->expirydate=$request->input('expiry');
@@ -194,7 +200,7 @@ $jobpost->applicationdet=$request->input('application');
 $jobpost->apply=$request->input('apply');
 $jobpost->companyname=$request->input('company');
 $jobpost->save();
-return redirect('/jobposts')->with('status','You have successfully posted your job');
+return redirect('/jobposts')->with('message','You have successfully posted your job');
 }
 
 //Method to shortlist the candidates
@@ -239,9 +245,10 @@ public function usetemplate($jobtitle)
    $jobpost = Jobposts::where('jobtitle', $jobtitle)->first();
    $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
    $industries = Industry::orderBy('name','asc')->get();
-   $towns = Town::orderBy('name','asc')->get();
+   $countries = Country::all();
+   $towns = State::orderBy('name','asc')->get();
 
-   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns'));
+   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
 }
 
 //Listing all jobs posted
