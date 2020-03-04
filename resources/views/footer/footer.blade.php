@@ -8,7 +8,7 @@
                         <h5 style="color: #F4A506">Job Seekers</h5>
                         <ul class="list-unstyled">
                             <li><a href="{{route('joblisting')}}"class="text-white">Find a Job</a></li>
-                            <li><a href="{{route('Register')}}" class="text-white">Create an Account</a></li>
+                            <li><a href="{{route('jobseekerregister')}}" class="text-white">Register your account</a></li>
                             <li><a href="#" class="text-white">Get Advice and plan your career</a></li>
                             <li><a href="#" class="text-white">Know your Professional Bodies</a></li>
                             <li><a href="#" class="text-white">Design CV and Cover Letters</a></li>

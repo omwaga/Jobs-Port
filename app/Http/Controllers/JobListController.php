@@ -48,7 +48,7 @@ class JobListController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the fom for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -58,7 +58,7 @@ class JobListController extends Controller
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
         $towns=Town::orderBy('name','asc')->get();
-        $countries=Country::all();
+        $countries = Country::all();
         
         
       return view('empdash.content.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
@@ -73,9 +73,9 @@ class JobListController extends Controller
      */
     public function update(Jobposts $jobpost)
     {
-        $jobpost->update(request(['jobtitle','category', 'location','type','industry', 'salary', 'expirydate', 'summary', 'description', 'applicationdet']));
+        $jobpost->update(request(['jobtitle','jobcategories_id', 'location','type','industry', 'salary', 'expirydate', 'summary', 'description', 'applicationdet']));
         
-        return redirect('/jobposts');
+        return redirect('/jobposts')->with('message', 'Your job has been updated successfully');
     }
 
     /**

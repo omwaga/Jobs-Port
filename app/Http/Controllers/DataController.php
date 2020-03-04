@@ -15,7 +15,7 @@ class DataController extends Controller
 
     public function getStates($id) 
 {        
-        $states = DB::table("states")->where("countries_id",$id)->pluck("name","id");
+        $states = DB::table("towns")->where("countries_id",$id)->pluck("name","id");
         return json_encode($states);
 }
 }

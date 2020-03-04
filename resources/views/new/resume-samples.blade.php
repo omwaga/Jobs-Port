@@ -28,13 +28,17 @@
                             Know where your Resume stands
                         </p>
                           <div class="btn-group">
-                            <a href="{{route('uploadcv')}}" class="btn text-white " style="background-color:#070A53;">
-                                Resumes
-                            <a href="{{route('uploadcv')}}" class="btn btn-secondary text-white ">
-                                CVs
+                            <a href="{{route('resumesamples')}}" class="btn btn-secondary text-white " style="background-color:#070A53;">
+                                Resumes<br>
+                                <small>For Students/Intermediate</small>
                             </a>
-                            <a href="{{route('uploadcv')}}" class="btn btn-secondary text-white ">
-                                Cover Letters
+                            <a href="{{route('cv')}}" class="btn btn-secondary text-white ">
+                                CVs<br>
+                                <small>For Professionals</small>
+                            </a>
+                            <a href="{{route('coverletter')}}" class="btn btn-secondary text-white ">
+                                Cover Letters<br>
+                                <small>All Levels of experience</small>
                             </a>
                           </div>
                     </div>

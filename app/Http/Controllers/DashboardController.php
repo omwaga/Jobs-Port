@@ -41,7 +41,7 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
         
-        $this->middleware('guest:user',['except' => ['logout', 'getLogout']]);
+        // $this->middleware('guest:user',['except' => ['logout', 'getLogout']]);
     }
     function profilejourney(){
         $towns=Town::orderBy('name','asc')->get();
@@ -127,17 +127,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
             return redirect('/Employer')->with('status','company created successfully');
 
     }
-
-    
-    public function subscription(){
-$companies= Companies::where('user_id','LIKE',auth()->user()->id)->get();
-return view('dashboard.subscribe')->with('companies',$companies);
-}
-    public function accounts(){
-        $user=User::where('id',auth()->user()->id)->first();
-        return view('dashboard.accounts',compact('user'));
-    }
-    
+ 
     public function careerprofile(){
         $countries = Countrylist::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();

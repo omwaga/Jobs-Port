@@ -122,7 +122,6 @@
         </a>
         <div class="dropdown-menu" style="background: #90959e;" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#"><i class="fa fa-suitcase"></i> Products and Billing</a>
-          <a class="dropdown-item" href="{{route('accounts')}}"><i class="fa fa-universal-access"></i> My Account</a>
           <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

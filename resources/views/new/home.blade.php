@@ -14,7 +14,7 @@
         <h5 class="text-white">Free Job Alerts</h5>
         <p class="text-center text-white">Get an Email on jobs matching your criteria </p>
         <p class="text-white">No Registration Required</p>
-        <button class="btn text-white" style="background-color:#070A53;">Create Job Alert</button>
+        <button class="btn text-white" data-toggle="modal" data-title="" data-caption="" data-target="#alert" style="background-color:#070A53;">Create Job Alert</button>
         </div>
     </div>
   </div>
@@ -63,8 +63,27 @@
   </div>
 </div>
 </section>
-
-        @include('new.jobseeker-steps')<br>
+<div class="container" >
+  <div class="row" align="center">
+            <div class="col-md-12" align="center">
+                <div class="process-box process-left">
+                    <div class="row">
+                        <!-- <div class="col-md-5">
+                            <div class="process-step">
+                                <p class="m-0 p-0">Step</p>
+                                <h2 class="m-0 p-0">01</h2>
+                            </div>
+                        </div> -->
+                        <div class="col-md-10" align="center">
+                            <h5>Create a Professional Resume and Cover Letter</h5>
+                            <p>Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use & done within minutes - try now for free! <br><a class="btn text-white" style="background-color:#0B0B3B;" href="{{route('customizeresume')}}">Get Started</a></p>
+                        </div>
+                    </div>
+                    <!--<div class="process-line-l"></div>-->
+                </div>
+            </div>
+        </div>
+</div><br>
 <div class="container bg-light">
     <div class="row justify-content-center">
      	    <h5 style="color:#0B0B3B;"><strong>Search Best Talent with The NetworkedPro's Resume Database Access</strong></h5>
@@ -147,6 +166,7 @@ Faster with The NetworkedPros</h5>
     	    </div>
 </div>
 
+        @include('new.create-alertsmodal')
       <script type="text/javascript">
     jQuery(document).ready(function ()
     {

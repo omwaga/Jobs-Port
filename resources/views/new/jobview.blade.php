@@ -30,7 +30,6 @@
                 </p>
             <p>Company name: <a href="/CompanyJobs/"><b class="text-primary">{{$job->cprofile->cname}}</b></a></p>
             <p>Category: <b class="text-primary">{{$job->category->jobcategories}}</b></p>
-            <p>Location: <b class="text-primary">{{$job->town->name}}</b></p>
             <p>Salary: <b class="text-primary">{{$job->salary}}</b></p>
 
                         <hr>

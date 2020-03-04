@@ -32,7 +32,6 @@ use App\Industry;
 use App\Locations;
 use App\Town;
 Use App\Country;
-use App\State;
 class EmployerController extends Controller
 {
     public function __construct()
@@ -124,7 +123,7 @@ public function addtalentpool(Request $request, $name)
 public function postajob(){
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
-        $towns=State::orderBy('name','asc')->get();
+        $towns=Town::orderBy('name','asc')->get();
         $cname=Cprofile::select('cname')->where('id',Auth::guard('employer')->user()->id)->get();
         $countries = Country::all();
 
@@ -170,7 +169,7 @@ $this->validate($request,[
     'country' => 'required',
     'state'=>'required',
     'jdescription'=>'required',
-    'application'=>'required',
+    'application'=>'nullable',
 ]);
 $data=array(
     'emaill'=>$request->emaill,
@@ -191,7 +190,7 @@ $jobpost->jobtype=$request->input('positiontype');
 $jobpost->jobcategories_id=$request->input('jfunction');
 $jobpost->industry=$request->input('industry');
 $jobpost->country_id=$request->input('country');
-$jobpost->location=$request->input('jlocation');
+$jobpost->location=$request->input('state');
 $jobpost->salary=$request->input('salary');
 $jobpost->expirydate=$request->input('expiry');
 $jobpost->summary=$request->input('jsummary');
@@ -246,7 +245,7 @@ public function usetemplate($jobtitle)
    $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
    $industries = Industry::orderBy('name','asc')->get();
    $countries = Country::all();
-   $towns = State::orderBy('name','asc')->get();
+   $towns = Town::orderBy('name','asc')->get();
 
    return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
 }

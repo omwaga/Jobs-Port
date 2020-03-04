@@ -1,5 +1,6 @@
-
-    <div class="container work-process">
+@extends('layouts.app')
+@section('content')
+    <div class="container work-process" style="padding-top:6rem;">
         <div class="col-md-12">
         <div class="title mb-5 text-center">
         <h4 style="color:#070A53;"><strong>Create your career profile with us <br> and we connect you to potential employers all over the East African Region</strong></h4>
@@ -129,3 +130,4 @@
         <!-- ============ -->
     </div>
     </div>
+@endsection

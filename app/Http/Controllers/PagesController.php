@@ -11,7 +11,6 @@ use App\Industry;
 use App\Training;
 use App\TrainingCategory;
 use App\Town;
-use App\Jobtype;
 use DB;
 use Carbon\Carbon;
 use Mail;
@@ -172,7 +171,6 @@ else{
     public function homee(){
         $industries=Industry::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
-        $jobtype=Jobtype::orderBy('name','asc')->get();
         $alljobs=Jobposts::all();
         $jobs=Jobposts::orderBy('created_at','desc')->limit(18)->paginate(6);
         $countries = DB::table('countries')->pluck("name","id");
@@ -182,7 +180,6 @@ else{
         ->with('jobs',$jobs)
         ->with('countries',$countries)
         ->with('companyy',$company)
-        ->with('jobtype',$jobtype)
         ->with('alljobs',$alljobs)
         ->with('categories',$categories);
          
@@ -191,6 +188,12 @@ else{
   public function foremployer()
   {
       return view('new.foremployer');
+  }
+
+//the jobseeker registration steps
+  public function jobseekerregister()
+  {
+    return view('new.jobseeker-steps');
   }
   
  public function aboutjob(){
@@ -279,13 +282,6 @@ public function filterindustry($name){
     public function register(){
         return view('new.registerpage');
     }
-     function aboutus(){
-           $towns=Town::orderBy('name','asc')->limit(7)->get();
-             $industries=Industry::orderBy('name','asc')->limit(7)->get();
-        return view('content.aboutus')
-         ->with('towns',$towns)
-         ->with('industries',$industries);
-    }
     
     // resume services route
     public function resume(){
@@ -308,6 +304,18 @@ public function filterindustry($name){
         return view('new.single-resume');
     }
     
+    // function to view the cover letters list
+    public function coverletter()
+    {
+        return view('new.cover-letter');
+    }
+
+    // function to view the cvs list
+    public function cv()
+    {
+        return view('new.cv-templates');
+    }
+
     public function homepage(){
           $training= Training::orderBy('created_at','desc')->paginate(6);
         $jobs=Jobposts::orderBy('created_at','desc')->paginate(6);
@@ -321,64 +329,10 @@ public function filterindustry($name){
         ->with('industries',$industries);
     }
     
-    public function recruit(){
-        return view('content.recruit');
-    }
-    
-
-    public function careerhub(){
-        return view('content.career');
-    }
-    
-    public function organization(){
-        $training=Training::orderBy('created_at','desc')->get();
-        $trainingc=Training::join('training_categories','trainings.training_categories_id','=','training_categories.id')
-        ->select('trainings.*', 'trainings.id as idd')->whereIn('training_categories.id',$training)->get();
-        return view ('content.organization',compact(['training','trainingc']));
-    }
-    function normalsearch(){
-        $application=jobposts::all();
-        $categories=jobcategories::all();
-        $Industry=Industry::all();
-        $category= Input::get('search');
-        $searchdata=Jobposts::where('jobtitle',$category)->get();
-        return view('content.searchview')->with('searchdata',$searchdata)
-        ->with('categories',$categories)
-        ->with('industries',$Industry);
-    }
-    
 public function searchhome(Request $request){
     return $request;
     }
 
-public function searchjobs(){
-        $application=jobposts::all();
-        $towns=Town::all();
-        $categories=jobcategories::all();
-        $Industry=Industry::all();
-        $category= Input::get('category');
-        $industry=Input::get('industry');
-        $location=Input::get('location');
-        $searchdata=Jobposts::where('category','LIKE','%'.$category.'%')
-        ->where('industry','LIKE','%'.$industry.'%')
-        ->where('location','LIKE','%'.$location.'%')->get();
-        return view('content.searchview')->with('searchdata',$searchdata)
-        ->with('categories',$categories)
-        ->with('industries',$Industry)
-        ->with('applications',$application)
-        ->with('towns',$towns);
-
-    }
-      public function advanced(){
-        $jobs=Jobposts::orderBy('created_at','desc')->limit(5)->get();
-        $industry=Industry::orderBy('name','asc')->get();
-        $category=jobcategories::orderBy('jobcategories','asc')->get();
-        $town=Town::orderBy('name','asc')->get();
-        return view('new.advanced')->with('job',$jobs)
-        ->with('industry',$industry)
-        ->with('category',$category)
-        ->with('town',$town);
-    }
   public function show($id)
     {
         $job = Jobposts::where('id', $id)->first();
@@ -387,31 +341,6 @@ public function searchjobs(){
 
         return view('new.jobview', compact('job', 'expirydate', 'featured'));
     } 
-    
- public function showindustry(Request $request,$jobcategories){
-$category=jobcategories::where('jobcategories',$jobcategories)->first();
-$categories = jobcategories::all();
-$locations = Town::all();
-$industries = Industry::all();
-
-return view('content.industry', compact('category', 'categories', 'locations', 'industries'));
-    }
-
-public function showlocation($name){
-        $showlocation=Town::where('name',$name)->first();
-        $loccount=Jobposts::whereIn('location',$showlocation)->get()->count();
-        $towns=Town::orderBy('name','asc')->get();
-        $gettown=Town::select('name')->whereIn('id',$showlocation)->get();
-        $loc=Jobposts::whereIn('location',$showlocation)->get();
-        $industry=Industry::orderBy('name','asc')->limit(10)->get();
-        $cnamee=Cprofile::select('cname')->whereIn('id',$showlocation)->get();
-        return view('content.location')->with('location',$loc)
-        ->with('towns',$towns)
-        ->with('loccount',$loccount)
-        ->with('industries',$industry)
-        ->with('company',$cnamee)
-        ->with('gettown',$gettown);
-    }
    
 public function loginform($id)
 {

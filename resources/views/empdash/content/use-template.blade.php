@@ -8,10 +8,9 @@
 													<h5 class="modal-title">Job template: {{$jobpost->jobtitle}}</h5>
 												</div>
 												<div class="modal-body">
-													<form role="form" method="post" action="">
-													    @method('PATCH')
-             	        @csrf
-             	        @include('errors')<!--display the error messages -->
+                        @include('errors')
+													<form role="form" method="post" action="{{route('postempjob')}}">
+             	        @csrf<!--display the error messages -->
              	        <input type="hidden" id="jobid" name="id">
              	        <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
