@@ -46,7 +46,7 @@
                           <li><span class="fa fa-check text-success"></span> Unlimited designs<small>(only for premium)</small></li>
                           <li><a href="#"><u>Read more</u></a></li>
                       </ul>
-                      <p><a href="/register" class="btn btn-block  text-white" style="background-color:#070A53;">Yes please, register now!</a></p>
+                      <p><a href="{{route('Register')}}" class="btn btn-block  text-white" style="background-color:#070A53;">Yes please, register now!</a></p>
                   </div>
                   </div>
               </div>

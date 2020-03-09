@@ -115,9 +115,9 @@ Faster with The NetworkedPros</h5>
 							       <p><i class="fa fa-users text-info" aria-hidden="true"></i> Attract Audience</p>
 							       <p><i class="fa fa-volume-control-phone text-info" aria-hidden="true"></i> Contact Directly</p>
 							    
-						<div class="box-btn">
+						<!-- <div class="box-btn">
 						    <a class="btn text-white btn-sm" style="background-color:#0B0B3B;" href="{{route('leads')}}">Know More</a>
-						</div>
+						</div> -->
 							    </div>
 							    <div class="col-md-6">
 							       <p><i class="fa fa-flag text-info" aria-hidden="true"></i> Unlimited Applies</p>
