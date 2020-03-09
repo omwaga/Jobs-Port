@@ -10,6 +10,8 @@
           <div class="container"><br><br><br>
 <div class="panel-body">
                   <p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
+                  <a href="{{route('picktheme')}}">Pick resume theme</a>
+                  <a class="btn text-white" href="{{action('DashboardController@downloadresume', auth()->user()->id)}}" style="background-color:#0B0B3B;">Download Resume</a>
                   @include('errors')
                   <hr>
 <h3 style="color:#0B0B3B;">Personal Information</h3>

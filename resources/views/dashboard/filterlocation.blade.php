@@ -1,23 +1,13 @@
 
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<br>
-<div class="container">
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a class="text-primary nav-link" href="#"> @foreach($gettown as $town)Total found jobs in {{$town->name}}: 
-      @endforeach
-      {{$loccount}}</li>
-  </ol>
-</nav>
+<div class="container" style="padding-top: 6rem;">
 
      <div class="row">
          <div class="col-md-8">
-                 @if(count($location) > 0)
-                 @foreach($location as $show)
-                 <div class="column card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
+                 @if($jobposts->count() > 0)
+                 @foreach($jobposts as $show)
+                 <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
       <div class="col-md-12">
       <div class="row">
     <h5 style="color:#0B0B3B;">{{$show->jobtitle}}</h5>
@@ -42,7 +32,7 @@
                  @endforeach
                  @endif
              </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           @include('dashboard.rightnav')     
          </div>
      </div>

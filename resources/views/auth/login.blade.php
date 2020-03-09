@@ -65,6 +65,9 @@
                                     </a>
                                 @endif
                             </div>
+
+
+                    <a href="{{route('Register')}}" class="btn text-white float-right" style="background-color:#0B0B3B ">Not Registered ?</a>
                         </div>
                     </form>
                 </div>

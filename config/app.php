@@ -164,6 +164,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Monarobase\CountryList\CountryListServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
       
         /*
          * Package Service Providers...

@@ -11,24 +11,29 @@
                 <h4 class="modal-title" id="image-gallery-title"></h4>
                 </div>
             </div>
-            <div class="modal-body">
                         
-<form>
+<form method="POST" action="{{route('alerts.store')}}">
+  @csrf
+            <div class="modal-body">
     <div class="form-group">
     <label for="name">Full Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter Full Name">
+    <input type="text" name="full_name" class="form-control" id="name" placeholder="Enter Full Name">
+  </div>
+  <div class="form-group">
+    <label for="name">Phone Number</label>
+    <input type="text" name="phone_number" class="form-control" id="name" placeholder="Enter Full Name">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" name="email_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-</form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" style="background-color:#0B0B3B;">Create Alerts</button>
+              <button type="submit" class="btn btn-primary" style="background-color:#0B0B3B;">Create Alerts</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
+</form>
         </div>
     </div>
 </div>

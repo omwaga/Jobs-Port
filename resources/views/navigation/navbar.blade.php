@@ -27,7 +27,7 @@
               <a class="nav-link" href="{{route('resume-services')}}">
                 <i class="fa fa-check">
                 </i>
-                Resume Services
+                Resume Builder
               </a>
             </li>
             <li class="nav-item active">
@@ -57,7 +57,7 @@
               <a class="nav-link" href="{{route('resume-services')}}">
                 <i class="fa fa-check">
                 </i>
-                Resume Services
+                Resume Builder
               </a>
             </li>
             <li class="nav-item active">

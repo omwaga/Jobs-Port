@@ -44,6 +44,8 @@ Route::get('/search-jobs', 'DashboardController@jobsearch')->name('jobsearch');
 Route::get('/customize-resume','DashboardController@customizeresume')->name('customizeresume');
 Route::get('/recommended-jobs','DashboardController@recommended')->name('recommended');
 Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
+Route::get('/downloadresume/{id}','DashboardController@downloadresume');
+Route::get('/pick-theme', 'DashboardController@picktheme')->name('picktheme');
 
 //Employercontroller Routes
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
@@ -121,6 +123,7 @@ Route::get('/from-blog', 'PagesController@fromblog')->name('fromblog');
 Route::get('/blog/{name}', 'PagesController@singleblog')->name('singleblog');
 Route::get('em', 'PagesController@leads')->name('leads');
 Route::get('/cv-templates', 'PagesController@cv')->name('cv');
+Route::resource('alerts', 'JobAlertsController');
 
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');

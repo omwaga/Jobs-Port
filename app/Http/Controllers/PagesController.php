@@ -172,7 +172,7 @@ else{
         $industries=Industry::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
         $alljobs=Jobposts::all();
-        $jobs=Jobposts::orderBy('created_at','desc')->limit(18)->paginate(6);
+        $jobs=Jobposts::orderBy('created_at','desc')->limit(18)->paginate(12);
         $countries = DB::table('countries')->pluck("name","id");
         $company=Cprofile::orderBy('created_at','desc')->limit(6)->get();
         
@@ -315,22 +315,16 @@ public function filterindustry($name){
     {
         return view('new.cv-templates');
     }
-
-    public function homepage(){
-          $training= Training::orderBy('created_at','desc')->paginate(6);
-        $jobs=Jobposts::orderBy('created_at','desc')->paginate(6);
-        $companies=Companies::orderBy('created_at','desc')->limit(6)->get();
-        $towns=Town::orderBy('name','asc')->limit(7)->get();
-        $industries=Industry::orderBy('name','asc')->limit(7)->get();
-        return view('welcome')->with('jobs',$jobs)
-        ->with('training',$training)
-        ->with('companies',$companies)
-        ->with('towns',$towns)
-        ->with('industries',$industries);
-    }
     
 public function searchhome(Request $request){
-    return $request;
+    if($request->industry !== "All Job Industries")
+    {
+      $jobs = Jobposts::where('industry', $request->industry)->get();
+      return $jobs;
+    }
+    elseif($request->industry !== "All Job Functions" && $request->industry === "All Job Industries"){
+      dd('searching industry');
+    }
     }
 
   public function show($id)

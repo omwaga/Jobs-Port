@@ -10,6 +10,8 @@
       <h4 class="text-white text-center">Browse for latest jobs and land your dream job.</h4>
   </div>
   <div class="col-md-4" align="center">
+    @include('errors')
+    @include('success')
       <div class="">
         <h5 class="text-white">Free Job Alerts</h5>
         <p class="text-center text-white">Get an Email on jobs matching your criteria </p>
@@ -26,7 +28,7 @@
          <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                <select name="industry" class="form-control search-slt">
-                  <option>Job functions</option>
+                  <option>All Job Industries</option>
                   @foreach($industry as $inda)
                     <option value="{{$inda->id}}">{{$inda->name}}</option>
                   @endforeach
@@ -34,8 +36,8 @@
 
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select name="function" class="form-control search-slt">
-                  <option>Select category</option>
+                  <select name="job_category" class="form-control search-slt">
+                  <option>All Job Functions</option>
                   @foreach($categories as $jobt)
                    <option value="{{$jobt->id}}">{{$jobt->jobcategories}}</option>
                   @endforeach
@@ -84,7 +86,7 @@
             </div>
         </div>
 </div><br>
-<div class="container bg-light">
+<div class="container">
     <div class="row justify-content-center">
      	    <h5 style="color:#0B0B3B;"><strong>Search Best Talent with The NetworkedPro's Resume Database Access</strong></h5>
 			 

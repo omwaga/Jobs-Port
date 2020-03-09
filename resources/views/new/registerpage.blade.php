@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid"  style="padding-top:7rem;">
+<div class="container-fluid"  style="padding-top:6rem;">
   <div class="row">
-    <div class="col-sm-6 bg-light">
+    <div class="col-sm-6">
     	<h5 class="text-center">Create Your ccount </h5>
       		<form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -66,7 +66,7 @@
                         </div>
                     </form>
     </div>
-    <div class="col-sm-6 bg-light">
+    <div class="col-sm-6">
          <h5 class="text-center">Quick Sign up</h5><hr style="border:1px solid #000;"><p class="text-center"><a class="btn btn-danger btn-md text-white text-center"style="border-radius:0px;" href="{{route('google.login')}}"><i class="fab fa-google-plus-g"></i> Sign Up with Google</a></p>
             <p class="text-center">Have an account?</p>
       <p class="text-center"><a href="{{route('login')}}" class="text-white btn btn-sm bg-danger">Login</a></p>

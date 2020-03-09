@@ -43,6 +43,14 @@ class DashboardController extends Controller
         
         // $this->middleware('guest:user',['except' => ['logout', 'getLogout']]);
     }
+    
+    public function jobseekerprofile()
+    {
+        $userinfo = User::where('id', auth()->user()->id)->first();
+        
+        return view('dashboard.jobseekerprofile', compact('userinfo'));
+    }
+
     function profilejourney(){
         $towns=Town::orderBy('name','asc')->get();
         $industries=Industry::orderBy('name','asc')->get();
@@ -159,8 +167,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
     }
     
     public function applications()
-    {
-        
+    { 
         $categories = jobcategories::all();
         
         return view('dashboard.applications', compact('categories'));
@@ -183,49 +190,37 @@ $message->subject('COMPANY ACCOUNT CREATION');
         return view('dashboard.viewjob', compact('categories', 'job'));
     }
     
-    public function jobseekerprofile()
-    {
-        $userinfo = User::where('id', auth()->user()->id)->first();
-        
-        return view('dashboard.jobseekerprofile', compact('userinfo'));
-    }
-    
     public function showlocation($name){
-        $showlocation=Town::where('name',$name)->first();
-        $loccount=Jobposts::whereIn('location',$showlocation)->get()->count();
+        $location=Town::where('name',$name)->pluck('id');
+        $jobposts=Jobposts::whereIn('location',$location)->get();
         $towns=Town::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
-        $gettown=Town::select('name')->whereIn('id',$showlocation)->get();
-        $loc=Jobposts::whereIn('location',$showlocation)->get();
         $industry=Industry::orderBy('name','asc')->limit(10)->get();
-        $cnamee=Cprofile::select('cname')->whereIn('id',$showlocation)->get();
-        return view('dashboard.filterlocation')->with('location',$loc)
+
+        return view('dashboard.filterlocation')
         ->with('locations',$towns)
-        ->with('loccount',$loccount)
+        ->with('jobposts',$jobposts)
         ->with('industries',$industry)
-        ->with('company',$cnamee)
-        ->with('gettown',$gettown)
         ->with('categories',$categories);
     }
     
      public function showcategory($name){
         $category=jobcategories::where('jobcategories',$name)->pluck('id')->first();
-        $loccount=Jobposts::where('jobcategories_id',$category)->get()->count();
+        $jobposts=Jobposts::where('jobcategories_id',$category)->get();
         $towns=Town::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
         $gettown=Town::select('name')->where('id',$category)->get();
-        $loc=Jobposts::where('location',$category)->get();
         $industry=Industry::orderBy('name','asc')->limit(10)->get();
-        $cnamee=Cprofile::select('cname')->where('id',$category)->get();
-        return view('dashboard.filtercategory')->with('location',$loc)
+
+        return view('dashboard.filtercategory')
         ->with('locations',$towns)
-        ->with('loccount',$loccount)
+        ->with('jobposts',$jobposts)
         ->with('industries',$industry)
-        ->with('company',$cnamee)
         ->with('gettown',$gettown)
         ->with('categories',$categories);
     }
     
+    // method to search for a jobpost on the jobseekerds dashboard immediately after login
     public function jobsearch(Request $request)
     {
         $industries=Industry::orderBy('name','asc')->get();
@@ -310,5 +305,24 @@ $message->subject('COMPANY ACCOUNT CREATION');
         
         return view('dashboard.customize-resume', compact( 'personalinfo', 'references',
                   'personalstatements', 'experience', 'education', 'awards', 'skills', 'countries'));
+    }
+
+    //Method to pick the resume theme
+    public function picktheme(){
+        return view('dashboard.resume-generated1');
+    }
+
+    public function downloadresume($id)
+    {
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+
+        $pdf = PDF::loadView('dashboard.resume-generated', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
+        return $pdf->download('The-NetworkedPros-resume.pdf');
     }
 }

@@ -1,0 +1,746 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/davidelrizzo/pen/DvyuC?depth=everything&order=popularity&page=25&q=product&show_forks=false" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
+<style class="cp-pen-styles">@import url(//fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+/* Variables
+****************************************************/
+/* Base
+****************************************************/
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #FFF;
+}
+.CV-u-nowrap {
+  white-space: nowrap;
+}
+.CV-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2em;
+  color: #222;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+}
+@media all and (max-width: 500px) {
+  .CV-page {
+    padding: 0 1em;
+  }
+}
+.CV-page a {
+  color: rgba(34, 34, 34, 0.15);
+  text-decoration: underline;
+}
+.CV-page a span {
+  color: rgba(14, 118, 158, 0.7);
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+.CV-page a:hover span {
+  color: #00aef0;
+}
+.CV-page a:active {
+  display: inline-block;
+  -webkit-transform: translate(0px, 1px);
+          transform: translate(0px, 1px);
+}
+.CV-page abbr {
+  border-color: rgba(34, 34, 34, 0.25);
+}
+.CV-page hr {
+  width: 30%;
+  height: 0;
+  margin: 1em auto;
+  border: none;
+  border-top: solid 1px #00aef0;
+}
+/* if IE<=7 */
+.CV-page\ {
+  width: 1100px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+/* Headings
+****************************************************/
+.CV-primaryHeading {
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+}
+.CV-primaryHeading-name {
+  display: block;
+  margin-bottom: 0.1em;
+  font-size: 1.8em;
+  line-height: 0.9;
+}
+.CV-primaryHeading-position {
+  display: block;
+  font-size: 1em;
+  line-height: 1;
+  color: #00aef0;
+  font-style: italic;
+}
+.CV-secondaryHeading {
+  position: relative;
+  margin: 2em 0 0;
+  text-transform: uppercase;
+}
+.CV-secondaryHeading:before {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0 0.5em 0 -0.2em;
+  border: 2px solid #00aef0;
+  border-left: none;
+  border-bottom: none;
+  -webkit-transform: scaleX(0.75) rotate(45deg);
+          transform: scaleX(0.75) rotate(45deg);
+}
+.CV-tertiaryHeading {
+  margin-top: 0;
+  line-height: 1;
+  color: #00aef0;
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+/* Details
+****************************************************/
+.CV-detail {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0.5em 1.5em;
+  border-radius: 1em;
+  line-height: 1.2;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+/* SVG icons */
+.CV-detail {
+  padding-left: 56px;
+}
+.CV-detail:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 34px;
+  height: 34px;
+  margin-top: -14px;
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: 2px 2px;
+  background-color: #FFF;
+  border-radius: 50%;
+  border: solid 1px #222;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.CV-detail--address:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_address.svg');
+}
+.CV-detail--phone:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_phone.svg');
+}
+.CV-detail--email:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_email.svg');
+}
+.CV-detail--twitter:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_email.svg');
+}
+.CV-detail--linkedin:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_linkedin.svg');
+}
+.CV-detail--website:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_web.svg');
+}
+.CV-detail--blog:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_tumblr.svg');
+}
+.CV-detail--experiments:before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/CV_icons_codepen.svg');
+}
+/* end if SVG */
+.CV-detail-key {
+  display: inline-block;
+  color: #222;
+  text-transform: uppercase;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+.CV-detail-val {
+  display: inline-block;
+  color: rgba(14, 118, 158, 0.7);
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+@media all and (max-width: 500px) {
+  .CV-detail-val {
+    display: block;
+    border-bottom: none;
+  }
+}
+@media all and (min-width: 500px) {
+  .CV-detail {
+    width: 50%;
+    vertical-align: middle;
+  }
+  .CV-detail-val {
+    display: block;
+  }
+}
+@media all and (min-width: 700px) {
+  .CV-detail {
+    width: 33%;
+  }
+}
+.CV-detail:hover::before,
+.CV-detail:focus::before {
+  background-color: #bdedff;
+}
+.CV-detail:hover .CV-detail-key,
+.CV-detail:focus .CV-detail-key,
+.CV-detail:hover .CV-detail-val,
+.CV-detail:focus .CV-detail-val {
+  color: #00aef0;
+  -webkit-transform: translateX(0.3em);
+          transform: translateX(0.3em);
+}
+/* Blurb
+****************************************************/
+.CV-introBlurb {
+  /*TEMP display:none; */
+  width: 80%;
+  margin: 3em auto 1em auto;
+  text-align: center;
+  font-size: 1.1em;
+}
+@media screen and (max-width: 500px) {
+  .CV-introBlurb {
+    width: 100%;
+  }
+}
+/* Grid
+****************************************************/
+.CV-grid {
+  display: table;
+}
+.CV-grid-column {
+  display: table-cell;
+}
+.CV-grid-column--left {
+  width: 65%;
+  padding-right: 2em;
+}
+.CV-grid-column--right {
+  width: 35%;
+}
+@media screen and (max-width: 850px) {
+  .CV-grid {
+    display: block;
+  }
+  .CV-grid-column {
+    display: block;
+  }
+  .CV-grid-column--left {
+    width: 100%;
+    padding-right: 0;
+  }
+  .CV-grid-column--right {
+    width: 100%;
+  }
+}
+/* Timeline
+****************************************************/
+.CV-timeline {
+  position: relative;
+  margin: 0 0 0 0.5em;
+  padding-left: 1.5em;
+  border-left: solid 1px #222;
+}
+.CV-timeline:first-of-type {
+  margin-top: 1em;
+}
+.CV-timeline:last-of-type {
+  border-left-color: transparent;
+}
+.CV-timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -0.5em;
+  display: block;
+  width: 1em;
+  height: 1em;
+  border: solid 1px #222;
+  background-color: #FFF;
+  border-radius: 50%;
+}
+.CV-timeline-heading {
+  margin: 0;
+  padding-bottom: 0.5em;
+  line-height: 1em;
+  font-weight: normal;
+  -webkit-transform: translateY(-0.1em);
+          transform: translateY(-0.1em);
+}
+.CV-timeline-heading-title {
+  line-height: 1;
+  color: #00aef0;
+  font-style: italic;
+  text-transform: uppercase;
+}
+.CV-timeline-heading-location {
+  font-size: 0.9em;
+}
+.CV-timeline-heading-duration {
+  display: block;
+  font-size: 0.8em;
+  color: #6f6f6f;
+}
+.CV-timeline-details {
+  display: block;
+  margin: 0;
+  padding-bottom: 2em;
+  padding: 0 0 2em 1em;
+  list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGElEQVQIW2NkYGD4D8TIgJERTQDMpVAQAGaUAQbko3DsAAAAAElFTkSuQmCC");
+}
+.CV-timeline-details-item {
+  margin-bottom: 0.5em;
+}
+/* Skills
+****************************************************/
+/* END 
+****************************************************/
+.CV-referees {
+  margin-bottom: 4em;
+}
+.CV-disclaimer {
+  margin-top: 4em;
+  font-size: 0.8em;
+  text-align: right;
+  font-variant: small-caps;
+  color: #a2a2a2;
+}
+/* PRINT STYLES
+****************************************************/
+@media print {
+  .CV-page {
+    font-size: 0.7em;
+  }
+  .CV-pageBreakBefore {
+    page-break-before: always;
+  }
+  .svg .CV-detail {
+    padding-left: 44px;
+  }
+  .svg .CV-detail:before {
+    left: 11px;
+    width: 28px;
+    height: 28px;
+    margin-top: -11px;
+    background-size: 22px;
+  }
+}
+</style></head><body>
+<main class="CV-page">
+  <h1 class="CV-primaryHeading">
+    <span class="CV-primaryHeading-name">Davide L Rizzo </span><small class="CV-primaryHeading-position">User Experience and <span class="CV-u-nowrap">Front-end</span> Designer</small>
+  </h1>
+  <div class="CV-details">
+    <a class="CV-detail CV-detail--twitter" href="https://twitter.com/davidelrizzo">
+      <div class="CV-detail-key">
+        Twitter 
+      </div>
+      <div class="CV-detail-val">
+        @davidelrizzo
+      </div>
+    </a><a class="CV-detail CV-detail--linkedin" href="https://au.linkedin.com/pub/davide-rizzo/a7/393/18">
+      <div class="CV-detail-key">
+        LinkedIn 
+      </div>
+      <div class="CV-detail-val">
+        au.<wbr>linkedin<wbr>.com/davide-rizzo
+      </div>
+    </a><a class="CV-detail CV-detail--website" href="http://www.davidelrizzo.com">
+      <div class="CV-detail-key">
+        Website 
+      </div>
+      <div class="CV-detail-val">
+        www<wbr>.davidelrizzo<wbr>.com
+      </div>
+    </a><a class="CV-detail CV-detail--blog" href="https://davidelrizzo.tumblr.com">
+      <div class="CV-detail-key">
+        Blog 
+      </div>
+      <div class="CV-detail-val">
+        davidelrizzo<wbr>.tumblr<wbr>.com
+      </div>
+    </a><a class="CV-detail CV-detail--experiments" href="https://codepen.io/davidelrizzo">
+      <div class="CV-detail-key">
+        Web experiments 
+      </div>
+      <div class="CV-detail-val">
+        codepen.io/<wbr>davidelrizzo
+      </div>
+    </a>
+  </div>
+  <p class="CV-introBlurb">
+    I am a Melbourne-based User Experience and Front-End Designer with more than 15 years experience across various industries. I am passionate about simplifying complexity and modular design systems. I believe in designing and building interfaces that excel for the user, owner and those maintaining it. I am always keen to push technology to its limits where it can enhance the user experience.
+  </p>
+  <hr />
+  <div class="CV-grid">
+    <div class="CV-grid-column CV-grid-column--left">
+      <div class="CV-education">
+        <h2 class="CV-secondaryHeading CV-education-heading">
+          Public Talks and Posts
+        </h2>
+        <section class="CV-timeline CV-education-group">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Prototyping a Physical Card Game with CSS</span><small class="CV-timeline-heading-duration">Designing a layout in CSS for rapid prototyping of printed materials</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              October 2016:  <a href="https://www.meetup.com/MelbCSS/events/226064757/"><span>Melb CSS Meetup</span></a> (<a href="https://www.youtube.com/watch?v=EaZEratmqf8"><span>youTube</span></a>)
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-education-group">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Responsive Tables</span><small class="CV-timeline-heading-duration">Understanding input A CSS technique for creating reusable, flexible and accessible tabular layout</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              March 2016: <a href="https://css-tricks.com/accessible-simple-responsive-tables/"><span>Guest blog post on CSS Tricks</span></a>
+            </li>
+            <li class="CV-timeline-details-item">
+              March 2016:  <a href="https://www.meetup.com/MelbCSS/events/226064715/"><span>Melb CSS Meetup</span></a> (<a href="https://www.youtube.com/watch?v=hi-L28VKkHs&index=1&list=PL_wpyPIDa0tWv6UzgZBVUDYi6NdxtZLbq"><span>youTube</span></a>)
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-education-group">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">The Secret Life of Inputs</span><small class="CV-timeline-heading-duration">Understanding input behaviour across browsers and devices for best practice form design</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              August 2015: <a href="https://www.uxaustralia.com.au/conferences/uxaustralia-2015/presentation/the-secret-life-of-inputs/"><span>UX Australia - Brisbane</span></a>
+            </li>
+            <li class="CV-timeline-details-item">
+              June 2015: <a href="https://www.meetup.com/IxDA-Melbourne/events/222500245/"><span>IxDA Melbourne Meetup</span></a> (<a href="https://www.meetup.com/IxDA-Melbourne/photos/26204461/#438812816"><span>Sketchnotes</span></a>)
+            </li>
+            <li class="CV-timeline-details-item">
+              March  2015: <a href="https://2015.cssconf.com.au/"><span>CSS Conf Australia</span></a> (<a href="https://decompress.com.au/"><span>Decompress</span></a>)
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-education-group">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Multibrand Styleguides</span><small class="CV-timeline-heading-duration">Building a front-end Styleguide to support multiple components, brands and platforms</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Dec 2014: <a href="https://www.meetup.com/MelbCSS/"><span>Melb CSS Meetup</span></a>
+            </li>
+          </ul>
+        </section>
+      </div>
+      <div class="CV-jobs">
+        <h2 class="CV-secondaryHeading CV-jobs-heading">
+          Employment history
+        </h2>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Senior UX Designer (Styleguide Specialist) </span>– <span class="CV-timeline-heading-location">Suncorp Group </span><small class="CV-timeline-heading-duration">2012 to current</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Founder and curator of the Suncorp Web Styleguide - a living multi-brand front-end framework. This Design System supports more than 15 brands, 20 components and multiple backend platforms including <em>React</em>, <em>Angular</em>, <em>Java</em>, <em>AEM</em> and <em>hybrid native apps</em>. It is the backbone of interface development at the <a href="https://www.suncorpgroup.com.au/"><span>Suncorp group</span></a> and is implemented in all of Suncorp’s primary websites and web apps.
+            </li>
+            <li class="CV-timeline-details-item">
+              Extensive experience in front-end design and integration with <em>Adobe Experience Manager</em> (AEM) content management suite.
+            </li>
+            <li class="CV-timeline-details-item">
+              Specialist in technical design, form design for eCommerce and collaboration between design and development teams. 
+            </li>
+            <li class="CV-timeline-details-item">
+              Curator of the Suncorp icon library with thousands of unique icons per brand in multiple colours and formats. 
+            </li>
+            <li class="CV-timeline-details-item">
+              Evangelizing the merits of best practice front-end techniques such as responsive design, reusable patterns and accessibility.
+            </li>
+            <li class="CV-timeline-details-item">
+              Interface design and development for some of Australia’s largest insurance and banking brands, including <a href="https://www.aami.com.au"><span>AAMI</span></a>, <a href="https://www.gio.com.au"><span>GIO</span></a>, <a href="https://www.suncorp.com.au"><span>Suncorp</span></a>, <a href="https://www.apia.com.au"><span>APIA</span></a>, <a href="https://www.bingle.com.au"><span>Bingle</span></a> and many more. 
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Internet Team Leader </span>– <span class="CV-timeline-heading-location">The Just Group </span><small class="CV-timeline-heading-duration">2006 to 2012</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Manager of The Just Group Web Design team responsible for web maintenance and email campaigns to hundreds of thousands of customers each week across 7 brands.
+            </li>
+            <li class="CV-timeline-details-item">
+              Implemented front-end integration of <em>WebSphere Commerce</em>, <a href="https://www.jayjays.com.au/"><span>Jay Jays</span></a> & <a href="https://www.dotti.com.au"><span>Dotti</span></a> (2010), <a href="https://www.portmans.com.au/"><span>Portmans</span></a> & <a href="https://www.jacquie.com.au"><span>Jacqui E</span></a> (2011), <a href="https://www.smiggle.com.au"><span>Smiggle</span></a> & <a href="https://www.peteralexander.com.au"><span>Peter Alexander</span></a> (2012).
+            </li>
+            <li class="CV-timeline-details-item">
+              Sole interface developer and front-end programmer for The Just Group websites, including <a href="https://www.justjeans.com.au"><span>Just Jeans</span></a> (2006 & 2009), <a href="https://www.dotti.com.au"><span>Dotti</span></a> (2007), <a href="https://www.jacquie.com.au"><span>Jacqui E</span></a> (2007), <a href="https://www.justgroup.com.au"><span>The Just Group</span></a> (2007), <a href="https://www.smiggle.com.au"><span>Smiggle</span></a> (2008) and <a href="https://www.peteralexander.com.au"><span>Peter Alexander</span></a> (2009).
+            </li>
+            <li class="CV-timeline-details-item">
+              Overhaul of The Just Group eCommerce platform front-end on the Interworld eCommerce platform. Comprehensive work on customer registration, online product catalogues and checkout systems with Credit Card, PayPal and Gift Voucher payments.
+            </li>
+            <li class="CV-timeline-details-item">
+              Animation and game design. Pioneered technique for <em>Progressive Enhanced Flash site</em> for Dotti.
+            </li>
+            <li class="CV-timeline-details-item">
+              Animation and game design. Pioneered technique for progressive enhanced Flash sites.
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Lead Web Designer </span>– <span class="CV-timeline-heading-location">ANZ Bank (anz.com) </span><small class="CV-timeline-heading-duration">2004 to 2005</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Full responsibility for ANZ website graphics (<a href="https://www.anz.com.au"><span>anz.com</span></a>), including homepage, promotions, banners, landing pages, animations and games.
+            </li>
+            <li class="CV-timeline-details-item">
+              Management of design standards for anz.com, including the creation of an online Web Styleguide. 
+            </li>
+            <li class="CV-timeline-details-item">
+              Management and mentoring of web designers located in India.
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Usability and Web Designer </span>– <span class="CV-timeline-heading-location">ANZ Bank </span><small class="CV-timeline-heading-duration">2002 to 2004</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Graphical production and image support for ANZ Internet and Intranet, <a href="https://www.anz.com.au/personal/private-bank/"><span>ANZ Private</span></a>, ANZ Pacific and <a href="http://www.anzroyal.com/en/Personal/"><span>ANZ Royal Cambodia</span></a> websites
+            </li>
+            <li class="CV-timeline-details-item">
+              Construction of Flash applications and Screensavers, Product demos, CD ROM applications and ATM screens.
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Publishing administrator </span>– <span class="CV-timeline-heading-location">INT Press educational bookshop </span><small class="CV-timeline-heading-duration">1996 – 2000</small>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Desktop publishing educational language books.
+            </li>
+            <li class="CV-timeline-details-item">
+              Mail order picker and packer.
+            </li>
+            <li class="CV-timeline-details-item">
+              Data entry and invoicing using <em>MYOB</em>.
+            </li>
+          </ul>
+        </section>
+        <section class="CV-timeline CV-job">
+          <h3 class="CV-timeline-heading">
+            <span class="CV-timeline-heading-title">Freelance work</span>
+          </h3>
+          <ul class="CV-timeline-details">
+            <li class="CV-timeline-details-item">
+              Site design and development for the <a href="http://juliuscaesar.niccolaigroup.com/"><span>Da Vinci Machines</span></a> and <a href="http://juliuscaesar.niccolaigroup.com/"><span>Ancient Rome</span></a> exhibitions. A dedicated responsive website for prospective patrons wanting information on exhibitions around Australia. (2008, 2009, 2011)
+            </li>
+            <li class="CV-timeline-details-item">
+              <a href="https://www.abstractcreative.com.au/"><span>Abstract Creative</span></a> full development of a fluid, progressive enhanced and content managed website in Flash. (2006)
+            </li>
+            <li class="CV-timeline-details-item">
+              <a href="http://www.shantaram.com/"><span>Shantaram</span></a> website design and development, to support stories and essays from the author of the best selling Australian novel. (2004)
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <div class="CV-grid-column CV-grid-column--right">
+      <div class="CV-skills">
+        <h2 class="CV-secondaryHeading CV-skills-heading">
+          Technical Skills
+        </h2>
+        <br /><br />
+        <h3 class="CV-tertiaryHeading">
+          Core Specialty
+        </h3>
+        <ul class="CV-timeline-details">
+          <li class="CV-timeline-details-item">
+            Design Systems (Styleguides)
+          </li>
+          <li class="CV-timeline-details-item">
+            Interface and form design
+          </li>
+          <li class="CV-timeline-details-item">
+            Responsive & device based web design
+          </li>
+          <li class="CV-timeline-details-item">
+            Icon systems
+          </li>
+          <li class="CV-timeline-details-item">
+            HTML/CSS/JavaScript
+          </li>
+          <li class="CV-timeline-details-item">
+            Wireframing & Prototyping
+          </li>
+          <li class="CV-timeline-details-item">
+            Accessibility
+          </li>
+          <li class="CV-timeline-details-item">
+            Communicating and documenting design standards
+          </li>
+        </ul>
+        <h3 class="CV-tertiaryHeading">
+          Extensive Experience
+        </h3>
+        <ul class="CV-timeline-details">
+          <li class="CV-timeline-details-item">
+            Design software (Adobe suite, Sketch, Axure)
+          </li>
+          <li class="CV-timeline-details-item">
+            Front-end build systems (Git, NPM, Grunt, Bower, Processors)
+          </li>
+          <li class="CV-timeline-details-item">
+            Information architecture
+          </li>
+          <li class="CV-timeline-details-item">
+            User Testing
+          </li>
+          <li class="CV-timeline-details-item">
+            Email design and development
+          </li>
+          <li class="CV-timeline-details-item">
+            Web animation
+          </li>
+          <li class="CV-timeline-details-item">
+            Content Management
+          </li>
+        </ul>
+        <h3 class="CV-tertiaryHeading">
+          Proficient
+        </h3>
+        <ul class="CV-timeline-details">
+          <li class="CV-timeline-details-item">
+            Customer research
+          </li>
+          <li class="CV-timeline-details-item">
+            Front-end performance
+          </li>
+          <li class="CV-timeline-details-item">
+            Testing and code standards
+          </li>
+          <li class="CV-timeline-details-item">
+            Native app design
+          </li>
+          <li class="CV-timeline-details-item">
+            Real-time applications
+          </li>
+          <li class="CV-timeline-details-item">
+            Game design & development
+          </li>
+          <li class="CV-timeline-details-item">
+            Print design
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="CV-education">
+    <h2 class="CV-secondaryHeading CV-education-heading">
+      Education history
+    </h2>
+    <section class="CV-timeline CV-education-group">
+      <h3 class="CV-timeline-heading">
+        <span class="CV-timeline-heading-title">Bachelor of Computer Science </span><span class="CV-timeline-heading-location">Melbourne University </span><small class="CV-timeline-heading-duration">1999 – 2003</small>
+      </h3>
+      <ul class="CV-timeline-details">
+        <li class="CV-timeline-details-item">
+          Study areas included: Programming, Software lifecycle and development, Artificial Intelligence, Database management, Usability, Interface Design, Classics, History, Photography.
+        </li>
+      </ul>
+    </section>
+    <section class="CV-timeline CV-education-group">
+      <h3 class="CV-timeline-heading">
+        <span class="CV-timeline-heading-title">Victorian Certificate of Education </span><span class="CV-timeline-heading-location">Strathmore Secondary College </span><small class="CV-timeline-heading-duration">Completed 1998</small>
+      </h3>
+      <ul class="CV-timeline-details">
+        <li class="CV-timeline-details-item">
+          TER Score of 92.5, received straight A+ in Mathematical Methods, Information Process and Management, and Information Systems.
+        </li>
+        <li class="CV-timeline-details-item">
+          Graphics Common Assessment Task (CAT) was nominated for entry in Scienceworks Top CATs exhibition.
+        </li>
+      </ul>
+    </section>
+    <section class="CV-timeline CV-education-group">
+      <h3 class="CV-timeline-heading">
+        <span class="CV-timeline-heading-title">Professional training</span>
+      </h3>
+      <ul class="CV-timeline-details">
+        <li class="CV-timeline-details-item">
+          2016: CSSConf Australia, Melbourne
+        </li>
+        <li class="CV-timeline-details-item">
+          2015: UX Australia, Brisbane (Presenting)
+        </li>
+        <li class="CV-timeline-details-item">
+          2015: CSSConf Australia, Melbourne (Presenting)
+        </li>
+        <li class="CV-timeline-details-item">
+          2014: 1st CSS & JS Conference Melbourne
+        </li>
+        <li class="CV-timeline-details-item">
+          2013: UX Australia conference + workshops, Melbourne
+        </li>
+        <li class="CV-timeline-details-item">
+          2009: eCommerce & Marketing conference, Sydney
+        </li>
+        <li class="CV-timeline-details-item">
+          2008: WACAG 2.0 Accessibility standards seminar
+        </li>
+        <li class="CV-timeline-details-item">
+          2006: Vision Australia, Web Accessibility Training
+        </li>
+        <li class="CV-timeline-details-item">
+          2006: Max Design, Advanced CSS Programming course
+        </li>
+        <li class="CV-timeline-details-item">
+          2005: Semi-Permanent Design conference, Sydney
+        </li>
+        <li class="CV-timeline-details-item">
+          2004: Macromedia certified course, Advanced application development
+        </li>
+        <li class="CV-timeline-details-item">
+          2002: ANZ Breakout performance and culture 2 day workshop
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+</body></html>
