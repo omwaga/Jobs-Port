@@ -17,12 +17,16 @@ class ApplyjobController extends Controller
         $this->validate($request,[
             'login_email'=>'required|email',
             'login_password'=>'required|min:6',
-        ]
-    );
+        ]);
+
+
+        $jobtitle = str_slug($request->jobtitle, '-');
+
          if (Auth::attempt(['email'=>$request->login_email,'password'=>$request->login_password],$request->remember)) {
-      return redirect(url('apply',[$request->id]));
-    }
-             return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');
+            return redirect(url('apply',[$request->id, $jobtitle]));
+         }
+
+      return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');
     }
         /**
      * Log the user out of the application.
@@ -37,18 +41,5 @@ class ApplyjobController extends Controller
         $request->session()->regenerate();
         return redirect()->guest(route( 'train.login' ));
     }
-    
-    // public function jobregister(Request $request)
-    // {
-    //   $attributes = request()->validate([
-    //     'name' => ['required', 'string', 'max:255'],
-    //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-    //     'password' => ['required', 'string', 'min:8', 'confirmed'],
-    // ]);
-    
-    // User::create($attributes);
-
-    // return redirect('/sucessfulregistration');
-    // }
 
 }

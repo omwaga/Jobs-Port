@@ -332,10 +332,10 @@ public function searchresume(Request $request)
 }
 
 // show the jobs with the applications received
-public function jobwithapplications($jobtitle)
+public function jobwithapplications($id)
 {
     $job = Jobposts::where([
-        ['jobtitle', $jobtitle],
+        ['id', $id],
         ['employer_id', '=', Auth::guard('employer')->user()->id]
         ])->first();
 

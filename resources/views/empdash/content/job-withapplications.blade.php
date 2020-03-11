@@ -42,12 +42,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($job->applications as $applicant)
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
+                                                <td>{{$applicant->user->name}}</td>
+                                                <td>{{$applicant->user->email}}</td>
                                                 <td>@mdo</td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

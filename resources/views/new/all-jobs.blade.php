@@ -50,7 +50,8 @@
                  <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
       <div class="col-md-12">
       <div class="row">
-    <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}">{{$job->jobtitle}}</a></h5>
+        @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
+    <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->jobtitle}}</a></h5>
     
     </div>
                   <p>Posted By: <a href="" class="text-primary">company</a></p>

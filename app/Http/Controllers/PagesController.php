@@ -317,13 +317,18 @@ public function filterindustry($name){
     }
     
 public function searchhome(Request $request){
-    if($request->industry !== "All Job Industries")
+    if($request->industry !== "All Job Industries" && $request->job_category !== "All Job Functions")
     {
       $jobs = Jobposts::where('industry', $request->industry)->get();
       return $jobs;
     }
-    elseif($request->industry !== "All Job Functions" && $request->industry === "All Job Industries"){
-      dd('searching industry');
+    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries"){
+      $jobs = Jobposts::where('jobcategories_id', $request->job_category)->get();
+      return $jobs;
+    }
+    elseif($request->state !== "" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
+      $jobs = Jobposts::where('location', $request->state)->get();
+      return $jobs;
     }
     }
 

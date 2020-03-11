@@ -2,14 +2,9 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="col-md-6">
-                    
-                </div>
-                <div class="col-md-6">
-              <button class="btn text-white pull-left" style="background-color:#0B0B3B;">Alert</button>  
+                <h5 class="btn text-white pull-left" style="background-color:#0B0B3B;">Create Job Alerts</h5> 
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="image-gallery-title"></h4>
-                </div>
             </div>
                         
 <form method="POST" action="{{route('alerts.store')}}">

@@ -65,77 +65,53 @@
   </div>
 </div>
 </section>
-<div class="container" >
-  <div class="row" align="center">
-            <div class="col-md-12" align="center">
-                <div class="process-box process-left">
-                    <div class="row">
-                        <!-- <div class="col-md-5">
-                            <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
-                                <h2 class="m-0 p-0">01</h2>
-                            </div>
-                        </div> -->
-                        <div class="col-md-10" align="center">
-                            <h5>Create a Professional Resume and Cover Letter</h5>
-                            <p>Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use & done within minutes - try now for free! <br><a class="btn text-white" style="background-color:#0B0B3B;" href="{{route('customizeresume')}}">Get Started</a></p>
-                        </div>
-                    </div>
-                    <!--<div class="process-line-l"></div>-->
-                </div>
-            </div>
-        </div>
-</div><br>
 <div class="container">
-    <div class="row justify-content-center">
-     	    <h5 style="color:#0B0B3B;"><strong>Search Best Talent with The NetworkedPro's Resume Database Access</strong></h5>
-			 
-			    <div class="col-lg-6 col-xs-12 text-center">
-					<div class="box">
-						<div class="box-title">
-							<h5 style="color:#0B0B3B;">Hiring is Simpler, Smarter &
-Faster with The NetworkedPros</h5>
-						</div>
-    <p class="lead text-center">
-    Get in touch with our team <br>
-    info@thenetworkedpros.com<br>
-    To get started with our fast and easy job posting services.
-    </p>  
-					 </div>
-				</div>	 
-				
-				 <div class="col-lg-6 col-xs-12  text-center">
-					<div class="box">
-						<div class="box-title">
-							<h5 style="color:#0B0B3B;"> Find Better Candidates, Faster.For employers who need great people.</h5>
-							<h6>Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services. </h6>
-							<div class="row">
-							    <div class="col-md-6">
-							       <p><i class="fa fa-clock text-info" aria-hidden="true"></i> 2 Minutes to Post</p>
-							       <p><i class="fa fa-users text-info" aria-hidden="true"></i> Attract Audience</p>
-							       <p><i class="fa fa-volume-control-phone text-info" aria-hidden="true"></i> Contact Directly</p>
-							    
-						<!-- <div class="box-btn">
-						    <a class="btn text-white btn-sm" style="background-color:#0B0B3B;" href="{{route('leads')}}">Know More</a>
-						</div> -->
-							    </div>
-							    <div class="col-md-6">
-							       <p><i class="fa fa-flag text-info" aria-hidden="true"></i> Unlimited Applies</p>
-							       <p><i class="fa fa-bullseye text-info" aria-hidden="true"></i> 30 days Job Visibility</p>
-							        <p><i class="fa fa-pied-piper text-info" aria-hidden="true"></i> Manage your Applicants</p>
-							    
-						<div class="box-btn">
-						    <a class="btn btn-danger text-white btn-sm" href="{{route('hirre')}}">Register</a>
-						</div>
-							    </div>
-							</div>
-						</div>
-					 </div>
-				</div>
-		</div>
-    
+   <div class="row">
+      <div class="col-md-6">
+         <div class="card text-white flex-md-row mb-4 shadow-sm h-md-250" style="background-color:#0B0B3B;">
+            <div class="card-body d-flex flex-column align-items-start">
+               <strong class="d-inline-block mb-2 text-white">Resume Buider</strong>
+               <h5 class="mb-0">
+                  <a class="text-white" href="{{route('customizeresume')}}">Create a Professional Resume and Cover Letter</a>
+               </h5><br>
+               <div class="mb-1 text-white-50 small">For Jobseekers</div>
+               <p class="card-text mb-auto">Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use & done within minutes - try now for free! <br>
+               <p>Find the right job fit with the networkedpros.Submit job applications, and track  the applications.</p>
+               <a class="btn btn-danger text-white" href="{{route('customizeresume')}}">Get Started</a></p>
+
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+               <h5 class="mb-0">
+                  <a class="text-white" href="{{route('hirre')}}">Search Best Talent with The NetworkedPro's Resume Database Access</a>
+               </h5>
+               <div class="mb-1 text-white-50 small">For Employers</div>
+               <p class="card-text mb-auto">Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services.</p>
+               <div class="row">
+                  <div class="col-md-6">
+                     <p><i class="fa fa-clock text-white" aria-hidden="true"></i> 2 Minutes to Post</p>
+                     <p><i class="fa fa-users text-white" aria-hidden="true"></i> Attract Audience</p>
+                     <p><i class="fa fa-volume-control-phone text-white" aria-hidden="true"></i> Contact Directly</p>
+                  </div>
+                  <div class="col-md-6">
+                     <p><i class="fa fa-flag text-white" aria-hidden="true"></i> Unlimited Applies</p>
+                     <p><i class="fa fa-bullseye text-white" aria-hidden="true"></i> 30 days Job Visibility</p>
+                      <p><i class="fa fa-pied-piper text-white" aria-hidden="true"></i> Manage your Applicants</p>
+                  
+            <div class="box-btn">
+                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Register</a>
+            </div>
+                  </div>
+              </div>
+            </div><!-- 
+            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 200px; height: 250px;"> -->
+         </div>
+      </div>
+   </div>
 </div>
-<br>
 <br>
 <div class="container">
         <div class="col-md-12" align="center">
@@ -145,7 +121,8 @@ Faster with The NetworkedPros</h5>
     		  	@foreach($jobs as $job)
     		  	<div class="col-md-4">
     		  	<div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded">
-    		  	    <p><a href="/jobview/{{$job->id}}" class="font-weight-bold" style="color:#0B0B3B;">
+        @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
+    		  	    <p><a href="/jobview/{{$job->id}}/{{$jobtitle}}" class="font-weight-bold" style="color:#0B0B3B;">
     		  	   {!! $job->jobtitle !!}
     		  	   </a></p>
     		  	    <p>{{$job->jobtype}} | Expiry Date: {{$job->expirydate}} | Salary Ksh {{$job->salary}}</p>

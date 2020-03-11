@@ -54,7 +54,7 @@
 											    @php $column_number = $column_number + 1; @endphp
 												<tr>
 												    <td>{{$column_number}}.</td>
-													<td><a href="/job-withapplications/{{$job->jobtitle}}">{{$job->jobtitle}}</a></td>
+													<td><a href="/job-withapplications/{{$job->id}}">{{$job->jobtitle}}</a></td>
 													<td>{{$job->jobtype}}</td>
 													<td>{{$job->status}}</td>
                                                     <td>{{$job->applications->count()}}</td>

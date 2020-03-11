@@ -1,10 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<br>
-<div class="container">
+<div class="container" style="padding-top: 6rem;">
      <div class="row">
          <div class="col-md-8">
                  @if(count($location) > 0)
@@ -25,7 +22,9 @@
                   </div>
                 <div class="col-md-9">
                 <p class="text-dark">
-                    {!! str_limit(strip_tags($show->summary), 200) !!} <a class="btn btn-danger pull-right" href="/jobview/{{$show->id}}">Apply</a>
+                    {!! str_limit(strip_tags($show->summary), 200) !!}
+        @php $jobtitle = str_slug($show->jobtitle, '-'); @endphp
+        <a class="btn btn-danger pull-right" href="/jobview/{{$show->id}}/{{$jobtitle}}">Apply</a>
                 </p>
                 </div>
      </div>

@@ -1,38 +1,33 @@
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<br>
-<div class="container">
+<div class="container" style="padding-top: 6rem;">
     <div class="row">
-        <div class="col-lg-7">
-            <p><b class="h3">{{$job->jobtitle}}
-             @auth
-             @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('apply',[$job->id])}}">Apply with us</a>
-            @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
-            <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
-            @else
-            ...
-            @endif
-             @else
-  @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$job->id])}}">Apply with us</a>
-            @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
-            <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
-            @else
-            ...
-            @endif
-            
-            @endauth
-           
-            </b>
-                </p>
-            <p>Company name: <a href="/CompanyJobs/"><b class="text-primary">{{$job->cprofile->cname}}</b></a></p>
-            <p>Category: <b class="text-primary">{{$job->category->jobcategories}}</b></p>
-            <p>Salary: <b class="text-primary">{{$job->salary}}</b></p>
-
-                        <hr>
+        <div class="col-md-8">
+            <p><b class="h3">{{$job->jobtitle}}</b></p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p>Employer: <a href="/CompanyJobs/" class="text-primary">{{$job->cprofile->cname}}</a></p>
+                  <p>Job Function: <b class="text-primary">{{$job->category->jobcategories}}</b></p>
+                  <p>Salary: <b class="text-primary">{{$job->salary}}</b></p>
+                </div>
+                <div class="col-md-6">
+                  @auth
+                    @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
+                     <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('apply',[$job->id])}}">Apply with us</a>
+                    @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
+                     <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
+                    @endif
+                  @else
+                    @if( $job->expirydate > Carbon\Carbon::now() && $job->apply=='Yes')
+                     @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
+                       <a class="h5 float-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
+                    @elseif($job->expirydate < Carbon\Carbon::now() && $job->apply=='Yes')
+                        <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
+                    @endif
+                  @endauth
+                </div>
+              </div>
+              <hr>
                         <div class="container">
                         <h4 class="text-primary">Job summary</h4>
                         <p>{!!$job->summary!!}</p>
@@ -54,7 +49,8 @@
             <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="/jobapplications/create">Apply</a>
 @else
   
-            <a class="h5 float-right btn btn-info text-white"style="border-radius:0px;" href="{{url('joblogin',[$job->id])}}">Apply with us</a>
+        @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
+            <a class="h5 float-right btn text-white" href="{{url('joblogin',[$job->id, $jobtitle])}}" style="background-color:#0B0B3B;">Apply with us</a>
 @endauth
 </div>
         </div>
@@ -69,7 +65,8 @@
             <h3 class="text-center" >Featured Jobs</h3>
             @foreach($featured as $feature)
            <ul class="list-group list-group-flush">
-  <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/jobview/{{$feature->id}}" style="color:#181557;text-decoration:none;">{{$feature->jobtitle}}</a></li>
+        @php $jobtitle = str_slug($feature->jobtitle, '-'); @endphp
+  <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/jobview/{{$feature->id}}/{{$jobtitle}}" style="color:#181557;text-decoration:none;">{{$feature->jobtitle}}</a></li>
 </ul>
             @endforeach
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -23,7 +23,7 @@ Route::get('/career-profile','DashboardController@careerprofile')->name('career-
 Route::get('/uploads', 'DashboardController@upload')->name('fileupload');
 Route::get('/savedjobs', 'DashboardController@savedjobs')->name('savedjobs');
 Route::get('/viewjob/{id}', 'DashboardController@viewjob');
-Route::get('/apply/{id}', 'ApplicationsController@apply')->name('apply');
+Route::get('/apply/{id}/{jobtitle}', 'ApplicationsController@apply')->name('apply');
 Route::resource('jobapplications', 'ApplicationsController');
 Route::get('/jobseekerprofile', 'DashboardController@jobseekerprofile')->name('jobseekerprofile');
 Route::resource('personalinfo', 'JobseekerDetailsController');
@@ -37,7 +37,7 @@ Route::get('/joblocation/{name}','DashboardController@showlocation');
 Route::get('/jobcategory/{name}','DashboardController@showcategory');
 Route::get('/successfullapplication', 'ApplicationsController@success');
 Route::get('/already-applied', 'ApplicationsController@appalready');
-Route::get('/joblogin/{id}', 'PagesController@loginform')->name('joblogin');
+Route::get('/joblogin/{id}/{jobtitle}', 'PagesController@loginform')->name('joblogin');
 Route::post('/authlogin', 'Auth\ApplyjobController@login')->name('authuser');
 Route::get('/applyforjob', 'PagesController@applyjob');
 Route::get('/search-jobs', 'DashboardController@jobsearch')->name('jobsearch');
@@ -135,7 +135,7 @@ Route::get('/employerd','PagesController@employerd')->name('emp');
 Route::get('/homesearch','PagesController@searchhome')->name('homesearch');
 Route::get('/Register','PagesController@register')->name('Register');
 Route::get('/','PagesController@homee')->name('homee');
-Route::get('/jobview/{id}','PagesController@show')->name('viewjob');
+Route::get('/jobview/{id}/{jobtitle}','PagesController@show')->name('viewjob');
 
 // Routes for the countries and the states
 Route::get('dropdownlist/getstates/{id}','DataController@getStates');//Route for the dependentdropdown list fro countries and towns
