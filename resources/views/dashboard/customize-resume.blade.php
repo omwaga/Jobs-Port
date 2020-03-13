@@ -42,6 +42,16 @@
   <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
   <link href="resume_builder/css/themify-icons.css" rel="stylesheet">
   
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('#duties').ckeditor();
+        $('#edesc').ckeditor();
+        $('#summary').ckeditor();
+        $('#article-ckeditor').ckeditor();
+        $('#editass').ckeditor();
+        $('.textarea').ckeditor(); // if class is prefered.
+    </script>
 </head>
 
 <body>
@@ -57,7 +67,7 @@
           <div class="wizard-container">
 
             <div class="card wizard-card" data-color="orange" id="wizardProfile">
-              <form action="" method="POST">
+              <form action="{{route('themepreview')}}" method="get">
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                 <div class="wizard-header text-center">
@@ -123,7 +133,7 @@
                 <div class="tab-content">
                   <div class="tab-pane" id="about">
                     <div class="row">
-                      <h5 class="info-text"> Please tell us more about yourself.</h5>
+                      <h5 class="info-text"> Please complete you profile to generate you Resume and CV.</h5>
                       <div class="col-sm-4 col-sm-offset-1">
                         <div class="picture-container">
                           <div class="picture">
@@ -135,27 +145,23 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label>First Name <small>(required)</small></label>
-                          <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
+                          <label>Full Name <small>(required)</small></label>
+                          <input name="name" type="text" value="{{$personalinfo->name}}" class="form-control" placeholder="Andrew...">
                         </div>
-                        <div class="form-group">
-                          <label>Last Name <small>(required)</small></label>
-                          <input name="lastname" type="text" class="form-control" placeholder="Smith...">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-4 col-sm-offset-1">
                           <div class="form-group">
                             <label>Email <small>(required)</small></label>
                             <input name="email" type="email" class="form-control" value="{{$personalinfo->email ?? ''}}" placeholder="name@domain.com">
                           </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4 col-sm-offset-1">
                           <div class="form-group">
                             <label>Phone Number: <small>(required)</small></label>
                             <input name="phone" type="text" class="form-control" value="{{$personalinfo->phone?? ''}}" placeholder="0700000000">
                           </div>
                           <div class="form-group">
                             <label>Religion: <small>(required)</small></label>
-                            <input name="religion" type="text" class="form-control" placeholder="andrew@creative-tim.com">
+                            <input name="religion" value="{{$personalinfo->religion?? ''}}" type="text" class="form-control" placeholder="religion">
                           </div>
                           <div class="form-group">
                             <label>Select Nationality</label><br>
@@ -195,7 +201,7 @@
                           </div>
                           <div class="form-group">
                             <label>Gender: <small>(required)</small></label>
-                            <input name="gender" type="text" class="form-control" placeholder="andrew@creative-tim.com">
+                            <input name="gender" value="{{$personalinfo->gender?? ''}}" type="text" class="form-control" placeholder="gender">
                           </div>
                           <div class="form-group">
                             <label>Maritial Status: <small>(required)</small></label>
@@ -210,34 +216,41 @@
                     </div>
                   </div>
                   <div class="tab-pane" id="account">
-                    <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                    <h5 class="info-text"> Provide Your Work Experience </h5>
                     <div class="row">
                       <div class="col-sm-8 col-sm-offset-2">
-                        <div class="col-sm-4">
-                          <div class="choice" data-toggle="wizard-checkbox">
-                            <input type="checkbox" name="jobb" value="Design">
-                            <div class="card card-checkboxes card-hover-effect">
-                              <i class="ti-paint-roller"></i>
-                              <p>Design</p>
-                            </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Employer: <small>(required)</small></label>
+                            <input name="dob" type="text" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
                           </div>
                         </div>
-                        <div class="col-sm-4">
-                          <div class="choice" data-toggle="wizard-checkbox">
-                            <input type="checkbox" name="jobb" value="Code">
-                            <div class="card card-checkboxes card-hover-effect">
-                              <i class="ti-pencil-alt"></i>
-                              <p>Code</p>
-                            </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Position: <small>(required)</small></label>
+                            <input name="dob" type="text" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
                           </div>
                         </div>
-                        <div class="col-sm-4">
-                          <div class="choice" data-toggle="wizard-checkbox">
-                            <input type="checkbox" name="jobb" value="Develop">
-                            <div class="card card-checkboxes card-hover-effect">
-                              <i class="ti-star"></i>
-                              <p>Develop</p>
-                            </div>
+                      </div>
+                      <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Start date: <small>(required)</small></label>
+                            <input name="dob" type="text" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>End Date: <small>(required)</small></label>
+                            <input name="dob" type="text" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label>Roles and Responsibilities: <small>(required)</small></label>
+                            <textarea class="form-control ckeditor" name="roles"></textarea>
                           </div>
                         </div>
                       </div>
@@ -246,29 +259,41 @@
                   <div class="tab-pane" id="address">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h5 class="info-text"> Are you living in a nice area? </h5>
+                        <h5 class="info-text"> Please provide your Education history </h5>
                       </div>
                       <div class="col-sm-7 col-sm-offset-1">
                         <div class="form-group">
-                          <label>Street Name</label>
+                          <label>Name of Course:</label>
                           <input type="text" class="form-control" placeholder="5h Avenue">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label>Street Number</label>
+                          <label>Attained Score:</label>
                           <input type="text" class="form-control" placeholder="242">
+                        </div>
+                      </div>
+                      <div class="col-sm-7 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Name of Institution:</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Region:<small>(country/state)</small></label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
                         </div>
                       </div>
                       <div class="col-sm-5 col-sm-offset-1">
                         <div class="form-group">
-                          <label>City</label>
+                          <label>Start Date:</label>
                           <input type="text" class="form-control" placeholder="New York...">
                         </div>
                       </div>
                       <div class="col-sm-5">
                         <div class="form-group">
-                          <label>Country</label><br>
+                          <label>Graduation Date:</label><br>
                           <select name="country" class="form-control">
                             <option value="Afghanistan"> Afghanistan </option>
                             <option value="Albania"> Albania </option>
@@ -287,40 +312,30 @@
                   <div class="tab-pane" id="awards">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h5 class="info-text"> Are you living in a nice area? </h5>
+                        <h5 class="info-text"> Awards and Certifictaion? </h5>
                       </div>
                       <div class="col-sm-7 col-sm-offset-1">
                         <div class="form-group">
-                          <label>Street Name</label>
+                          <label>Award Name:</label>
                           <input type="text" class="form-control" placeholder="5h Avenue">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label>Street Number</label>
+                          <label>Institution:</label>
                           <input type="text" class="form-control" placeholder="242">
                         </div>
                       </div>
                       <div class="col-sm-5 col-sm-offset-1">
                         <div class="form-group">
-                          <label>City</label>
+                          <label>Award Date:</label>
                           <input type="text" class="form-control" placeholder="New York...">
                         </div>
                       </div>
-                      <div class="col-sm-5">
+                      <div class="col-sm-10 col-sm-offset-1">
                         <div class="form-group">
-                          <label>Country</label><br>
-                          <select name="country" class="form-control">
-                            <option value="Afghanistan"> Afghanistan </option>
-                            <option value="Albania"> Albania </option>
-                            <option value="Algeria"> Algeria </option>
-                            <option value="American Samoa"> American Samoa </option>
-                            <option value="Andorra"> Andorra </option>
-                            <option value="Angola"> Angola </option>
-                            <option value="Anguilla"> Anguilla </option>
-                            <option value="Antarctica"> Antarctica </option>
-                            <option value="...">...</option>
-                          </select>
+                          <label>Description</label><br>
+                          <textarea class="form-control ckeditor" name="description"></textarea>
                         </div>
                       </div>
                     </div>
@@ -328,40 +343,18 @@
                   <div class="tab-pane" id="skills">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h5 class="info-text"> Are you living in a nice skills? </h5>
+                        <h5 class="info-text"> Skills </h5>
                       </div>
                       <div class="col-sm-7 col-sm-offset-1">
                         <div class="form-group">
-                          <label>Street Name</label>
+                          <label>Skill Name</label>
                           <input type="text" class="form-control" placeholder="5h Avenue">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
-                          <label>Street Number</label>
+                          <label>Expertise Level</label>
                           <input type="text" class="form-control" placeholder="242">
-                        </div>
-                      </div>
-                      <div class="col-sm-5 col-sm-offset-1">
-                        <div class="form-group">
-                          <label>City</label>
-                          <input type="text" class="form-control" placeholder="New York...">
-                        </div>
-                      </div>
-                      <div class="col-sm-5">
-                        <div class="form-group">
-                          <label>Country</label><br>
-                          <select name="country" class="form-control">
-                            <option value="Afghanistan"> Afghanistan </option>
-                            <option value="Albania"> Albania </option>
-                            <option value="Algeria"> Algeria </option>
-                            <option value="American Samoa"> American Samoa </option>
-                            <option value="Andorra"> Andorra </option>
-                            <option value="Angola"> Angola </option>
-                            <option value="Anguilla"> Anguilla </option>
-                            <option value="Antarctica"> Antarctica </option>
-                            <option value="...">...</option>
-                          </select>
                         </div>
                       </div>
                     </div>
@@ -369,29 +362,29 @@
                   <div class="tab-pane" id="referees">
                     <div class="row">
                       <div class="col-sm-12">
-                        <h5 class="info-text"> Are you living in a nice referee? </h5>
+                        <h5 class="info-text"> Referees </h5>
                       </div>
-                      <div class="col-sm-7 col-sm-offset-1">
+                      <div class="col-sm-3 col-sm-offset-1">
                         <div class="form-group">
-                          <label>Street Name</label>
-                          <input type="text" class="form-control" placeholder="5h Avenue">
+                          <label>Position/Designation</label>
+                          <input type="text" class="form-control" placeholder="242">
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-7">
                         <div class="form-group">
-                          <label>Street Number</label>
-                          <input type="text" class="form-control" placeholder="242">
+                          <label>Full Name</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
                         </div>
                       </div>
                       <div class="col-sm-5 col-sm-offset-1">
                         <div class="form-group">
-                          <label>City</label>
+                          <label>Phone Number</label>
                           <input type="text" class="form-control" placeholder="New York...">
                         </div>
                       </div>
                       <div class="col-sm-5">
                         <div class="form-group">
-                          <label>Country</label><br>
+                          <label>Email</label><br>
                           <select name="country" class="form-control">
                             <option value="Afghanistan"> Afghanistan </option>
                             <option value="Albania"> Albania </option>
@@ -403,6 +396,12 @@
                             <option value="Antarctica"> Antarctica </option>
                             <option value="...">...</option>
                           </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-8 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Employer/Organization</label>
+                          <input type="text" class="form-control" placeholder="New York...">
                         </div>
                       </div>
                     </div>
@@ -411,7 +410,7 @@
                 <div class="wizard-footer">
                   <div class="pull-right">
                     <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                    <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finish' />
+                    <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finish' />
                   </div>
 
                   <div class="pull-left">
@@ -428,7 +427,7 @@
 
     <div class="footer">
       <div class="container text-center">
-        Made with <i class="fa fa-heart heart"></i> by <a href="">Creative Tim</a>.
+        Made with <i class="fa fa-heart heart"></i> by <a href="">The NetworkedPros</a>.
       </div>
     </div>
   </div>

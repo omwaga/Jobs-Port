@@ -45,7 +45,7 @@ Route::get('/customize-resume','DashboardController@customizeresume')->name('cus
 Route::get('/recommended-jobs','DashboardController@recommended')->name('recommended');
 Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
 Route::get('/downloadresume/{id}','DashboardController@downloadresume');
-Route::get('/pick-theme', 'DashboardController@picktheme')->name('picktheme');
+Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview');
 
 //Employercontroller Routes
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');

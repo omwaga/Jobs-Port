@@ -309,7 +309,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
 
     //Method to pick the resume theme
     public function picktheme(){
-        return view('dashboard.resume-generated1');
+        return view('dashboard.resume-previews');
     }
 
     public function downloadresume($id)
