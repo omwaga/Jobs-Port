@@ -93,6 +93,12 @@
                         <li><a href="{{route('resume')}}">Resumes</a></li>
                     </ul>
                 </li>
+
+                <li class="menu-list"><a href="#"><i class="icon-folder"></i> <span>Cover Letters</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="{{route('coverletters.index')}}">Cover Letters Designs</a></li>
+                    </ul>
+                </li>
                 
                 <li class="menu-list"><a href="#"><i class="icon-envelope-open"></i> <span>Mail</span></a>
                     <ul class="sub-menu-list">

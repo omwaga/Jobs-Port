@@ -94,6 +94,7 @@ Route::get('/admin-resume', 'AdminController@resume')->name('resume');
 Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
 Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
 Route::resource('cvupload', 'CvUploadsController');
+Route::resource('coverletters', 'CoverLettersController');
 
 
 //employer login controllers

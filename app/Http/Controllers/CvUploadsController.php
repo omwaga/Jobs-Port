@@ -31,7 +31,7 @@ public function store(Request $request)
     }
     CvUpload::create($book);
 
-    return redirect()->back()->with('message', 'The template has been uploade successfully');
+    return redirect()->back()->with('message', 'The template has been uploaded successfully');
 }
 
 public function destroy(CvUpload $cvupload)

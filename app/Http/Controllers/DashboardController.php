@@ -322,7 +322,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
 
-        $pdf = PDF::loadView('dashboard.resume-generated', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
+        $pdf = PDF::loadView('dashboard.orbit-template', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
         return $pdf->download('The-NetworkedPros-resume.pdf');
     }
 }

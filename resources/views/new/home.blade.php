@@ -23,7 +23,6 @@
   </div><br>
   <div class="container">
                 <form method="get" action="{{route('homesearch')}}">
-              @csrf
         <div class="col-lg-12">
          <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -77,8 +76,8 @@
                <div class="mb-1 text-white-50 small">For Jobseekers</div>
                <p class="card-text mb-auto">Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use & done within minutes - try now for free! <br>
                <p>Find the right job fit with the networkedpros.Submit job applications, and track  the applications.</p>
-               <a class="btn btn-danger text-white" href="{{route('customizeresume')}}">Get Started</a></p>
 
+               <a class="btn btn-danger text-white" href="{{route('customizeresume')}}"><i class="fa fa-paper-plane" aria-hidden="true"></i> Get Started</a></p>
             </div>
          </div>
       </div>
@@ -102,12 +101,11 @@
                       <p><i class="fa fa-pied-piper text-white" aria-hidden="true"></i> Manage your Applicants</p>
                   
             <div class="box-btn">
-                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Register</a>
+                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Post a Job</a>
             </div>
                   </div>
               </div>
-            </div><!-- 
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 200px; height: 250px;"> -->
+            </div>
          </div>
       </div>
    </div>

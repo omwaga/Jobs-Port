@@ -1,514 +1,449 @@
-@extends("layouts.app")
-@section("content")
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="apple-touch-icon" sizes="76x76" href="resume_builder/img/apple-icon.png" />
+  <link rel="icon" type="image/png" href="resume_builder/img/favicon.png" />
+  <title>Resume Builder | Build</title>
 
-    <!--sidebar end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-    <!--main content start-->
-    <section class="section section-top section-full">
-          <div class="container"><br><br><br>
-<div class="panel-body">
-                  <p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
-                  <a href="{{route('picktheme')}}">Pick resume theme</a>
-                  <a class="btn text-white" href="{{action('DashboardController@downloadresume', auth()->user()->id)}}" style="background-color:#0B0B3B;">Download Resume</a>
-                  @include('errors')
-                  <hr>
-<h3 style="color:#0B0B3B;">Personal Information</h3>
-@if(!$personalinfo)
-<form method="POST" action="/personalinfo">
-             @csrf
-             <div class="row">
-                          <div class="col-md-4">
-        <label>Name:</label>
-<input type="text" name="name" class="form-control"style="border-radius:0px;"required autofocus value="{{old('name')}}">
-    </div>
-    <div class="col-md-4">
-        <label>Email Address:</label>
-<input type="email" name="email" class="form-control"style="border-radius:0px;"required autofocus value="{{old('email')}}">
-    </div>
-    <div class="col-md-4">
-          <label>Id/Passport Number:</label>
-    <input type="number" name="id_pass" class="form-control"style="border-radius:0px;"required autofocus value="{{old('id_pass')}}">
-    </div>
-    </div>
-    
-             <div class="row">
-    <div class="col-md-4">
-        <label>Phone Number:</label>
-<input type="text" name="phone" class="form-control"style="border-radius:0px;"required autofocus value="{{old('phone')}}">
-    </div>
-    <div class="col-md-4">
-          <label>Gender:</label>
-          <select name="gender" class="form-control" style="border-radius:0px;"required autofocus>
-               <option>Select Gender</option>
-              <option>Male</option>
-               <option>Female</option>
-          </select>
-    </div>
-    
-    <div class="col-md-4">
-        <label>Online Links:</label>
-<input type="text" name="links" class="form-control"style="border-radius:0px;" autofocus value="{{old('links')}}">
-    </div>
-    </div>
-             <div class="row">
-    <div class="col-md-4">
-        <label>Religion:</label>
- <select name="religion" class="form-control" style="border-radius:0px;" required autofocus value="{{old('religion')}}">
-               <option>Select religion</option> 
-              <option>Christianity</option>
-               <option>Islam</option>
-               <option>Hinduism</option>
-               <option>Buddhism</option>
-               <option>Prefer not to say</option>
-          </select>
-    </div>
-    <div class="col-md-4">
-          <label>Maritial Status:</label>
-          <select name="marital_status" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-               <option>Marital Status</option>
-              <option>Single</option>
-               <option>Married</option>
-               <option>Divorced</option>
-                <option>Widowed</option>
-             <option>Separated</option>
-          </select>
-    </div>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
 
-    <div class="col-md-4">
-        <label>Date Of Birth:</label>
-        <div class="input-group date">
-    <input type="date" name="dob" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-    </div>
-    </div>
-             <div class="row">
-     <div class="col-md-4">
-          <label>Nationality:</label>
-          <select name="nationality" class="form-control" style="border-radius:0px;"required autofocus value="{{old('nationality')}}">
-               <option>Select Country</option>
-               @foreach($countries as $country)
-              <option>{{$country->country}}</option>
-              @endforeach
-          </select>
-    </div>
-    <div class="col-md-4">
-          <label>City:</label>
-          <select name="city" class="form-control" style="border-radius:0px;"required autofocus value="{{old('city')}}">
-               <option>Select City</option>
-              <option>Nairobi</option>
-          </select>
-    </div>
-    <div class="col-md-4">
-        <label>Postal Address:</label>
-<input type="text" name="postal_address" class="form-control"style="border-radius:0px;" required autofocus value="{{old('postal_address')}}">
-    </div>
-    </div>
-   
-             <div class="row">
-    <div class="col-md-4">
-        <label>Postal Code:</label>
-<input type="text" name="postal_code" class="form-control"style="border-radius:0px;" required autofocus value="{{old('postal_code')}}">
-    </div>
-    </div><br>
-              <button type="submit" class="btn btn-success">Save</button>
-              </form>
-@else
-    <div class="row">
-              <div class="col-md-5">
-                  <label><strong>Name:</strong> {{$personalinfo->name ?? ''}}</label><br>
-                  <label><strong>Email:</strong> {{$personalinfo->email ?? ''}}</label><br>
-                  <label><strong>Phone Number:</strong> {{$personalinfo->phone?? ''}}</label><br>
-                  <label><strong>ID/Passport Number:</strong> {{$personalinfo->id_pass ?? ''}}</label><br>
-                  <label><strong>Date of Birth:</strong> {{$personalinfo->dob?? ''}}</label><br>
-              </div>
-              <!-- /col-md-4 -->
-              <div class="col-md-5">
-                <label><strong>Marital Status:</strong> {{$personalinfo->marital_status ?? ''}}</label><br>
-                <label><strong>Religion:</strong> {{$personalinfo->religion ?? ''}}</label><br>
-                <label><strong>Gender:</strong> {{$personalinfo->gender ?? ''}}</label><br>
-                <label><strong>Nationality:</strong> {{$personalinfo->nationality ?? ''}}</label><br>
-                <label><strong>City:</strong> {{$personalinfo->city ?? ''}}</label><br>
-                <label><strong>Postal Address:</strong> {{$personalinfo->postal_address ?? ''}}</label><br>
-                <label><strong>Postal Code:</strong> {{$personalinfo->postal_code ?? ''}}</label><br>
+  <!-- Canonical SEO -->
+  <!-- <link rel="canonical" href="https://www.creative-tim.com/product/paper-bootstrap-wizard"/> -->
 
-              </div>
-              
-              <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i>Edit</button>
-                  </div>
-              </div>
-              @include('dashboard.editpersonalinfo')
-              </div>
-              @endif
-              <br><hr>
- 
-    <h3 style="color:#0B0B3B;">Personal Statement</h3> 
-    @if(!$personalstatements)
-<form method="POST" action="/personalstatements"> 
-                      @csrf
-  <div class="row">
-      <div class="col-md-12">
-      <label>Personal Statement:</label>
-      <textarea name="statement" class="form-control ckeditor" id="article-ckeditor" required autofocus rows="3"style="border-radius:0px;"></textarea>    
-      </div>
-  </div>
-  <br>
-  <button type="submit" class="btn btn-success">Save & Continue</button>
-  </form>
-@else
-<div class="row">
-   <div class="col-md-10 profile-text">
-                  <label><strong>Personal Statement:</strong> {!!$personalstatements->statement  ?? ''!!}</label><br>
+  <meta name="keywords" content="wizard, bootstrap wizard, creative tim, long forms, 3 step wizard, sign up wizard, beautiful wizard, long forms wizard, wizard with validation, paper design, paper wizard bootstrap, bootstrap paper wizard">
+  <meta name="description" content="Paper Bootstrap Wizard is a fully responsive wizard that is inspired by our famous Paper Kit  and comes with 3 useful examples and 5 colors.">
 
-              </div>
-              
-              <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#personal"><i class="fa fa-edit"></i>Edit</button>
-                  </div>
-                  @include('dashboard.editpersonalstatement')
-              </div>
-              </div>
-              @endif
-              <br><hr>
-          
-    <h3 style="color:#0B0B3B;">Employment History</h3>  
-    @if(!$experience->count())
-    <form method="POST" action="/experiences">
-                              @csrf
-                          <div class="row">
-    <div class="col-md-3">
-        <label>Employer:</label>
-      <input type="text" class="form-control" name="employer" placeholder="Organization" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-3">
-        <label>Position:</label>
-      <input type="text" class="form-control" name="position" placeholder="Job Position" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-3">
-        <label>Employment Start Date:</label>
-                    <div class="input-group date">
-    <input type="date" name="start_date" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-    </div>
-    <div class="col-md-3">
-        <label>Employment End Date:</label>
-                    <div class="input-group date">
-    <input type="date" name="end_date" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-                    <div class="form-check">
-      <input class="form-check-input" type="hidden" name="current_employer" value="" id="defaultCheck1">
-  <input class="form-check-input" type="checkbox" name="current_employer" value="current employer" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Current Employer
-  </label>
-</div>
-                    </div>
-  </div>
-  <br>
-  <div class="row">
-      
-    
-                    <div class="col-md-12">
-      <label>Achievements and Responsibilities:</label>
-      <textarea name="roles" class="form-control ckeditor" id="duties" required autofocus rows="3"style="border-radius:0px;"></textarea>    
-      </div>
-  </div>
-  <br>
-  <button type="submit" class="btn btn-success">Save & Continue</button>
-  </form>
-    @else
-<div class="row">
-                @foreach($experience as $exp)
-   <div class="col-md-6 profile-text">
-                  <label><strong>Employer:</strong> {{$exp->employer ?? ''}}</label><br>
-                  <label><strong>Position:</strong> {{$exp->position ?? ''}}</label><br>
-       </div>
-   <div class="col-md-6 profile-text">
-                  <label><strong>Stat Date:</strong> {{$exp->start_date ?? ''}}</label><br>
-                  <label><strong>End Date:</strong> {{$exp->end_date ?? ''}}</label><br>
-                 </div>
-                 <div class="col-md-10">
-                  <label><strong>Resposibilities and Achievements:</strong> {!!$exp->roles  ?? ''!!}</label><br></div>
-                  <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#experience-{{$exp->id}}"><i class="fa fa-edit"></i>Edit</button>
-                  <button class="btn btn-info btn-sm text-white" data-toggle="modal" data-target="#newexperience"><i class="fa fa-plus"></i>Add</button>
-                  </div>
-                  @include('dashboard.editexperience')
-                  @include('dashboard.newexperience')
-              </div>
-              @endforeach
-                 </div>
-                 @endif
-                 <br><hr>
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Paper Bootstrap Wizard by Creative Tim">
+  <meta itemprop="description" content="Paper Bootstrap Wizard is a fully responsive wizard that is inspired by our famous Paper Kit  and comes with 3 useful examples and 5 colors.">
+  <!-- <meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/49/opt_pbw_thumbnail.jpg"> -->
 
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@creativetim">
+  <meta name="twitter:title" content="Paper Bootstrap Wizard by Creative Tim">
+  <meta name="twitter:description" content="Paper Bootstrap Wizard is a fully responsive wizard that is inspired by our famous Paper Kit  and comes with 3 useful examples and 5 colors.">
+  <meta name="twitter:creator" content="@creativetim">
+  <!-- <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/49/opt_pbw_thumbnail.jpg"> -->
 
-    <h3 style="color:#0B0B3B;">Education History</h3>
-    @if(!$education->count())
-    <form method="POST" action="/education">
-                              @csrf
-                         <div class="row">
-    <div class="col-md-4">
-      <label>Institution Name:</label>
-       <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-4">
-     <label>Name of Course Studied:</label>
-     <input type="text" class="form-control" name="qualification" placeholder="Bsc. Computer Science" required autofocus style="border-radius:0px;">
-    </div>
-    
-    <div class="col-md-4">
-          <label>Education Level:</label>
-          <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-               <option>Select Education Level</option>
-              <option>Certificate</option>
-              <option>Diploma</option>
-               <option>Degree</option>
-               <option>Masters</option>
-          </select>
-    </div>
-    
-    <div class="col-md-4">
-     <label>Start Date:</label>
-     <div class="input-group date">
-    <input type="date" name="start_date" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-    </div>
-    <div class="col-md-4" style="margin-left:10px;">
-     <label>Graduation Date:</label>
-     <div class="input-group date">
-    <input type="date" name="grad_date" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-    </div>
-    
-    <div class="col-md-4" style="margin-left:40px;">
-      <label>Attained Score:<br>
-      <small>For example: First Class Honors</small></label>
-       <input type="text" class="form-control" name="score" autofocus style="border-radius:0px;">
-    </div>
-  </div>
-  <br>
-                         <button type="submit" class="btn btn-success">Save & Continue</button>
-                            </form>
-    @else
-<div class="row">
-                @foreach($education as $edu)
-   <div class="col-md-5 profile-text">
-                  <label><strong>Institution Name:</strong> {{$edu->institution ?? ''}}</label><br>
-                  <label><strong>Name of Course Studied:</strong> {{$edu->qualification ?? ''}}</label><br>
-                  <label><strong>Education Level:</strong> {{$edu->level ?? ''}}</label><br>
-                  <label><strong>Attained Score:</strong>{{$edu->score ?? ''}}</label>
-       </div>
-   <div class="col-md-5 profile-text">
-                  <label><strong>Start Date:</strong> {{$edu->start_date ?? ''}}</label><br>
-                  <label><strong>Graduation Date:</strong> {{$edu->grad_date ?? ''}}</label><br>
-            </div>  
-            <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#editeducation-{{$edu->id}}"><i class="fa fa-edit"></i>Edit</button>
-                  <button class="btn btn-info btn-sm text-white" data-toggle="modal" data-target="#neweducation"><i class="fa fa-plus"></i>Add</button>
-                  </div>
-                 @include('dashboard.neweducation')
-                 @include('dashboard.editeducation')
-              </div>
-              @endforeach
-            </div>
-            @endif
-            <br><hr>
-     
-    <h3 style="color:#0B0B3B;">Awards & Certifications</h3>  
-        @if(!$awards->count())
-        <form method="POST" action="/awards">
-                              @csrf
-                         <div class="row">
-    <div class="col-md-4">
-      <label>Award Name:</label>
-       <input type="text" class="form-control" name="name" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-4">
-     <label>Institution:</label>
-     <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
-    </div>
-    
-    <div class="col-md-4">
-     <label>Award/Qualification Date:</label>
-     <div class="input-group date">
-    <input type="date" name="award_date" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
-    </div>
-  </div>
-  <br>
-   <div class="row">
+  <!-- Open Graph data -->
+
+  <!-- CSS Files -->
+  <link href="resume_builder/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="resume_builder/css/paper-bootstrap-wizard.css" rel="stylesheet" />
+
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+
+  <!-- Fonts and Icons -->
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+  <link href="resume_builder/css/themify-icons.css" rel="stylesheet">
   
-    <div class="col-md-12">
-      <label>Description:</label>
-      <textarea name="description" class="form-control ckeditor" id="award" required autofocus rows="3"style="border-radius:0px;"></textarea> 
+</head>
+
+<body>
+  <div class="image-container set-full-height" style="background-image: url('resume_builder/img/paper-1.jpeg')">
+
+      <a class="btn text-white" href="{{action('DashboardController@downloadresume', auth()->user()->id)}}" style="background-color:#0B0B3B;">Download Resume</a>
+    <!--   Big container   -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+
+          <!--      Wizard container        -->
+          <div class="wizard-container">
+
+            <div class="card wizard-card" data-color="orange" id="wizardProfile">
+              <form action="" method="POST">
+                <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
+
+                <div class="wizard-header text-center">
+                  <h3 class="wizard-title">Create your profile</h3>
+                  <p class="category">This information will let us know more about you.</p>
+                </div>
+
+                <div class="wizard-navigation">
+                  <div class="progress-with-circle">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" style="width: 21%;"></div>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#about" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-user"></i>
+                        </div>
+                        Personal Information
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#account" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-settings"></i>
+                        </div>
+                        Employment
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#address" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-map"></i>
+                        </div>
+                        Education
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#awards" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-map"></i>
+                        </div>
+                        Awards and Certifications
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#skills" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-map"></i>
+                        </div>
+                        Skills
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#referees" data-toggle="tab">
+                        <div class="icon-circle">
+                          <i class="ti-map"></i>
+                        </div>
+                        Referees
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="about">
+                    <div class="row">
+                      <h5 class="info-text"> Please tell us more about yourself.</h5>
+                      <div class="col-sm-4 col-sm-offset-1">
+                        <div class="picture-container">
+                          <div class="picture">
+                            <img src="resume_builder/img/default-avatar.jpg" class="picture-src" id="wizardPicturePreview" title="" />
+                            <input type="file" id="wizard-picture">
+                          </div>
+                          <h6>Choose Picture</h6>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label>First Name <small>(required)</small></label>
+                          <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
+                        </div>
+                        <div class="form-group">
+                          <label>Last Name <small>(required)</small></label>
+                          <input name="lastname" type="text" class="form-control" placeholder="Smith...">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4 col-sm-offset-1">
+                          <div class="form-group">
+                            <label>Email <small>(required)</small></label>
+                            <input name="email" type="email" class="form-control" value="{{$personalinfo->email ?? ''}}" placeholder="name@domain.com">
+                          </div>
+                          <div class="form-group">
+                            <label>Phone Number: <small>(required)</small></label>
+                            <input name="phone" type="text" class="form-control" value="{{$personalinfo->phone?? ''}}" placeholder="0700000000">
+                          </div>
+                          <div class="form-group">
+                            <label>Religion: <small>(required)</small></label>
+                            <input name="religion" type="text" class="form-control" placeholder="andrew@creative-tim.com">
+                          </div>
+                          <div class="form-group">
+                            <label>Select Nationality</label><br>
+                            <select name="nationality" class="form-control">
+                              <option>Select Country</option>
+                              <option value="Afghanistan"> Afghanistan </option>
+                              <option value="Albania"> Albania </option>
+                              <option value="Algeria"> Algeria </option>
+                              <option value="American Samoa"> American Samoa </option>
+                              <option value="Andorra"> Andorra </option>
+                              <option value="Angola"> Angola </option>
+                              <option value="Anguilla"> Anguilla </option>
+                              <option value="Antarctica"> Antarctica </option>
+                              <option value="...">...</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>State/Region</label><br>
+                            <select name="city" class="form-control">
+                              <option>Select City</option>
+                              <option value="Afghanistan"> Afghanistan </option>
+                              <option value="Albania"> Albania </option>
+                              <option value="Algeria"> Algeria </option>
+                              <option value="American Samoa"> American Samoa </option>
+                              <option value="Andorra"> Andorra </option>
+                              <option value="Angola"> Angola </option>
+                              <option value="Anguilla"> Anguilla </option>
+                              <option value="Antarctica"> Antarctica </option>
+                              <option value="...">...</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                          <div class="form-group">
+                            <label>ID/Passport Number <small>(required)</small></label>
+                            <input name="id_pass" type="text" class="form-control" value="{{$personalinfo->id_pass ?? ''}}" placeholder="23673356">
+                          </div>
+                          <div class="form-group">
+                            <label>Gender: <small>(required)</small></label>
+                            <input name="gender" type="text" class="form-control" placeholder="andrew@creative-tim.com">
+                          </div>
+                          <div class="form-group">
+                            <label>Maritial Status: <small>(required)</small></label>
+                            <input name="marital_status" type="text" class="form-control" value="{{$personalinfo->marital_status ?? ''}}" placeholder="">
+                          </div>
+                          <div class="form-group">
+                            <label>Date Of Birth: <small>(required)</small></label>
+                            <input name="dob" type="text" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="account">
+                    <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                    <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-4">
+                          <div class="choice" data-toggle="wizard-checkbox">
+                            <input type="checkbox" name="jobb" value="Design">
+                            <div class="card card-checkboxes card-hover-effect">
+                              <i class="ti-paint-roller"></i>
+                              <p>Design</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="choice" data-toggle="wizard-checkbox">
+                            <input type="checkbox" name="jobb" value="Code">
+                            <div class="card card-checkboxes card-hover-effect">
+                              <i class="ti-pencil-alt"></i>
+                              <p>Code</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="choice" data-toggle="wizard-checkbox">
+                            <input type="checkbox" name="jobb" value="Develop">
+                            <div class="card card-checkboxes card-hover-effect">
+                              <i class="ti-star"></i>
+                              <p>Develop</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="address">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5 class="info-text"> Are you living in a nice area? </h5>
+                      </div>
+                      <div class="col-sm-7 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Street Name</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Street Number</label>
+                          <input type="text" class="form-control" placeholder="242">
+                        </div>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>City</label>
+                          <input type="text" class="form-control" placeholder="New York...">
+                        </div>
+                      </div>
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                          <label>Country</label><br>
+                          <select name="country" class="form-control">
+                            <option value="Afghanistan"> Afghanistan </option>
+                            <option value="Albania"> Albania </option>
+                            <option value="Algeria"> Algeria </option>
+                            <option value="American Samoa"> American Samoa </option>
+                            <option value="Andorra"> Andorra </option>
+                            <option value="Angola"> Angola </option>
+                            <option value="Anguilla"> Anguilla </option>
+                            <option value="Antarctica"> Antarctica </option>
+                            <option value="...">...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="awards">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5 class="info-text"> Are you living in a nice area? </h5>
+                      </div>
+                      <div class="col-sm-7 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Street Name</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Street Number</label>
+                          <input type="text" class="form-control" placeholder="242">
+                        </div>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>City</label>
+                          <input type="text" class="form-control" placeholder="New York...">
+                        </div>
+                      </div>
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                          <label>Country</label><br>
+                          <select name="country" class="form-control">
+                            <option value="Afghanistan"> Afghanistan </option>
+                            <option value="Albania"> Albania </option>
+                            <option value="Algeria"> Algeria </option>
+                            <option value="American Samoa"> American Samoa </option>
+                            <option value="Andorra"> Andorra </option>
+                            <option value="Angola"> Angola </option>
+                            <option value="Anguilla"> Anguilla </option>
+                            <option value="Antarctica"> Antarctica </option>
+                            <option value="...">...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="skills">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5 class="info-text"> Are you living in a nice skills? </h5>
+                      </div>
+                      <div class="col-sm-7 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Street Name</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Street Number</label>
+                          <input type="text" class="form-control" placeholder="242">
+                        </div>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>City</label>
+                          <input type="text" class="form-control" placeholder="New York...">
+                        </div>
+                      </div>
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                          <label>Country</label><br>
+                          <select name="country" class="form-control">
+                            <option value="Afghanistan"> Afghanistan </option>
+                            <option value="Albania"> Albania </option>
+                            <option value="Algeria"> Algeria </option>
+                            <option value="American Samoa"> American Samoa </option>
+                            <option value="Andorra"> Andorra </option>
+                            <option value="Angola"> Angola </option>
+                            <option value="Anguilla"> Anguilla </option>
+                            <option value="Antarctica"> Antarctica </option>
+                            <option value="...">...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="referees">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5 class="info-text"> Are you living in a nice referee? </h5>
+                      </div>
+                      <div class="col-sm-7 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>Street Name</label>
+                          <input type="text" class="form-control" placeholder="5h Avenue">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Street Number</label>
+                          <input type="text" class="form-control" placeholder="242">
+                        </div>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                          <label>City</label>
+                          <input type="text" class="form-control" placeholder="New York...">
+                        </div>
+                      </div>
+                      <div class="col-sm-5">
+                        <div class="form-group">
+                          <label>Country</label><br>
+                          <select name="country" class="form-control">
+                            <option value="Afghanistan"> Afghanistan </option>
+                            <option value="Albania"> Albania </option>
+                            <option value="Algeria"> Algeria </option>
+                            <option value="American Samoa"> American Samoa </option>
+                            <option value="Andorra"> Andorra </option>
+                            <option value="Angola"> Angola </option>
+                            <option value="Anguilla"> Anguilla </option>
+                            <option value="Antarctica"> Antarctica </option>
+                            <option value="...">...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
+                    <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd' name='finish' value='Finish' />
+                  </div>
+
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Previous' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div> <!-- wizard container -->
+        </div>
+      </div><!-- end row -->
+    </div> <!--  big container -->
+
+    <div class="footer">
+      <div class="container text-center">
+        Made with <i class="fa fa-heart heart"></i> by <a href="">Creative Tim</a>.
+      </div>
     </div>
   </div>
-  <br>
-                         <button type="submit" class="btn btn-success">Save & Continue</button>
-                            </form>
-@else
-<div class="row">
-         @foreach($awards as $award)
-   <div class="col-md-5 profile-text">
-                  <label><strong>Award Name:</strong> {{$award->name ?? ''}}</label><br>
-                  <label><strong>Institution:</strong> {{$award->institution ?? ''}}</label><br>
-       </div>
-   <div class="col-md-5 profile-text">
-                  <label><strong>Award Date:</strong> {{$award->award_date ?? ''}}</label><br>
-                  <label><strong>Description:</strong> {!!$award->description  ?? ''!!}</label><br>
-                  </div>
-                  <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#editaward-{{$award->id}}"><i class="fa fa-edit"></i>Edit</button>
-                  <button class="btn btn-info btn-sm text-white" data-toggle="modal" data-target="#newaward"><i class="fa fa-plus"></i>Add</button>
-                  </div>
-                @include('dashboard.newaward')
-                @include('dashboard.editaward')
-              </div>
-              @endforeach
-                  </div>
-                  @endif
-                  <br><hr>
-                  
-    <h3 style="color:#0B0B3B;">References </h3> 
-    @if(!$references->count())
-    <form method="POST" action="/references">
-                              @csrf
-                          <div class="row">
-                <div class="col-lg-4">
-                                    <label>Name:</label>
-                                    <input type="text" class="form-control" name="name" required autofocus placeholder="Full Name" style="border-radius:0px;">
-                                        </div>
-                                         <div class="col-lg-4">
-                                         <label>Title:</label>
-                                        <input type="text" name="position" class="form-control" required autofocus placeholder="Title" style="border-radius:0px;">
-                                                                    </div>
-                                                            <div class="col-lg-4">
-                                                                <label>Phone Number:</label>
-                                                                <input type="tel" class="form-control" name="phone" required autofocus placeholder="Phone Number"style="border-radius:0px;">
-                                                            </div>
-                                                                </div>
-             <br>
-                                                       <div class="row">
-                                                            <div class="col-lg-4">
-                                                                  <label>Email address:</label>
-                                                               <input type="email" name="email" class="form-control" required autofocus placeholder="Email Address"style="border-radius:0px;">
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <label>Organization:</label>
-                                        <input type="text" name="organization" class="form-control" required autofocus placeholder=" Organization" style="border-radius:0px;">
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <button type="submit" class="btn btn-success">Save & Continue</button>
-                                                        </form>
-    @else
-<div class="row">
-      @foreach($references as $reference)
-   <div class="col-md-5 profile-text">
-                  <label><strong>Name:</strong> {{$reference->name  ?? ''}}</label><br>
-                  <label><strong>Email:</strong> {{$reference->email  ?? ''}}</label><br>
-                  <label><strong>Phone Number:</strong> {{$reference->phone  ?? ''}}</label><br>
-       </div>
-   <div class="col-md-5 profile-text">
-                  <label><strong>Organization:</strong> {{$reference->organization  ?? ''}}</label><br>
-                  <label><strong>Position:</strong> {{$reference->position  ?? ''}}</label><br>
-                  </div>
-                  <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#editref-{{$reference->id}}"><i class="fa fa-edit"></i>Edit</button>
-                  <button class="btn btn-info btn-sm text-white"  data-toggle="modal" data-target="#newreferee"><i class="fa fa-plus"></i>Add</button>
-                  </div>
-                      @include('dashboard.newreference')
-                      @include('dashboard.editreference')
-              </div>
-              @endforeach
-                  </div>
-                  @endif
-                  <br><hr>
-            
-    <h3 style="color:#0B0B3B;">Skills </h3>  
-        @if(!$skills->count())
-        <form method="POST" action="/jobskills">
-                              @csrf
-                           <div class="row">
-      <div class="col-md-6">
-      <label>Skill Name:</label>
-      <input name="skillname" type="text" class="form-control" required autofocus > 
-      </div>
-      <div class="col-md-6">
-          <label>Expertise Level:</label>
-          <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-               <option>Select Skill Level</option>
-              <option>Beginner</option>
-               <option>Intermediate</option>
-               <option>Expert</option>
-          </select>
-    </div>
-  </div><br>
-                                                   <button type="submit" class="btn btn-success">Save & Continue</button>
-                                                   </form>
-@else
-<div class="row">
-                  @foreach($skills as $skill)
-                   <div class="col-md-10 profile-text">
-                  <label><strong>Skill Name:</strong> {{$skill->skillname  ?? ''}}</label><br>
-                  <label><strong>Expertise Level:</strong> {{$skill->level ?? ''}}</label><br>
-                  </div>
-                  <div class="col-md-2">
-                  <div class="btn-group" role="group">
-                  <button class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#editskill-{{$skill->id}}"><i class="fa fa-edit"></i>Edit</button>
-                  <button class="btn btn-info btn-sm text-white"  data-toggle="modal" data-target="#newskill"><i class="fa fa-plus"></i>Add</button>
-                  </div>
-                  @include('dashboard.newskill')
-                  @include('dashboard.editskill')
-              </div>
-              @endforeach
-                  </div>
-                  @endif
-                  <br><hr>
-                  
-<div class="clearfix"></div>
-</div>
 
-        <!-- /row -->
-      </section>
-    </section>
-      <script>
-$(document).ready(function(){
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    localStorage.setItem('activeTab', $(e.target).attr('href'));
-});
+</body>
 
-var activeTab = localStorage.getItem('activeTab');
-if(activeTab){
-    $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
-}
-});
-</script>
-    <!--main content end-->
-    @endsection
+<!--   Core JS Files   -->
+<script src="resume_builder/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="resume_builder/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="resume_builder/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="resume_builder/js/paper-bootstrap-wizard.js" type="text/javascript"></script>
+
+<!--  More information about jquery.validate here: https://jqueryvalidation.org/   -->
+<script src="resume_builder/js/jquery.validate.min.js" type="text/javascript"></script>
+
+</html>

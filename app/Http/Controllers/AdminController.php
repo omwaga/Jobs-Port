@@ -71,7 +71,6 @@ class AdminController extends Controller
         $resumes = CvUpload::all();
 
         return view('admin.resume', compact('resumes'));
-        return view('admin.resume');
     }
 
     // manage industries

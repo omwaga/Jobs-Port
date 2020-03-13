@@ -317,18 +317,79 @@ public function filterindustry($name){
     }
     
 public function searchhome(Request $request){
-    if($request->industry !== "All Job Industries" && $request->job_category !== "All Job Functions")
+    if($request->industry !== "All Job Industries" && $request->job_category === "All Job Functions" && $request->state === "State/Region")
     {
-      $jobs = Jobposts::where('industry', $request->industry)->get();
-      return $jobs;
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('industry', $request->industry)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
     }
-    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries"){
-      $jobs = Jobposts::where('jobcategories_id', $request->job_category)->get();
-      return $jobs;
+    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state === "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('jobcategories_id', $request->job_category)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
     }
-    elseif($request->state !== "" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
-      $jobs = Jobposts::where('location', $request->state)->get();
-      return $jobs;
+    elseif($request->state !== "State/Region" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('location', $request->state)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+
+    }
+    //Both Job function and the job industry is selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state === "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job function and the job location is selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job industry and the job location is selected
+    elseif($request->job_category === "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $industry_jobs = Jobposts::where('industry', $request->industry);
+      $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job industry, job function  and the job location are selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $industry_jobs = Jobposts::where('industry', $request->industry);
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->paginate(12);
+
+      return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
     }
     }
 
