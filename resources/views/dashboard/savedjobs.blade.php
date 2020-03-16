@@ -1,10 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<br>
-<div class="container">
+<div class="container" style="padding-top: 6rem">
 
      <div class="row">
          <div class="col-md-8">

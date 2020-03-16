@@ -309,7 +309,15 @@ $message->subject('COMPANY ACCOUNT CREATION');
 
     //Method to pick the resume theme
     public function picktheme(){
-        return view('dashboard.resume-previews');
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+
+        return view('dashboard.resume-previews', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
     }
 
     public function downloadresume($id)

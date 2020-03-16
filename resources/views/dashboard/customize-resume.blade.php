@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <link rel="apple-touch-icon" sizes="76x76" href="resume_builder/img/apple-icon.png" />
   <link rel="icon" type="image/png" href="resume_builder/img/favicon.png" />
-  <title>Resume Builder | Build</title>
+  <title>NetworkedPros Resume Builder | Build</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
@@ -57,7 +57,7 @@
 <body>
   <div class="image-container set-full-height" style="background-image: url('resume_builder/img/paper-1.jpeg')">
 
-      <a class="btn text-white" href="{{action('DashboardController@downloadresume', auth()->user()->id)}}" style="background-color:#0B0B3B;">Download Resume</a>
+      
     <!--   Big container   -->
     <div class="container">
       <div class="row">
@@ -71,7 +71,7 @@
                 <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                 <div class="wizard-header text-center">
-                  <h3 class="wizard-title">Create your profile</h3>
+                  <h3 class="wizard-title">Create your profile to generate your resume</h3>
                   <p class="category">This information will let us know more about you.</p>
                 </div>
 
