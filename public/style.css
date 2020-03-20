@@ -35,7 +35,7 @@ h3 {
 
 p, ul, ol {
 	margin-top: 0;
-	line-height: 100%;
+	/*line-height: 100%;*/
 }
 
 ul, ol {

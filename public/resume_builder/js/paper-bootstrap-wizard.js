@@ -63,8 +63,7 @@ transparent = true;
                       required: true
                     },
                     marital_status: {
-                      required: true,
-                      minlength: 3
+                      required: true
                     },
                     dob: {
                       required: true

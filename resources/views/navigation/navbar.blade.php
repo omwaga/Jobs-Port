@@ -24,7 +24,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('resume-services')}}">
+              <a class="nav-link" href="{{route('resumesamples')}}">
                 <i class="fa fa-check">
                 </i>
                 Resume Builder
@@ -54,7 +54,7 @@
             </li>
             
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('resume-services')}}">
+              <a class="nav-link" href="{{route('resumesamples')}}">
                 <i class="fa fa-check">
                 </i>
                 Resume Builder

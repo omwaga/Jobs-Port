@@ -294,7 +294,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
 
     public function customizeresume()
     {
-        $countries = Countrylist::all();
+        $countries = DB::table('countries')->pluck("name","id");
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -308,7 +308,7 @@ $message->subject('COMPANY ACCOUNT CREATION');
     }
 
     //Method to pick the resume theme
-    public function picktheme(){
+    public function picktheme(Request $request){
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -316,6 +316,10 @@ $message->subject('COMPANY ACCOUNT CREATION');
         $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+
+        $details = request(['name', 'email', 'id_pass', 'phone', 'gender', 'links', 'religion', 'marital_status', 'dob', 'nationality', 'city', 'postal_address', 'postal_code']);
+        $employment = request(['employer', 'position', 'start_date', 'end_date', 'current_employer']);
+        // return $employment;
 
         return view('dashboard.resume-previews', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
     }

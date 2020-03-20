@@ -26,7 +26,7 @@ Released   : 20111031
                 <h2 class="title">Personal Information</h2>
                 <div style="clear: both;">&nbsp;</div>
                 <div class="entry">
-                    <p style="width: 60%">{{$personalstatements->statement}}</p>
+                    <p style="width: 60%">{{$personalstatements->statement  ?? ''}}</p>
                 </div>
             </div>
             <div class="post">
@@ -58,13 +58,13 @@ Released   : 20111031
         <div id="sidebar">
             <ul>
                 <li>
-                    <h4>{{$personalinfo->name}}</h4>
+                    <h4>{{$personalinfo->name  ?? ''}}</h4>
                     <ul>
-                        <li>{{$personalinfo->email}}</li>
-                        <li><strong>Phone:</strong>{{$personalinfo->phone}}</li>
-                        <li><strong>Gender:</strong>{{$personalinfo->gender}}</li>
-                        <li><strong>Religion:</strong>{{$personalinfo->religion}}</li>
-                        <li><strong>DOB:</strong>{{$personalinfo->dob}}</li>
+                        <li>{{$personalinfo->email  ?? ''}}</li>
+                        <li><strong>Phone:</strong>{{$personalinfo->phone  ?? ''}}</li>
+                        <li><strong>Gender:</strong>{{$personalinfo->gender  ?? ''}}</li>
+                        <li><strong>Religion:</strong>{{$personalinfo->religion  ?? ''}}</li>
+                        <li><strong>DOB:</strong>{{$personalinfo->dob  ?? ''}}</li>
                     </ul>
                 </li>
             </ul>

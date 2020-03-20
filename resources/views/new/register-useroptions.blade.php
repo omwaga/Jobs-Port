@@ -8,7 +8,7 @@
           <div class="modal-body">
               <div class="row">
                   <div class="col-md-6">
-                          <form id="loginForm" method="POST" action="{{ route('login') }}" novalidate="novalidate">
+                          <form id="loginForm" method="POST" action="{{ route('create-resume') }}" novalidate="novalidate">
                                 @csrf
                       <div class="well">
                               <div class="form-group">

@@ -13,7 +13,7 @@
                         <h2 class="title">Personal Information</h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                            <p style="width: 60%">{{$personalstatements->statement}}</p>
+                            <p style="width: 60%">{{$personalstatements->statement  ?? ''}}</p>
                         </div>
                     </div>
                     <div class="post">
@@ -45,13 +45,13 @@
                 <div id="sidebar">
                     <ul>
                         <li>
-                            <h4>{{$personalinfo->name}}</h4>
+                            <h4>{{$personalinfo->name  ?? ''}}</h4>
                             <ul>
-                                <li class="text-white">{{$personalinfo->email}}</li>
-                                <li class="text-white"><strong>Phone:</strong>{{$personalinfo->phone}}</li>
-                                <li class="text-white"><strong>Gender:</strong>{{$personalinfo->gender}}</li>
-                                <li class="text-white"><strong>Religion:</strong>{{$personalinfo->religion}}</li>
-                                <li class="text-white"><strong>DOB:</strong>{{$personalinfo->dob}}</li>
+                                <li class="text-white">{{$personalinfo->email  ?? ''}}</li>
+                                <li class="text-white"><strong>Phone:</strong>{{$personalinfo->phone  ?? ''}}</li>
+                                <li class="text-white"><strong>Gender:</strong>{{$personalinfo->gender  ?? ''}}</li>
+                                <li class="text-white"><strong>Religion:</strong>{{$personalinfo->religion  ?? ''}}</li>
+                                <li class="text-white"><strong>DOB:</strong>{{$personalinfo->dob  ?? ''}}</li>
                             </ul>
                         </li>
                     </ul>
@@ -63,12 +63,12 @@
     </div>
     <div class="col-md-4">
         <h5 class="">Select a template to preview</h5>
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-1.jpg" style="width: 150px; height: 150px">
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-2.jpg" style="width: 150px; height: 150px">
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-3.jpg" style="width: 150px; height: 150px">
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-4.jpg" style="width: 150px; height: 150px">
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-5.jpg" style="width: 150px; height: 150px">
-        <img src="resume/free-resume-cv-bootstrap-template-for-developer-color-6.jpg" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-1.jpg') }}" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-2.jpg') }}" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-3.jpg') }}" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-4.jpg') }}" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-5.jpg') }}" style="width: 150px; height: 150px">
+        <img src="{{ asset('resume/free-resume-cv-bootstrap-template-for-developer-color-6.jpg') }}" style="width: 150px; height: 150px">
     </div>
 </div>
 </div>
