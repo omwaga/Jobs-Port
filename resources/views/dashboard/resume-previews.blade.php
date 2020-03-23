@@ -3,7 +3,13 @@
 <div class="container" style="padding-top: 6rem">
     <div class="row">
         <div class="col-md-12">
+            <div class="col-md-6">
             <a class="btn text-white" href="{{action('DashboardController@downloadresume', auth()->user()->id)}}" style="background-color:#0B0B3B;">Download Resume</a>
+            </div>
+            <div class="col-md-6">
+                @include('success')
+                @include('errors')
+            </div>
         </div>
         <div class="col-md-8">
           <div id="wrapper">

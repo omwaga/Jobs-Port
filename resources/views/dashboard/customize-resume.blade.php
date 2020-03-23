@@ -96,9 +96,10 @@
 
               <!--      Wizard container        -->
               <div class="wizard-container">
-
+@include('errors')
                 <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                  <form action="{{route('themepreview')}}" method="get">
+                  <form action="{{route('buildresume')}}" method="post">
+                    @csrf
                     <!--        You can switch " data-color="orange" "  with one of the next bright colors: "blue", "green", "orange", "red", "azure"          -->
 
                     <div class="wizard-header text-center">
@@ -193,7 +194,7 @@
                               <div class="form-group">
                                 <label>Religion: <small>(required)</small></label>
                                 <select name="religion" class="form-control" style="border-radius:0px;" required autofocus>
-                                 <option>{{$personalinfo->religion ?? 'religion'}}</option>
+                                 <option>{{$personalinfo->religion ?? 'Select Religion'}}</option>
                                  <option>Christianity</option>
                                  <option>Islam</option>
                                  <option>Hinduism</option>
@@ -216,6 +217,10 @@
                              <option>State/Region</option>
                            </select> 
                          </div>
+                        <div class="form-group">
+                          <label>Postal Address: <small>(required)</small></label>
+                          <input name="postal_address" type="text" class="form-control" value="{{$personalinfo->postal_address?? ''}}" placeholder="">
+                        </div>
                        </div>
                        <div class="col-sm-4 col-sm-offset-1">
                         <div class="form-group">
@@ -244,6 +249,10 @@
                         <div class="form-group">
                           <label>Date Of Birth: <small>(required)</small></label>
                           <input name="dob" type="date" class="form-control" value="{{$personalinfo->dob?? ''}}" placeholder="">
+                        </div>
+                        <div class="form-group">
+                          <label>Postal Code: <small>(required)</small></label>
+                          <input name="postal_code" type="text" class="form-control" value="{{$personalinfo->postal_code ?? ''}}" placeholder="">
                         </div>
                       </div>
                     </div>
@@ -328,7 +337,7 @@
                     <div class="col-sm-5 col-sm-offset-1">
                       <div class="form-group">
                         <label>Start Date:</label>
-                        <input type="date" value="{{old('start_date')}}" name="start_date" class="form-control">
+                        <input type="date" value="{{old('education_start_date')}}" name="education_start_date" class="form-control">
                       </div>
                     </div>
                     <div class="col-sm-5">
@@ -348,13 +357,13 @@
                     <div class="col-sm-7 col-sm-offset-1">
                       <div class="form-group">
                         <label>Award Name:</label>
-                        <input name="name" value="{{old('name')}}" type="text" class="form-control">
+                        <input name="award_name" value="{{old('award_name')}}" type="text" class="form-control">
                       </div>
                     </div>
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label>Institution:</label>
-                        <input name="institution" value="{{old('institution')}}" type="text" class="form-control" placeholder="Institution Name">
+                        <input name="award_institution" value="{{old('award_institution')}}" type="text" class="form-control" placeholder="Institution Name">
                       </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-1">
@@ -366,7 +375,7 @@
                     <div class="col-sm-10 col-sm-offset-1">
                       <div class="form-group">
                         <label>Description</label><br>
-                        <textarea class="form-control ckeditor" name="description">{{old('description')}}</textarea>
+                        <textarea class="form-control ckeditor" name="award_description">{{old('award_description')}}</textarea>
                       </div>
                     </div>
                   </div>
@@ -385,7 +394,7 @@
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label>Expertise Level</label>
-                        <select name="level" class="form-control" style="border-radius:0px;"required autofocus>
+                        <select name="skill_level" class="form-control" style="border-radius:0px;"required autofocus>
                <option>{{$skill->level ?? 'Select Level'}} </option>
               <option>Beginner</option>
                <option>Intermediate</option>
@@ -403,31 +412,31 @@
                     <div class="col-sm-3 col-sm-offset-1">
                       <div class="form-group">
                         <label>Position/Designation</label>
-                        <input type="text" name="position" class="form-control" value="{{old('position')}}" placeholder="Position">
+                        <input type="text" name="referee_position" class="form-control" value="{{old('referee_position')}}" placeholder="Position">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Full Name">
+                        <input type="text" name="referee_name" class="form-control" value="{{old('referee_name')}}" placeholder="Full Name">
                       </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-1">
                       <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="text" name="phone" class="form-control">
+                        <input type="text" value="{{old('phone_number')}}" name="phone_number" class="form-control">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label>Email</label><br>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" value="{{old('referee_email')}}" class="form-control" name="referee_email">
                       </div>
                     </div>
                     <div class="col-sm-8 col-sm-offset-1">
                       <div class="form-group">
                         <label>Employer/Organization</label>
-                        <input type="text" name="organization" class="form-control">
+                        <input type="text" value="{{'organization'}}" name="organization" class="form-control">
                       </div>
                     </div>
                   </div>
