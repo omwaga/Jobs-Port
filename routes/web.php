@@ -17,6 +17,8 @@ Route::get('/Login-Page',function(){
     return view('auth.login1');
 });
 
+Route::get('/test', 'PagesController@test');
+
 //AUthenticated jobseeker routes
 Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
 Route::get('/career-profile','DashboardController@careerprofile')->name('career-profile');

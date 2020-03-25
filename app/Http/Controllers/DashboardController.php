@@ -308,6 +308,7 @@ public function customizeresume()
 
     //Method to pick the resume theme
 public function buildresume(Request $request){
+    return $request;
     $attributes = request()->validate([
         'name' => ['required', 'min:3'],
         'email' => 'required',

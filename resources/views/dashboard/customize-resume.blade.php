@@ -42,6 +42,16 @@
   <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
   <link href="resume_builder/css/themify-icons.css" rel="stylesheet">
   
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<style type="text/css">
+    .table-sortable tbody tr {
+    cursor: move;
+}
+</style>
+
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
   <script>
@@ -297,6 +307,59 @@
                         </div>
                       </div>
                     </div>
+
+
+
+
+                  <div class="col-sm-8 col-sm-offset-2">
+    <div class="row clearfix">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Employer
+                        </th>
+                        <th class="text-center">
+                            Start Date
+                        </th>
+                        <th class="text-center">
+                            Position
+                        </th>
+                        <th class="text-center">
+                            Description
+                        </th>
+                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id='addr0' data-id="0" class="hidden">
+                        <td data-name="nemployer">
+                            <input type="text" name='nemployer0'  placeholder='Name' class="form-control"/>
+                        </td>
+                        <td data-name="start">
+                            <input type="date" name='start0' placeholder='Email' class="form-control"/>
+                            <input type="date" name='end0' placeholder='Email' class="form-control"/>
+                        </td>
+                        <td data-name="position">
+                            <input type="text" name='position0' placeholder='Email' class="form-control"/>
+                        </td>
+                        <td data-name="description">
+                            <textarea name="description0" rows="10" placeholder="Description" class="form-control"></textarea>
+                        </td>
+                        <td data-name="delete_employer">
+                            <button name="delete_employer0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a id="add_row" class="btn btn-primary float-right">Add Employment Details</a>
+</div>
+
+
                   </div>
                 </div>
                 <div class="tab-pane" id="address">
@@ -346,6 +409,9 @@
                                                 <input type="date" value="{{old('grad_date')}}" name="grad_date" class="form-control">
 
                       </div>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1">
+                      @include('dashboard.resume-addeducation')
                     </div>
                   </div>
                 </div>
@@ -439,6 +505,14 @@
                         <input type="text" value="{{'organization'}}" name="organization" class="form-control">
                       </div>
                     </div>
+
+
+                    <div class="col-sm-10 col-sm-offset-1">
+                      @include('dashboard.resume-addreference')
+                    </div>
+
+
+
                   </div>
                 </div>
               </div>
@@ -507,5 +581,93 @@
             });
     });
     </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $("#add_row").on("click", function() {
+        // Dynamic Rows Code
+        
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        // add delete button and td
+        /*
+        $("<td></td>").append(
+            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
+                .click(function() {
+                    $(this).closest("tr").remove();
+                })
+        ).appendTo($(tr));
+        */
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logic'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+
+
+
+    // Sortable Code
+    var fixHelperModified = function(e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+    
+        $helper.children().each(function(index) {
+            $(this).width($originals.eq(index).width())
+        });
+        
+        return $helper;
+    };
+  
+    $(".table-sortable tbody").sortable({
+        helper: fixHelperModified      
+    }).disableSelection();
+
+    $(".table-sortable thead").disableSelection();
+
+
+
+    $("#add_row").trigger("click");
+});
+</script>
 
 </html>
