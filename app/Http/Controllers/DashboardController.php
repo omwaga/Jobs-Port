@@ -308,7 +308,6 @@ public function customizeresume()
 
     //Method to pick the resume theme
 public function buildresume(Request $request){
-    return $request;
     $attributes = request()->validate([
         'name' => ['required', 'min:3'],
         'email' => 'required',
@@ -353,6 +352,7 @@ public function buildresume(Request $request){
         ['name' => request()->name, 'email' => request()->email, 'phone' => request()->phone, 'religion' => request()->religion, 'nationality' => request()->country, 'city' => request()->state, 'id_pass' => request()->id_pass, 'gender' => request()->gender, 'marital_status' => request()->marital_status, 'dob' => request()->dob, 'postal_code' => request()->postal_code, 'postal_address' => request()->postal_address]
     );
 
+//addition of the first education by the user
     $educated = new Education();
     $educated->qualification = request()->qualification;
     $educated->score = request()->score;
@@ -363,6 +363,7 @@ public function buildresume(Request $request){
     $educated->user_id = auth()->user()->id;
     $educated->save();
 
+// save the first experience from the user
     $experienced  = new WorkExperience();
     $experienced->user_id = auth()->user()->id;
     $experienced->employer = request()->employer;
@@ -372,6 +373,33 @@ public function buildresume(Request $request){
     $experienced->end_date = request()->end_date;
     $experienced->save();
 
+//save the first additional work experience
+    if(request()->nemployer1 !== null)
+    {
+        $experienced  = new WorkExperience();
+        $experienced->user_id = auth()->user()->id;
+        $experienced->employer = request()->nemployer1;
+        $experienced->position = request()->position1;
+        $experienced->roles = request()->description1;
+        $experienced->start_date = request()->start1;
+        $experienced->end_date = request()->end_date;
+        $experienced->save();
+    }
+
+    //save the second additional work experience
+    if(request()->nemployer2 !== null)
+    {
+        $experienced  = new WorkExperience();
+        $experienced->user_id = auth()->user()->id;
+        $experienced->employer = request()->nemployer2;
+        $experienced->position = request()->position2;
+        $experienced->roles = request()->description2;
+        $experienced->start_date = request()->start2;
+        $experienced->end_date = request()->end_date;
+        $experienced->save();
+    }
+
+//addition of the first award by the user
     $awarded = new Awards();
     $awarded->user_id = auth()->user()->id;
     $awarded->name = request()->award_name;
@@ -380,12 +408,14 @@ public function buildresume(Request $request){
     $awarded->description = request()->award_description;
     $awarded->save();
 
+//addition of the first skill by the user
     $skilled = new Skills();
     $skilled->user_id = auth()->user()->id;
     $skilled->skillname = request()->skill_name;
     $skilled->level = request()->skill_level;
     $skilled->save();
 
+//addition of the first referee by the user
     $referee = new Reference();
     $referee->user_id = auth()->user()->id;
     $referee->name =  request()->referee_name;

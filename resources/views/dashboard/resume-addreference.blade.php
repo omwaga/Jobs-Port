@@ -56,7 +56,7 @@
             </table>
         </div>
     </div>
-    <a id="add_ref" class="btn btn-primary float-right">Add Row</a>
+    <a id="add_ref" class="btn btn-primary float-right">Add Referee Details</a>
 
 <script type="text/javascript">
     $(document).ready(function() {

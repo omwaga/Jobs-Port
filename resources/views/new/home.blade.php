@@ -65,23 +65,21 @@
 </div>
 </section>
 <div class="container">
-   <div class="row">
-      <div class="col-md-6">
-         <div class="card text-white flex-md-row mb-4 shadow-sm h-md-250" style="background-color:#0B0B3B;">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-white">Resume Buider</strong>
-               <h5 class="mb-0">
-                  <a class="text-white" href="{{route('customizeresume')}}">Create a Professional Resume and Cover Letter</a>
-               </h5><br>
-               <div class="mb-1 text-white-50 small">For Jobseekers</div>
-               <p class="card-text mb-auto">Use professional field-tested resume templates that follow the exact ‘resume rules’ employers look for. Easy to use & done within minutes - try now for free! <br>
-               <p>Find the right job fit with the networkedpros.Submit job applications, and track  the applications.</p>
-
-               <a class="btn btn-danger text-white" href="{{route('customizeresume')}}"><i class="fa fa-paper-plane" aria-hidden="true"></i> Get Started</a></p>
-            </div>
+      <div class="col-md-12">
+        <div class="row">
+         <div class="col-md-8" style="background-color:#0B0B3B;">
+             <div class="mb-1 text-white-50 small">For Jobseekers</div>
+               <h5 class="text-white">BUILD PROFESSIONAL RESUMES AND COVER LETTERS
+                  <a class="btn btn-danger text-white" href="{{route('customizeresume')}}">RESUME BUILDER</a>
+               </h5>
          </div>
-      </div>
-      <div class="col-md-6">
+         <div class="col-md-4 btn-danger">
+             <div class="mb-1 text-white-50 small">For Jobseekers</div>
+               <h4 class="text-white">FIND THE RIGHT FIT <a  style="background-color:#0B0B3B;" class="btn text-white" href="{{route('customizeresume')}}"><i class="fa fa-paper-plane" aria-hidden="true"></i> LOGIN</a></h4>
+         </div>
+         </div>
+      </div><br>
+      <div class="col-md-12">
          <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                <h5 class="mb-0">
@@ -107,7 +105,6 @@
               </div>
             </div>
          </div>
-      </div>
    </div>
 </div>
 <br>

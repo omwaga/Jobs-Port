@@ -1,4 +1,4 @@
-<nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top" style="background-color: #070A53">
+<nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top shadow-lg" style="background-color: #ffffff">
         <a class="navbar-brand" href="{{route('homee')}}">
            <img src="{{asset('Images/logo/log.png')}}" alt="" style="width:320px;">
         </a>
@@ -10,87 +10,87 @@
           <ul class="navbar-nav mr-auto ">
               @guest
               <li class="nav-item active">
-              <a class="nav-link" href="/">
-                <i class="fa fa-home">
+              <a class="nav-link text-secondary" href="/">
+                <i class="fa fa-home text-secondary">
                 </i>
                 Home
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('alljobs')}}">
-                <i class="fa fa-search">
+              <a class="nav-link text-secondary" href="{{route('alljobs')}}">
+                <i class="fa fa-search text-secondary">
                 </i>
                 Job Search
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('resumesamples')}}">
-                <i class="fa fa-check">
+              <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
+                <i class="fa fa-check text-secondary">
                 </i>
                 Resume Builder
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <i class="fa fa-graduation-cap">
+              <a class="nav-link text-secondary" href="#">
+                <i class="fa fa-graduation-cap text-secondary">
                 </i>
                 Career Hub
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('fromblog')}}">
-                <i class="fa fa-sticky-note">
+              <a class="nav-link text-secondary" href="{{route('fromblog')}}">
+                <i class="fa fa-sticky-note text-secondary">
                 </i>
-                From Blog
+                Career Insights
               </a>
             </li>
             @else
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('alljobs')}}">
-                <i class="fa fa-search">
+              <a class="nav-link text-secondary" href="{{route('alljobs')}}">
+                <i class="fa fa-search text-secondary">
                 </i>
                 Find a Job
               </a>
             </li>
             
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('resumesamples')}}">
-                <i class="fa fa-check">
+              <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
+                <i class="fa fa-check text-secondary">
                 </i>
                 Resume Builder
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('recommended')}}">
-                <i class="fa fa-superpowers">
+              <a class="nav-link text-secondary" href="{{route('recommended')}}">
+                <i class="fa fa-superpowers text-secondary">
                 </i>
                 Recommended Jobs
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('savedjobs')}}">
-                <i class="fa fa-heart">
+              <a class="nav-link text-secondary" href="{{route('savedjobs')}}">
+                <i class="fa fa-heart text-secondary">
                 </i>
                 Saved Jobs
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{url('/jobapplications')}}">
-                <i class="fa fa-rocket">
+              <a class="nav-link text-secondary" href="{{url('/jobapplications')}}">
+                <i class="fa fa-rocket text-secondary">
                 </i>
                 Job Applications
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <i class="fa fa-graduation-cap">
+              <a class="nav-link text-secondary" href="#">
+                <i class="fa fa-graduation-cap text-secondary">
                 </i>
                 Career Advice
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('career-profile')}}">
-                <i class="fa fa-road">
+              <a class="nav-link text-secondary" href="{{route('career-profile')}}">
+                <i class="fa fa-road text-secondary">
                 </i>
                 Career Profile
               </a>
@@ -101,7 +101,7 @@
                         @guest
           <ul class="navbar-nav ml-auto ">
               <li class="nav-item">
-                        <a class="btn btn-secondary text-white" href="{{ route('login') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Login</a>
+                        <a class="btn btn-secondary text-white" href="{{ route('login') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Jobseeker</a>
                         </li>
                             @if (Route::has('register'))
               <li class="nav-item" style="padding-left:1em;">
@@ -115,7 +115,7 @@
                         
           <ul class="navbar-nav ml-auto ">
               <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i style="font-size:2.5em;" class="fa fa-user text-danger">
                 </i>
           {{ Auth::user()->name }} <span class="caret">

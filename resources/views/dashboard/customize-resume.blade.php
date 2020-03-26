@@ -121,7 +121,7 @@
                       <div class="progress-with-circle">
                         <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" style="width: 21%;"></div>
                       </div>
-                      <ul>
+                      <ul style="list-style: none;">
                         <li>
                           <a href="#about" data-toggle="tab">
                             <div class="icon-circle">
@@ -271,6 +271,41 @@
                 <div class="tab-pane" id="account">
                   <h5 class="info-text"> Provide Your Work Experience </h5>
                   <div class="row">
+                    @if($experience->count() > 0)
+
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Employer
+                        </th>
+                        <th class="text-center">
+                            Position
+                        </th>
+                        <th class="text-center">
+                            Start Date
+                        </th>
+                        <th class="text-center">
+                            End Date
+                        </th>
+                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach($experience as $experienced)
+                  <tr>
+                    <td>{{$experienced->position}}</td>
+                    <td>{{$experienced->employer}}</td>
+                    <td>{{$experienced->start_date}}</td>
+                    <td>{{$experienced->end_date}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+                    @else
                     <div class="col-sm-8 col-sm-offset-2">
                       <div class="col-sm-6">
                         <div class="form-group">
@@ -307,7 +342,7 @@
                         </div>
                       </div>
                     </div>
-
+                    @endif
 
 
 
@@ -364,6 +399,43 @@
                 </div>
                 <div class="tab-pane" id="address">
                   <div class="row">
+                    @if($education->count() > 0)
+                    <div class="col-sm-12">
+                      <h5 class="info-text"> Education History </h5>
+                    </div>
+                    <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Course/Qualification
+                        </th>
+                        <th class="text-center">
+                            Institution
+                        </th>
+                        <th class="text-center">
+                            Start Date
+                        </th>
+                        <th class="text-center">
+                            Graduation Date
+                        </th>
+                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach($education as $educated)
+                  <tr>
+                    <td>{{$educated->qualification}}</td>
+                    <td>{{$educated->institution}}</td>
+                    <td>{{$educated->start_date}}</td>
+                    <td>{{$educated->grad_date}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+                    @else
                     <div class="col-sm-12">
                       <h5 class="info-text"> Please provide your Education history </h5>
                     </div>
@@ -410,15 +482,50 @@
 
                       </div>
                     </div>
+                    @endif
+
                     <div class="col-sm-10 col-sm-offset-1">
                       @include('dashboard.resume-addeducation')
                     </div>
+
                   </div>
                 </div>
                 <div class="tab-pane" id="awards">
                   <div class="row">
+                    @if($awards->count() > 0)
                     <div class="col-sm-12">
-                      <h5 class="info-text"> Awards and Certifictaion? </h5>
+                      <h5 class="info-text"> Awards and Certifictaion </h5>
+                    </div>
+
+                    <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Award Name
+                        </th>
+                        <th class="text-center">
+                            Institution/Body
+                        </th>
+                        <th class="text-center">
+                            Award Date
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach($awards as $award)
+                  <tr>
+                    <td>{{$award->name}}</td>
+                    <td>{{$award->institution}}</td>
+                    <td>{{$award->award_date}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+                    @else
+                    <div class="col-sm-12">
+                      <h5 class="info-text">Fill Awards and Certifictaion? </h5>
                     </div>
                     <div class="col-sm-7 col-sm-offset-1">
                       <div class="form-group">
@@ -444,10 +551,42 @@
                         <textarea class="form-control ckeditor" name="award_description">{{old('award_description')}}</textarea>
                       </div>
                     </div>
+                    @endif
+
+                    <div class="col-sm-10 col-sm-offset-1">
+                      @include('dashboard.resume-addaward')
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane" id="skills">
                   <div class="row">
+                    @if($skills->count() > 0)
+                    <div class="col-sm-12">
+                      <h5 class="info-text"> Skills </h5>
+                    </div>
+                    <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Skill Name
+                        </th>
+                        <th class="text-center">
+                            Expertise Level
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach($skills as $skill)
+                  <tr>
+                    <td>{{$skill->skillname}}</td>
+                    <td>{{$skill->level}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+                    @else
                     <div class="col-sm-12">
                       <h5 class="info-text"> Skills </h5>
                     </div>
@@ -468,10 +607,48 @@
           </select>
                       </div>
                     </div>
+                    @endif<div class="col-sm-10 col-sm-offset-1">
+                      @include('dashboard.resume-addskill')
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane" id="referees">
                   <div class="row">
+                    @if($references->count() > 0)
+                    <div class="col-sm-12">
+                      <h5 class="info-text"> Referees </h5>
+                    </div>
+                    <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover table-sortable">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            Full Name
+                        </th>
+                        <th class="text-center">
+                            Phone Number
+                        </th>
+                        <th class="text-center">
+                            Email
+                        </th>
+                        <th class="text-center">
+                            Organization
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach($references as $reference)
+                  <tr>
+                    <td>{{$reference->name}}</td>
+                    <td>{{$reference->phone}}</td>
+                    <td>{{$reference->email}}</td>
+                    <td>{{$reference->organization}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+                    @else
                     <div class="col-sm-12">
                       <h5 class="info-text"> Referees </h5>
                     </div>
@@ -505,7 +682,7 @@
                         <input type="text" value="{{'organization'}}" name="organization" class="form-control">
                       </div>
                     </div>
-
+                    @endif
 
                     <div class="col-sm-10 col-sm-offset-1">
                       @include('dashboard.resume-addreference')
