@@ -6,7 +6,7 @@
   <div class="container">
   <div class="row">
       <div class="col-md-8" style=" padding-top: 5rem;">
-      <h2 class=" text-white text-center">Get the best job vacancies <br> & careers from NGO's, Government, & Private Institutions.</h2>
+      <h2 class=" text-white text-center">DON'T SEARCH FOR JOBS. <br> FIND THE RIGHT FIT INSTEAD.</h2>
       <h4 class="text-white text-center">Browse for latest jobs and land your dream job.</h4>
   </div>
   <div class="col-md-4" align="center">
@@ -70,7 +70,7 @@
          <div class="col-md-8" style="background-color:#0B0B3B;">
              <div class="mb-1 text-white-50 small">For Jobseekers</div>
                <h5 class="text-white">BUILD PROFESSIONAL RESUMES AND COVER LETTERS
-                  <a class="btn btn-danger text-white" href="{{route('customizeresume')}}">RESUME BUILDER</a>
+                  <a class="btn btn-danger text-white" href="{{route('resumesamples')}}">GET STARTED</a>
                </h5>
          </div>
          <div class="col-md-4 btn-danger">
@@ -79,21 +79,124 @@
          </div>
          </div>
       </div><br>
-      <div class="col-md-12">
-         <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <h5 class="mb-0">
-                  <a class="text-white" href="{{route('hirre')}}">Search Best Talent with The NetworkedPro's Resume Database Access</a>
-               </h5>
-               <div class="mb-1 text-white-50 small">For Employers</div>
-               <p class="card-text mb-auto">Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services.</p>
+      <div class="col-md-12" align="center">
+               <h4 class="mb-0">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
+    <!--start code-->
+  <div class="row ">
+      <div class="col-12 py-4">
+          <div class="row">
+                <!--Breaking box-->
+                <div class="col-md-3 col-lg-2 pr-md-0">
+                    <div class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">View all Companies</span></div>
+                </div>
+                <!--end breaking box-->
+                <!--Breaking content-->
+                <div class="col-md-9 col-lg-10 pl-md-4 py-2">
+                    <div class="breaking-box">
+                        <div id="carouselbreaking" class="carousel slide" data-ride="carousel">
+                            <!--breaking news-->
+                            <div class="carousel-inner">
+                                <!--post-->
+                                <div class="carousel-item">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--post-->
+                                <div class="carousel-item">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--post-->
+                                <div class="carousel-item">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--post-->
+                                <div class="carousel-item">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                     <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                     <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--post-->
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                     <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                    <a class="text-primary" href="#">Company Name</a>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <!--end breaking news-->
+                            
+                            <!--navigation slider-->
+                            <div class="navigation-box p-2 d-none d-sm-block">
+                                <!--nav left-->
+                                <a class="carousel-control-prev text-primary" href="#carouselbreaking" role="button" data-slide="prev">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <!--nav right-->
+                                <a class="carousel-control-next text-primary" href="#carouselbreaking" role="button" data-slide="next">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!--end navigation slider-->
+                        </div>
+                    </div>
+                </div>
+                <!--end breaking content-->
+            </div>
+        </div>
+  </div>
+  <!--end code-->
+               <h5 class="card-text">LET US HELP YOU HIRE BETTER</h5>
                <div class="row">
-                  <div class="col-md-6">
+                <div class="col-md-4">
+                  <p>Let Us help You Hire better Or Call Sales +251-116-67-33-24 Already have an account?</p>
+                </div>
+                  <div class="col-md-4">
                      <p><i class="fa fa-clock text-white" aria-hidden="true"></i> 2 Minutes to Post</p>
                      <p><i class="fa fa-users text-white" aria-hidden="true"></i> Attract Audience</p>
                      <p><i class="fa fa-volume-control-phone text-white" aria-hidden="true"></i> Contact Directly</p>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                      <p><i class="fa fa-flag text-white" aria-hidden="true"></i> Unlimited Applies</p>
                      <p><i class="fa fa-bullseye text-white" aria-hidden="true"></i> 30 days Job Visibility</p>
                       <p><i class="fa fa-pied-piper text-white" aria-hidden="true"></i> Manage your Applicants</p>
@@ -101,44 +204,123 @@
             <div class="box-btn">
                 <a class="btn btn-danger text-white" href="{{route('hirre')}}">Post a Job</a>
             </div>
-                  </div>
-              </div>
             </div>
          </div>
    </div>
 </div>
 <br>
+
 <div class="container">
-        <div class="col-md-12" align="center">
-    <h4 style="margin-top:2%; text-center"><b>Latest Jobs</b></h4>
-    
-      <div class="row">
-    		  	@foreach($jobs as $job)
-    		  	<div class="col-md-4">
-    		  	<div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="vertical-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#pag1" role="tab" aria-controls="home">Latest jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag2" role="tab" aria-controls="profile">Jobs by Location</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag3" role="tab" aria-controls="messages">Jobs by Industry</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag4" role="tab" aria-controls="settings">Government Jobs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag5" role="tab" aria-controls="settings">NGO and Humanitarian Jobs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag6" role="tab" aria-controls="settings">UN Jobs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pag7" role="tab" aria-controls="settings">International Jobs</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="pag1" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+            <h4>LATEST JOBS</h4>
+            <div class="row">
+            @foreach($jobs as $job)
+              <div class="col-md-4"> 
+            <ul>
         @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
-    		  	    <p><a href="/jobview/{{$job->id}}/{{$jobtitle}}" class="font-weight-bold" style="color:#0B0B3B;">
-    		  	   {!! $job->jobtitle !!}
-    		  	   </a></p>
-    		  	    <p>{{$job->jobtype}} | Expiry Date: {{$job->expirydate}} | Salary Ksh {{$job->salary}}</p>
-    		  	   <!-- @if( $job->expirydate > Carbon\Carbon::now() )
-    		  	   <p class="text-danger">Job expires after <span class="badge badge-primary">{{Carbon\Carbon::parse($job->expirydate)->diffInDays(Carbon\Carbon::now())}} </span> days </p>
-    		  	   @else
-    		  	   <p class="text-danger">Job has expired</p>
-    		  	   @endif -->
-    		  	</div>
-    		  	<br>
-    		  	</div>
-      	@endforeach
-      	<div class="col-md-12" align="center">
-      	  {{ $jobs->links() }}
-      	</div><br>
-    	</div>
+              <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+               {!! $job->jobtitle !!}
+               </a></li>
+            </ul>
+              </div>
+              @endforeach
+            </div>
+          </div>
         </div>
-    	    <div class="col-md-12" align="center">
-    	    <a href="{{route('alljobs')}}" class="btn text-white" style="background-color:#070A53;">Browse the {{$alljobs->count()}} Jobs</a>
-    	    </div>
-</div>
+        <div class="tab-pane" id="pag2" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+            <h4>JOBS BY LOCATION</h4>
+            <div class="row">
+            @foreach($towns as $town)
+              <div class="col-md-4"> 
+            <ul>
+              <li style="list-style: none;" class="pb-2"><a href="/job-location/{{$town->name}}" style="color:#0B0B3B;">
+               {!! $town->name !!}
+               </a></li>
+            </ul>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="pag3" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+            <h4>JOBS BY INDUSTRY</h4>
+            <div class="row">
+            @foreach($industry as $industrie)
+              <div class="col-md-4"> 
+            <ul>
+        <!-- @php $industry = str_slug($industrie->name, '-'); @endphp -->
+              <li style="list-style: none;" class="pb-2"><a href="/job-industry/{{$industrie->name}}" style="color:#0B0B3B;">
+               {!! $industrie->name !!}
+               </a></li>
+            </ul>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="pag4" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+           <h4>GOVERNMENT JOBS</h4>
+            <p>CONTEUDO 4</p>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="pag5" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+            <h4>NGO AND HUMANITARIAN SECTOR JOBS</h4>
+            <p>CONTEUDO 5</p>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="pag6" role="tabpanel">
+          <div class="sv-tab-panel" align="center">
+            <h4>UN JOBS</h4>
+            <p>CONTEUDO 6</p>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="pag7" role="tabpanel">
+          <div class="sv-tab-panel">
+            <h3>INTERNATIONAL JOBS</h3>
+            <p>CONTEUDO 7</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
         @include('new.create-alertsmodal')
       <script type="text/javascript">

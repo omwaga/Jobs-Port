@@ -4,8 +4,8 @@
 <div class="container" style="padding-top: 6rem;">
      <div class="row">
          <div class="col-md-8">
-                 @if(count($location) > 0)
-                 @foreach($location as $show)
+                 @if($jobs->count() > 0)
+                 @foreach($jobs as $show)
                  <div class="column card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
       <div class="col-md-12">
       <div class="row">
@@ -31,7 +31,9 @@
        </div> 
   </div>
                  @endforeach
-                 {{$location->links()}}
+                 {{$jobs->links()}}
+                 @else
+                 <p>Nothing to show in this location yet.</p>
                  @endif
              </div>
                       <div class="col-md-4">

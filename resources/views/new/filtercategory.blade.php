@@ -33,6 +33,8 @@
   </div>
                  @endforeach
                  {{$jobs->links()}}
+                 @else
+                 <p>Nothing to show yet.</p>
                  @endif
              </div>
                       <div class="col-md-4">

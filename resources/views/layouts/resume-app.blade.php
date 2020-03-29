@@ -11,9 +11,11 @@
     <meta name="keywords" content="@yield('keywords')">
       <link rel="shortcut icon" href="{{asset('Images/logo/Networked.jpg')}}">
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
     <script src="{{ asset('js/jobs.js') }}" defer></script>
     <script src="{{ asset('js/partners.js') }}" defer></script>
+    <link id="theme-style" rel="stylesheet" href="resume/css/orbit-1.css">
+    <link href="assets/plugins/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -23,12 +25,14 @@
     <link href="https://fonts.googleapis.com/css?family=Sniglet&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!--homeslider-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/jobs.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/jobs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume-samples.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
@@ -119,6 +123,7 @@ h3{
     }
 });
 </script>
+    <script src="assets/editable.js"></script>
 
 </body>
 

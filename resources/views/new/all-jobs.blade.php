@@ -58,7 +58,7 @@
                  </div>
     <div class="row">
     <div class="col-md-3">
-                    <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                    <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="{{$job->jobtitle}}" width="140" height="140">
                   </div>
                 <div class="col-md-9">
                 <p class="text-dark">

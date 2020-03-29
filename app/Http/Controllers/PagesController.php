@@ -176,16 +176,18 @@ public function homee(){
   $industries=Industry::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $alljobs=Jobposts::all();
-  $jobs=Jobposts::orderBy('created_at','desc')->limit(18)->paginate(12);
+  $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
   $countries = DB::table('countries')->pluck("name","id");
   $company=Cprofile::orderBy('created_at','desc')->limit(6)->get();
+  $town=Town::orderBy('name','asc')->get();
 
   return view('new.home')->with('industry',$industries)
   ->with('jobs',$jobs)
   ->with('countries',$countries)
   ->with('companyy',$company)
   ->with('alljobs',$alljobs)
-  ->with('categories',$categories);
+  ->with('categories',$categories)
+  ->with('towns',$town);
 
 }
 
@@ -238,20 +240,16 @@ public function searchresult(Request $request)
 }
 
 public function filterlocation($name){
-  $showlocation=Town::where('name',$name)->first();
-  $loccount=Jobposts::whereIn('location',$showlocation)->get()->count();
+  $town_id=Town::where('name',$name)->pluck('id');
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $gettown=Town::select('name')->whereIn('id',$showlocation)->get();
-  $loc=Jobposts::whereIn('location',$showlocation)->paginate(10);
-  $industry=Industry::orderBy('name','asc')->limit(10)->get();
-  $cnamee=Cprofile::select('cname')->whereIn('id',$showlocation)->get();
-  return view('new.filterlocation')->with('location',$loc)
+  $jobs=Jobposts::whereIn('location',$town_id)->paginate(10);
+  $industries=Industry::orderBy('name','asc')->limit(10)->get();
+
+  return view('new.filterlocation')
   ->with('locations',$towns)
-  ->with('loccount',$loccount)
-  ->with('industries',$industry)
-  ->with('company',$cnamee)
-  ->with('gettown',$gettown)
+  ->with('industries',$industries)
+  ->with('jobs',$jobs)
   ->with('categories',$categories);
 }
 
