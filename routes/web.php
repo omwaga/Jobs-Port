@@ -129,6 +129,7 @@ Route::get('/blog/{name}', 'PagesController@singleblog')->name('singleblog');
 Route::get('em', 'PagesController@leads')->name('leads');
 Route::get('/cv-templates', 'PagesController@cv')->name('cv');
 Route::resource('alerts', 'JobAlertsController');
+Route::get('/all-companies', 'PagesController@companies')->name('all-companies');
 
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');

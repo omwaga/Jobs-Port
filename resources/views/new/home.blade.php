@@ -87,7 +87,7 @@
           <div class="row">
                 <!--Breaking box-->
                 <div class="col-md-3 col-lg-2 pr-md-0">
-                    <div class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">View all Companies</span></div>
+                    <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">View all Companies</span></a>
                 </div>
                 <!--end breaking box-->
                 <!--Breaking content-->
@@ -110,49 +110,10 @@
                                   </div>
                                 </div>
                                 <!--post-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!--post-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!--post-->
-                                <div class="carousel-item">
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                     <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                     <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!--post-->
                                 <div class="carousel-item active">
                                     <div class="row">
                                     <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
+                                  <img class="rounded-circle img-fluid" src="{{asset('https://indepthresearch.org/images/logos/New_IRES_Logo.png')}}" alt="Generic placeholder image" width="140" height="140">
                                      <a class="text-primary" href="#">Company Name</a>
                                     </div>
                                     <div class="col-md-6">
@@ -187,19 +148,20 @@
   </div>
   <!--end code-->
                <h5 class="card-text">LET US HELP YOU HIRE BETTER</h5>
-               <div class="row">
+               <div class="row border-light shadow-sm p-3 mb-5 bg-white rounded">
                 <div class="col-md-4">
-                  <p>Let Us help You Hire better Or Call Sales +251-116-67-33-24 Already have an account?</p>
+                  <p>Let Us help You Hire better<br> Or Call Sales +254 792516000 <br>Already have an account?<br>
+                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Login</a></p>
                 </div>
                   <div class="col-md-4">
-                     <p><i class="fa fa-clock text-white" aria-hidden="true"></i> 2 Minutes to Post</p>
-                     <p><i class="fa fa-users text-white" aria-hidden="true"></i> Attract Audience</p>
-                     <p><i class="fa fa-volume-control-phone text-white" aria-hidden="true"></i> Contact Directly</p>
+                     <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
+                     <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
+                     <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
                   </div>
                   <div class="col-md-4">
-                     <p><i class="fa fa-flag text-white" aria-hidden="true"></i> Unlimited Applies</p>
-                     <p><i class="fa fa-bullseye text-white" aria-hidden="true"></i> 30 days Job Visibility</p>
-                      <p><i class="fa fa-pied-piper text-white" aria-hidden="true"></i> Manage your Applicants</p>
+                     <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
+                     <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
+                      <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
                   
             <div class="box-btn">
                 <a class="btn btn-danger text-white" href="{{route('hirre')}}">Post a Job</a>

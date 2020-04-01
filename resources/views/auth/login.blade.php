@@ -65,10 +65,12 @@
                                     </a>
                                 @endif
                             </div>
-
-
-                    <a href="{{route('Register')}}" class="btn text-white float-right" style="background-color:#0B0B3B ">Not Registered ?</a>
                         </div>
+                            <div class="row">
+                                <div class="col-md-12" align="center">
+                                <a href="{{route('Register')}}" class="btn text-white" style="background-color:#0B0B3B ">Not Registered ?</a>
+                                </div>
+                            </div>
                     </form>
                 </div>
             </div>

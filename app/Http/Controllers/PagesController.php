@@ -184,11 +184,18 @@ public function homee(){
   return view('new.home')->with('industry',$industries)
   ->with('jobs',$jobs)
   ->with('countries',$countries)
-  ->with('companyy',$company)
+  ->with('companies',$company)
   ->with('alljobs',$alljobs)
   ->with('categories',$categories)
   ->with('towns',$town);
 
+}
+
+public function companies()
+{
+  $companies = Cprofile::all();
+
+  return view('new.all-companies', compact('companies'));
 }
 
 public function foremployer()
