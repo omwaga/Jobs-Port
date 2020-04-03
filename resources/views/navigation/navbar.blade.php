@@ -11,35 +11,35 @@
               @guest
               <li class="nav-item active">
               <a class="nav-link text-secondary" href="/">
-                <i class="fa fa-home text-secondary">
+                <i class="fa fa-home text-primary">
                 </i>
                 Home
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('alljobs')}}">
-                <i class="fa fa-search text-secondary">
+                <i class="fa fa-search text-primary">
                 </i>
                 Job Search
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
-                <i class="fa fa-check text-secondary">
+                <i class="fa fa-check text-primary">
                 </i>
                 Resume Builder
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="#">
-                <i class="fa fa-graduation-cap text-secondary">
+                <i class="fa fa-graduation-cap text-primary">
                 </i>
                 Career Hub
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('fromblog')}}">
-                <i class="fa fa-sticky-note text-secondary">
+                <i class="fa fa-sticky-note text-primary">
                 </i>
                 Career Insights
               </a>
@@ -47,7 +47,7 @@
             @else
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('alljobs')}}">
-                <i class="fa fa-search text-secondary">
+                <i class="fa fa-search text-primary">
                 </i>
                 Find a Job
               </a>
@@ -55,42 +55,42 @@
             
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
-                <i class="fa fa-check text-secondary">
+                <i class="fa fa-check text-primary">
                 </i>
                 Resume Builder
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('recommended')}}">
-                <i class="fa fa-superpowers text-secondary">
+                <i class="fa fa-superpowers text-primary">
                 </i>
                 Recommended Jobs
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('savedjobs')}}">
-                <i class="fa fa-heart text-secondary">
+                <i class="fa fa-heart text-primary">
                 </i>
                 Saved Jobs
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{url('/jobapplications')}}">
-                <i class="fa fa-rocket text-secondary">
+                <i class="fa fa-rocket text-primary">
                 </i>
                 Job Applications
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="#">
-                <i class="fa fa-graduation-cap text-secondary">
+                <i class="fa fa-graduation-cap text-primary">
                 </i>
                 Career Advice
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-secondary" href="{{route('career-profile')}}">
-                <i class="fa fa-road text-secondary">
+                <i class="fa fa-road text-primary">
                 </i>
                 Career Profile
               </a>

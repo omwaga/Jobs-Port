@@ -198,6 +198,12 @@ public function companies()
   return view('new.all-companies', compact('companies'));
 }
 
+// function to view a single company profile
+public function onecompany()
+{
+  return view('new.company');
+}
+
 public function foremployer()
 {
   return view('new.foremployer');

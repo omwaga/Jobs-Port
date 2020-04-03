@@ -115,6 +115,7 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 
 //public routes
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
+Route::get('/companyone', 'PagesController@onecompany')->name('onecompany');
 Route::get('/search-result', 'PagesController@searchresult');
 Route::get('/job-category/{name}','PagesController@showcategory');
 Route::get('/job-location/{name}','PagesController@filterlocation');

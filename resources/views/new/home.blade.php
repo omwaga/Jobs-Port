@@ -64,7 +64,7 @@
   </div>
 </div>
 </section>
-<div class="container">
+<div class="container-fluid">
       <div class="col-md-12">
         <div class="row">
          <div class="col-md-8" style="background-color:#0B0B3B;">
@@ -79,96 +79,6 @@
          </div>
          </div>
       </div><br>
-      <div class="col-md-12" align="center">
-               <h4 class="mb-0">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
-    <!--start code-->
-  <div class="row ">
-      <div class="col-12 py-4">
-          <div class="row">
-                <!--Breaking box-->
-                <div class="col-md-3 col-lg-2 pr-md-0">
-                    <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">View all Companies</span></a>
-                </div>
-                <!--end breaking box-->
-                <!--Breaking content-->
-                <div class="col-md-9 col-lg-10 pl-md-4 py-2">
-                    <div class="breaking-box">
-                        <div id="carouselbreaking" class="carousel slide" data-ride="carousel">
-                            <!--breaking news-->
-                            <div class="carousel-inner">
-                                <!--post-->
-                                <div class="carousel-item">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!--post-->
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('https://indepthresearch.org/images/logos/New_IRES_Logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                     <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                  <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                                    <a class="text-primary" href="#">Company Name</a>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                            <!--end breaking news-->
-                            
-                            <!--navigation slider-->
-                            <div class="navigation-box p-2 d-none d-sm-block">
-                                <!--nav left-->
-                                <a class="carousel-control-prev text-primary" href="#carouselbreaking" role="button" data-slide="prev">
-                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <!--nav right-->
-                                <a class="carousel-control-next text-primary" href="#carouselbreaking" role="button" data-slide="next">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                            <!--end navigation slider-->
-                        </div>
-                    </div>
-                </div>
-                <!--end breaking content-->
-            </div>
-        </div>
-  </div>
-  <!--end code-->
-               <h5 class="card-text">LET US HELP YOU HIRE BETTER</h5>
-               <div class="row border-light shadow-sm p-3 mb-5 bg-white rounded">
-                <div class="col-md-4">
-                  <p>Let Us help You Hire better<br> Or Call Sales +254 792516000 <br>Already have an account?<br>
-                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Login</a></p>
-                </div>
-                  <div class="col-md-4">
-                     <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
-                     <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
-                     <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
-                  </div>
-                  <div class="col-md-4">
-                     <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
-                     <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
-                      <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
-                  
-            <div class="box-btn">
-                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Post a Job</a>
-            </div>
-            </div>
-         </div>
-   </div>
 </div>
 <br>
 
@@ -281,7 +191,201 @@
 
       </div>
     </div>
+  </div><br>
+
+<div class="main" align="center">
+               <h4 class="mb-0">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="MiCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#MiCarousel" data-slide-to="0" class="carousel-pagination active"></li>
+                        <li data-target="#MiCarousel" data-slide-to="1" class="carousel-pagination"></li>
+                        <li data-target="#MiCarousel" data-slide-to="2" class="carousel-pagination"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-6 div-l">
+                                    <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2014/05/02/21/49/home-office-336373_960_720.jpg">
+                                        <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 div-r">
+                                    <img src="https://indepthresearch.org/images/logos/New_IRES_Logo.png">
+                                    <hr>
+                                    <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
+                                    <button class="btn btn-primary">View Profile</button>
+                                </div>
+                            </div>                                
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 div-l">
+                                    <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/02/11/08/office-620817_960_720.jpg);">
+                                        <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 div-r">
+                                    <img src="/images/logo/Networked.jpg" style="height: 120px">
+                                    <hr>
+                                    <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
+                                    <a href="{{route('onecompany')}}" class="btn btn-primary">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 div-l">
+                                    <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2015/07/19/10/00/still-life-851328_960_720.jpg);">
+                                        <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 div-r">
+                                    <img src="https://indepthresearch.org/images/logos/New_IRES_Logo.png">
+                                    <hr>
+                                    <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
+                                    <button class="btn btn-primary">View Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+
+<div class="container" align="center">
+    <h2>For the Employers</h2>
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="our-services-wrapper mb-60">
+              <div class="services-inner">
+                <div class="our-services-img">
+                <img src="http://pngwebicons.com/uploads/car/ico/car_icon4919.ico" width="68px" alt="">
+                </div>
+                <div class="our-services-text">
+                  <h4>EMPLOYERS</h4>
+                  <p>Let Us help You Hire better<br> Or Call Sales +254 792516000 <br>Already have an account?<br>
+                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Login</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="our-services-wrapper mb-60">
+              <div class="services-inner">
+                <div class="our-services-img">
+                <img src="https://i.ya-webdesign.com/images/airplane-clip-itinerary-1.png" width="68px" alt="">
+                </div>
+                <div class="our-services-text">
+                  <h4>LET US HELP YOU HIRE BETTER</h4>
+               <div class="row">
+                  <div class="col-md-6">
+                     <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
+                     <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
+                     <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
+                  </div>
+                  <div class="col-md-6">
+                     <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
+                     <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
+                      <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
+                  
+            <div class="box-btn">
+                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Post a Job</a>
+            </div>
+            </div>
+         </div>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
+</div>
+
+  <section class="testimonial_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                       <div class="about_content">
+                            <div class="background_layer"></div>
+                            <div class="layer_content">
+                                <div class="section_title">
+                                    <h5>CLIENTS</h5>
+                                    <h2>Happy<strong>Jobseekers & Employers</strong></h2>
+                                    <div class="heading_line"><span></span></div>
+                                    <p>The NetworkedPros gives you a unique way to discover employees with the best talents. </p>
+                                </div>
+                                <a href="#">Contact Us<i class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="testimonial_box">
+                            <div class="testimonial_container">
+                                <div class="background_layer"></div>
+                                <div class="layer_content">
+                                    <div class="testimonial_owlCarousel owl-carousel">
+                                        <div class="testimonials"> 
+                                            <div class="testimonial_content">
+                                                <div class="testimonial_caption">
+                                                    <h6>Robert Mike</h6>
+                                                    <span>Software Developer</span>
+                                                </div>
+                                                <p>"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+                                            </div>
+                                            <div class="images_box">
+                                                <div class="testimonial_img">
+                                                    <img class="img-center" src="https://cdn.pixabay.com/photo/2017/08/30/17/27/business-woman-2697954_960_720.jpg" alt="images not found">
+                                                </div>
+                                            </div>
+                                        </div><!-- 
+                                        <div class="testimonials"> 
+                                            <div class="testimonial_content">
+                                                <div class="testimonial_caption">
+                                                    <h6>Robert Clarkson</h6>
+                                                    <span>CEO, Axura</span>
+                                                </div>
+                                                <p>The team at Tectxon industry is very talented, dedicated, well organized and knowledgeable. I was most satisfied with the quality of the workmanship. They did excellent work.</p>
+                                            </div>
+                                            <div class="images_box">
+                                                <div class="testimonial_img">
+                                                    <img class="img-center" src="https://cdn.pixabay.com/photo/2016/02/19/10/56/man-1209494_960_720.jpg" alt="images not found">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials"> 
+                                            <div class="testimonial_content">
+                                                <div class="testimonial_caption">
+                                                    <h6>Robert Clarkson</h6>
+                                                    <span>CEO, Axura</span>
+                                                </div>
+                                                <p>The team at Tectxon industry is very talented, dedicated, well organized and knowledgeable. I was most satisfied with the quality of the workmanship. They did excellent work.</p>
+                                            </div>
+                                            <div class="images_box">
+                                                <div class="testimonial_img">
+                                                    <img class="img-center" src="https://cdn.pixabay.com/photo/2017/09/21/19/06/woman-2773007_960_720.jpg" alt="images not found">
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         @include('new.create-alertsmodal')
