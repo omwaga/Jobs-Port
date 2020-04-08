@@ -28,54 +28,42 @@
                     <div class="ecommerce-widget">
 
                         <div class="row">
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="text-dark">Total Jobs Online</h6>
-                                        <div class="metric-value d-inline-block">
-                                            <h5 class="mb-1">{{$jobs->count(), '0'}}</h5>
+                                        <div class="d-inline-block">
+                                            <h5 class="text-muted">Total Jobs Online</h5>
+                                            <h2 class="mb-0"> {{$jobs->count(), '0'}}</h2>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fa fa-eye fa-fw fa-sm text-info"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
+                                <div class="card bg-info">
                                     <div class="card-body">
-                                        <h6 class="text-dark">Total Job Applications</h6>
-                                        <div class="metric-value d-inline-block">
-                                            <h5 class="mb-1">{{$applications->count(),'0'}}</h5>
+                                        <div class="d-inline-block">
+                                            <h5 class="text-white">Total Job Applications</h5>
+                                            <h2 class="mb-0 text-white"> {{$applications->count(),'0'}}</h2>
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="text-dark">Total Courses Online</h6>
-                                        <div class="metric-value d-inline-block">
-                                            <h5 class="mb-1">{{0, '0'}}</h5>
+                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card bg-success">
+                                    <div class="card-body" align="center">
+                                        <div class="d-inline-block">
+                                            <h5 class="text-white">Don’t have time to post your Job Vacancy?</h5>
+                                            <p class="text-white">Send us your job advert to info@thenetworkedpros.com will do the rest</p>
+                                            <!-- <h2 class="mb-0 text-white"> {{$applications->count(),'0'}}</h2> -->
                                         </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="text-dark">Total Jobs Online</h6>
-                                        <div class="metric-value d-inline-block">
-                                            <h5 class="mb-1">{{$jobs->count(), '0'}}</h5>
-                                        </div>
-                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fas fa-balance-scale fa-fw fa-sm text-brand"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -88,10 +76,13 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="text-dark">Publish Job</h6>
-                                        <div class="metric-value d-inline-block">
+                                        <div class="d-inline-block">
+                                            <h5 class="text-dark">Publish Job</h5>
                                             <a class="btn btn-info btn-sm" href="{{route('emppostjob')}}">Post a Job</a>
                                         </div>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fas fa-book fa-fw fa-sm text-primary"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -99,20 +90,12 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="text-dark">Add Team Member</h6>
-                                        <div class="metric-value d-inline-block">
+                                        <div class="d-inline-block">
+                                            <h5 class="text-dark">Add Team Member</h5>
                                             <a class="btn btn-secondary btn-sm" href="#">Add users</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="text-dark">Manage Subscriptions</h6>
-                                        <div class="metric-value d-inline-block">
-                                            <a class="btn btn-secondary btn-sm" href="#">Pick a Plan</a>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fas fa-users fa-fw fa-sm text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +104,26 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="text-dark">Source Candidates</h6>
-                                        <div class="metric-value d-inline-block">
+                                        <div class="d-inline-block">
+                                            <h5 class="text-dark">Manage Subscriptions</h5>
+                                            <a class="btn btn-secondary btn-sm" href="#">Pick a Plan</a>
+                                        </div>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class=" far fa-heart fa-fw fa-sm text-secondary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-inline-block">
+                                            <h5 class="text-dark">Source Candidates</h5>
                                             <a class="btn btn-secondary btn-sm" href="{{route('emppostjob')}}">Find Candidates</a>
+                                        </div>
+                                        <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                                            <i class="fas fa-users fa-fw fa-sm text-brand"></i>
                                         </div>
                                     </div>
                                 </div>

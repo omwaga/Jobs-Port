@@ -222,6 +222,7 @@ public function aboutjob(){
   $datediif=Jobposts::select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $jobs=Jobposts::orderBy('created_at','desc')->get();
+  
   return view('new.job')->with('industry',$industries)
   ->with('jobs',$jobs)
   ->with('categories',$categories)
@@ -463,8 +464,8 @@ public function singleblog($name)
   return view('new.blog-articleview', compact('blog', 'categories'));
 }
 
-public function leads()
+public function workprogram()
 {
-  return view('new.employer-lead');
+  return view('new.work-program');
 }
 }

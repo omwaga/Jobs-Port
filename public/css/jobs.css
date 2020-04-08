@@ -33,8 +33,18 @@ body {background:#7cbac1; margin: 0;}
 }
  .vertical-tabs .sv-tab-panel{
     background:#fff;
-    height:550px;
+    height:350px;
     padding-top:10px;
+}
+@media screen and (max-width: 800px) {
+  #title_message {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
 }
 @media only screen and (max-width: 420px){
   .titulo{font-size: 22px}

@@ -62,7 +62,7 @@
                   </div>
                 <div class="col-md-9">
                 <p class="text-dark">
-                    {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right" href="/jobview/{{$job->id}}">Apply</a>
+                    {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right" href="/jobview/{{$job->id}}/{{$jobtitle}}">Apply</a>
                 </p>
                 </div>
      </div>

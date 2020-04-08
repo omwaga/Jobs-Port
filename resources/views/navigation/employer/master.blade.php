@@ -109,7 +109,7 @@
                             <li class="nav-divider">
                                 Staff Recruitment
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item menu-list">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-6"><i class="fas fa-fw fa-database"></i>Source Candidates</a>
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">

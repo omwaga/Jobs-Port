@@ -9,7 +9,7 @@
                     <h4 class="page-title">Job Vacancies</h4>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="/admin-dashboard">Dashboard</a>
+                            <a href="{{route('admin')}}">Dashboard</a>
                         </li>
                         <li class="active">
                             Job Vacancies
@@ -23,6 +23,7 @@
                <div class="col-md-12">
                 <div class="white-box">
                   <h2 class="header-title"> All Vacancies </h2>
+                  <a href="{{route('createjob')}}" class="btn btn-success">Post a Job</a>
                     <div class="table-responsive">
                       <table class="table table-hover">
                                 <thead>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top shadow-lg" style="background-color: #ffffff">
         <a class="navbar-brand" href="{{route('homee')}}">
-           <img src="{{asset('Images/logo/log.png')}}" alt="" style="width:320px;">
+           <img src="{{asset('Images/logo/logodesign.png')}}" alt="" style="width:320px;">
         </a>
         <button class="navbar-toggler" style="background-color:#000" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,14 +31,21 @@
               </a>
             </li>
             <li class="nav-item active">
+              <a class="nav-link text-secondary" href="{{route('workprogram')}}">
+                <i class="fa fa-graduation-cap text-primary">
+                </i>
+                Work Readiness Program
+              </a>
+            </li>
+            <!-- <li class="nav-item active">
               <a class="nav-link text-secondary" href="#">
                 <i class="fa fa-graduation-cap text-primary">
                 </i>
                 Career Hub
               </a>
-            </li>
+            </li> -->
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('fromblog')}}">
+              <a class="nav-link text-secondary" href="https://blog.thenetworkedpros.com/">
                 <i class="fa fa-sticky-note text-primary">
                 </i>
                 Career Insights

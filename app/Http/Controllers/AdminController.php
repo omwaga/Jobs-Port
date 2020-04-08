@@ -10,6 +10,8 @@ use App\User;
 use App\Cprofile;
 use App\Industry;
 use App\jobcategories;
+use App\Town;
+use App\country;
 
 use App\CvUpload;
 use Illuminate\Http\Request;
@@ -88,5 +90,38 @@ class AdminController extends Controller
 
         return view('admin.categories', compact('categories'));
     }
+
+    public function createjob()
+    {
+        $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+        $industries = Industry::orderBy('name','asc')->get();
+        $towns = Town::orderBy('name','asc')->get();
+        $countries = Country::all();
+
+        return view('admin.create-job', compact('jobcategories', 'industries', 'towns', 'countries'));
+    }
+
+    public function savejob(Request $request)
+    {
+        $attributes = request()->validate([
+            'jobtitle' => ['required'],
+            'jobtype' => 'required',
+            'jobcategories_id' => 'required',
+            'industry' => 'required',
+            'country_id' => 'required',
+            'location' => 'required',
+            'salary' => 'required',
+            'expirydate' => 'required',
+            'summary' => ['required'],
+            'description'=> ['required'],
+            'applicationdet' => ['required'],
+            'apply' => 'nullable'
+        ]);
+
+        Jobposts::create($attributes + ['employer_id' => 1]);
+
+        return back()->with('message', 'The job post has been created succsefully');
+    }
+
 }
 
