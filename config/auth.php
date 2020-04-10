@@ -48,7 +48,7 @@ return [
         ],
          'employer' => [
             'driver' => 'session',
-            'provider' => 'cprofiles',
+            'provider' => 'employers',
         ],
         'trainingc' => [
             'driver' => 'session',
@@ -82,9 +82,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-          'cprofiles' => [
+          'employers' => [
             'driver' => 'eloquent',
-            'model' => App\Cprofile::class,
+            'model' => App\Employer::class,
         ],
         'trainingc' => [
             'driver' => 'eloquent',
@@ -124,8 +124,8 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-           'cprofiles' => [
-            'provider' => 'cprofiles',
+           'employers' => [
+            'provider' => 'employers',
             'table' => 'password_resets',
             'expire' => 60,
         ],

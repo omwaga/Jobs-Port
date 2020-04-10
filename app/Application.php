@@ -11,6 +11,6 @@ class Application extends Model
         return $this->belongsTo(User::class);
     }
     public function cprofile(){
-        return $this->belongsTo(Cprofile::class);
+        return $this->belongsTo(Employer::class);
     }
 }

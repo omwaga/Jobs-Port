@@ -90,6 +90,8 @@ Route::post('/saveadmin-job', 'AdminController@savejob')->name('admin_savejob');
 Route::resource('blogcategories', 'BlogCategoriesController');
 Route::resource('blogarticles', 'BlogArticlesController');
 Route::get('/admin-employers', 'AdminController@adminemployers')->name('adminemployers');
+Route::get('/new-employer', 'AdminController@employer')->name('new-employer');
+Route::post('/save-employer', 'AdminController@addemployer')->name('add-employer');
 Route::get('/admin-jobseekers', 'AdminController@adminjobseekers')->name('adminjobseekers');
 Route::get('/admin-vacancies', 'AdminController@adminvacancies')->name('adminvacancies');
 Route::get('/admin-applications', 'AdminController@adminapplications')->name('adminapplications');
@@ -105,7 +107,6 @@ Route::resource('coverletters', 'CoverLettersController');
 
 //employer login controllers
 Route::prefix('employer')->group(function(){
-    Route::get('/login','Auth\EmployerLoginController@ShowLoginForm')->name('admin.login');
     Route::post('/login','Auth\EmployerLoginController@login')->name('admin.login.submit');
     Route::post('/logout', 'Auth\EmployerLoginController@logout')->name('admin.logout');
     Route::get('/', 'EmployController@index')->name('admin.home');
@@ -133,10 +134,11 @@ Route::get('/cv-templates', 'PagesController@cv')->name('cv');
 Route::resource('alerts', 'JobAlertsController');
 Route::get('/all-companies', 'PagesController@companies')->name('all-companies');
 Route::get('/work-readiness-program', 'PagesController@workprogram')->name('workprogram');
+Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
-Route::post('/createprofile','PagesController@createcompany')->name('Createcompany');
+Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
 Route::get('/Hire','PagesController@hire')->name('hire');
 Route::get('/job-search','PagesController@aboutjob')->name('joblisting');
 Route::get('/employerd','PagesController@employerd')->name('emp');

@@ -18,7 +18,6 @@ use Mail;
 use App\Assignments;
 use DB;
 use App\User;
-use App\Cprofile;
 use App\Town;
 use App\salary;
 use App\Experience;

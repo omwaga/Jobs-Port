@@ -5,16 +5,14 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Cprofile;
+use App\Employer;
 use DB;
 class EmployerLoginController extends Controller
 {
     public function __construct(){
         $this->middleware('guest:employer',['except' => ['logout', 'getLogout']]);
     }
-    public function ShowLoginForm(){
-        return view ('new.employer-login');
-    }
+    
     public function login(Request $request){
         //validate form data
         $this->validate($request,[

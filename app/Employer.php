@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class Employer extends Authenticatable
+class Employer extends Authenticatable 
 {
-     use Notifiable;
+    //
+       use Notifiable;
 
     protected $guard='employer';
 
@@ -17,9 +17,7 @@ class Employer extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-         'firstname','email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,10 +27,10 @@ class Employer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    public function jobposts()
-    {
-        return $this-hasMany(Jobposts::class);
+    public function jobs(){
+         return $this->hasMany(Jobposts::class,'employer_id');
     }
-    
+    public function applications(){
+        return $this->hasMany(JobApplication::class,'employer_id');
+    }
 }

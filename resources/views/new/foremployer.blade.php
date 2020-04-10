@@ -6,6 +6,8 @@
      	    <h5 style="color:#0B0B3B;">Search Best Talent with The NetworkedPro's Resume Database Access</h5>
 			 
 			    <div class="col-lg-6 col-xs-12 text-center">
+			    	@include('success')
+			    	@include('errors')
 					<div class="box">
 						<div class="box-title">
 							<h5 style="color:#0B0B3B;">Login</h5>

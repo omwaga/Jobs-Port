@@ -13,7 +13,7 @@ class JobApplication extends Model
         return $this->belongsTo(User::class);
     }
     public function cprofile(){
-        return $this->belongsTo(Cprofile::class, 'employer_id');
+        return $this->belongsTo(Employer::class, 'employer_id');
     }
     
     public function job()

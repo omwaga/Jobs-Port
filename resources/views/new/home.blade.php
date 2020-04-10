@@ -139,7 +139,6 @@
           @foreach($industry as $industrie)
           <div class="col-md-4"> 
             <ul>
-              <!-- @php $industry = str_slug($industrie->name, '-'); @endphp -->
               <li style="list-style: none;" class="pb-2"><a href="/job-industry/{{$industrie->name}}" style="color:#0B0B3B;">
                {!! $industrie->name !!}
              </a></li>
@@ -193,11 +192,6 @@
 
 <div class="container-fluid position-relative py-md-5 py-0 bg-danger"><br>
   <div class="row">
-              <!-- <div class="col-md-4 ">
-              <img src="https://sqy7rm.media.zestyio.com/Phone_updated_opt.f1cb27a519bdb5b6ed34049a5b86e317.png" style="height: 200px">
-              <img src="https://sqy7rm.media.zestyio.com/Phone_updated_opt.f1cb27a519bdb5b6ed34049a5b86e317.png" style="height: 200px">
-              <img src="https://sqy7rm.media.zestyio.com/Phone_updated_opt.f1cb27a519bdb5b6ed34049a5b86e317.png" style="height: 200px">
-            </div> -->
             <div class="col-lg-12  text-center">
               <h2 class="text-white display-5 font-weight-bold">FREE JOB ALERTS </h2>
               <p class="f-w-16 mb-4 text-white">Get an Email on jobs matching your criteria <br> No Registration Required</p></p>

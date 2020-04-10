@@ -52,13 +52,13 @@
     <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->jobtitle}}</a></h5>
     
     </div>
-                  <p>Posted By: <a href="" class="text-primary">company</a></p>
+                  <p>Posted By: <a href="" class="text-primary">{{$job->employer->company_name}}</a></p>
                         <div class="row">
                  <p class="text-secondary">{{$job->jobtype}} | Salary: {{$job->salary}}</p>
                  </div>
     <div class="row">
     <div class="col-md-3">
-                    <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="{{$job->jobtitle}}" width="140" height="140">
+                    <img class="rounded-circle img-fluid" src="{{asset('storage/logos/'.$job->employer->logo)}}" alt="{{$job->jobtitle}}" width="140" height="140">
                   </div>
                 <div class="col-md-9">
                 <p class="text-dark">

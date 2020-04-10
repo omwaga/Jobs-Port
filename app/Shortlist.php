@@ -11,7 +11,7 @@ class Shortlist extends Model
        return $this->belongsTo(JobseekerDetail::class, 'user_id', 'user_id');
     }
     public function cprofile(){
-        $this->belongsTo(Cprofile::class, 'employer_id');
+        $this->belongsTo(Employer::class, 'employer_id');
     }
     public function applications()
     {

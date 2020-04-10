@@ -7,11 +7,12 @@ namespace App\Http\Controllers;
 use App\JobApplication;
 use App\Jobposts;
 use App\User;
-use App\Cprofile;
+use App\Employer;
 use App\Industry;
 use App\jobcategories;
 use App\Town;
 use App\country;
+use DB;
 
 use App\CvUpload;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class AdminController extends Controller
     public function dashboard(){
         $users = User::all();
         $jobs = Jobposts::all();
-        $employers = Cprofile::all();
+        $employers = Employer::all();
         $applications = JobApplication::all();
         
         return view('admin.admin-dashboard', compact('users', 'jobs', 'employers', 'applications'));
@@ -38,7 +39,7 @@ class AdminController extends Controller
     // All Employers
     public function adminemployers()
     {
-        $employers = Cprofile::all();
+        $employers = Employer::all();
         
         return view('admin.admin-employers', compact('employers'));
     }
@@ -89,6 +90,37 @@ class AdminController extends Controller
         $categories = jobcategories::all();
 
         return view('admin.categories', compact('categories'));
+    }
+
+    public function employer()
+    {
+        $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+        $industries = Industry::orderBy('name','asc')->get();
+        $towns = Town::orderBy('name','asc')->get();
+        $countries = DB::table('countries')->pluck("name","id");
+
+        return view('admin.add-employer',compact('jobcategories', 'industries', 'towns', 'countries'));
+    }
+
+    public function addemployer(Request $request)
+    {
+        $attributes = $request->validate([
+            'employer_name' => ['required', 'min:3'],
+            'country' => 'nullable',
+            'state' => 'nullable',
+            'industry' => 'nullable',
+            'website' => 'nullable',
+            'email' => 'required',
+            'employer_type' => 'nullable',
+            'phone' => 'required',
+            'physical_address' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable'
+        ]);
+
+        Employer::create($attributes);
+
+        return back()->with('message', 'The employer has been succsefullycreated');
     }
 
     public function createjob()

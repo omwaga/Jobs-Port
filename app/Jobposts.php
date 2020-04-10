@@ -8,13 +8,9 @@ class Jobposts extends Model
 {
     protected $guarded = [];
     
-  public function employer()
-  {
-      return $this->belongsTo(Employer::class);
-  }
-    public function cprofile()
+    public function employer()
     {
-        return $this->belongsTo(Cprofile::class, 'employer_id');
+        return $this->belongsTo(Employer::class);
     }
     public function industries(){
         

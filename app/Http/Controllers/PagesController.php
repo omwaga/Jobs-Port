@@ -24,7 +24,7 @@ use App\Skills;
 use App\Reference;
 use App\Awards;
 use App\Usercategories;
-use App\Cprofile;
+use App\Employer;
 use App\Companies;
 use App\Article;
 use App\CvUpload;
@@ -35,6 +35,27 @@ class PagesController extends Controller
   {
     return view('dashboard.test');
   }
+
+
+    //return  the home page
+public function homee(){
+  $industries=Industry::orderBy('name','asc')->get();
+  $categories=jobcategories::orderBy('jobcategories','asc')->get();
+  $alljobs=Jobposts::all();
+  $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
+  $countries = DB::table('countries')->pluck("name","id");
+  $company=Employer::orderBy('created_at','desc')->limit(6)->get();
+  $town=Town::orderBy('name','asc')->get();
+
+  return view('new.home')->with('industry',$industries)
+  ->with('jobs',$jobs)
+  ->with('countries',$countries)
+  ->with('companies',$company)
+  ->with('alljobs',$alljobs)
+  ->with('categories',$categories)
+  ->with('towns',$town);
+
+}
 
   public function cprofile(){
     $industry=Industry::orderBy('name','asc')->get();
@@ -59,141 +80,9 @@ class PagesController extends Controller
   }
   }
 
-public function createcompany(Request $request){
-  $this->validate($request,[
-    'firstname'=>'required',
-    'lastname'=>'required',
-    'email'=>'required',
-    'password'=>'required',
-    'telephone'=>'required',
-    'jobtitle'=>'required',
-    'address'=>'required',
-    'companyname'=>'required',
-    'location'=>'required',
-    'website'=>'required',
-    'cindustry'=>'required',
-    'companyemail'=>'required',
-    'contactperson'=>'required',
-    'csize'=>'required',
-    'ctype'=>'required',
-    'phonenumber'=>'required|max:15|min:10',
-    'ccountry'=>'required',
-    'caddress'=>'required',
-    'clogo'=>'required',
-    'uname'=>'required',
-    'pword'=>'required',
-  ]);
-  if($request->hasFile('clogo')){
-    $filewithext= $request->file('clogo')->getClientOriginalName();
-    $filename=pathinfo($filewithext,PATHINFO_FILENAME);
-    $extension=$request->file('clogo')->getClientOriginalExtension();
-    $filenametostore=$filename.'_'.time().'.'.$extension;
-    $path=$request->file('clogo')->storeAs('public/uploads',$filenametostore);
-  }
-  else{
-    $filenametostore='noimage.jpg';
-  }
-  $data=array(
-    'email'=>$request->email,
-    'firstname'=>$request->firstname,
-    'companyname'=>$request->companyname,
-    'cindustry'=>$request->cindustry,
-    'caddress'=>$request->caddress,
-    'companyemail'=>$request->companyemail,
-    'contactperson'=>$request->contactperson,
-    'telephone'=>$request->telephone,
-);
-  Mail::send('email.companyemail',$data,function ($message) use ($data){
-    $message->to($data['email']);
-    $message->from('info@thenetworkedpros.com');
-    $message->subject('COMPANY ACCOUNT CREATION');
-  });
-
-
-  $createprof=new Cprofile;
-  $createprof->firstname=$request->input('firstname');
-  $createprof->lastname=$request->input('lastname');
-  $createprof->cemail=$request->input('email');
-  $createprof->jobtitle=$request->input('jobtitle');
-  $createprof->postcode=$request->input('password');
-  $createprof->phonenumber=$request->input('telephone');
-  $createprof->caddress=$request->input('address');
-  $createprof->cname=$request->input('companyname');
-  $createprof->location=$request->input('location');
-  $createprof->website=$request->input('website');
-  $createprof->industry=$request->input('cindustry');
-  $createprof->email=$request->input('companyemail');
-  $createprof->cperson=$request->input('contactperson');
-  $createprof->csize=$request->input('csize');
-  $createprof->temployer=$request->input('ctype');
-  $createprof->telephone=$request->input('phonenumber');
-  $createprof->country=$request->input('ccountry');
-  $createprof->address=$request->input('caddress');
-  $createprof->logo=$filenametostore;
-  $createprof->username=$request->input('uname');
-  $createprof->password=bcrypt($request->input('pword'));
-  $createprof->save();
-  return redirect('/employer/login')->with('status','Profile Created Successfully');
-}
-public function createprofile(Request $request){
-  $this->validate($request,[
-    'cname'=>'required',
-    'location'=>'required',
-    'website'=>'required',
-    'cindustry'=>'required',
-    'cemail'=>'required',
-    'cperson'=>'required',
-    'csize'=>'required',
-    'ctype'=>'required',
-    'ctel'=>'required |max:12|min:10',
-    'ccountry'=>'required',
-    'caddress'=>'required',
-  ]);
-  $cprofiles=new Cprofile;
-  $cprofiles->user_id=Auth::guard('employer')->user()->id;
-  $cprofiles->cname=$request->input('cname');
-  $cprofiles->location=$request->input('location');
-  $cprofiles->website=$request->input('website');
-  $cprofiles->industry=$request->input('cindustry');
-  $cprofiles->email=$request->input('cemail');
-  $cprofiles->cperson=$request->input('cperson');
-  $cprofiles->csize=$request->input('csize');
-  $cprofiles->temployer=$request->input('ctype');
-  $cprofiles->telephone=$request->input('ctel');
-  $cprofiles->country=$request->input('ccountry');
-  $cprofiles->address=$request->input('caddress');
-  if (Cprofile::where('email', '=', Input::get('cemail'))->exists()) {
-
-   return redirect('/employer')->with('error','Records with such email address already exist.Kindly confirm your email.');
- }
- else{
-  $cprofiles->save();
-  return redirect('/Employer-approval')->with('success','company details created successfully pending approval');
-} 
-}
-    //
-public function homee(){
-  $industries=Industry::orderBy('name','asc')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $alljobs=Jobposts::all();
-  $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
-  $countries = DB::table('countries')->pluck("name","id");
-  $company=Cprofile::orderBy('created_at','desc')->limit(6)->get();
-  $town=Town::orderBy('name','asc')->get();
-
-  return view('new.home')->with('industry',$industries)
-  ->with('jobs',$jobs)
-  ->with('countries',$countries)
-  ->with('companies',$company)
-  ->with('alljobs',$alljobs)
-  ->with('categories',$categories)
-  ->with('towns',$town);
-
-}
-
 public function companies()
 {
-  $companies = Cprofile::all();
+  $companies = Employer::all();
 
   return view('new.all-companies', compact('companies'));
 }
@@ -209,7 +98,7 @@ public function foremployer()
   return view('new.foremployer');
 }
 
-//the jobseeker registration steps
+//the jobseeker registration steps.
 public function jobseekerregister()
 {
   return view('new.jobseeker-steps');
@@ -233,7 +122,7 @@ public function aboutjob(){
 
 //  all jobs available in the database
 public function alljobs(){
-  $jobs=DB::table('jobposts')->paginate(10);
+  $jobs=Jobposts::paginate(10);
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
@@ -467,5 +356,10 @@ public function singleblog($name)
 public function workprogram()
 {
   return view('new.work-program');
+}
+
+public function enrollworkreadiness()
+{
+  return view('new.enroll-workprogram');
 }
 }

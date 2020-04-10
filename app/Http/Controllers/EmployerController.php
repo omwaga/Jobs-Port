@@ -13,7 +13,7 @@ use App\Companies;
 use App\Usercategories;
 use App\Application;
 use App\jobcategories;
-use App\Cprofile;
+use App\Employer;
 use DB;
 use App\User;
 use App\salary;
@@ -124,7 +124,7 @@ public function postajob(){
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
         $towns=Town::orderBy('name','asc')->get();
-        $cname=Cprofile::select('cname')->where('id',Auth::guard('employer')->user()->id)->get();
+        $cname=Employer::select('cname')->where('id',Auth::guard('employer')->user()->id)->get();
         $countries = Country::all();
 
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));
@@ -153,7 +153,7 @@ public function declined()
 }
 
     public function cprofile(){
-        $profile=Cprofile::where('id',Auth::guard('employer')->user()->id)->get();
+        $profile=Employer::where('id',Auth::guard('employer')->user()->id)->get();
         return view('new.cprofile')->with('profile',$profile);
     }
     

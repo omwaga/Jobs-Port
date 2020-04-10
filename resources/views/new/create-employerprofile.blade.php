@@ -92,11 +92,12 @@ button:hover {
 </style>
 <body>
 @include('navigation.navbar')
-<form id="regForm" action="{{route('Createcompany')}}" method="post" enctype="multipart/form-data">
+<form id="regForm" action="{{route('createcompany')}}" method="post" enctype="multipart/form-data">
 	@csrf
   <!--<h3 class="text-center"><strong>Company Registration details:</strong></h3>-->
   <!-- One "tab" for each step in the form: -->
-  <div class="tab"><strong>Contact person details:</strong>
+  <div class="tab"><strong>Personal Information:</strong>
+    @include('errors')
   <hr style="border:solid 1px #000;">
     <div class="row">
     	  	<br>
@@ -113,7 +114,7 @@ button:hover {
         </div>
         <div class="col-md-6">
               <div class="form-group">
-    <label for="exampleFormControlInput1">Lastname</label>
+    <label for="exampleFormControlInput1">Last Name</label>
     <input type="text" class="form-control border-success @error('lastname') is-invalid @enderror" value="{{ old('lastname') }}"  style="border-radius: 0px;" name="lastname" required>
      @error('lastname')
                                     <span class="invalid-feedback" role="alert">
@@ -127,8 +128,8 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control border-success @error('email') is-invalid @enderror"  style="border-radius: 0px;" name="email" autocomplete="email" required>
-     @error('email')
+    <input type="email" value="{{ old('personal_email') }}" class="form-control border-success @error('personal_email') is-invalid @enderror"  style="border-radius: 0px;" name="personal_email" autocomplete="personal_email" required>
+     @error('personal_email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -138,8 +139,8 @@ button:hover {
               <div class="col-md-6">
               <div class="form-group">
                    <label for="exampleFormControlInput1">Job Title</label>
-    <input type="text" class="form-control border-success @error('jobtitle') is-invalid @enderror"  style="border-radius: 0px;" name="jobtitle" required>
-  @error('jobtitle')
+    <input type="text" value="{{ old('job_title') }}" class="form-control border-success @error('job_title') is-invalid @enderror"  style="border-radius: 0px;" name="job_title" required>
+  @error('job_title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -151,7 +152,7 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Country</label>
-    <select name="address" class="form-control border-success" style="border-radius: 0px; background-color:#0C345D;color:#fff;" id="country">
+    <select name="country" class="form-control border-success" style="border-radius: 0px; background-color:#0C345D;color:#fff;" id="country">
         <option>Choose Country</option>
         @foreach($countries as $country)
         <option value="{{$country->id}}" data-price="+{{$country->CountryCode}}">{{$country->country}}</option>
@@ -162,8 +163,8 @@ button:hover {
                   <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Phone Number</label>
-    <input type="tel" class="form-control border-success @error('telephone') is-invalid @enderror" id="phone" style="border-radius: 0px;" name="telephone" value="{{ old('telephone') }}" required>
-    @error('telephone')
+    <input type="tel" class="form-control border-success @error('personal_phone_number') is-invalid @enderror" id="phone" style="border-radius: 0px;" name="personal_phone_number" value="{{ old('personal_phone_number') }}" required>
+    @error('personal_phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -175,7 +176,7 @@ button:hover {
           <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Postal Code</label>
-    <input type="text" class="form-control border-success @error('password') is-invalid @enderror"  style="border-radius: 0px;" name="password" required>
+    <input type="text" value="{{ old('postal_code') }}" class="form-control border-success"  style="border-radius: 0px;" name="postal_code" required>
   </div>
         </div>
 
@@ -187,8 +188,8 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Company Name</label>
-    <input type="text" class="form-control  @error('companyname') is-invalid @enderror" value="{{ old('companyname') }}"  style="border-radius: 0px;" name="companyname">
-    @error('companyname')
+    <input type="text" class="form-control  @error('company_name') is-invalid @enderror" value="{{ old('company_name') }}"  style="border-radius: 0px;" name="company_name">
+    @error('company_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -197,9 +198,9 @@ button:hover {
         </div>
         <div class="col-md-6">
               <div class="form-group">
-    <label for="exampleFormControlInput1">Town</label>
-    <select name="location" class="form-control " style="border-radius: 0px;">
-    	<option>..select location..</option>
+    <label for="exampleFormControlInput1">State/Town</label>
+    <select name="company_location" class="form-control " style="border-radius: 0px;">
+    	<option>Select Location</option>
     	@foreach($town as $townn)
     	<option value="{{$townn->name}}">{{$townn->name}}</option>
     	@endforeach
@@ -215,9 +216,9 @@ button:hover {
         <div class="row">
         <div class="col-md-6">
               <div class="form-group">
-    <label for="exampleFormControlInput1">Website</label>
-    <input type="url" class="form-control  @error('website') is-invalid @enderror"  style="border-radius: 0px;" name="website" autocomplete="website" value="{{ old('website') }}">
-     @error('website')
+    <label for="exampleFormControlInput1">Company Website</label>
+    <input type="url" class="form-control  @error('company_website') is-invalid @enderror"  style="border-radius: 0px;" name="company_website" autocomplete="company_website" value="{{ old('company_website') }}">
+     @error('company_website')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -227,8 +228,8 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1"> Industry Type</label>
-    <select name="cindustry" class="form-control " style="border-radius: 0px;">
-    	<option>..choose your insustry...</option>
+    <select name="company_industry" class="form-control " style="border-radius: 0px;">
+    	<option>Choose your industry</option>
     	@foreach($industry as $indust)
     	<option value="{{$indust->name}}">{{$indust->name}}</option>
     	@endforeach
@@ -240,8 +241,8 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
-    <input type="tel" class="form-control  @error('companyemail') is-invalid @enderror" style="border-radius: 0px;" name="companyemail" value="{{ old('companyemail') }}" autocomplete="companyemail">
-    @error('companyemail')
+    <input type="tel" class="form-control  @error('company_email') is-invalid @enderror" style="border-radius: 0px;" name="company_email" value="{{ old('company_email') }}" autocomplete="company_email">
+    @error('company_email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -249,25 +250,17 @@ button:hover {
   </div>
         </div>
         <div class="col-md-6">
-              <div class="form-group">
-    <label for="exampleFormControlInput1">Contact Person</label>
-    <input type="text" class="form-control  @error('contactperson') is-invalid @enderror" style="border-radius: 0px;" name="contactperson" value="{{ old('contactperson') }}">
-     @error('contactperson')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-  </div>
+
         </div>
     </div>
     </div>
-  <div class="tab">Company details:
+  <div class="tab"><strong>Company details:</strong>
   	        <div class="row">
         <div class="col-md-6">
               <div class="form-group">
-    <label for="exampleFormControlInput1">Company size</label>
-  <select name="csize" class="form-control " style="border-radius: 0px;">
-    	<option>..select size...</option>
+    <label for="exampleFormControlInput1">Company Size</label>
+  <select name="company_size" class="form-control " style="border-radius: 0px;">
+    	<option>Select Size</option>
     	<option>0-19</option>
     	<option>20-49</option>
     	<option>50-99</option>
@@ -279,10 +272,10 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Type of Employer</label>
-  <select name="ctype" class="form-control " style="border-radius: 0px;">
-    	<option>..choose employer type...</option>
+  <select name="employer_type" class="form-control " style="border-radius: 0px;">
+    	<option>Select Employer Type</option>
     	<option>Direct Employer</option>
-    	<option>Recruiting Agency</option>
+    	<option>Recruitment Agency</option>
     </select>
   </div>
         </div>
@@ -290,9 +283,9 @@ button:hover {
        <div class="row">
         <div class="col-md-6">
               <div class="form-group">
-    <label for="exampleFormControlInput1">Company Telephone</label>
-    <input type="tel" class="form-control  @error('phonenumber') is-invalid @enderror" placeholder="+254732654616" style="border-radius: 0px;" name="phonenumber" value="{{ old('phonenumber') }}" autocomplete="phonenumber">
-    @error('phonenumber')
+    <label for="exampleFormControlInput1">Company Phone Number</label>
+    <input type="tel" class="form-control  @error('company_phone_number') is-invalid @enderror"  style="border-radius: 0px;" name="company_phone_number" value="{{ old('company_phone_number') }}" autocomplete="company_phone_number">
+    @error('company_phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -302,8 +295,8 @@ button:hover {
         <div class="col-md-6">
               <div class="form-group">
     <label for="exampleFormControlInput1">Country of Registration</label>
-    <input type="text" class="form-control @error('ccountry') is-invalid @enderror" placeholder="Kenya" style="border-radius: 0px;" name="ccountry" value="{{ old('ccountry') }}">
-     @error('ccountry')
+    <input type="text" class="form-control @error('country') is-invalid @enderror" placeholder="Kenya" style="border-radius: 0px;" name="country" value="{{ old('country') }}">
+     @error('country')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -313,26 +306,26 @@ button:hover {
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label>Company logo</label>
-            <input type="file" class="form-control" style="border-radius:0px" name="clogo" value="{{ old('clogo') }}" >
+            <label>Company Logo</label>
+            <input type="file" class="form-control" style="border-radius:0px" name="logo" value="{{ old('logo') }}" >
         </div>
     </div>
       <div class="row">
     	<div class="col-md-12">
     		<div class="form-group">
     	<label for="exampleFormControlInput1">Physical Address</label>
-    	<textarea name="caddress" class="form-control" style="border-radius:0px" rows="4"></textarea>
+    	<textarea name="company_address" class="form-control" style="border-radius:0px" rows="4">{{ old('company_address') }}</textarea>
     </div>
     </div>
     </div>
   </div>
    <div class="tab">Login Info:
-   <label>Username</label>
-    <p><input  type="email"placeholder="james@gmail.com" oninput="this.className = ''" name="uname"></p>
+   <label>Username<small> provide email for username</small></label>
+    <p><input value="{{ old('username') }}"  type="email"placeholder="" oninput="this.className = ''" name="username"></p>
     <p><small>The username should be an email address</small></p>
     <br>
     <label>Password</label>
-    <p><input  type="password" placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+    <p><input  type="password" placeholder="" oninput="this.className = ''" name="password" type="password"></p>
   </div> 
   <div style="overflow:auto;">
     <div style="float:right;">
