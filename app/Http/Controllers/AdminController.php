@@ -12,6 +12,7 @@ use App\Industry;
 use App\jobcategories;
 use App\Town;
 use App\country;
+use App\WorkProgramEnrollment;
 use DB;
 
 use App\CvUpload;
@@ -100,6 +101,14 @@ class AdminController extends Controller
         $countries = DB::table('countries')->pluck("name","id");
 
         return view('admin.add-employer',compact('jobcategories', 'industries', 'towns', 'countries'));
+    }
+
+// Display the candidates enrolled for the work program
+    public function enrolledcandidates()
+    {
+        $candidates = WorkProgramEnrollment::all();
+
+        return view('admin.enrolled-candidates', compact('candidates'));
     }
 
     public function addemployer(Request $request)

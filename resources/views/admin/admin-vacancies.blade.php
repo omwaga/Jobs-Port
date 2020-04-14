@@ -45,7 +45,7 @@
                                     <td>{{$vacancy->jobtitle}}</td>
                                     <td>{{$vacancy->created_at}}</td>
                                     <td>{{$vacancy->expirydate}}</td>
-                                    <td>{{$vacancy->cprofile->cname}}</td>
+                                    <td>{{$vacancy->employer->company_name}}</td>
                                     <td>{{$vacancy->applications->count()}}</td>
                                   </tr>
                                   @endforeach

@@ -6,8 +6,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12" style=" padding-top: 8rem;"><br><br><br>
-          <h2 class="text-white text-center" style="color:#0B0B3B;"><b>BROADEN YOUR HORIZON FOR CAREER SUCCESS</b></h2>
-          <h4 class="text-white text-center">We connect you with resources for job searching and for moving up the career ladder</h4>
+          <!-- <h2 class="text-white text-center" style="color:#0B0B3B;"><b>BROADEN YOUR HORIZON FOR CAREER SUCCESS</b></h2> -->
+          <h2 class="text-white text-center">WE CONNECT YOU WITH RESOURCES FOR JOB SEARCHING <BR> & FOR MOVING UP THE CAREER LADDER</h2>
 
           <p class="text-white text-center">Browse for latest jobs all over East Africa and land your dream job</p>
         </div>

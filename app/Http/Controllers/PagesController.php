@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Jobposts;
-use App\BlogCategory;
 use App\jobcategories;
 use App\Locations;
 use App\Industry;
@@ -14,8 +13,7 @@ use App\Town;
 use DB;
 use Carbon\Carbon;
 use Mail;
-use App\Countrylist;
-use App\Employer;
+use App\Country;
 use App\JobseekerDetail;
 use App\PersonalStatement;
 use App\WorkExperience;
@@ -60,7 +58,7 @@ public function homee(){
   public function cprofile(){
     $industry=Industry::orderBy('name','asc')->get();
     $town=Town::orderBy('name','asc')->get();
-    $countries=Countrylist::all();
+    $countries=Country::all();
     
     return view('new.create-employerprofile')->with('industry',$industry)
     ->with('town',$town)
@@ -315,7 +313,7 @@ public function loginform($id)
 }
 
 function applyjob(){
-  $countries = Countrylist::all();
+  $countries = Country::all();
   $personalinfo = JobseekerDetail::where('user_id', '=', auth()->id())->first();
   $personalstatements = PersonalStatement::where('user_id', '=', auth()->id())->first();
   $experience = WorkExperience::where('user_id', '=', auth()->id())->get();
@@ -334,25 +332,6 @@ public function uploadcv()
   return view('new.upload-cv');
 }
 
-
-// all blog articles
-public function fromblog()
-{
-  $categories = BlogCategory::all();
-  $articles = Article::paginate('10');
-
-  return view('new.blog-article', compact('articles', 'categories'));
-}
-
-// single blog article
-public function singleblog($name)
-{
-  $categories = BlogCategory::all();
-  $blog = Article::where('title', $name)->first();
-
-  return view('new.blog-articleview', compact('blog', 'categories'));
-}
-
 public function workprogram()
 {
   return view('new.work-program');
@@ -360,6 +339,8 @@ public function workprogram()
 
 public function enrollworkreadiness()
 {
-  return view('new.enroll-workprogram');
+  $countries = Country::all();
+
+  return view('new.enroll-workprogram', compact('countries'));
 }
 }

@@ -44,11 +44,31 @@
      <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <style type="text/css">
-        
-
-
-
-    </styhome-sections.cssle>
+        .how-section1{
+    margin-top:-15%;
+    padding: 10%;
+}
+.how-section1 h4{
+    color: #ffa500;
+    font-weight: bold;
+    font-size: 30px;
+}
+.how-section1 .subheading{
+    color: #3931af;
+    font-size: 20px;
+}
+.how-section1 .row
+{
+    margin-top: 10%;
+}
+.how-img 
+{
+    text-align: center;
+}
+.how-img img{
+    width: 40%;
+}
+    </style>
      <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 

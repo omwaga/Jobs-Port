@@ -12,7 +12,7 @@ class JobApplication extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function cprofile(){
+    public function employer(){
         return $this->belongsTo(Employer::class, 'employer_id');
     }
     

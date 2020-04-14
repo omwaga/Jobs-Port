@@ -80,9 +80,9 @@
                     </ul>
                 </li>
                 
-                <li class="menu-list"><a href="#"><i class="icon-note"></i> <span>Blog</span></a>
+                <li class="menu-list"><a href="#"><i class="icon-note"></i> <span>Work Program</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/blogcategories"> Categories</a></li>
+                        <li><a href="{{route('enrolledcandidates')}}"> Enrolled Candidates</a></li>
                         <li><a href="/blogarticles"> Articles</a></li>
                     </ul>
                 </li>

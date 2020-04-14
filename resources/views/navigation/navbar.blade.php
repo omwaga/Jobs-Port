@@ -1,6 +1,6 @@
 <nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top shadow-lg" style="background-color: #ffffff">
         <a class="navbar-brand" href="{{route('homee')}}">
-           <img src="{{asset('Images/logo/logodesign.png')}}" alt="" style="width:320px;">
+           <img src="{{asset('Images/logo/logo.png')}}" alt="" style="height:80px; width: 250px;">
         </a>
         <button class="navbar-toggler" style="background-color:#000" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

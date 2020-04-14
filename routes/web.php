@@ -87,7 +87,7 @@ Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplicatio
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
 Route::post('/saveadmin-job', 'AdminController@savejob')->name('admin_savejob');
-Route::resource('blogcategories', 'BlogCategoriesController');
+Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
 Route::resource('blogarticles', 'BlogArticlesController');
 Route::get('/admin-employers', 'AdminController@adminemployers')->name('adminemployers');
 Route::get('/new-employer', 'AdminController@employer')->name('new-employer');
@@ -135,6 +135,7 @@ Route::resource('alerts', 'JobAlertsController');
 Route::get('/all-companies', 'PagesController@companies')->name('all-companies');
 Route::get('/work-readiness-program', 'PagesController@workprogram')->name('workprogram');
 Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
+Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
 Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');

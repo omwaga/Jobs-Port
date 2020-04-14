@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Employer;
 use App\PersonalStatement;
 use App\Jobposts;
 use App\Training;
@@ -124,7 +123,7 @@ public function postajob(){
         $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
         $industry=Industry::orderBy('name','asc')->get();
         $towns=Town::orderBy('name','asc')->get();
-        $cname=Employer::select('cname')->where('id',Auth::guard('employer')->user()->id)->get();
+        $cname=Employer::select('company_name')->where('id',Auth::guard('employer')->user()->id)->get();
         $countries = Country::all();
 
         return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));

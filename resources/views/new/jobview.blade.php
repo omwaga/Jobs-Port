@@ -6,8 +6,7 @@
             <p><b class="h3">{{$job->jobtitle}}</b></p>
               <div class="row">
                 <div class="col-md-6">
-                  <p>Employer: <a href="/CompanyJobs/" class="text-primary">{{$job->cprofile->cname}}</a></p>
-                  <p>Job Function: <b class="text-primary">{{$job->category->jobcategories}}</b></p>
+                  <p>Employer: <a href="/CompanyJobs/" class="text-primary">{{$job->employer->company_name}}</a></p>
                   <p>Salary: <b class="text-primary">{{$job->salary}}</b></p>
                 </div>
                 <div class="col-md-6">

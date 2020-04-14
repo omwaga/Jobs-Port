@@ -40,7 +40,7 @@
                                   <tr>
                                     <td>{{$column}}</td>
                                     <td>{{$application->user->name}}</td>
-                                    <td>{{$application->cprofile->cname}}</td>
+                                    <td>{{$application->employer->company_name}}</td>
                                     <td>{{$application->job->jobtitle}}</td>
                                   </tr>
                                   @endforeach

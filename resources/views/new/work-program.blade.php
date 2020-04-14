@@ -3,23 +3,20 @@
 <div class="container" style="padding-top: 6rem; background: linear-gradient(rgba(0, 0, 250, 0), rgba(0, 0, 55, 0)), url({{asset('Images/iStock_000036417934_Small-1150x479.jpg')}})">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 text-left">
+      @include('success')
       <h4 class="display-6 font-weight-bold text-white">Work Readiness program - “Getting ready for the world of Work”</h4>
       <p class="f-16 mb-4 text-white">Knowledge of essential workplace skills, attitudes and culture are the building blocks for success in any career. The Work Readiness programme is designed for young adults, students and recent graduates entering the workplace to help them integrate well into the world of work. The program helps them move from the world of formal education to the world of work with essential workplace and other soft skills that will not only improve their career goals, but also open doors to prospective employment.</p> 
-      <p class="text-white">The program has four modules. These are;</p>
-        <ul style="list-style: none;" class="text-white">
-          <li>Module 1: Career Planning, </li>
-          <li>Module 2: Job Preparation,</li>
-          <li>Module 3: Workplace Skills and</li>
-          <li>Module 4: Personal Development.</li>
-        </ul> 
-        <p class="text-white">All modules in this program are offered on a full time and self-paced basis.</p>
-      </p>
+      <p class="text-white">The program has four modules. All modules in this program are offered on a full time and self-paced basis.</p>
     </div>
-  </div><hr>
+  </div>
 </div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                    <div class="row">
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 1: Career planning</h4>
       <p class="f-16 mb-4 text-left">The Career Planning package consists of modules that will help you plan a successful career and enhance job satisfaction. This package will ultimately help you choose a career, create a career plan, select potential employers most beneficial to your overall career goals, engage in activities to enhance your CV, and learn the basics of entering the corporate world.<br>
         Durations: 16 hours<br>
@@ -32,12 +29,10 @@
           <li>Basic conditions of employment</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 2: Job Preparation</h4>
       <p class="f-16 mb-4">The Job Preparation module includes sessions that will assist you in looking for job opportunities and best preparing you to land the job and excel at it – whether you are searching for your first job, you want to explore a different career path, you are unsatisfied with your current position, or you feel you are ready to advance to higher levels.
         Topics covered in this module:
@@ -50,12 +45,16 @@
           <li>Digital profiling</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                        </div>
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 how-img">
+                             <img src="https://image.ibb.co/ctSLu9/Work_Section2_freelance_img3.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 3: Workplace Skills</h4>
       <p class="f-16 mb-4">The Workplace Skills module provides sessions that will help you navigate the workplace and ensure that you excel as an employee and offer the best of yourself to your employer. These general skills apply to anyone in any job environment.
         Topics covered in this module:
@@ -71,12 +70,10 @@
           <li>Dependability</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                    </div>
+                  </div>
+                    <div class="row">
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 4: Personal Development</h4>
       <p class="f-16 mb-4">The Personal Development module aims to provide you with skills that will prove useful to you as a person, even when you’re not at work, though they will also prove essential in the workplace as you deal with stress, connect with colleagues and clients, and work out your personal finances, among other things.
         Topics covered in this module:
@@ -91,12 +88,17 @@
           <li>Global citizenship</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                        </div>
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/gQ9iE9/Work_Section2_freelance_img4.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 5: Basic IT skills for the modern office</h4>
       <p class="f-16 mb-4">
         <ol class="pl-5">
@@ -106,12 +108,12 @@
           <li>Email and Internet</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+      <h4 class="display-6 font-weight-bold text-center">
       <h4 class="display-6 font-weight-bold text-center">Module 6 (Optional): Business Skills</h4>
       <p class="f-16 mb-4">
         <ol class="pl-5">
@@ -122,12 +124,17 @@
           <li>Teamwork dynamics</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
+                        </div>
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/gQ9iE9/Work_Section2_freelance_img4.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 how-img">
+                            <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6">
       <h4 class="display-6 font-weight-bold text-center">Module 7 (Optional): Consultancy Skills</h4>
       <p class="f-16 mb-4">
         <ol class="pl-5">
@@ -140,9 +147,10 @@
           <li>Managing a consulting business</li>
         </ol>
       </p>
-    </div>
-  </div>
-</div>
+                        </div>
+                    </div>
+                </div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 text-left">
