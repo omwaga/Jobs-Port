@@ -453,4 +453,9 @@ public function downloadresume($id)
     $pdf = PDF::loadView('dashboard.orbit-template', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
     return $pdf->download('The-NetworkedPros-resume.pdf');
 }
+
+public function theme()
+{
+    return view('dashboard.theme');
+}
 }

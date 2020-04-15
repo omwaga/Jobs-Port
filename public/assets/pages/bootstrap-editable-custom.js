@@ -10,7 +10,7 @@ $(function(){
  });
     
     // editing of the full name eprovided by theuser
-    $('#name').editable({
+    $('#full_name').editable({
         url: '/test',
         validate: function(value) {
          if($.trim(value) == '') return 'This field is required';

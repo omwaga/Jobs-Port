@@ -111,20 +111,29 @@ class AdminController extends Controller
         return view('admin.enrolled-candidates', compact('candidates'));
     }
 
+//Add a new employer to the databse
     public function addemployer(Request $request)
     {
-        $attributes = $request->validate([
-            'employer_name' => ['required', 'min:3'],
-            'country' => 'nullable',
-            'state' => 'nullable',
-            'industry' => 'nullable',
-            'website' => 'nullable',
-            'email' => 'required',
-            'employer_type' => 'nullable',
-            'phone' => 'required',
-            'physical_address' => 'nullable',
-            'logo' => 'nullable',
-            'description' => 'nullable'
+        $attributes = request()->validate([
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'personal_email'=>'required',
+            'postal_code'=>'nullable',
+            'company_phone_number'=>'required',
+            'job_title'=>'required',
+            'company_address'=>'required',
+            'company_name'=>'required',
+            'company_location'=>'required',
+            'company_website'=>'nullable',
+            'company_industry'=>'required',
+            'company_email'=>'required',
+            'company_size'=>'nullable',
+            'employer_type'=>'required',
+            'personal_phone_number'=>'required|max:15|min:10',
+            'country'=>'required',
+            'company_address'=>'required',
+            'logo'=>'nullable',
+            'username'=>'nullable',
         ]);
 
         Employer::create($attributes);

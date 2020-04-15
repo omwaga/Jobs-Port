@@ -6,7 +6,7 @@
       @include('success')
       <h4 class="display-6 font-weight-bold text-white">Work Readiness program - “Getting ready for the world of Work”</h4>
       <p class="f-16 mb-4 text-white">Knowledge of essential workplace skills, attitudes and culture are the building blocks for success in any career. The Work Readiness programme is designed for young adults, students and recent graduates entering the workplace to help them integrate well into the world of work. The program helps them move from the world of formal education to the world of work with essential workplace and other soft skills that will not only improve their career goals, but also open doors to prospective employment.</p> 
-      <p class="text-white">The program has four modules. All modules in this program are offered on a full time and self-paced basis.</p>
+      <p class="text-white">The program has five compulsary modules (With two advanced/optional modules). All modules in this program are offered on a full time and self-paced basis.</p>
     </div>
   </div>
 </div>

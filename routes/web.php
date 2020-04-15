@@ -48,6 +48,7 @@ Route::get('/recommended-jobs','DashboardController@recommended')->name('recomme
 Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
 Route::get('/downloadresume/{id}','DashboardController@downloadresume');
 Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview');
+Route::get('/theme', 'DashboardController@theme')->name('theme');
 Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
 
@@ -109,7 +110,6 @@ Route::resource('coverletters', 'CoverLettersController');
 Route::prefix('employer')->group(function(){
     Route::post('/login','Auth\EmployerLoginController@login')->name('admin.login.submit');
     Route::post('/logout', 'Auth\EmployerLoginController@logout')->name('admin.logout');
-    Route::get('/', 'EmployController@index')->name('admin.home');
 });
 
 //google controller routes
@@ -137,7 +137,7 @@ Route::get('/work-readiness-program', 'PagesController@workprogram')->name('work
 Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
 Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
-Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
+// Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
 Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
 Route::get('/Hire','PagesController@hire')->name('hire');
@@ -147,6 +147,15 @@ Route::get('/homesearch','PagesController@searchhome')->name('homesearch');
 Route::get('/Register','PagesController@register')->name('Register');
 Route::get('/','PagesController@homee')->name('homee');
 Route::get('/jobview/{id}/{jobtitle}','PagesController@show')->name('viewjob');
+
+
+//dashboard on behalf of the employers
+Route::prefix('super-employer')->group(function(){
+    Route::get('/dashboard', 'TheEmployersController@dashboard')->name('the-dashboard');
+    Route::get('/create-job', 'TheEmployersController@createjob')->name('createjob');
+    Route::POST('create-job', 'TheEmployersController@savejob')->name('supersave');
+    Route::get('/all-jobs', 'TheEmployersController@jobs')->name('super-jobs');
+});
 
 // Routes for the countries and the states
 Route::get('dropdownlist/getstates/{id}','DataController@getStates');//Route for the dependentdropdown list fro countries and towns

@@ -17,8 +17,8 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- <link href="{{asset('assets/css/style.css')}}" rel="stylesheet"> -->
     <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
-    <link id="theme-style" rel="stylesheet" href="resume/css/orbit-1.css">
-    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <!-- <link id="theme-style" rel="stylesheet" href="resume/css/orbit-1.css"> -->
+    <link href="{{ asset('resume/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 
  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
@@ -49,9 +49,9 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-    <script  src="{{asset('assets/js/jquery.slimscroll.js ')}}"></script>
+    <!-- <script  src="{{asset('assets/js/jquery.slimscroll.js ')}}"></script>
     <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script>
-    <script src="{{asset('assets/js/functions.js')}}"></script>
+    <script src="{{asset('assets/js/functions.js')}}"></script> -->
     <!-- End core plugin -->
 
     <!-- BEGIN PAGE LEVEL SCRIPTS -->

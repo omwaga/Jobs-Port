@@ -26,15 +26,54 @@
     <div class="row">
       @include('errors')
       @include('success')
+      <div class="white-box">
+      <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+            <input class="form-control" value="{{old('firstname')}}" type="text" name="firstname">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            <input class="form-control" value="{{old('lastname')}}" type="text" name="lastname">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Personal Email</label>
+            <input class="form-control" value="{{old('personal_email')}}" type="email" name="personal_email">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Job Title</label>
+            <input class="form-control" value="{{old('job_title')}}" type="text" name="job_title">
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label">Personal Phone No</label>
+            <input class="form-control" value="{{old('personal_phone_number')}}" type="text" name="personal_phone_number">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Postal Code</label>
+            <input class="form-control" value="{{old('postal_code')}}" type="text" name="postal_code">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Company Size</label>
+            <select name="company_size">
+              <option>0-5</option>
+              <option>5-20</option>
+            </select>
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <div class="white-box">
           <div class="form-group">
             <label>Company Name</label>
-            <input class="form-control" value="{{old('employer_name')}}" name="employer_name"  placeholder="Enter Title" type="text">
+            <input class="form-control" value="{{old('company_name')}}" name="company_name"  placeholder="Enter Title" type="text">
           </div>
         <div class="form-group">
           <label  class="control-label">Company Industry</label>
-          <select name="industry" class="form-control">
+          <select name="company_industry" class="form-control">
             <option>Select Industry</option>
             @foreach($industries as $industry)
             <option value="{{$industry->id}}">{{$industry->name}}</option>
@@ -43,11 +82,11 @@
         </div>
           <div class="form-group">
             <label>Website URL</label>
-            <input class="form-control" value="{{old('website')}}" name="website"  placeholder="Enter Title" type="text">
+            <input class="form-control" value="{{old('company_website')}}" name="company_website"  placeholder="Enter Title" type="text">
           </div>
           <div class="form-group">
-            <label>Email Address</label>
-            <input class="form-control" value="{{old('email')}}" name="email"  placeholder="Enter Title" type="text">
+            <label>Company Email Address</label>
+            <input class="form-control" value="{{old('company_email')}}" name="company_email"  placeholder="Enter Title" type="text">
           </div>
           <div class="form-group">
             <label>Employer Type</label>
@@ -64,8 +103,8 @@
       <div class="col-md-6">
        <div class="white-box">
           <div class="form-group">
-            <label>Phone Number</label>
-            <input class="form-control" value="{{old('phone')}}" name="phone"  placeholder="Enter Title" type="text">
+            <label>Company Phone Number</label>
+            <input class="form-control" value="{{old('company_phone_number')}}" name="company_phone_number"  placeholder="Enter Title" type="text">
           </div>
         <div class="form-group">
           <label  class="control-label">Country</label>
@@ -78,7 +117,7 @@
         </div>
         <div class="form-group">
           <label  class="control-label">Town/State</label>
-          <select name="state" class="form-control">
+          <select name="company_location" class="form-control">
             <option>Select Town</option>
             @foreach($towns as $town)
             <option value="{{$town->id}}">{{$town->name}}</option>
@@ -86,8 +125,8 @@
           </select>
         </div>
           <div class="form-group">
-            <label>Physical Address</label>
-            <input class="form-control" value="{{old('physical_address')}}" name="physical_address"  placeholder="Enter Title" type="text">
+            <label>Company Address</label>
+            <input class="form-control" value="{{old('company_address')}}" name="company_address"  placeholder="Address" type="text">
           </div>
           <div class="form-group">
             <label>Logo</label>

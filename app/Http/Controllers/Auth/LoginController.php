@@ -35,6 +35,8 @@ class LoginController extends Controller
     public function redirectTo(){
         if (auth()->user()->user_type == 'Admin') {
             return '/admin-dashboard';
+        }elseif (auth()->user()->user_type == 'Super Employer') {
+            return '/super-employer/dashboard';
         }
         return '/jobseekeraccount';
     }
