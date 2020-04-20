@@ -1,4 +1,4 @@
-@extends('layouts.employer.super-user')
+@extends('layouts.employer.super-employer')
 @section('content')
 
         <!--body wrapper start-->

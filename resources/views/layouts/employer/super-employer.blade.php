@@ -53,7 +53,7 @@
 
                 <li class="menu-list"><a href="#"><i class="icon-layers"></i> <span>Employers</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href=""> New Employer</a></li>
+                        <li><a href="{{route('super-add-employer')}}"> New Employer</a></li>
                         <li><a href=""> All Employers</a></li>
                     </ul>
                 </li>

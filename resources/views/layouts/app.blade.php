@@ -12,7 +12,7 @@
       <link rel="shortcut icon" href="{{asset('Images/logo/Networked.jpg')}}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- <script src="{{ asset('js/jobs.js') }}" defer></script> -->
+    <link type="text/css" rel="stylesheet" href="resume/style.css">
     <script src="{{ asset('js/partners.js') }}" defer></script>
     
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />

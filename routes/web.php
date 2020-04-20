@@ -155,6 +155,8 @@ Route::prefix('super-employer')->group(function(){
     Route::get('/create-job', 'TheEmployersController@createjob')->name('createjob');
     Route::POST('create-job', 'TheEmployersController@savejob')->name('supersave');
     Route::get('/all-jobs', 'TheEmployersController@jobs')->name('super-jobs');
+    Route::get('/add-employer', 'TheEmployersController@employer')->name('super-add-employer');
+    Route::post('/add-employer', 'TheEmployersController@addemployer')->name('superadd-employer');
 });
 
 // Routes for the countries and the states

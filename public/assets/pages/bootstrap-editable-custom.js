@@ -241,6 +241,8 @@ $('#career_section').editable({
  }
 });
 $('#career').editable({
+     url: '/personalstatements/update',
+     method: 'patch',
     showbuttons: 'bottom'
 }); 
 // editing of the experiences provided by the user

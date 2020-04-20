@@ -61,7 +61,7 @@
                         <img src="{{ asset('storage/'.$sample->resume)}}" alt="">
                         <div class="box-content">
                             <h4 class="title">{{$sample->name}}</h4>
-                            <p class="description">{!!$sample->description!!}</p>
+                            <p class="text-white">{!!$sample->description!!}</p>
                             @guest
                             <a class="read-more" href="#" data-toggle="modal" data-title="" data-caption="" data-target="#login-overlay">Get Started</a>
                             @else

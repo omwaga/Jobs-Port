@@ -12,6 +12,7 @@ use App\Industry;
 use App\jobcategories;
 use App\Town;
 use App\Country;
+use DB;
 
 class TheEmployersController extends Controller
 {
@@ -60,6 +61,48 @@ class TheEmployersController extends Controller
 
         return rediret('/super-employer/all-job')->with('message', 'The job post has been created succsefully');
     }
+
+    //Load the form to add a new employer
+    public function employer()
+    {
+        $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+        $industries = Industry::orderBy('name','asc')->get();
+        $towns = Town::orderBy('name','asc')->get();
+        $countries = DB::table('countries')->pluck("name","id");
+
+        return view('super-employer.add-employer',compact('jobcategories', 'industries', 'towns', 'countries'));
+    }
+
+    //Add a new employer to the databse
+    public function addemployer(Request $request)
+    {
+        $attributes = request()->validate([
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'personal_email'=>'required',
+            'postal_code'=>'nullable',
+            'company_phone_number'=>'required',
+            'job_title'=>'required',
+            'company_address'=>'required',
+            'company_name'=>'required',
+            'company_location'=>'required',
+            'company_website'=>'nullable',
+            'company_industry'=>'required',
+            'company_email'=>'required',
+            'company_size'=>'nullable',
+            'employer_type'=>'required',
+            'personal_phone_number'=>'required|max:15|min:10',
+            'country'=>'required',
+            'company_address'=>'required',
+            'logo'=>'nullable',
+            'username'=>'nullable',
+        ]);
+
+        Employer::create($attributes);
+
+        return back()->with('message', 'The employer has been succsefullycreated');
+    }
+
 
     //Display all the jobs from the databse posted by the employers
     public function jobs()

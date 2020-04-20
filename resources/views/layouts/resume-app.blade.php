@@ -20,19 +20,8 @@
     <!-- <link id="theme-style" rel="stylesheet" href="resume/css/orbit-1.css"> -->
     <link href="{{ asset('resume/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-
- <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-    <script>
-        $('#duties').ckeditor();
-        $('#edesc').ckeditor();
-        $('#summary').ckeditor();
-        $('#article-ckeditor').ckeditor();
-        $('#editass').ckeditor();
-        $('.textarea').ckeditor(); // if class is prefered.
-    </script>
-
-
+    <link type="text/css" rel="stylesheet" href="resume/style.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
     <div id="app">
