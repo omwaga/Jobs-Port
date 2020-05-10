@@ -5,7 +5,7 @@
                 <div class="row">
 											<div class="modal-content">
 												<div class="modal-header no-bd">
-													<h5 class="modal-title">Job template: {{$jobpost->jobtitle}}</h5>
+													<h5 class="modal-title">Job template: {{$jobpost->job_title}}</h5>
 												</div>
 												<div class="modal-body">
                         @include('errors')
@@ -19,7 +19,7 @@
                         
                                         <div class="form-group">
                                             <label>Enter job title</label>
-                                            <input class="form-control @error('jobtitle') is-invalid @enderror" type="text" value="{{$jobpost->jobtitle}}" name="jobtitle" required />
+                                            <input class="form-control @error('jobtitle') is-invalid @enderror" type="text" value="{{$jobpost->job_title}}" name="jobtitle" required />
                                              @error('jobtitle')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

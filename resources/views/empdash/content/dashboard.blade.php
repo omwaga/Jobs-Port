@@ -152,7 +152,7 @@
 											    @php $column_number = $column_number + 1; @endphp                                                    <tr>
                                                         <td>{{$column_number}}</td>
                                                         <td>{{$application->user->name}}</td>
-                                                        <td>{{$application->job->jobtitle}}</td>
+                                                        <td>{{$application->job->job_title}}</td>
                                                         <td><span class="badge-dot badge-brand mr-1"></span>{{$application->created_at}} </td>
                                                     </tr>
                                                     @endforeach
@@ -190,7 +190,7 @@
                                                 <tbody>
                                                     @foreach($most_applied as $most)
                                                     <tr>
-                                                        <td>{{$most->job->jobtitle}}</td>
+                                                        <td>{{$most->job->job_title}}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -228,7 +228,7 @@
 											    @php $column_number = $column_number + 1; @endphp
 												<tr>
 												    <td>{{$column_number}}</td>
-													<td>{{$job->jobtitle}}</td>
+													<td>{{$job->job_title}}</td>
 													<td>{{$job->jobtype}}</td>
 													<td>{{$job->salary}}</td>
 													<td>{{$job->status}}</td>

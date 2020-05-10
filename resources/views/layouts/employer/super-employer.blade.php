@@ -20,12 +20,16 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
     
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-          <script src="js/html5shiv.min.js"></script>
-          <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('#duties').ckeditor();
+        $('#edesc').ckeditor();
+        $('#summary').ckeditor();
+        $('#article-ckeditor').ckeditor();
+        $('#editass').ckeditor();
+        $('.textarea').ckeditor(); // if class is prefered.
+    </script>
 
 </head>
 
@@ -54,7 +58,7 @@
                 <li class="menu-list"><a href="#"><i class="icon-layers"></i> <span>Employers</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="{{route('super-add-employer')}}"> New Employer</a></li>
-                        <li><a href=""> All Employers</a></li>
+                        <li><a href="{{route('super-allemployers')}}"> All Employers</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href="#"><i class="icon-layers"></i> <span>Job Posts</span></a>
@@ -63,12 +67,14 @@
                         <li><a href="{{route('super-jobs')}}"> All Jobs</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href="#"><i class="icon-lock"></i> <span>Login</span></a>
+                <li class="menu-list"><a href="#"><i class="icon-lock"></i> <span>Account</span></a>
                     <ul class="sub-menu-list">
-                       <li><a href=""> Login </a></li>
-                       <li><a href=""> Forgot Password </a></li>
-                        <li><a href=""> Registration </a></li>
-                        <li><a href=""> Lockscreen </a></li>
+                       <li> <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"> <i class="fa fa-lock"></i> Logout </a>
+                                             <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+                                    @csrf
+                                    </form>
+                          </li>
                     </ul>
                 </li>
 

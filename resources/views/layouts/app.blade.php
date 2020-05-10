@@ -13,7 +13,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link type="text/css" rel="stylesheet" href="resume/style.css">
-    <script src="{{ asset('js/partners.js') }}" defer></script>
     
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -30,7 +29,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jobs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/testimonials.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/') }}" rel="stylesheet">
     <link href="{{ asset('css/resume-samples.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
@@ -39,7 +37,6 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
      <link href="{{ asset('css/package.css') }}" rel="stylesheet">
      <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
-     <link href="{{ asset('js/resume_view.js') }}" rel="stylesheet">
      <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
      <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -191,7 +188,7 @@ h3{
   $('#myInput').trigger('focus')
   })
   </script>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
       $('.testimonial_owlCarousel').owlCarousel({
     loop:true,
     margin:10,
@@ -212,17 +209,21 @@ h3{
         }
     }
 })
-  </script>
+  </script> -->
         <!-- carousel -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function() {
     if(cookieOrLocalStorageVariable) {
        $('#myModal').modal(options);
     }
 });
-</script>
+</script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 

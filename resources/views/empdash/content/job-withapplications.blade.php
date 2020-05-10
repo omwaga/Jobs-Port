@@ -10,14 +10,14 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h5 class="pageheader-title"><strong>Job Title: </strong>{{$job->jobtitle}}</h5>
+                            <h5 class="pageheader-title"><strong>Job Title: </strong>{{$job->job_title}}</h5>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/Employer-dashboard" class="breadcrumb-link">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="{{route('employerjobs')}}" class="breadcrumb-link">Published Jobs</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{$job->jobtitle}}</li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{$job->job_title}}</li>
                                     </ol>
                                 </nav>
                             </div>

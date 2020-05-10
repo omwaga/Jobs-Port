@@ -75,9 +75,9 @@
                                             @php $column = $column + 1 @endphp
 												<tr>
                                                     <td>{{$column}}.</td>
-													<td>{{$template->jobtitle}}</td>
+													<td>{{$template->job_title}}</td>
 													<td>
-													    <a  href="/use-template/{{$template->jobtitle}}" class="btn btn-info btn-sm text-white">
+													    <a  href="/use-template/{{$template->job_title}}" class="btn btn-info btn-sm text-white">
 																<i class="fa fa-eye"></i>Use
 															</a>
 													</td>

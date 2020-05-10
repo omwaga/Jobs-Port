@@ -42,24 +42,40 @@ class TheEmployersController extends Controller
     public function savejob(Request $request)
     {
         $attributes = request()->validate([
-        	'employer_id' => 'required',
-            'jobtitle' => ['required'],
-            'jobtype' => 'required',
-            'jobcategories_id' => 'required',
-            'industry' => 'required',
-            'country_id' => 'required',
-            'location' => 'required',
-            'salary' => 'required',
-            'expirydate' => 'required',
-            'summary' => ['required'],
-            'description'=> ['required'],
-            'applicationdet' => ['required'],
+            'job_title' => ['required', 'min:3'],
+            'employer_name' => 'required',
+            'employer_logo' => 'nullable',
+            'job_type' => 'nullable',
+            'employment_type' => 'nullable',
+            'jobcategories_id' => 'nullable',
+            'industry' => 'nullable',
+            'employer_name'=> 'nullable',
+            'country_id' => 'nullable',
+            'location' => 'nullable',
+            'salary' => 'nullable',
+            'deadline' => 'nullable',
+            'summary' => ['nullable', 'max:350'],
+            'description'=> ['nullable'],
+            'application_details' => ['required'],
             'apply' => 'nullable'
         ]);
 
+        if ($request->hasFile('employer_logo')) {
+        $attributes['employer_logo'] = $request->employer_logo->getClientOriginalName();
+        $request->employer_logo->storeAs('public/job_logos', $attributes['employer_logo']);
+    }
+
         Jobposts::create($attributes + ['employer_id' => 1]);
 
-        return rediret('/super-employer/all-job')->with('message', 'The job post has been created succsefully');
+        return redirect('/super-employer/all-jobs')->with('message', 'The job post has been created succsefully');
+    }
+
+    // return all the registered employers
+    public function employers()
+    {
+        $employers = Employer::paginate(20);
+
+        return view('super-employer.employers', compact('employers'));
     }
 
     //Load the form to add a new employer
@@ -103,10 +119,86 @@ class TheEmployersController extends Controller
         return back()->with('message', 'The employer has been succsefullycreated');
     }
 
+    // Update form for the posted job
+    public function updateform($id)
+    {
+        $job = Jobposts::findOrFail($id);
+        $industries = Industry::all();
+        $categories = jobcategories::all();
+        $countries = Country::all();
+        $towns = Town::all();
+        $employers = Employer::all();
+
+        return view('super-employer.update-job', compact('industries', 'categories', 'countries', 'towns', 'employers', 'job'));
+    }
+
+    //Update the posted job by the super employer
+    public function updatejob(Request $request, $id)
+    {
+        $attributes = request()->validate([
+            'job_title' => ['required', 'min:3'],
+            'employer_name' => 'required',
+            'employer_logo' => 'nullable',
+            'job_type' => 'nullable',
+            'employment_type' => 'nullable',
+            'jobcategories_id' => 'nullable',
+            'industry' => 'nullable',
+            'employer_name'=> 'nullable',
+            'country_id' => 'nullable',
+            'location' => 'nullable',
+            'salary' => 'nullable',
+            'deadline' => 'nullable',
+            'summary' => ['nullable', 'max:350'],
+            'description'=> ['nullable'],
+            'application_details' => ['required'],
+            'apply' => 'nullable'
+        ]);
+
+        $job = Jobposts::findOrFail($id);
+
+        if ($request->hasFile('employer_logo')) {
+        $attributes['employer_logo'] = $request->employer_logo->getClientOriginalName();
+        $request->employer_logo->storeAs('public/job_logos', $attributes['employer_logo']);
+    }
+
+        Jobposts::where('id', $id)->update([
+            'job_title' => $request->job_title,
+            'employer_name' => $request->employer_name,
+            'employer_logo' => $attributes['employer_logo'],
+            'job_type' => $request->job_type,
+            'jobcategories_id' => $request->jobcategories_id,
+            'industry' => $request->industry,
+            'employment_type' => $request->employment_type,
+            'country_id' => $request->country_id,
+            'location' => $request->location,
+            'salary' => $request->salary,
+            'deadline' => $request->deadline,
+            'summary' => $request->summary,
+            'description'=> $request->description,
+            'application_details' => $request->application_details,
+            'apply' => $request->apply,
+            // 'employer_id' => $request->employer_id
+    ]);
+
+        return redirect('/super-employer/all-jobs')->with('message', 'The Job post has been updated successfully');
+    }
+
+    // deleted posted job
+    public function deletejob($id)
+    {
+        $job = Jobposts::findOrFail($id);
+        $job->delete();
+
+        return back()->with('message', 'The Job Post has been deleted successfully');
+    }
+
 
     //Display all the jobs from the databse posted by the employers
     public function jobs()
     {
-    	dd('hell0');
+        $vacancies = Jobposts::Orderby('created_at', 'DESC')->paginate(20);
+
+    	return view('super-employer.all-jobs', compact('vacancies'));
     }
+
 }

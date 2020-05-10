@@ -42,6 +42,7 @@
                                        <div class="form-group">
                                             <label>Select Job Type:</label>
                                             <select class="form-control" name="positiontype" required>
+                                                <option value="">Select Job type</option>
                                                 <option>Part-time</option>
                                                 <option>Full-time</option>
                                                 <option>Contract</option>

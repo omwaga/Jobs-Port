@@ -155,8 +155,12 @@ Route::prefix('super-employer')->group(function(){
     Route::get('/create-job', 'TheEmployersController@createjob')->name('createjob');
     Route::POST('create-job', 'TheEmployersController@savejob')->name('supersave');
     Route::get('/all-jobs', 'TheEmployersController@jobs')->name('super-jobs');
+    Route::get('/update-job/{id}', 'TheEmployersController@updateform')->name('updateform');
+    Route::patch('/update/{id}', 'TheEmployersController@updatejob')->name('updatejob');
+    Route::delete('/delete/{id}', 'TheEmployersController@deletejob')->name('deletejob');
     Route::get('/add-employer', 'TheEmployersController@employer')->name('super-add-employer');
     Route::post('/add-employer', 'TheEmployersController@addemployer')->name('superadd-employer');
+    Route::get('employers', 'TheEmployersController@employers')->name('super-allemployers');
 });
 
 // Routes for the countries and the states

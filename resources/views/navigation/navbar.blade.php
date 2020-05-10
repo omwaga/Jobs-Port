@@ -1,4 +1,4 @@
-<nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top shadow-lg" style="background-color: #ffffff">
+<nav class="navbar navbar-icon-top navbar-expand-md navbar-laravel navbar-dark fixed-top shadow-lg" style="background-color: #005691">
         <a class="navbar-brand" href="{{route('homee')}}">
            <img src="{{asset('Images/logo/logo.png')}}" alt="" style="height:80px; width: 250px;">
         </a>
@@ -9,32 +9,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
               @guest
-              <li class="nav-item active">
-              <a class="nav-link text-secondary" href="/">
-                <i class="fa fa-home text-primary">
+              <li class="nav-item active pl-5">
+              <a class="nav-link text-white" href="/">
+                <i class="fa fa-home text-white">
                 </i>
-                Home
+                HOME
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('alljobs')}}">
-                <i class="fa fa-search text-primary">
+            <li class="nav-item active  pl-5">
+              <a class="nav-link text-white" href="{{route('alljobs')}}">
+                <i class="fa fa-search text-white">
                 </i>
-                Job Search
+                JOB SEARCH
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
-                <i class="fa fa-check text-primary">
+            <li class="nav-item active  pl-5">
+              <a class="nav-link text-white" href="{{route('resumesamples')}}">
+                <i class="fa fa-check text-white">
                 </i>
-                Resume Builder
+                RESUME BUILDER
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('workprogram')}}">
-                <i class="fa fa-graduation-cap text-primary">
+            <li class="nav-item active  pl-5">
+              <a class="nav-link text-white" href="{{route('workprogram')}}">
+                <i class="fa fa-graduation-cap text-white">
                 </i>
-                Work Readiness Program
+                WORK READINESS PROGRAM
               </a>
             </li>
             <!-- <li class="nav-item active">
@@ -44,62 +44,62 @@
                 Career Hub
               </a>
             </li> -->
-            <li class="nav-item active">
-              <a class="nav-link text-secondary" href="https://blog.thenetworkedpros.com/">
-                <i class="fa fa-sticky-note text-primary">
+            <li class="nav-item active  pl-5">
+              <a class="nav-link text-white" href="https://blog.thenetworkedpros.com/">
+                <i class="fa fa-sticky-note text-white">
                 </i>
-                Career Insights
+                CAREER INSIGHTS
               </a>
             </li>
             @else
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('alljobs')}}">
-                <i class="fa fa-search text-primary">
+              <a class="nav-link text-white" href="{{route('alljobs')}}">
+                <i class="fa fa-search text-white">
                 </i>
-                Find a Job
+                FIND A JOB
               </a>
             </li>
             
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('resumesamples')}}">
-                <i class="fa fa-check text-primary">
+              <a class="nav-link text-white" href="{{route('resumesamples')}}">
+                <i class="fa fa-check text-white">
                 </i>
-                Resume Builder
+                RESUME BUILDER
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('recommended')}}">
-                <i class="fa fa-superpowers text-primary">
+              <a class="nav-link text-white" href="{{route('recommended')}}">
+                <i class="fa fa-superpowers text-white">
                 </i>
-                Recommended Jobs
+                RECOMMENDED JOBS
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('savedjobs')}}">
-                <i class="fa fa-heart text-primary">
+              <a class="nav-link text-white" href="{{route('savedjobs')}}">
+                <i class="fa fa-heart text-white">
                 </i>
-                Saved Jobs
+                SAVED JOBS
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{url('/jobapplications')}}">
-                <i class="fa fa-rocket text-primary">
+              <a class="nav-link text-white" href="{{url('/jobapplications')}}">
+                <i class="fa fa-rocket text-white">
                 </i>
-                Job Applications
+                JOB APPLICATIONS
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="#">
-                <i class="fa fa-graduation-cap text-primary">
+              <a class="nav-link text-white" href="#">
+                <i class="fa fa-graduation-cap text-white">
                 </i>
-                Career Advice
+                CAREER ADVICE
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-secondary" href="{{route('career-profile')}}">
-                <i class="fa fa-road text-primary">
+              <a class="nav-link text-white" href="{{route('career-profile')}}">
+                <i class="fa fa-road text-white">
                 </i>
-                Career Profile
+                CAREER PROFILE
               </a>
             </li>
             @endguest
@@ -122,19 +122,12 @@
                         
           <ul class="navbar-nav ml-auto ">
               <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i style="font-size:2.5em;" class="fa fa-user text-danger">
-                </i>
-          {{ Auth::user()->name }} <span class="caret">
-        </a>
-        <div class="dropdown-menu" style="background: #90959e;" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fa fa-suitcase"></i> Products and Billing</a>
-          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+          Logout<i style="font-size:2.5em;" class="fa fa-sign-out text-danger"></i>
+        </a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-        </div> 
         </li>
           </ul>
                         

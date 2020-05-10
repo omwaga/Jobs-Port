@@ -49,7 +49,7 @@
 												@foreach($application as $apply)
 												<tr>
 													<td>{{$apply->user->name}}</td>
-													<td>{{$apply->job->jobtitle}}</td>
+													<td>{{$apply->job->job_title}}</td>
 													<td>{{$apply->created_at}}</td>
 													<td>
 													    <a  href="/applicantprofile/{{$apply->user->id}}" class="btn btn-info btn-sm text-white">

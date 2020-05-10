@@ -36,24 +36,24 @@ class PagesController extends Controller
 
 
     //return  the home page
-public function homee(){
-  $industries=Industry::orderBy('name','asc')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $alljobs=Jobposts::all();
-  $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
-  $countries = DB::table('countries')->pluck("name","id");
-  $company=Employer::orderBy('created_at','desc')->limit(6)->get();
-  $town=Town::orderBy('name','asc')->get();
+  public function homee(){
+    $industries=Industry::orderBy('name','asc')->get();
+    $categories=jobcategories::orderBy('jobcategories','asc')->get();
+    $alljobs=Jobposts::all();
+    $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
+    $countries = DB::table('countries')->pluck("name","id");
+    $company=Employer::orderBy('created_at','desc')->limit(6)->get();
+    $town=Town::orderBy('name','asc')->get();
 
-  return view('new.home')->with('industry',$industries)
-  ->with('jobs',$jobs)
-  ->with('countries',$countries)
-  ->with('companies',$company)
-  ->with('alljobs',$alljobs)
-  ->with('categories',$categories)
-  ->with('towns',$town);
+    return view('new.home')->with('industry',$industries)
+    ->with('jobs',$jobs)
+    ->with('countries',$countries)
+    ->with('companies',$company)
+    ->with('alljobs',$alljobs)
+    ->with('categories',$categories)
+    ->with('towns',$town);
 
-}
+  }
 
   public function cprofile(){
     $industry=Industry::orderBy('name','asc')->get();
@@ -76,7 +76,7 @@ public function homee(){
    else{
     return view('new.empdash');
   }
-  }
+}
 
 public function companies()
 {
@@ -106,7 +106,7 @@ public function aboutjob(){
   $industries=Industry::orderBy('name','asc')->get();
   $indacount=Jobposts::join('industries','industries.name','=','jobposts.industry')->whereIn('jobposts.industry',$industries)->get();
   $town=Town::orderBy('name','asc')->get();
-  $datediif=Jobposts::select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
+  $datediif=Jobposts::select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $jobs=Jobposts::orderBy('created_at','desc')->get();
   
@@ -120,7 +120,7 @@ public function aboutjob(){
 
 //  all jobs available in the database
 public function alljobs(){
-  $jobs=Jobposts::paginate(10);
+  $jobs=Jobposts::orderBy('created_at', 'DESC')->paginate(10);
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
@@ -298,11 +298,17 @@ public function searchhome(Request $request){
 
 public function show($id)
 {
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
   $job = Jobposts::where('id', $id)->first();
-  $expirydate=Jobposts::whereIn('expirydate',$job)->select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
-  $featured=Jobposts::orderBy('created_at','desc')->limit(4)->get();
+  $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
 
-  return view('new.jobview', compact('job', 'expirydate', 'featured'));
+  $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
+
+  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
+
+  return view('new.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries'));
 } 
 
 public function loginform($id)

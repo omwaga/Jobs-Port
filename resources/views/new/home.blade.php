@@ -30,7 +30,7 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
           <select name="job_category" class="form-control search-slt">
-            <option>All Job Functions</option>
+            <option>All Job Categories</option>
             @foreach($categories as $jobt)
             <option value="{{$jobt->id}}">{{$jobt->jobcategories}}</option>
             @endforeach
@@ -76,7 +76,7 @@
   <div class="vertical-tabs">
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#pag1" role="tab" aria-controls="home">Latest jobs</a>
+        <a class="nav-link active" data-toggle="tab" href="#pag1" role="tab" aria-controls="home">Latest jobs<span class="badge badge-primary badge-pill">{{$jobs->count()}}</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#pag2" role="tab" aria-controls="profile">Jobs by Location</a>
@@ -108,9 +108,9 @@
             @foreach($jobs as $job)
             <div class="col-md-6"> 
               <ul>
-                @php $jobtitle = str_slug($job->jobtitle, '-'); @endphp
+                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
                 <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
-                  {!! str_limit($job->jobtitle, $limit = 40, $end = '...job') !!}
+                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
                 </a></li>
               </ul>
             </div>
@@ -126,7 +126,7 @@
             <div class="col-md-4"> 
               <ul>
                 <li style="list-style: none;" class="pb-2"><a href="/job-location/{{$town->name}}" style="color:#0B0B3B;">
-                 {!! $town->name !!}
+                 {!! $town->name !!} <span class="badge badge-primary badge-pill">{{$town->jobposts->count()}}</span>
                </a></li>
              </ul>
            </div>
@@ -142,7 +142,7 @@
           <div class="col-md-4"> 
             <ul>
               <li style="list-style: none;" class="pb-2"><a href="/job-industry/{{$industrie->name}}" style="color:#0B0B3B;">
-               {!! $industrie->name !!}
+               {!! $industrie->name !!} <span class="badge badge-primary badge-pill">{{$industrie->jobposts->count()}}</span>
              </a></li>
            </ul>
          </div>

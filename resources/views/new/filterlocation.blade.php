@@ -9,7 +9,7 @@
                  <div class="column card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
       <div class="col-md-12">
       <div class="row">
-    <h5 style="color:#0B0B3B;">{{$show->jobtitle}}</h5>
+    <h5 style="color:#0B0B3B;">{{$show->job_title}}</h5>
     
     </div>
                   <p>Posted By: <a href="#" class="text-primary">company name</a></p>
@@ -23,8 +23,8 @@
                 <div class="col-md-9">
                 <p class="text-dark">
                     {!! str_limit(strip_tags($show->summary), 200) !!}
-        @php $jobtitle = str_slug($show->jobtitle, '-'); @endphp
-        <a class="btn btn-danger pull-right" href="/jobview/{{$show->id}}/{{$jobtitle}}">Apply</a>
+        @php $jobtitle = str_slug($show->job_title, '-'); @endphp
+        <a class="btn btn-danger pull-right" href="/jobview/{{$show->id}}/{{$jobtitle}}">View Job Details</a>
                 </p>
                 </div>
      </div>

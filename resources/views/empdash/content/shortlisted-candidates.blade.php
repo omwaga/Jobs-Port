@@ -46,7 +46,7 @@
                                         <select class="form-control" name="jobtitle" required id="input-select">
                                                 <option>Select Job Vacancy</option>
                                                 @foreach($jobposts as $jobpost)
-                                                <option value="{{$jobpost->id}}">{{$jobpost->jobtitle}}</option>
+                                                <option value="{{$jobpost->id}}">{{$jobpost->job_title}}</option>
                                                 @endforeach
                                             </select>
                                     </div>

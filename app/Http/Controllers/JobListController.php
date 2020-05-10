@@ -18,7 +18,7 @@ class JobListController extends Controller
     
     public function index()
     {
-        $jobs = Jobposts::where('employer_id',Auth::guard('employer')->user()->id)->get();
+        $jobs = Jobposts::OrderBy('created_at', 'DESC')->where('employer_id',Auth::guard('employer')->user()->id)->get();
         
         return view('empdash.content.jobs', compact('jobs'));
     }
@@ -73,7 +73,7 @@ class JobListController extends Controller
      */
     public function update(Jobposts $jobpost)
     {
-        $jobpost->update(request(['jobtitle','jobcategories_id', 'location','type','industry', 'salary', 'expirydate', 'summary', 'description', 'applicationdet']));
+        $jobpost->update(request(['job_title','jobcategories_id', 'location','employment_type','industry', 'salary', 'deadline', 'summary', 'description', 'application_details']));
         
         return redirect('/jobposts')->with('message', 'Your job has been updated successfully');
     }

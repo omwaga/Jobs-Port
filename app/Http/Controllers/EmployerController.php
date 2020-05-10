@@ -170,33 +170,33 @@ $this->validate($request,[
     'jdescription'=>'required',
     'application'=>'nullable',
 ]);
-$data=array(
-    'emaill'=>$request->emaill,
-    'jobtitle'=>$request->jobtitle,
-    'positiontype'=>$request->positiontype,
-    'company'=>$request->company,
+// $data=array(
+//     'emaill'=>$request->emaill,
+//     'jobtitle'=>$request->jobtitle,
+//     'positiontype'=>$request->positiontype,
+//     'company'=>$request->company,
 
-);
-Mail::send('email.cemail',$data,function($mess) use($data){
-$mess->to($data['emaill']);
-$mess->from('info@thenetworkedpros.com');
-$mess->subject($data['jobtitle']);
-});
+// );
+// Mail::send('email.cemail',$data,function($mess) use($data){
+// $mess->to($data['emaill']);
+// $mess->from('info@thenetworkedpros.com');
+// $mess->subject($data['jobtitle']);
+// });
 $jobpost= new Jobposts;
 $jobpost->employer_id=Auth::guard('employer')->user()->id;
-$jobpost->jobtitle=$request->input('jobtitle');
-$jobpost->jobtype=$request->input('positiontype');
+$jobpost->job_title=$request->input('jobtitle');
+$jobpost->job_type=$request->input('job_type');
 $jobpost->jobcategories_id=$request->input('jfunction');
 $jobpost->industry=$request->input('industry');
 $jobpost->country_id=$request->input('country');
 $jobpost->location=$request->input('state');
 $jobpost->salary=$request->input('salary');
-$jobpost->expirydate=$request->input('expiry');
+$jobpost->deadline=$request->input('expiry');
 $jobpost->summary=$request->input('jsummary');
 $jobpost->description=$request->input('jdescription');
-$jobpost->applicationdet=$request->input('application');
+$jobpost->application_details=$request->input('application');
 $jobpost->apply=$request->input('apply');
-$jobpost->companyname=$request->input('company');
+$jobpost->employment_type=$request->input('positiontype');
 $jobpost->save();
 return redirect('/jobposts')->with('message','You have successfully posted your job');
 }
@@ -240,7 +240,7 @@ public function picktemplate()
 // use a template
 public function usetemplate($jobtitle)
 {
-   $jobpost = Jobposts::where('jobtitle', $jobtitle)->first();
+   $jobpost = Jobposts::where('job_title', $jobtitle)->first();
    $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
    $industries = Industry::orderBy('name','asc')->get();
    $countries = Country::all();
@@ -261,7 +261,7 @@ public function alljobs()
 public function shortlistjobs(Request $request)
 {
     $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
-    $job = Jobposts::where('id', $request->jobtitle)->value('jobtitle');
+    $job = Jobposts::where('id', $request->jobtitle)->value('job_title');
     $candidates = DB::table('job_applications')
             ->join('shortlists', 'shortlists.user_id', 'job_applications.user_id')
             ->join('jobseeker_details', 'job_applications.user_id', '=', 'jobseeker_details.user_id')

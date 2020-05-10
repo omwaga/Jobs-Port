@@ -27,9 +27,9 @@
                       <div class="col-md-4">
                           <div class="card-profile3">
                               <div class="p-header">
-                                   <img src="assets/images/profile-picture3.png"  alt="">
-                                  <h4>{{$employer->cname}}</h4>
-                                  <p>{{$employer->email}}</p>
+                                   <img src="{{asset('storage/logos/'.$employer->logo)}}"  alt="">
+                                  <h4>{{$employer->company_name}}</h4>
+                                  <p>{{$employer->company_email}}</p>
                               </div>
                               <div class="p-info">
                                   <div class="row">
@@ -42,7 +42,7 @@
                                      
                                      <div class="col-md-6 co-sm-6 col-xs-6">
                                          <div class="p-stats last">
-                                            <h4> Applicants</h4>
+                                            <h4> Received Applications</h4>
                                             <p>{{$employer->applications->count()}}</p>
                                          </div>
                                      </div>

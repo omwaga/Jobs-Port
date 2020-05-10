@@ -9,7 +9,7 @@
     <h4 class="page-title">Add Employer</h4>
     <ol class="breadcrumb">
       <li>
-        <a href="{{route('admin')}}">Dashboard</a>
+        <a href="{{route('the-dashboard')}}">Dashboard</a>
       </li>
       <li class="active">
         Add New Employer

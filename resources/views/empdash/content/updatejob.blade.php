@@ -26,16 +26,17 @@
                         
                                         <div class="form-group">
                                             <label>Enter job title</label>
-                                            <input class="form-control @error('jobtitle') is-invalid @enderror" type="text" value="{{$jobpost->jobtitle}}" name="jobtitle" required />
-                                             @error('jobtitle')
+                                            <input class="form-control @error('job_title') is-invalid @enderror" type="text" value="{{$jobpost->job_title}}" name="job_title" required />
+                                             @error('job_title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                                         </div>
                                <div class="form-group">
-                                            <label>Select Job Type</label>
-                                            <select class="form-control" name="jobtype" required>
+                                            <label>Employment Type</label>
+                                            <select class="form-control" name="employment_type" required>
+                                                <option>{{$jobpost->employment_type ?? 'Select Employment Type'}}</option>
                                                 <option>Part-time</option>
                                                 <option>Full-time</option>
                                                 <option>Contract</option>
@@ -51,8 +52,8 @@
                                             </select>
                                         </div>
                                          <div class="form-group">
-                                            <label>Expiry date</label>
-                                            <input class="form-control"  type="date" name="expirydate" required value="{{$jobpost->expirydate}}"/>
+                                            <label>Deadline</label>
+                                            <input class="form-control"  type="date" name="deadline" required value="{{$jobpost->deadline}}"/>
                              
                                         </div>
                             </div>
@@ -105,7 +106,7 @@
                                                          <div class="col-md-12">
                              <div class="panel panel-dark">
                                         <div class="form-group">
-                                            <label>Job Summary</label>
+                                            <label>Job Description</label>
                                             <textarea class="form-control ckeditor" rows="4" name="summary" required>{!!$jobpost->summary!!}</textarea>
                                         </div> 
                              </div>   
@@ -113,7 +114,7 @@
                             <div class="col-md-12">
                              <div class="panel panel-dark">
                                 <div class="form-group">
-                                            <label>Job Description</label>
+                                            <label>Job Requirements</label>
                                             <textarea class="form-control @error('jdescription') is-invalid @enderror ckeditor" rows="4" name="description" required>{!!$jobpost->description!!}</textarea>
                                             @error('jdescription')
                                     <span class="invalid-feedback" role="alert">
@@ -137,8 +138,8 @@
     <div class="col-md-12">
                              <div class="panel panel-dark">
                                         <div class="form-group">
-                                            <label>Application details</label>
-                                            <textarea class="form-control ckeditor" name="applicationdet" rows="3" >{!!$jobpost->applicationdet!!}</textarea>
+                                            <label>How To Apply</label>
+                                            <textarea class="form-control ckeditor" name="applicationdet" rows="3" >{!!$jobpost->application_details!!}</textarea>
                                         </div>
                              </div>   
                             </div>
