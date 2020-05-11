@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{asset('Images/cv2.jpg')}})" style=" padding-top: 5rem;">
-  <div class="container">
+  <div class="container" style=" padding-top: 3rem;">
     <form method="get" action="{{route('homesearch')}}">
      <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -47,7 +47,7 @@
     @foreach($jobs as $job)
     <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <h4 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a></h4>
+          <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a></h5>
           <ul style="list-style: none;">
             <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
             <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>
@@ -66,7 +66,7 @@
         </div>
         <div class="col-md-9">
           <p class="text-dark">
-            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
+            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
           </p>
         </div>
       </div>
