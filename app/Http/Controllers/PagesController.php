@@ -144,7 +144,7 @@ public function filterlocation($name){
   $town_id=Town::where('name',$name)->pluck('id');
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $jobs=Jobposts::whereIn('location',$town_id)->paginate(10);
+  $jobs=Jobposts::whereIn('location',$town_id)->orderBy('created_at', 'desc')->paginate(10);
   $industries=Industry::orderBy('name','asc')->limit(10)->get();
 
   return view('new.filterlocation')
@@ -156,7 +156,7 @@ public function filterlocation($name){
 
 public function showcategory($jobcategories){
   $category=jobcategories::where('jobcategories',$jobcategories)->pluck('id')->first();
-  $jobs=Jobposts::where('jobcategories_id',$category)->paginate(10);
+  $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
@@ -170,7 +170,7 @@ public function showcategory($jobcategories){
 
 public function filterindustry($name){
   $industry_id=Industry::where('name',$name)->pluck('id')->first();
-  $jobs=Jobposts::where('industry',$industry_id)->paginate(10);
+  $jobs=Jobposts::where('industry',$industry_id)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();

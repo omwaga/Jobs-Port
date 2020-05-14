@@ -11,7 +11,6 @@
             <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
             <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type ?? ''}}</li>
             <li><b style="font-weight: bold;">Salary:</b> {{$job->salary ?? ''}}</li>
-            <li><b style="font-weight: bold;">Category:</b> {{$job->category->jobcategories ?? ''}}</li>
             <li><b style="font-weight: bold;">Deadline:</b> {{$job->deadline ?? ''}}</li>
             <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{$days_to_deadline ?? ''}} days</span></li>
           </ul>
