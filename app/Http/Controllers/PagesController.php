@@ -40,7 +40,10 @@ class PagesController extends Controller
     $industries=Industry::orderBy('name','asc')->get();
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
     $alljobs=Jobposts::all();
-    $jobs=Jobposts::orderBy('created_at','desc')->limit(27)->get();
+    $jobs=Jobposts::orderBy('created_at','desc')->limit(20)->get();
+    $government_jobs=Jobposts::where('job_type', 'Government Jobs')->orderBy('created_at','desc')->limit(20)->get();
+    $ngo_jobs=Jobposts::where('job_type', 'NGO and Humanitarian Jobs')->orderBy('created_at','desc')->limit(20)->get();
+    $un_jobs=Jobposts::where('job_type', 'UN Jobs')->orderBy('created_at','desc')->limit(20)->get();
     $countries = DB::table('countries')->pluck("name","id");
     $company=Employer::orderBy('created_at','desc')->limit(6)->get();
     $town=Town::orderBy('name','asc')->get();
@@ -51,6 +54,9 @@ class PagesController extends Controller
     ->with('companies',$company)
     ->with('alljobs',$alljobs)
     ->with('categories',$categories)
+    ->with('government_jobs',$government_jobs)
+    ->with('ngo_jobs',$ngo_jobs)
+    ->with('un_jobs',$un_jobs)
     ->with('towns',$town);
 
   }
@@ -132,7 +138,7 @@ public function alljobs(){
 //  jobs after the search
 public function searchresult(Request $request)
 {
-  $jobs=DB::table('jobposts')->where('jobtitle', 'LIKE', "%{$request->jobtitle}%")->paginate(10);
+  $jobs=DB::table('jobposts')->where('jobtitle', 'LIKE', "%{$request->jobtitle}%")->orderBy('created_at', 'desc')->paginate(10);
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
@@ -226,7 +232,7 @@ public function searchhome(Request $request){
     $locations = Town::all();
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('industry', $request->industry)->paginate(12);
+    $jobs = Jobposts::where('industry', $request->industry)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
@@ -235,7 +241,7 @@ public function searchhome(Request $request){
     $locations = Town::all();
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('jobcategories_id', $request->job_category)->paginate(12);
+    $jobs = Jobposts::where('jobcategories_id', $request->job_category)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
@@ -244,7 +250,7 @@ public function searchhome(Request $request){
     $locations = Town::all();
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('location', $request->state)->paginate(12);
+    $jobs = Jobposts::where('location', $request->state)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
 
@@ -256,7 +262,7 @@ public function searchhome(Request $request){
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->paginate(12);
+    $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
@@ -267,7 +273,7 @@ public function searchhome(Request $request){
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->paginate(12);
+    $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
@@ -278,7 +284,7 @@ public function searchhome(Request $request){
     $industries = Industry::all();
     $countries = DB::table('countries')->pluck("name","id");
     $industry_jobs = Jobposts::where('industry', $request->industry);
-    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->paginate(12);
+    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
@@ -290,7 +296,7 @@ public function searchhome(Request $request){
     $countries = DB::table('countries')->pluck("name","id");
     $industry_jobs = Jobposts::where('industry', $request->industry);
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->paginate(12);
+    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
     return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }

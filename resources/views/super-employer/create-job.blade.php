@@ -83,7 +83,7 @@
           <select name="job_type" class="form-control">
             <option value="">Select Job Type</option>
             <option value="Government Jobs">Government Jobs</option>
-            <option value="International Jobs">International Jobs</option>
+            <option value="UN Jobs">UN Jobs</option>
             <option value="NGO and Humanitarian Jobs">NGO and Humanitarian Jobs</option>
           </select>
         </div>

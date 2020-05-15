@@ -95,10 +95,6 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#pag6" role="tab" aria-controls="settings">UN Jobs</a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#pag7" role="tab" aria-controls="settings">International Jobs</a>
-      </li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="pag1" role="tabpanel">
@@ -153,28 +149,54 @@
    <div class="tab-pane" id="pag4" role="tabpanel">
     <div class="sv-tab-panel" align="left">
      <h4>GOVERNMENT JOBS</h4>
-     <p>No jobs in this category</p>
+          <div class="row">
+            @foreach($government_jobs as $job)
+            <div class="col-md-6"> 
+              <ul>
+                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+                </a></li>
+              </ul>
+            </div>
+            @endforeach
+          </div>
    </div>
  </div>
 
  <div class="tab-pane" id="pag5" role="tabpanel">
   <div class="sv-tab-panel" align="left">
     <h4>NGO AND HUMANITARIAN SECTOR JOBS</h4>
-    <p>No jobs in this category</p>
+          <div class="row">
+            @foreach($ngo_jobs as $job)
+            <div class="col-md-6"> 
+              <ul>
+                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+                </a></li>
+              </ul>
+            </div>
+            @endforeach
+          </div>
   </div>
 </div>
 
 <div class="tab-pane" id="pag6" role="tabpanel">
   <div class="sv-tab-panel" align="left">
     <h4>UN JOBS</h4>
-    <p>No jobs in this category</p>
-  </div>
-</div>
-
-<div class="tab-pane" id="pag7" role="tabpanel">
-  <div class="sv-tab-panel" align="left">
-    <h4>INTERNATIONAL JOBS</h4>
-    <p>No jobs in this category</p>
+          <div class="row">
+            @foreach($un_jobs as $job)
+            <div class="col-md-6"> 
+              <ul>
+                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+                </a></li>
+              </ul>
+            </div>
+            @endforeach
+          </div>
   </div>
 </div>
 

@@ -9,28 +9,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
               @guest
-              <li class="nav-item active pl-5">
+              <li class="nav-item active pl-2">
               <a class="nav-link text-white" href="/">
                 <i class="fa fa-home text-white">
                 </i>
                 HOME
               </a>
             </li>
-            <li class="nav-item active  pl-5">
+            <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('alljobs')}}">
                 <i class="fa fa-search text-white">
                 </i>
                 JOB SEARCH
               </a>
             </li>
-            <li class="nav-item active  pl-5">
+            <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('resumesamples')}}">
                 <i class="fa fa-check text-white">
                 </i>
                 RESUME BUILDER
               </a>
             </li>
-            <li class="nav-item active  pl-5">
+            <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('workprogram')}}">
                 <i class="fa fa-graduation-cap text-white">
                 </i>
@@ -44,7 +44,7 @@
                 Career Hub
               </a>
             </li> -->
-            <li class="nav-item active  pl-5">
+            <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="https://blog.thenetworkedpros.com/">
                 <i class="fa fa-sticky-note text-white">
                 </i>

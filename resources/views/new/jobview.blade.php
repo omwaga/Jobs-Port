@@ -12,6 +12,7 @@
             <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type ?? ''}}</li>
             <li><b style="font-weight: bold;">Salary:</b> {{$job->salary ?? ''}}</li>
             <li><b style="font-weight: bold;">Deadline:</b> {{$job->deadline ?? ''}}</li>
+        <li><strong style="font-weight: bold;">Location:</strong> {{$job->town->name ?? ''}} - {{ $job->country->name ?? ''}}</li>
             <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{$days_to_deadline ?? ''}} days</span></li>
           </ul>
           </div>
