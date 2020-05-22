@@ -80,11 +80,13 @@
        <div class="white-box">
         <div class="form-group">
           <label class="control-label">Job Type</label>
-          <select name="job_type" class="form-control">
+          <select name="job_type" class="form-control" required="">
             <option value="">Select Job Type</option>
             <option value="Government Jobs">Government Jobs</option>
+            <option value="Private Company Jobs">Private Company Jobs</option>
             <option value="UN Jobs">UN Jobs</option>
             <option value="NGO and Humanitarian Jobs">NGO and Humanitarian Jobs</option>
+            <option value="Consultancy">Consultancy</option>
           </select>
         </div>
         <div class="form-group">

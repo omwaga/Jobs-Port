@@ -2,7 +2,7 @@
 @section('content')
 <!--<br>-->
 <section class="section section-top section-full">
-  <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 250, 0), rgba(0, 0, 55, 1)), url({{asset('Images/banner-5.jpg')}})">
+  <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 140, 0), rgba(0, 0, 80, 1)), url({{asset('Images/banner-5.jpg')}})">
     <div class="container">
       <div class="row">
         <div class="col-md-12" style=" padding-top: 8rem;"><br><br><br>
@@ -95,13 +95,17 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#pag6" role="tab" aria-controls="settings">UN Jobs</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#pag7" role="tab" aria-controls="settings">Consultancies</a>
+      </li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="pag1" role="tabpanel">
         <div class="sv-tab-panel" align="left">
           <h4>LATEST JOBS</h4>
           <div class="row">
-            @foreach($jobs as $job)
+            @forelse($jobs as $job)
             <div class="col-md-6"> 
               <ul>
                 @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -110,7 +114,9 @@
                 </a></li>
               </ul>
             </div>
-            @endforeach
+            @empty
+            <p>No jobs posted</p>
+            @endforelse
           </div>
         </div>
       </div>
@@ -118,7 +124,7 @@
         <div class="sv-tab-panel" align="left">
           <h4>JOBS BY LOCATION</h4>
           <div class="row">
-            @foreach($towns as $town)
+            @forelse($towns as $town)
             <div class="col-md-4"> 
               <ul>
                 <li style="list-style: none;" class="pb-2"><a href="/job-location/{{$town->name}}" style="color:#0B0B3B;">
@@ -126,7 +132,9 @@
                </a></li>
              </ul>
            </div>
-           @endforeach
+           @empty
+            <p>No jobs posted</p>
+           @endforelse
          </div>
        </div>
      </div>
@@ -134,7 +142,7 @@
       <div class="sv-tab-panel" align="left">
         <h4>JOBS BY INDUSTRY</h4>
         <div class="row">
-          @foreach($industry as $industrie)
+          @forelse($industry as $industrie)
           <div class="col-md-4"> 
             <ul>
               <li style="list-style: none;" class="pb-2"><a href="/job-industry/{{$industrie->name}}" style="color:#0B0B3B;">
@@ -142,7 +150,9 @@
              </a></li>
            </ul>
          </div>
-         @endforeach
+         @empty
+            <p>No jobs posted</p>
+         @endforelse
        </div>
      </div>
    </div>
@@ -150,7 +160,7 @@
     <div class="sv-tab-panel" align="left">
      <h4>GOVERNMENT JOBS</h4>
           <div class="row">
-            @foreach($government_jobs as $job)
+            @forelse($government_jobs as $job)
             <div class="col-md-6"> 
               <ul>
                 @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -159,7 +169,9 @@
                 </a></li>
               </ul>
             </div>
-            @endforeach
+            @empty
+            <p>No jobs posted</p>
+            @endforelse
           </div>
    </div>
  </div>
@@ -168,7 +180,7 @@
   <div class="sv-tab-panel" align="left">
     <h4>NGO AND HUMANITARIAN SECTOR JOBS</h4>
           <div class="row">
-            @foreach($ngo_jobs as $job)
+            @forelse($ngo_jobs as $job)
             <div class="col-md-6"> 
               <ul>
                 @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -177,7 +189,9 @@
                 </a></li>
               </ul>
             </div>
-            @endforeach
+            @empty
+            <p>No jobs posted</p>
+            @endforelse
           </div>
   </div>
 </div>
@@ -186,7 +200,7 @@
   <div class="sv-tab-panel" align="left">
     <h4>UN JOBS</h4>
           <div class="row">
-            @foreach($un_jobs as $job)
+            @forelse($un_jobs as $job)
             <div class="col-md-6"> 
               <ul>
                 @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -195,7 +209,29 @@
                 </a></li>
               </ul>
             </div>
-            @endforeach
+            @empty
+            <p>No jobs posted</p>
+            @endforelse
+          </div>
+  </div>
+</div>
+
+ <div class="tab-pane" id="pag7" role="tabpanel">
+  <div class="sv-tab-panel" align="left">
+    <h4>CONSULTANCIES</h4>
+          <div class="row">
+            @forelse($consultancies as $job)
+            <div class="col-md-6"> 
+              <ul>
+                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+                </a></li>
+              </ul>
+            </div>
+            @empty
+            <p>No consultancies posted</p>
+            @endforelse
           </div>
   </div>
 </div>

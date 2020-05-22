@@ -44,6 +44,7 @@ class PagesController extends Controller
     $government_jobs=Jobposts::where('job_type', 'Government Jobs')->orderBy('created_at','desc')->limit(20)->get();
     $ngo_jobs=Jobposts::where('job_type', 'NGO and Humanitarian Jobs')->orderBy('created_at','desc')->limit(20)->get();
     $un_jobs=Jobposts::where('job_type', 'UN Jobs')->orderBy('created_at','desc')->limit(20)->get();
+    $consultancies=Jobposts::where('job_type', 'Consultancy')->orderBy('created_at','desc')->limit(20)->get();
     $countries = DB::table('countries')->pluck("name","id");
     $company=Employer::orderBy('created_at','desc')->limit(6)->get();
     $town=Town::orderBy('name','asc')->get();
@@ -57,6 +58,7 @@ class PagesController extends Controller
     ->with('government_jobs',$government_jobs)
     ->with('ngo_jobs',$ngo_jobs)
     ->with('un_jobs',$un_jobs)
+    ->with('consultancies',$consultancies)
     ->with('towns',$town);
 
   }
@@ -336,6 +338,66 @@ function applyjob(){
 
   return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
    'personalstatements', 'experience', 'education', 'awards', 'skills'));
+}
+
+// Dispaly the government jobs page
+public function governmentjobs()
+{
+  $jobs=Jobposts::where('job_type', 'Government Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.government-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+}
+
+// Dispaly the private company jobs page
+public function privatejobs()
+{
+  $jobs=Jobposts::where('job_type', 'Private Company Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.private-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+}
+
+// Dispaly the UN jobs page
+public function unjobs()
+{
+  $jobs=Jobposts::where('job_type', 'UN Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.un-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+}
+
+// Dispaly the Humanitarian and NGO jobs page
+public function humanitarianjobs()
+{
+  $jobs=Jobposts::where('job_type', 'NGO and Humanitarian Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.humanitarian-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+}
+
+// Dispaly the consultancies page
+public function consultancies()
+{
+  $jobs=Jobposts::where('job_type', 'Consultancy')->orderBy('created_at', 'DESC')->paginate(12);
+  $categories = jobcategories::all();
+  $locations = Town::all();
+  $industries = Industry::all();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.consultancies', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 //view to upload the cvs

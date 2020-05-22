@@ -86,6 +86,51 @@
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button style="color:#0B0B3B;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <b><i class="fa fa-check"></i> Job Type</b>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+         <ul>
+             <li class="d-flex justify-content-between align-items-center">
+                  <a href="{{route('government-jobs')}}" class="nav-link" style="color:#0B0B3B;">
+                      <i class="fas fa-angle-right"></i>
+                     Government Jobs
+                  </a>
+              </li>
+             <li class="d-flex justify-content-between align-items-center">
+                  <a href="{{route('private-jobs')}}" class="nav-link" style="color:#0B0B3B;">
+                      <i class="fas fa-angle-right"></i>
+                     Private Company Jobs
+                  </a>
+              </li>
+             <li class="d-flex justify-content-between align-items-center">
+                  <a href="{{route('un-jobs')}}" class="nav-link" style="color:#0B0B3B;">
+                      <i class="fas fa-angle-right"></i>
+                     UN Jobs
+                  </a>
+              </li>
+             <li class="d-flex justify-content-between align-items-center">
+                  <a href="{{route('humanitarian-jobs')}}" class="nav-link" style="color:#0B0B3B;">
+                      <i class="fas fa-angle-right"></i>
+                     Humanitarian and NGO Jobs
+                  </a>
+              </li>
+             <li class="d-flex justify-content-between align-items-center">
+                  <a href="{{route('consultancies')}}" class="nav-link" style="color:#0B0B3B;">
+                      <i class="fas fa-angle-right"></i>
+                     Consultancies
+                  </a>
+              </li>
+         </ul>
+      </div>
+    </div>
+  </div>
   
   <div class="card">
     <div class="card-header" id="headingThree">

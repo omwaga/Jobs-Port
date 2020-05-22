@@ -147,6 +147,11 @@ Route::get('/homesearch','PagesController@searchhome')->name('homesearch');
 Route::get('/Register','PagesController@register')->name('Register');
 Route::get('/','PagesController@homee')->name('homee');
 Route::get('/jobview/{id}/{jobtitle}','PagesController@show')->name('viewjob');
+Route::get('/government-jobs', 'PagesController@governmentjobs')->name('government-jobs');
+Route::get('/private-company-jobs', 'PagesController@privatejobs')->name('private-jobs');
+Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');
+Route::get('/humanitarian-and-ngo-jobs', 'PagesController@humanitarianjobs')->name('humanitarian-jobs');
+Route::get('/consultancies', 'PagesController@consultancies')->name('consultancies');
 
 
 //dashboard on behalf of the employers

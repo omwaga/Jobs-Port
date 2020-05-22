@@ -45,7 +45,7 @@ class TheEmployersController extends Controller
             'job_title' => ['required', 'min:3'],
             'employer_name' => 'required',
             'employer_logo' => 'nullable',
-            'job_type' => 'nullable',
+            'job_type' => 'required',
             'employment_type' => 'nullable',
             'jobcategories_id' => 'nullable',
             'industry' => 'nullable',
@@ -54,8 +54,8 @@ class TheEmployersController extends Controller
             'location' => 'nullable',
             'salary' => 'nullable',
             'deadline' => 'nullable',
-            'summary' => ['nullable', 'max:350'],
-            'description'=> ['nullable'],
+            'summary' => ['nullable'],
+            'description'=> ['required'],
             'application_details' => ['required'],
             'apply' => 'nullable'
         ]);

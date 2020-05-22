@@ -13,28 +13,28 @@
               <a class="nav-link text-white" href="/">
                 <i class="fa fa-home text-white">
                 </i>
-                HOME
+                Home
               </a>
             </li>
             <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('alljobs')}}">
                 <i class="fa fa-search text-white">
                 </i>
-                JOB SEARCH
+                Job Search
               </a>
             </li>
             <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('resumesamples')}}">
                 <i class="fa fa-check text-white">
                 </i>
-                RESUME BUILDER
+                Resume Builder
               </a>
             </li>
             <li class="nav-item active  pl-2">
               <a class="nav-link text-white" href="{{route('workprogram')}}">
                 <i class="fa fa-graduation-cap text-white">
                 </i>
-                WORK READINESS PROGRAM
+                Work Readiness Program
               </a>
             </li>
             <!-- <li class="nav-item active">
@@ -48,7 +48,7 @@
               <a class="nav-link text-white" href="https://blog.thenetworkedpros.com/">
                 <i class="fa fa-sticky-note text-white">
                 </i>
-                CAREER INSIGHTS
+                Career Insights
               </a>
             </li>
             @else
@@ -56,7 +56,7 @@
               <a class="nav-link text-white" href="{{route('alljobs')}}">
                 <i class="fa fa-search text-white">
                 </i>
-                FIND A JOB
+                Find a Job
               </a>
             </li>
             
@@ -64,42 +64,42 @@
               <a class="nav-link text-white" href="{{route('resumesamples')}}">
                 <i class="fa fa-check text-white">
                 </i>
-                RESUME BUILDER
+                Resume Builder
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="{{route('recommended')}}">
                 <i class="fa fa-superpowers text-white">
                 </i>
-                RECOMMENDED JOBS
+                Recommended Jobs
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="{{route('savedjobs')}}">
                 <i class="fa fa-heart text-white">
                 </i>
-                SAVED JOBS
+                Saved Jobs
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="{{url('/jobapplications')}}">
                 <i class="fa fa-rocket text-white">
                 </i>
-                JOB APPLICATIONS
+                Job Applications
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="#">
                 <i class="fa fa-graduation-cap text-white">
                 </i>
-                CAREER ADVICE
+                Career Advice
               </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-white" href="{{route('career-profile')}}">
                 <i class="fa fa-road text-white">
                 </i>
-                CAREER PROFILE
+                Career Profile
               </a>
             </li>
             @endguest
