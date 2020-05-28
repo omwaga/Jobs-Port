@@ -45,7 +45,7 @@
               </a>
             </li> -->
             <li class="nav-item active  pl-2">
-              <a class="nav-link text-white" href="https://blog.thenetworkedpros.com/">
+              <a class="nav-link text-white" href="#">
                 <i class="fa fa-sticky-note text-white">
                 </i>
                 Career Insights

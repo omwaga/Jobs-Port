@@ -29,7 +29,7 @@ class ApplicationsController extends Controller
     }
     public function index()
     {
-        $applications = JobApplication::where('user_id', auth()->user()->id)->get();
+        $applications = JobApplication::where('user_id', auth()->user()->id)->paginate(12);
         $industries=Industry::orderBy('name','asc')->get();
         $locations = Town::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();

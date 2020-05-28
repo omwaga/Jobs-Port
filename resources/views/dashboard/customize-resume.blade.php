@@ -1,7 +1,7 @@
 @section('title') Customize Resume @endsection
 @extends('layouts.resume-app')
 @section('content')
-<div class="container" style="padding-top: 6rem;">
+<div class="container-fluid" style="padding-top: 6rem;">
   <div class="row" id="root">
     <div class="col-md-4">
       <h4 align="center" style="color:#0B0B3B;"> Personal Details </h4>
@@ -74,7 +74,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label>Professional Summary</label>
-              <textarea name="description"  class="ckeditor form-control form-control-sm" v-model="career_summary"></textarea>
+              <textarea name="description"  class="form-control form-control-sm" v-model="career_summary"></textarea>
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@
             </div>
 
             <div id="name">
-              <h1 class="quickFade delayTwo" id="full_name">@{{first_name}} @{{last_name}}</h1>
+              <h4 class="quickFade delayTwo" id="full_name">@{{first_name}} @{{last_name}}</h4>
               <h2 class="quickFade delayThree" id="position">@{{job_title}}</h2>
             </div>
 

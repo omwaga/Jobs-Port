@@ -31,7 +31,7 @@ class PagesController extends Controller
 {
   public function test()
   {
-    return view('dashboard.test');
+    return view('employer.index');
   }
 
 

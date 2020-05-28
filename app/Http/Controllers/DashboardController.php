@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Companies;
 use App\Jobposts;
 use App\CvUpload;
-use App\Application;
 use App\Training;
 use App\jobcategories;
 use App\Industry;
@@ -15,7 +14,7 @@ use App\Locations;
 use App\Academics;
 use App\Countrylist;
 use Mail;
-use App\Assignments;
+use App\SavedJob;
 use DB;
 use App\User;
 use App\Town;
@@ -176,8 +175,9 @@ public function savedjobs()
     $industries=Industry::orderBy('name','asc')->get();
     $locations = Town::orderBy('name','asc')->get();
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
+    $jobs = SavedJob::where('user_id', auth()->user()->id)->orderBy('created_at')->get();
 
-    return view('dashboard.savedjobs', compact('categories', 'locations', 'industries'));
+    return view('dashboard.savedjobs', compact('categories', 'locations', 'industries', 'jobs'));
 }
 
 public function viewjob($id)
@@ -452,6 +452,14 @@ public function downloadresume($id)
 
     $pdf = PDF::loadView('dashboard.orbit-template', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
     return $pdf->download('The-NetworkedPros-resume.pdf');
+}
+
+//save jobs by the user
+public function savejob(Request $request, $id)
+{
+    SavedJob::create(['user_id' => auth()->user()->id, 'job_id' => $request->id]);
+
+     return back();
 }
 
 public function theme()

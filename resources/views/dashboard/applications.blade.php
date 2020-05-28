@@ -1,39 +1,23 @@
-
 @extends('layouts.app')
 @section('content')
-<br>
-<br>
-<br>
-<div class="container">
-
-     <div class="row">
-         
-         <div class="col-md-8">
-                         @foreach($applications as $application)
-                         <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
-      <div class="col-md-12">
-      <div class="row">
-    <h5 style="color:#0B0B3B;"><a href="#">{{$application->job->jobtitle}}</a></h5>
-    
-    </div>
-                  <p>Posted By: <a href="#" class="text-primary">{{$application->employer->company_name}}</a></p>
-                        <div class="row">
-                 <p class="text-secondary">{{$application->job->jobtype}} | Salary: {{$application->job->salary}}</p>
-                 <!--<div class="col-md-12">-->
-                 <!--<a class="btn btn-danger pull-right" href="#">Details</a>-->
-                 <!--</div>-->
-                 </div>
-       </div> 
+<div class="container"  style="padding-top: 5rem;">
+ <div class="row">
+   <div class="col-md-8">
+    @foreach($applications as $job)
+    <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
+          <h5 style="color:#0B0B3B;"><a href="#">{{$job->job->job_title}}</a></h5>
+          <ul style="list-style: none;">
+            <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
+            <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->job->employment_type}}</li>
+          </ul>
+    </div> 
+    @endforeach
+    {{$applications->links()}}
   </div>
-                         @endforeach
 
-  
-             </div>
-                      <div class="col-md-4">   
-                   @include('dashboard.rightnav')
-         </div>
-        
-     </div>
-
+  <div class="col-md-4">
+   @include('new.rightnav')    
+ </div>
+</div>
 </div>
 @endsection

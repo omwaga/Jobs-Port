@@ -23,7 +23,7 @@ Route::get('/test', 'PagesController@test');
 Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
 Route::get('/career-profile','DashboardController@careerprofile')->name('career-profile');
 Route::get('/uploads', 'DashboardController@upload')->name('fileupload');
-Route::get('/savedjobs', 'DashboardController@savedjobs')->name('savedjobs');
+Route::get('/saved-jobs', 'DashboardController@savedjobs')->name('savedjobs');
 Route::get('/viewjob/{id}', 'DashboardController@viewjob');
 Route::get('/apply/{id}/{jobtitle}', 'ApplicationsController@apply')->name('apply');
 Route::resource('jobapplications', 'ApplicationsController');
@@ -51,6 +51,7 @@ Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview')
 Route::get('/theme', 'DashboardController@theme')->name('theme');
 Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
+Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
 
 //Employercontroller Routes
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');

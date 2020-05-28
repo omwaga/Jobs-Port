@@ -1,37 +1,24 @@
-
 @extends('layouts.app')
 @section('content')
-<div class="container" style="padding-top: 6rem">
-
-     <div class="row">
-         <div class="col-md-8">
-                 <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
-      <div class="col-md-12">
-      <div class="row">
-    <h5 style="color:#0B0B3B;">Job Title</h5>
-    
-    </div>
-                  <p>Posted By: <a href="#" class="text-primary">company name</a></p>
-                        <div class="row">
-                 <p class="text-secondary">job type | Salary: salary</p>
-                 </div>
-    <div class="row">
-    <div class="col-md-3">
-                    <img class="rounded-circle img-fluid" src="{{asset('Images/default-logo.png')}}" alt="Generic placeholder image" width="140" height="140">
-                  </div>
-                <div class="col-md-9">
-                <p class="text-dark">
-                    Description <a class="btn btn-danger pull-right" href="#">Apply</a>
-                </p>
-                </div>
-     </div>
-       </div> 
+<div class="container" style=" padding-top: 5rem;">
+ <div class="row">
+   <div class="col-md-8">
+      @forelse($jobs as $job)
+    <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
+          <h5 style="color:#0B0B3B;"><a href="#">{{$job->job->job_title}}</a></h5>
+          <ul style="list-style: none;">
+            <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->job->employment_type}}</li>
+            <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{\Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInDays($job->deadline) ?? ''}} days</span></li>
+          </ul>
+    </div> 
+      @empty
+      <p>No jobs found</p>
+      @endforelse
   </div>
-             </div>
-                      <div class="col-md-4">
-                          @include('dashboard.rightnav')        
-         </div>
-     </div>
 
+  <div class="col-md-4">
+   @include('new.rightnav')    
+ </div>
+</div>
 </div>
 @endsection

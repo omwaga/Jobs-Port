@@ -165,14 +165,6 @@ h3{
 
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
-    <!--Landbot io-->
-<!--    <script src="https://static.landbot.io/landbot-widget/landbot-widget-1.0.0.js"></script>-->
-<!--<script>-->
-<!--  var myLandbot = new LandbotPopup({-->
-<!--    index: 'https://landbot.io/u/H-359158-3XNPTXBXE8PKJXOS/index.html',-->
-<!--  });-->
-<!--</script>-->
-    <!--Landbot io-->
 
     <div id="app">
     @include('navigation.navbar')

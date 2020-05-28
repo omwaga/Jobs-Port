@@ -5,7 +5,7 @@
  <div class="row">
    <div class="col-md-8">
      @foreach($jobs as $job)
-     <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
+     <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
       @php $jobtitle = str_slug($job->job_title, '-'); @endphp
       <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a></h5>
       <ul style="list-style: none;">
