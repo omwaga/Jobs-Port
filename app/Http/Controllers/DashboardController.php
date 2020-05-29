@@ -69,8 +69,9 @@ class DashboardController extends Controller
         $locations = Town::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
         $user_industries = UserCategories::where('user_id', auth()->user()->id)->get();
+        $jobs = Jobposts::orderBy('created_at', 'DESC')->paginate(12);
         
-        return view('dashboard.recommended-jobs', compact('industries', 'locations', 'categories', 'user_industries'));
+        return view('dashboard.recommended-jobs', compact('industries', 'locations', 'categories', 'user_industries', 'jobs'));
     }
     public function saverecommendedjobs(Request $request){
 
@@ -175,7 +176,7 @@ public function savedjobs()
     $industries=Industry::orderBy('name','asc')->get();
     $locations = Town::orderBy('name','asc')->get();
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
-    $jobs = SavedJob::where('user_id', auth()->user()->id)->orderBy('created_at')->get();
+    $jobs = SavedJob::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
 
     return view('dashboard.savedjobs', compact('categories', 'locations', 'industries', 'jobs'));
 }
@@ -299,7 +300,7 @@ public function customizeresume()
     $education = Education::where('user_id', '=', auth()->user()->id)->get();
     $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
     $references = Reference::where('user_id', '=', auth()->user()->id)->get();
-    $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+    $skills = Skills::where('user_id', '=', auth()->user()->id)->pluck('skillname');
 
     return view('dashboard.customize-resume', compact( 'personalinfo', 'references',
       'personalstatements', 'experience', 'education', 'awards', 'skills', 'countries'));
