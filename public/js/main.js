@@ -1,9 +1,3 @@
-Vue.component('profile',{
-  props:['profile'],
-
-  template:'<article><div class=""><p >{{profile}}</p></div></article>'
-});
-
 Vue.component('experience',{
   props:['duration', 'position', 'company', 'description'],
 
@@ -13,7 +7,7 @@ Vue.component('experience',{
 Vue.component('skills',{
   props:['skill'],
 
-  template:'<ul class="keySkills"><li v-for="sk in skill">{{sk.skillname}}</li></ul>'
+  template:'<li>{{skill}}</li>'
 });
 
 Vue.component('education',{

@@ -52,6 +52,12 @@ Route::get('/theme', 'DashboardController@theme')->name('theme');
 Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
 Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
+Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
+
+//Resume Builder Routes
+Route::prefix('resume-builder')->group(function(){
+    Route::get('/skills','ResumeBuilderController@skills')->name('resume-skills');
+});
 
 //Employercontroller Routes
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');

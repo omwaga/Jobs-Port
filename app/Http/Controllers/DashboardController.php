@@ -460,7 +460,16 @@ public function savejob(Request $request, $id)
 {
     SavedJob::create(['user_id' => auth()->user()->id, 'job_id' => $request->id]);
 
-     return back();
+     return back()->with('message', 'The job has been added to the saved jobs successfully');
+}
+
+//Delete the user saved jobs
+public function deletesavejob(Request $request)
+{
+   $job = SavedJob::where('id', '=', $request->id)->first();
+   $job->delete();
+
+   return back()->with('message', 'The job has been removed from the saved jobs successfully');
 }
 
 public function theme()

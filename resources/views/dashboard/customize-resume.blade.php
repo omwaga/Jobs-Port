@@ -74,7 +74,10 @@
             </div>
           </div>
         </div>
+
+
         <h4 align="center" style="color:#0B0B3B;"> Education </h4>
+          <form>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -103,6 +106,10 @@
             </div>
           </div>
         </div>
+        <button class="pull-right btn btn-danger" type="submit">Save</button>
+          </form><br>
+
+
         <h4 align="center" style="color:#0B0B3B;"> Experience </h4>
         <div class="row">
           <div class="col-md-6">
@@ -157,20 +164,11 @@
 
           <div id="mainArea" class="quickFade delayFive">
             <section>
-              <profile profile="career_summary"></profile>
+              <article><div class=""><p >@{{career_summary}}</p></div></article>
               <div class="clear"></div>
             </section>
 
 
-            <section>
-              <div class="sectionTitle">
-                <h1>Work Experience</h1>
-              </div>
-              <div class="sectionContent">
-              <experience position="position" company="company" duration="duration" description="description"></experience>
-            </div>
-            <div class="clear"></div>
-          </section>
 
           <section>
             <div class="sectionTitle">
@@ -178,7 +176,22 @@
             </div>
 
             <div class="sectionContent">
-              <education description="Education description" qualification="Qualification" institution="institution name"></education>
+              @foreach($education as $educated)
+              <education description="The education description goes here" qualification="{{$educated->qualification}}" institution="{{$educated->institution}}"></education>
+              @endforeach
+            </div>
+            <div class="clear"></div>
+          </section>
+
+
+            <section>
+              <div class="sectionTitle">
+                <h1>Work Experience</h1>
+              </div>
+              <div class="sectionContent">
+                @foreach($experience as $experienced)
+              <experience position="{{$experienced->position}}" company="{{$experienced->position}}" duration="duration" description="description"></experience>
+              @endforeach
             </div>
             <div class="clear"></div>
           </section>
@@ -189,7 +202,11 @@
             </div>
 
             <div class="sectionContent">
-              <skills skill="{{$skills}}"></skills>
+              <ul class="keySkills">
+              @foreach($skills as $skill)
+              <skills skill="{{$skill}}"></skills>
+              @endforeach
+            </ul>
             </div>
             <div class="clear"></div>
           </section>
