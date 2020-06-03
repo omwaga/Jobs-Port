@@ -57,6 +57,8 @@ Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->n
 //Resume Builder Routes
 Route::prefix('resume-builder')->group(function(){
     Route::get('/skills','ResumeBuilderController@skills')->name('resume-skills');
+    Route::post('/education','ResumeBuilderController@education')->name('resume-education');
+    Route::post('/experience','ResumeBuilderController@experience')->name('resume-experience');
 });
 
 //Employercontroller Routes
