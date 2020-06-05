@@ -79,16 +79,16 @@
     <h4 align="center" style="color:#0B0B3B;"> Education </h4>
     <form method="POST" action="/resume-builder/education" @submit.prevent=onSubmit @keydown="form.errors.clear($event.target.name)">
       @csrf
-      <div class="row">
+
 
         <!-- display the errors for the education fields -->
-            <span class="help alert-danger" v-if="form.errors.has('education_institution')" v-text="form.errors.get('education_institution')"></span>
-            <span class="help alert-danger" v-if="form.errors.has('education_qualification')" v-text="form.errors.get('education_qualification')"></span>
-            <span class="help alert-danger" v-if="form.errors.has('education_date')" v-text="form.errors.get('education_date')"></span>
-            <span class="help alert-danger" v-if="form.errors.has('education_city')" v-text="form.errors.get('education_city')"></span>
-            <span class="help alert-danger" v-if="form.errors.has('education_description')" v-text="form.errors.get('education_description')"></span>
+            <span class="help text-danger" v-if="form.errors.has('education_institution')" v-text="form.errors.get('education_institution')"></span>
+            <span class="help text-danger" v-if="form.errors.has('education_qualification')" v-text="form.errors.get('education_qualification')"></span>
+            <span class="help text-danger" v-if="form.errors.has('education_date')" v-text="form.errors.get('education_date')"></span>
+            <span class="help text-danger" v-if="form.errors.has('education_city')" v-text="form.errors.get('education_city')"></span>
+            <span class="help text-danger" v-if="form.errors.has('education_description')" v-text="form.errors.get('education_description')"></span>
         <!-- end display the errors for the education fields -->
-
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="name">School/Institution</label>
@@ -123,7 +123,6 @@
     <h4 align="center" style="color:#0B0B3B;"> Experience </h4>
     <form  method="POST" action="/resume-builder/experience" @submit.prevent="experienceSubmit" @keydown="experienceform.errors.clear($event.target.name)">
       @csrf
-      <div class="row">
 
         <!-- display the errors for the experience fields -->
             <span class="help text-danger" v-if="experienceform.errors.has('experience_title')" v-text="experienceform.errors.get('experience_title')"></span>
@@ -133,6 +132,19 @@
             <span class="help text-danger" v-if="experienceform.errors.has('experience_description')" v-text="experienceform.errors.get('experience_description')"></span>
         <!-- end display the errors for the experience fields -->
 
+        <div class=""  v-for="experience in experiences">
+          <div class="row">
+            <div class="col-md-12">
+             <label v-text="experience.position"></label> at <label v-text="experience.employer"></label><i class="text-danger fa fa-trash pull-right"></i>
+           </div>
+           <div class="col-md-12">
+             <label v-text="experience.start_date"></label> - 
+             <label v-text="experience.end_date"></label>
+           </div>
+         </div><hr>
+       </div>
+
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="name">Job Title</label>
@@ -160,7 +172,7 @@
           </div>
         </div>
       </div>
-        <button type="submit" class="btn btn-sm text-white pull-right" :disabled="experienceform.errors.any()" style="background-color:#0B0B3B;">
+        <button type="submit" class="btn btn-sm text-white pull-right" :disabled="experienceform.errors.any()" style="background-color:#0B0B3B;" @click="addName">
           Save
         </button>
     </form>

@@ -208,7 +208,7 @@ class Errors {
   Vue.component('education',{
     props:['description', 'institution', 'qualification'],
 
-    template:'<article><h2>{{institution}}</h2><p class="subDetails">{{qualification}}</p><p>{{description}}</p></article>'
+    template:'<article><h4>{{institution}}</h4> <p class="subDetails">{{qualification}}</p><p>{{description}}</p></article>'
   });
 
   new Vue({
@@ -222,6 +222,8 @@ class Errors {
       email:'',
       phone:'',
       career_summary:'',
+
+      experiences:[],
 
       form: new Form({
         education_institution:'',
@@ -240,15 +242,42 @@ class Errors {
       }) 
     },
 
+    mounted(){
+      axios.get('/resume-builder/skills').then(response => this.experiences = response.data);
+    },
+
+     /**
+     * Send a POST request for the educations.
+     */
     methods: {
       onSubmit() {
         this.form.post('/resume-builder/education')
         .then(response => alert('Wahoo!'));
       },
 
-      experienceSubmit() {
-        this.experienceform.post('/resume-builder/experience')
-        .then(response => alert('Wahoo!'));
+     /**
+     * Send a POST request for the experiences.
+     */
+     experienceSubmit() {
+      this.experienceform.post('/resume-builder/experience')
+      .then(response => alert('Wahoo!'));
+    },
+
+    addName()
+      {
+        this.experiences.push({ 
+          "id": 5, 
+          "user_id": 440, 
+          "employer": this.experienceform.employer, 
+          "position": this.experienceform.experience_title, 
+          "current_employer": null, 
+          "roles": "<p>a Lipa, </p>", 
+          "start_date": "2020-03-11", 
+          "end_date": "2020-03-10", 
+          "created_at": "2020-03-25 05:58:12", 
+          "updated_at": "2020-03-25 05:58:12" 
+        });
+        
       }
-    }
-  })
+  }
+})

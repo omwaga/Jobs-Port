@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Skills;
+use App\WorkExperience;
 
 class ResumeBuilderController extends Controller
 {
     public function skills()
     {
-    $skills = Skills::where('user_id', '=', auth()->user()->id)->pluck('skillname');	
+    $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+
+    return $experience;
     }
 
     public function education(Request $request){
