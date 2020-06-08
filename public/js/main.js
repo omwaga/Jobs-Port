@@ -224,6 +224,7 @@ class Errors {
       career_summary:'',
 
       experiences:[],
+      educations:[],
 
       form: new Form({
         education_institution:'',
@@ -239,11 +240,18 @@ class Errors {
         employer:'',
         company_city:'',
         experience_description:'',
+      }) ,
+
+      skillform: new Form({
+        skill_name:'',
+        expertise_level:''
       }) 
     },
 
     mounted(){
-      axios.get('/resume-builder/skills').then(response => this.experiences = response.data);
+      axios.get('/resume-builder/experiences').then(response => this.experiences = response.data);
+
+      axios.get('/resume-builder/educations').then(response => this.educations = response.data);
     },
 
      /**
@@ -263,6 +271,14 @@ class Errors {
       .then(response => alert('Wahoo!'));
     },
 
+     /**
+     * Send a POST request for the skills.
+     */
+     skillSubmit() {
+      this.skillform.post('/resume-builder/skills')
+      .then(response => alert('Wahoo!'));
+    },
+
     addName()
       {
         this.experiences.push({ 
@@ -274,6 +290,23 @@ class Errors {
           "roles": "<p>a Lipa, </p>", 
           "start_date": "2020-03-11", 
           "end_date": "2020-03-10", 
+          "created_at": "2020-03-25 05:58:12", 
+          "updated_at": "2020-03-25 05:58:12" 
+        });
+        
+      },
+
+    addEducation()
+      {
+        this.educations.push({ 
+          "id": 5, 
+          "user_id": 440, 
+          "qualification": this.form.education_qualification, 
+          "institution": this.form.education_institution, 
+          "level": "level here", 
+          "score": "some score", 
+          "start_date": "2020-03-11", 
+          "grad_date": "2020-03-10", 
           "created_at": "2020-03-25 05:58:12", 
           "updated_at": "2020-03-25 05:58:12" 
         });
