@@ -59,6 +59,7 @@ Route::prefix('resume-builder')->group(function(){
     Route::get('/experiences','ResumeBuilderController@experiences')->name('resume-experiences');
     Route::get('/educations','ResumeBuilderController@educations')->name('resume-educations');
     Route::post('/skills','ResumeBuilderController@skill')->name('resume-skills');
+    Route::get('/skill','ResumeBuilderController@skills')->name('resumeskills');
     Route::post('/education','ResumeBuilderController@education')->name('resume-education');
     Route::post('/experience','ResumeBuilderController@experience')->name('resume-experience');
 });

@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\WorkExperience;
 use App\Education;
+use App\Skills;
 
 class ResumeBuilderController extends Controller
 {
+    //get experiences from the database
     public function experiences()
     {
     $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -24,6 +26,15 @@ class ResumeBuilderController extends Controller
     return $educations;
     }
 
+    //get skills information from  the database
+    public function skills()
+    {
+    $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+
+    return $skills;
+    }
+
+//save education to the database
     public function education(Request $request){
     	$attributes = $request->validate([
             'education_institution' => 'required|min:3',
@@ -36,6 +47,7 @@ class ResumeBuilderController extends Controller
     	return ['message' => 'The submission was successful!'];
     }
 
+//save experience to the database
     public function experience(Request $request){
         $attributes = $request->validate([
             'experience_title' => 'required|min:3',
@@ -48,6 +60,7 @@ class ResumeBuilderController extends Controller
         return ['message' => 'The submission was successful!'];
     }
 
+//Save a skill to the database
     public function skill(Request $request){
         $attributes = $request->validate([
             'skill_name' => 'required|min:3',

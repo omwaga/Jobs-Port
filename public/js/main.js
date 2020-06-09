@@ -225,6 +225,7 @@ class Errors {
 
       experiences:[],
       educations:[],
+      skills:[],
 
       form: new Form({
         education_institution:'',
@@ -250,8 +251,8 @@ class Errors {
 
     mounted(){
       axios.get('/resume-builder/experiences').then(response => this.experiences = response.data);
-
       axios.get('/resume-builder/educations').then(response => this.educations = response.data);
+      axios.get('/resume-builder/skill').then(response => this.skills = response.data);
     },
 
      /**
@@ -307,6 +308,19 @@ class Errors {
           "score": "some score", 
           "start_date": "2020-03-11", 
           "grad_date": "2020-03-10", 
+          "created_at": "2020-03-25 05:58:12", 
+          "updated_at": "2020-03-25 05:58:12" 
+        });
+        
+      },
+
+    addSkill()
+      {
+        this.skills.push({ 
+          "id": 5, 
+          "user_id": 440, 
+          "skillname": this.skillform.skill_name,  
+          "level": this.skillform.expertise_level,
           "created_at": "2020-03-25 05:58:12", 
           "updated_at": "2020-03-25 05:58:12" 
         });

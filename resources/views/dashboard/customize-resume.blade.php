@@ -83,7 +83,7 @@
       <div class=""  v-for="education in educations">
         <div class="row">
           <div class="col-md-12">
-           <label v-text="education.qualification"></label> from <label v-text="education.institution"></label><i class="text-danger fa fa-trash pull-right"></i>
+           <label v-text="education.qualification"></label> from <label v-text="education.institution"></label><a href=""><i class="text-danger fa fa-trash pull-right"></i></a>
          </div>
          <div class="col-md-12">
            <label v-text="education.start_date"></label> - 
@@ -152,7 +152,7 @@
     <div class=""  v-for="experience in experiences">
       <div class="row">
         <div class="col-md-12">
-         <label v-text="experience.position"></label> at <label v-text="experience.employer"></label><i class="text-danger fa fa-trash pull-right"></i>
+         <label v-text="experience.position"></label> at <label v-text="experience.employer"></label><a href=""><i class="text-danger fa fa-trash pull-right"></i></a>
        </div>
        <div class="col-md-12">
          <label v-text="experience.start_date"></label> - 
@@ -195,6 +195,15 @@
 </form>
 
 <h4 align="center" style="color:#0B0B3B;"> Skills </h4>
+<!-- vue component for the educations details -->
+      <div class=""  v-for="skill in skills">
+        <div class="row">
+          <div class="col-md-12">
+           <label v-text="skill.skillname"></label><br> 
+           <label v-text="skill.level"></label><a href="#"><i class="text-danger fa fa-trash pull-right"></i></a>
+         </div>
+       </div><hr>
+     </div>
 <form  method="POST" action="/resume-builder/skills" @submit.prevent="skillSubmit" @keydown="skillform.errors.clear($event.target.name)">
   @csrf
   <div class="row">
@@ -213,7 +222,7 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-sm text-white pull-right" :disabled="skillform.errors.any()" style="background-color:#0B0B3B;">
+  <button type="submit" class="btn btn-sm text-white pull-right" :disabled="skillform.errors.any()" style="background-color:#0B0B3B;" @click="addSkill">
     Save
   </button>
 </form>
