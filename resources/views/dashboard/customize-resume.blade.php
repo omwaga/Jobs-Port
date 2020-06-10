@@ -35,6 +35,8 @@
           </div>
         </div>
       </div>
+
+      <!-- additional details section -->
       <div class="accordion" id="accordionExample">
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" style="color:#0B0B3B;" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -66,6 +68,8 @@
         </div>
       </div>
     </div>
+    <!-- end additional details section -->
+
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
@@ -80,20 +84,32 @@
     <form method="POST" action="/resume-builder/education" @submit.prevent=onSubmit @keydown="form.errors.clear($event.target.name)">
       @csrf
       <!-- vue component for the educations details -->
-      <div class=""  v-for="education in educations">
-        <div class="row">
-          <div class="col-md-12">
-           <label v-text="education.qualification"></label> from <label v-text="education.institution"></label><a href=""><i class="text-danger fa fa-trash pull-right"></i></a>
+      <div class="accordion" id="accordionExample">
+        <div class="card" v-for="education in educations">
+            <h5 class="mb-0">
+              <button style="color:#0B0B3B;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target=#education.id aria-expanded="false" aria-controls="collapseThree">
+                <b><i class="fa fa-check"></i>@{{education.qualification}} from @{{education.institution}}</b>
+              </button>
+            </h5>
+          <div :id=education.id class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-md-12">
+                 <label v-text="education.qualification"></label> from <label v-text="education.institution"></label><a href=""><i class="text-danger fa fa-trash pull-right"></i></a>
+               </div>
+               <div class="col-md-12">
+                 <label v-text="education.start_date"></label> - 
+                 <label v-text="education.grad_date"></label>
+               </div>
+               <div class="col-md-12">
+                 <label v-text="education.level"></label> <br>
+                 <label v-text="education.score"></label>
+               </div>
+             </div><hr>
+           </div>
          </div>
-         <div class="col-md-12">
-           <label v-text="education.start_date"></label> - 
-           <label v-text="education.grad_date"></label>
-         </div>
-         <div class="col-md-12">
-           <label v-text="education.level"></label> <br>
-           <label v-text="education.score"></label>
-         </div>
-       </div><hr>
+       </div>
      </div>
 
      <!-- display the errors for the education fields -->
@@ -195,15 +211,15 @@
 </form>
 
 <h4 align="center" style="color:#0B0B3B;"> Skills </h4>
-<!-- vue component for the educations details -->
-      <div class=""  v-for="skill in skills">
-        <div class="row">
-          <div class="col-md-12">
-           <label v-text="skill.skillname"></label><br> 
-           <label v-text="skill.level"></label><a href="#"><i class="text-danger fa fa-trash pull-right"></i></a>
-         </div>
-       </div><hr>
-     </div>
+<!-- vue component for the skills details -->
+<div class=""  v-for="skill in skills">
+  <div class="row">
+    <div class="col-md-12">
+     <label v-text="skill.skillname"></label><br> 
+     <label v-text="skill.level"></label><a href="#"><i class="text-danger fa fa-trash pull-right"></i></a>
+   </div>
+ </div><hr>
+</div>
 <form  method="POST" action="/resume-builder/skills" @submit.prevent="skillSubmit" @keydown="skillform.errors.clear($event.target.name)">
   @csrf
   <div class="row">
@@ -263,9 +279,10 @@
         </div>
 
         <div class="sectionContent">
-          @foreach($education as $educated)
-          <education description="The education description goes here" qualification="{{$educated->qualification}}" institution="{{$educated->institution}}"></education>
-          @endforeach
+          <article v-for="education in educations">
+            <h4 v-text="education.institution"></h4> 
+            <p class="subDetails" v-text="education.qualification"></p>
+            <p>description here</p></article>
         </div>
         <div class="clear"></div>
       </section>
@@ -276,9 +293,11 @@
           <h1>Work Experience</h1>
         </div>
         <div class="sectionContent">
-          @foreach($experience as $experienced)
-          <experience position="{{$experienced->position}}" company="{{$experienced->position}}" duration="duration" description="description"></experience>
-          @endforeach
+          <article v-for="experience in experiences">
+            <h4> @{{experience.position}} at @{{experience.employer}}</h4>
+            <p class="subDetails"></p>
+            <p>description here</p>
+          </article>
         </div>
         <div class="clear"></div>
       </section>
