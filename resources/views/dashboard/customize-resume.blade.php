@@ -308,10 +308,8 @@
         </div>
 
         <div class="sectionContent">
-          <ul class="keySkills">
-            @foreach($skills as $skill)
-            <skills skill="{{$skill}}"></skills>
-            @endforeach
+          <ul class="keySkills" v-for="skill in skills">
+           <li v-text="skill.skillname"></li> <span v-text="skill.level"></span>
           </ul>
         </div>
         <div class="clear"></div>

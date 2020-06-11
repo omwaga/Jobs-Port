@@ -192,12 +192,6 @@ class Errors {
     }
   }
 
-  Vue.component('skills',{
-    props:['skill'],
-
-    template:'<li>{{skill}}</li>'
-  });
-
   new Vue({
     el:'#root',
 
