@@ -39,9 +39,10 @@ class ResumeBuilderController extends Controller
     	$attributes = $request->validate([
             'education_institution' => 'required|min:3',
             'education_qualification' => 'required|min:3',
-            'education_date' => 'required|min:3',
-            'education_city' => 'required|min:3',
-            'education_date' => 'required|min:3',
+            'start_date' => 'nullable',
+            'grad_date' => 'nullable',
+            'level' => 'nullable',
+            'score' => 'nullable',
         ]);
 
     	return ['message' => 'The submission was successful!'];

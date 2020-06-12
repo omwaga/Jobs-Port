@@ -211,9 +211,10 @@ class Errors {
       form: new Form({
         education_institution:'',
         education_qualification:'',
-        education_date:'',
-        education_city:'',
-        education_description:''
+        start_date:'',
+        grad_date:'',
+        level:'',
+        score:'',
       }),
 
       experienceform: new Form({
@@ -285,10 +286,10 @@ class Errors {
           "user_id": 440, 
           "qualification": this.form.education_qualification, 
           "institution": this.form.education_institution, 
-          "level": "level here", 
-          "score": "some score", 
-          "start_date": "2020-03-11", 
-          "grad_date": "2020-03-10", 
+          "level": this.form.level, 
+          "score": this.form.score, 
+          "start_date": this.form.start_date, 
+          "grad_date": this.form.grad_date, 
           "created_at": "2020-03-25 05:58:12", 
           "updated_at": "2020-03-25 05:58:12" 
         });
