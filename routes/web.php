@@ -65,6 +65,9 @@ Route::prefix('resume-builder')->group(function(){
 });
 
 //Employercontroller Routes
+Route::prefix('employers')->group(function(){
+    Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
+});
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
 Route::resource('jobposts','JobListController');

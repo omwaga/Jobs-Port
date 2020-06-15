@@ -240,7 +240,7 @@
 </div>
 </div><br>
 
-<div class="container-fluid position-relative py-md-5 py-0" style="background-color:#0B0B3B;">
+<div class="container-fluid position-relative py-md-5 py-0" style="background-color:#005691;">
   <div class="row">
     <div class="col-lg-12 text-center">
       <h3 class="text-white display-5 font-weight-bold">RESUME BUILDER</h3>
@@ -279,7 +279,7 @@
           <input type="email" name="email_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required="">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        <button type="submit" class="btn btn-primary" style="background-color:#0B0B3B;">Create Alerts</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#005691;">Create Alerts</button>
       </form>
     </div>
   </div>

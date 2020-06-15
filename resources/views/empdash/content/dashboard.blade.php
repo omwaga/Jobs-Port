@@ -113,7 +113,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-inline-block">
-                                <h5 class="text-muted">Total Applications</h5>
+                                <h5 class="text-muted">Applications</h5>
                                 <h2 class="mb-0">  {{$applications->count(),'0'}}</h2>
                             </div>
                             <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
@@ -186,9 +186,9 @@
                             </div>
                             <div class="card-body border-top">
                                 <ul class="list-unstyled bullet-check font-14">
-                                    <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                                    <li>The vetting includes a professional interview, verification of certificates, reference checks and previous employers check</li>
                                 </ul>
-                                <a href="#" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
+                                <a href="{{route('jobseeker-profiles')}}" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                             </div>
                             <div class="card-body border-top">
                                 <ul class="list-unstyled bullet-check font-14">
-                                    <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                                    <li> Receive applications for a job (Whether posted in the portal or elsewhere) and select candidates from within the portal using the recruitment engine. This will save time and the trouble of going through multiple emails</li>
                                 </ul>
                                 <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
@@ -218,9 +218,9 @@
                             </div>
                             <div class="card-body border-top">
                                 <ul class="list-unstyled bullet-check font-14">
-                                    <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                                    <li> Create a talent pool of candidates you’ll need in the future to support your business growth.</li>
                                 </ul>
-                                <a href="#" class="btn btn-secondary btn-block btn-lg">Contact us</a>
+                                <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -264,8 +264,8 @@
                                       </td>
                                       <td>{{$job->job_title}}</td>
                                       <td>{{$job->employment_type}}</td>
-                                    <td>{{$job->status}}</td>
-                                    <td>
+                                      <td>{{$job->status}}</td>
+                                      <td>
                                         <div class="dropdown float-right">
                                             <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="true">
                                                 <i class="mdi mdi-dots-vertical"></i>
@@ -304,63 +304,29 @@
                     <h3 class="section-title">Recommended Jobseekers</h3>
                 </div>
             </div>
+            @forelse($jobseekers as $jobseeker)
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="card campaign-card text-center">
                     <div class="card-body">
-                        <div class="campaign-img"><img src="assets/images/dribbble.png" alt="user" class="user-avatar-xl"></div>
+                        <div class="campaign-img"><img src="assets/images/avatar.png" alt="user" class="user-avatar-xl"></div>
                         <div class="campaign-info">
-                            <h3 class="mb-1">Campaigns Name</h3>
-                            <p class="mb-3">Vestibulum porttitor laoreet faucibus.</p>
-                            <p class="mb-1">Min, Views:<span class="text-dark font-medium ml-2">2,50,000</span></p>
-                            <p>Payout: <span class="text-dark font-medium ml-2">$22</span></p>
-                            <a href="#"><i class="fab fa-twitter-square fa-sm twitter-color"></i> </a><a href="#"><i class="fab fa-snapchat-square fa-sm snapchat-color"></i></a>
+                            <h3 class="mb-1">{{$jobseeker->jobseekerdetail->name ?? $jobseeker->name}}</h3>
+                            <p class="mb-3">{{$jobseeker->jobseekerdetail->email ?? $jobseeker->email}}</p>
+                            <p class="mb-1">Skills:<span class="text-dark font-medium ml-2">
+                                @forelse($jobseeker->skills as $skill)
+                                {{$skill->skillname}}
+                                @empty
+                                No skills
+                                @endforelse
+                            </span></p>
+                            <a href="#" class="btn btn-secondary">Full Profile</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="card campaign-card text-center">
-                    <div class="card-body">
-                        <div class="campaign-img"><img src="assets/images/github.png" alt="user" class=" user-avatar-xl"></div>
-                        <div class="campaign-info">
-                            <h3 class="mb-1">Campaigns Name</h3>
-                            <p class="mb-3">Lorem ipsum dolor sit ament</p>
-                            <p class="mb-1">Min, Views:<span class="text-dark font-medium ml-2">1,00,000</span></p>
-                            <p>Payout: <span class="text-dark font-medium ml-2">$28</span></p>
-                            <a href="#"><i class="fab fa-instagram fa-sm instagram-color"></i> </a><a href="#"><i class="fab fa-facebook-square fa-sm facebook-color"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="card campaign-card text-center">
-                    <div class="card-body">
-                        <div class="campaign-img"><img src="assets/images/slack.png" alt="user" class="user-avatar-xl"></div>
-                        <div class="campaign-info">
-                            <h3 class="mb-1">Campaigns Name</h3>
-                            <p class="mb-3">Maecenas mattis tempor libero pretium.</p>
-                            <p class="mb-1">Min, Views:<span class="text-dark font-medium ml-2">3,80,000</span></p>
-                            <p>Payout: <span class="text-dark font-medium ml-2">$36</span></p>
-                            <a href="#"><i class="fab fa-facebook-square fa-sm facebook-color"></i> </a><a href="#"><i class="fab fa-snapchat-square fa-sm snapchat-color"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="card campaign-card text-center">
-                    <div class="card-body">
-                        <div class="campaign-img"><img src="assets/images/mail_chimp.png" alt="user" class="user-avatar-xl"></div>
-                        <div class="campaign-info">
-                            <h3 class="mb-1">Campaigns Name</h3>
-                            <p class="mb-3">Proin vitae lacinia leo</p>
-                            <p class="mb-1">Min, Views:<span class="text-dark font-medium ml-2">4,50,000</span></p>
-                            <p>Payout: <span class="text-dark font-medium ml-2">$57</span></p>
-                            <a href="#"><i class="fab fa-twitter-square fa-sm twitter-color"></i> </a><a href="#"><i class="fab fa-snapchat-square fa-sm snapchat-color"></i></a>
-                            <a href="#"><i class="fab fa-facebook-square fa-sm facebook-color"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @empty
+            <p>No jobseekers yet!</p>
+            @endforelse
         </div>
         <!-- ============================================================== -->
         <!-- end recommended campaigns   -->

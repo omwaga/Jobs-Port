@@ -1762,7 +1762,7 @@ Leftsidebar - Primary
 ------------------------- */
 
 .sidebar-primary {
-    background-color: #414da7;
+    background-color: #005691;
 }
 
 .sidebar-primary .nav-divider {
@@ -2693,7 +2693,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 .btn-secondary {
     color: #fff;
-    background-color: #ff407b;
+    background-color: #E3342F;
     border-color: #ff407b;
 }
 

@@ -48,32 +48,29 @@ class User extends Authenticatable implements MustVerifyEmail
 
         });
     }
-    
-    public function biodata()
-    {
-        return $this->hasOne(Biodata::class);
-    }
-    
+
     public function applications()
     {
         return $this->hasMany(Application::class);
     }
-    
-    public function bio()
-    {
-        return $this->hasOne(Bio::class);
-    }
-    
+
     public function talentpools()
     {
         return $this->hasMany(TalentPool::class);
     }
-    public function verifyuser(){
 
-        return $this->hasOne('App\VerifyUser');
-    }
     public function jobapplications(){
         return $this->hasMany(JobApplication::class);
+    }
+
+    public function jobseekerdetail()
+    {
+        return $this->hasOne(JobseekerDetail::class, 'user_id', 'id');
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skills::class, 'user_id', 'id');
     }
     
 }
