@@ -49,25 +49,19 @@
                                                 <h2 class="mb-1">{{auth::user()->company_name}}</h2>
                                             </div>
                                             <div class="rating-star  d-inline-block">
-                                                <i class="fa fa-fw fa-star"></i>
-                                                <i class="fa fa-fw fa-star"></i>
-                                                <i class="fa fa-fw fa-star"></i>
-                                                <i class="fa fa-fw fa-star"></i>
-                                                <i class="fa fa-fw fa-star"></i>
-                                                <p class="d-inline-block text-dark">14 Reviews </p>
                                             </div>
                                         </div>
                                         <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
                                         <div class="user-avatar-address">
                                             <p class="border-bottom pb-3">
-                                                <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i>4045 Denver AvenueLos Angeles, CA 90017</span>
-                                                <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">Joined date: 23 June, 2018  </span>
-                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">Male 
+                                                <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i>{{auth::user()->company_address ?? ''}}</span>
+                                                <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">{{auth::user()->company_location ?? ''}}, </span>
+                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{auth::user()->country ?? ''}} 
                                                 </span>
-                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">29 Year Old </span>
+                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{auth::user()->employer_type ?? ''}} </span>
                                             </p>
-                                            <div class="mt-3">
-                                                <a href="#" class="badge badge-light mr-1">Fitness</a> <a href="#" class="badge badge-light mr-1">Life Style</a> <a href="#" class="badge badge-light">Gym</a>
+                                            <div class="mt-3"><a href="#" class="badge badge-light"><a href="#" class="badge badge-light">{{auth::user()->company_industry ?? ''}}</a></a>
+                                                <a href="#" class="badge badge-light mr-1">{{auth::user()->company_email ?? ''}}</a> <a href="#" class="badge badge-light mr-1">{{auth::user()->company_phone_number ?? ''}}</a> 
                                             </div>
                                         </div>
                                     </div>
@@ -132,8 +126,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-inline-block">
-                                <h5 class="text-muted">Partnerships</h5>
-                                <h2 class="mb-0">14</h2>
+                                <h5 class="text-muted">Shortlisted</h5>
+                                <h2 class="mb-0">{{$shortlisted->count()}}</h2>
                             </div>
                             <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
                                 <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
@@ -151,8 +145,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-inline-block">
-                                <h5 class="text-muted">Total Earned</h5>
-                                <h2 class="mb-0"> $149.00</h2>
+                                <h5 class="text-muted">Declined</h5>
+                                <h2 class="mb-0"> {{$declined->count()}}</h2>
                             </div>
                             <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
                                 <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
@@ -188,7 +182,7 @@
                                 <ul class="list-unstyled bullet-check font-14">
                                     <li>The vetting includes a professional interview, verification of certificates, reference checks and previous employers check</li>
                                 </ul>
-                                <a href="{{route('jobseeker-profiles')}}" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
+                                <a href="{{route('resumedatabase')}}" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -204,7 +198,7 @@
                                 <ul class="list-unstyled bullet-check font-14">
                                     <li> Receive applications for a job (Whether posted in the portal or elsewhere) and select candidates from within the portal using the recruitment engine. This will save time and the trouble of going through multiple emails</li>
                                 </ul>
-                                <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
+                                <a href="{{route('emppostjob')}}" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -220,7 +214,7 @@
                                 <ul class="list-unstyled bullet-check font-14">
                                     <li> Create a talent pool of candidates you’ll need in the future to support your business growth.</li>
                                 </ul>
-                                <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
+                                <a href="{{route('pooltalent')}}" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -272,13 +266,11 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                                <a href="javascript:void(0);" class="dropdown-item">View</a>
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                                <a href="javascript:void(0);" class="dropdown-item">Update</a>
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                                <a href="javascript:void(0);" class="dropdown-item">Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -319,7 +311,7 @@
                                 No skills
                                 @endforelse
                             </span></p>
-                            <a href="#" class="btn btn-secondary">Full Profile</a>
+                            <a href="/candidate-profile/{{$jobseeker->id}}" class="btn btn-secondary">Full Profile</a>
                         </div>
                     </div>
                 </div>

@@ -84,12 +84,13 @@ class JobListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jobposts $joblist)
+    public function destroy(Request $request)
     {
+        $job = Jobposts::findOrFail($request->job_id);
+
+        $job->delete();
         
-        $joblist->delete();
-        
-        return back();
+        return back()->with('message', 'The Job Post has been deleted successfully!');
     }
     
         

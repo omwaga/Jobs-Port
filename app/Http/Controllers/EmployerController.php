@@ -42,7 +42,7 @@ class EmployerController extends Controller
         $application=JobApplication::where([
             ['employer_id',Auth::guard('employer')->user()->id],
             ['status', 'applied']
-        ])->get();
+        ])->orderBy('created_at', 'DESC')->get();
         return view('empdash.content.allapplicants',compact('application'));
     }
     
@@ -63,11 +63,17 @@ class EmployerController extends Controller
     }
     
     public function employerdash(){
-        $jobs = Jobposts::where('employer_id',auth()->id())->limit(4)->get();
-        $applications = JobApplication::where('employer_id', auth()->id())->get();
+        $jobs = Jobposts::where('employer_id',auth()->id())->orderBy('created_at', 'DESC')->limit(5)->get();
+        $applications = JobApplication::where('employer_id', auth()->id())->orderBy('created_at', 'DESC')->get();
+        $shortlisted = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
+        $declined = JobApplication::where([
+            ['employer_id', Auth::guard('employer')->user()->id],
+            ['status', 'declined']
+        ])->get();
+
         $jobseekers = User::all()->random(4);
 
-        return view('empdash.content.dashboard',compact('jobs','applications', 'jobseekers'));
+        return view('empdash.content.dashboard',compact('jobs','applications', 'jobseekers', 'shortlisted', 'declined'));
     }
 
 //show all talent pools from the database    
@@ -92,25 +98,25 @@ class EmployerController extends Controller
 // Add applicant to talentpool
     public function addtalentpool(Request $request, $name)
     {
-       $pool_id = request()->pool_name;
+     $pool_id = request()->pool_name;
 
-       DB::table('job_applications')
-       ->where('user_id', request()->id)
-       ->update(['status' => 'pool']);
+     DB::table('job_applications')
+     ->where('user_id', request()->id)
+     ->update(['status' => 'pool']);
 
-       $shortlist = new TalentpoolCandidates();
-       $shortlist->user_id = request()->id;
-       $shortlist->talentpool_id = $pool_id;
-       $shortlist->employer_id = Auth::guard('employer')->user()->id;
+     $shortlist = new TalentpoolCandidates();
+     $shortlist->user_id = request()->id;
+     $shortlist->talentpool_id = $pool_id;
+     $shortlist->employer_id = Auth::guard('employer')->user()->id;
 
-       $shortlist->save();
+     $shortlist->save();
 
-       return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
-   }
+     return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
+ }
 
     // view the talent pool members
-   public function poolmembers($id)
-   {
+ public function poolmembers($id)
+ {
     $poolmembers = TalentpoolCandidates::where('talentpool_id', $id)->get();
 
     return view('empdash.content.poolmembers', compact('poolmembers'));
@@ -130,8 +136,10 @@ public function postajob(){
 public function jobseekerprofiles()
 {
     $jobseekers = User::paginate(20);
+    $categories = jobcategories::orderBy('jobcategories','asc')->get();
+    $industries = Industry::orderBy('name','asc')->get();
 
-    return view('empdash.content.jobseeker-profiles', compact('jobseekers'));
+    return view('empdash.content.jobseeker-profiles', compact('jobseekers', 'industries', 'categories'));
 }
 
 
@@ -163,22 +171,24 @@ public function cprofile(){
 
 public function jobpost(Request $request){
     $this->validate($request,[
-        'jobtitle'=>'required',
-        'positiontype'=>'required',
-        'jfunction'=>'required',
+        'job_title'=>'required|min:3',
+        'employment_type'=>'required',
+        'category'=>'required',
         'industry'=>'required',
-        'salary'=>'required',
-        'expiry'=>'required',
-        'jsummary'=>'required',
+        'salary'=>'nullable',
+        'expiry_date'=>'required',
+        'job_description'=>'required',
+        'job_requirements'=>'required',
         'country' => 'required',
         'state'=>'required',
-        'jdescription'=>'required',
-        'application'=>'nullable',
+        'application_details'=>'required',
+        'apply_with_us'=>'nullable',
     ]);
+
     $data=array(
         'emaill'=>$request->emaill,
-        'jobtitle'=>$request->jobtitle,
-        'positiontype'=>$request->positiontype,
+        'jobtitle'=>$request->job_title,
+        'positiontype'=>$request->employment_type,
         'company'=>$request->company,
 
     );
@@ -187,21 +197,22 @@ public function jobpost(Request $request){
         $mess->from('info@thenetworkedpros.com');
         $mess->subject($data['jobtitle']);
     });
+
     $jobpost= new Jobposts;
     $jobpost->employer_id=Auth::guard('employer')->user()->id;
-    $jobpost->job_title=$request->input('jobtitle');
-    $jobpost->job_type=$request->input('job_type');
-    $jobpost->jobcategories_id=$request->input('jfunction');
+    $jobpost->job_title=$request->input('job_title');
+    $jobpost->job_type= '';
+    $jobpost->jobcategories_id=$request->input('category');
     $jobpost->industry=$request->input('industry');
     $jobpost->country_id=$request->input('country');
     $jobpost->location=$request->input('state');
     $jobpost->salary=$request->input('salary');
-    $jobpost->deadline=$request->input('expiry');
-    $jobpost->summary=$request->input('jsummary');
-    $jobpost->description=$request->input('jdescription');
-    $jobpost->application_details=$request->input('application');
-    $jobpost->apply=$request->input('apply');
-    $jobpost->employment_type=$request->input('positiontype');
+    $jobpost->deadline=$request->input('expiry_date');
+    $jobpost->summary=$request->input('job_description');
+    $jobpost->description=$request->input('job_requirements');
+    $jobpost->application_details=$request->input('application_details');
+    $jobpost->apply=$request->input('apply_with_us');
+    $jobpost->employment_type=$request->input('employment_type');
     $jobpost->save();
     return redirect('/jobposts')->with('message','You have successfully posted your job');
 }
@@ -209,29 +220,29 @@ public function jobpost(Request $request){
 //Method to shortlist the candidates
 public function shortlist(Request $request, $name)
 {
-   $applicant_id = request()->id;
-   $user_id = Jobseekerdetail::where('user_id', $applicant_id)->value('user_id');
+ $applicant_id = request()->id;
+ $user_id = Jobseekerdetail::where('user_id', $applicant_id)->value('user_id');
 
-   $shortlist = new Shortlist();
-   $shortlist->user_id = $user_id;
-   $shortlist->employer_id = Auth::guard('employer')->user()->id;
+ $shortlist = new Shortlist();
+ $shortlist->user_id = $user_id;
+ $shortlist->employer_id = Auth::guard('employer')->user()->id;
 
-   DB::table('job_applications')
-   ->where('user_id', $user_id)
-   ->update(['status' => 'shortlisted']);
+ DB::table('job_applications')
+ ->where('user_id', $user_id)
+ ->update(['status' => 'shortlisted']);
 
-   $shortlist->save();
+ $shortlist->save();
 
-   return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
+ return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
 }
 
 //Method to show all the shorlisted candidates
 public function shortlistedcandidates()
 {
- $candidates = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
- $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
+   $candidates = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
+   $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
 
- return view('empdash.content.shortlisted-candidates', compact('candidates', 'jobposts'));
+   return view('empdash.content.shortlisted-candidates', compact('candidates', 'jobposts'));
 }
 
 //Method for picking the templates
@@ -245,21 +256,21 @@ public function picktemplate()
 // use a template
 public function usetemplate($jobtitle)
 {
- $jobpost = Jobposts::where('job_title', $jobtitle)->first();
- $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
- $industries = Industry::orderBy('name','asc')->get();
- $countries = Country::all();
- $towns = Town::orderBy('name','asc')->get();
+   $jobpost = Jobposts::where('job_title', $jobtitle)->first();
+   $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+   $industries = Industry::orderBy('name','asc')->get();
+   $countries = Country::all();
+   $towns = Town::orderBy('name','asc')->get();
 
- return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
+   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
 }
 
 //Listing all jobs posted
 public function alljobs()
 {
- $jobs = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
+   $jobs = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->orderBy('created_at','desc')->get();
 
- return view('empdash.content.jobs', compact('jobs'));
+   return view('empdash.content.jobs', compact('jobs'));
 }
 
 //Listing the shortlisted jobs by the job post
@@ -290,6 +301,21 @@ public function removeshortlist(Request $request)
     $candidate->delete();
     
     return redirect('/shortlisted-candidates')->with('message', 'The candidate has been removed from the lsit succesfully');
+}
+
+public function shortlistview($id)
+{
+    $jobseekerdetail = JobseekerDetail::where('user_id', $id)->first();
+    $personalstatement = PersonalStatement::where('user_id', $id)->first();
+    $academics = Education::where('user_id', $id)->get();
+    $experiences = WorkExperience::where('user_id', $id)->get();
+    $referees = Reference::where('user_id', $id)->get();
+    $certifications = Awards::where('user_id', $id)->get();
+    $skills = Skills::where('user_id', $id)->get();
+    $talent = TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
+
+    return view('empdash.content.shortlisted-candidates-view', compact( 'jobseekerdetail', 'personalstatement', 
+        'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
 }
 
 // remove the candidat eform the talent pool

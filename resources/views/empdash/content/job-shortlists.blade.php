@@ -9,12 +9,13 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <p class="pageheader-text">Staff Recruitmant and Staff Development</p>
+                            <h5 class="pageheader-title">{{$job}}</h5>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Shortlisted Candidates</li>
+                                            <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('shortlistedcandidates')}}" class="breadcrumb-link">Shortlisted Candidates</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">{{$job}}</li>
                                         </ol>
                                     </nav>
                                 </div>

@@ -12,7 +12,7 @@
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/Employer-dashboard" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="{{route('employerjobs')}}" class="breadcrumb-link">Posted Jobs</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">{{$jobpost->job_title}}</li>
                             </ol>
@@ -108,7 +108,7 @@
             </div>
             <div class="form-group">
                 <label>Salary:</label>
-                <input class="form-control @error('salary') is-invalid @enderror"  type="text" name="salary" value="{{$jobpost->salary}}" required />
+                <input class="form-control @error('salary') is-invalid @enderror"  type="text" name="salary" value="{{$jobpost->salary}}" />
                 @error('salary')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

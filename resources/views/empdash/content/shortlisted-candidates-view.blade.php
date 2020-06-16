@@ -13,28 +13,11 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/Employer-dashboard" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="{{route('allapplicants')}}" class="breadcrumb-link">All Applications</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"> Candidate Profile</li>
                                 </ol>
                             </nav>
-                            @if(!$jobseekerdetail)
-                            @else
-                            <div align="right">	
-                                <a  href="#" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#shotlist-{{$jobseekerdetail->id}}">
-                                    <i class="fa fa-check" aria-hidden="true"></i> Shortlist
-                                </a>
-                                <button type="submit" class="btn btn-info btn-sm text-white" data-id="" data-toggle="modal" data-target="#talent-{{$jobseekerdetail->id}}">
-                                    <i class="fa fa-plus"></i>Talent Pool
-                                </button>
-                                <button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#decline-{{$jobseekerdetail->id}}">
-                                    <i class="fa fa-edit"></i>Decline
-                                </button>
-                                @include('empdash.content.addshortlist')
-                                @include('empdash.content.addtalentpool')
-                                @include('empdash.content.add-declined')
-                            </div>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -204,23 +187,7 @@
                          </div>
                      </div>
                  </div>
-                 @if(!$jobseekerdetail)
-                 @else
-                 <div class="pull-right">	
-                    <a  href="#" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#shotlist-{{$jobseekerdetail->id}}">
-                        <i class="fa fa-check" aria-hidden="true"></i> Shortlist
-                    </a>
-                    <button type="submit" class="btn btn-info btn-sm text-white" data-id="" data-toggle="modal" data-target="#talent-{{$jobseekerdetail->id}}">
-                        <i class="fa fa-plus"></i>Talent Pool
-                    </button>
-                    <button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#shortlist">
-                        <i class="fa fa-edit"></i>Decline
-                    </button>
-                    @include('empdash.content.addshortlist')
-                    @include('empdash.content.addtalentpool')
-                </div>
-                @endif
-            </div>
-        </div>
-    </div>
-    @endsection
+             </div>
+         </div>
+     </div>
+     @endsection

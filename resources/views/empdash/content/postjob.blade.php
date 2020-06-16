@@ -12,7 +12,7 @@
           <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/Employer-dashboard" class="breadcrumb-link">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Source Candidates</li>
               </ol>
               <a href="{{route('picktemplate')}}" class=" btn btn-sm btn-success float-right text-white">Pick a Template</a>
@@ -37,11 +37,11 @@
 
                 <div class="form-group">
                   <label class="col-form-label">Job Title:</label>
-                  <input data-parsley-minlength="3" class="form-control" type="text" name="jobtitle" value="{{ old('jobtitle') }}" required="" />
+                  <input class="form-control" type="text" name="job_title" value="{{ old('job_title') }}" required="" />
                 </div>
                 <div class="form-group">
                   <label>Employment Type:</label>
-                  <select class="form-control" name="positiontype" required>
+                  <select class="form-control" name="employment_type" required>
                     <option value="">Select Employment Type</option>
                     <option>Part-time</option>
                     <option>Full-time</option>
@@ -51,16 +51,16 @@
                 </div>
                 <div class="form-group">
                   <label>Job Category:</label>
-                  <select class="form-control" name="jfunction" required>
-                    @foreach($jobcategory as $jobc)
+                  <select class="form-control" name="category" required>
                     <option value="">Select Job Category</option>
+                    @foreach($jobcategory as $jobc)
                     <option value="{{$jobc->id}}">{{$jobc->jobcategories}}</option>
                     @endforeach
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Expiry date:</label>
-                  <input class="form-control" value="{{old('expiry')}}" type="date" name="expiry" required />
+                  <input class="form-control" value="{{old('expiry_date')}}" type="date" name="expiry_date" required />
 
                 </div>
               </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group">
                   <label>Salary:</label>
-                  <input class="form-control @error('salary') is-invalid @enderror" value="{{old('salary')}}"  type="text" name="salary" required />
+                  <input class="form-control @error('salary') is-invalid @enderror" value="{{old('salary')}}"  type="text" name="salary"/>
                   @error('salary')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -106,6 +106,8 @@
                   @enderror
 
                 </div>
+
+                <!-- for the email -->
                 <div class="form-group">
                  <input type="hidden" hidden class="form-control" id="formGroupExampleInput" placeholder=""
                  required autofocus name="emaill" value="<?php echo Auth::guard('employer')->user()->email ?>"> 
@@ -116,6 +118,8 @@
                  required autofocus name="company" value="<?php echo $item->cname ?>">  
                  @endforeach
                </div>
+               <!-- end for the email -->
+
              </div>
            </div>
          </div>
@@ -124,16 +128,16 @@
        <div class="col-md-12">
          <div class="panel panel-dark">
           <div class="form-group">
-            <label>Job Summary:</label>
-            <textarea class="form-control ckeditor" id="summary-ckeditor" rows="4" name="jsummary" id="summary" required>{{old('jsummary')}}</textarea>
+            <label>Job Description:</label>
+            <textarea class="form-control ckeditor" id="summary-ckeditor" rows="4" name="job_description" id="summary" required>{{old('job_description')}}</textarea>
           </div> 
         </div>   
       </div>
       <div class="col-md-12">
        <div class="panel panel-dark">
         <div class="form-group">
-          <label>Job Description:</label>
-          <textarea class="form-control @error('jdescription') is-invalid @enderror ckeditor" rows="20" name="jdescription" id="descc" required>{{old('jdescription')}}</textarea>
+          <label>Job Requirements:</label>
+          <textarea class="form-control @error('job_requirements') is-invalid @enderror ckeditor" rows="20" name="job_requirements" id="descc" required>{{old('job_requirements')}}</textarea>
           @error('jdescription')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -148,7 +152,7 @@
         <label>Apply with us?</label>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="Yes" name="apply" />Check the box to receive the job applications using our portal. </label>
+            <input type="checkbox" value="Yes" name="apply_with_us" />Check the box to receive the job applications using our portal. </label>
           </div>
         </div>
       </div>                 
@@ -156,7 +160,7 @@
        <div class="panel panel-dark">
         <div class="form-group">
           <label>Application details</label>
-          <textarea class="form-control ckeditor" name="application" rows="3" >{{old('application')}}</textarea>
+          <textarea class="form-control ckeditor" name="application_details" rows="3" >{{old('application')}}</textarea>
         </div>
       </div>   
     </div>

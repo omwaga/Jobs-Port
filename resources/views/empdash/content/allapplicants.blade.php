@@ -12,7 +12,7 @@
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Job Applications</li>
                             </ol>
                         </nav>
@@ -50,7 +50,7 @@
                             <tr>
                                <td>{{$apply->user->name}}</td>
                                <td>{{$apply->job->job_title}}</td>
-                               <td>{{$apply->created_at}}</td>
+                               <td>{{ \Carbon\Carbon::parse($apply->created_at)->format('d/m/Y')}}</td>
                                <td>
                                    <a  href="/applicantprofile/{{$apply->user->id}}" class="btn btn-info btn-sm text-white">
                                     <i class="fa fa-eye"></i>View Profile

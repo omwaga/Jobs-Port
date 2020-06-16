@@ -97,7 +97,7 @@
                         <li>
                             <!--logo-->
                             <div class="logo">
-                                <a href="/"><img src="{{asset('Images/logo/log.png')}}" alt="" style="width:320px;"></a>
+                                <a href="/Employer-dashboard"><img src="{{asset('Images/logo/log.png')}}" alt="" style="width:320px;"></a>
                             </div>
                         </li>
                         <li class="nav-item ">
@@ -126,7 +126,14 @@
                         </li>
                         <li class="nav-item menu-list">
                             <a class="nav-link" href="{{route('declined')}}"><i class="fas fa-trash-alt"></i>Declined Applications</a>
-                        </li>                          
+                        </li>   
+
+                        <li class="nav-divider">
+                            Pros4Hire
+                        </li>
+                        <li class="nav-item menu-list">
+                            <a class="nav-link" href="{{route('jobseeker-profiles')}}"><i class="fas fa-fw fa-users"></i>Pros 4 Hire</a>
+                        </li>                       
                     </ul>
                 </div>
             </nav>

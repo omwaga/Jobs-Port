@@ -9,10 +9,10 @@
         </button>
       </div>
         <div class="modal-body">
-         <form  action="/joblist/{{$job->id}}" method="POST">
+         <form  action="/jobposts/{{$job->id}}" method="POST">
 			 @csrf
 			 @method('DELETE')
-             <input type="hidden" value="" name="jobid" id="job-id">
+             <input type="hidden" value="{{$job->id}}" name="job_id">
 		     <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
 		     <button type="submit" class="btn btn-danger text-white pull-right">
 			   <i class="fa fa-mark"></i>Sure, Delete?

@@ -72,6 +72,7 @@ Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
 Route::resource('jobposts','JobListController');
 Route::get('/applicantprofile/{name}','EmployerController@fullprofile')->name('fullprofile');
+Route::get('/candidate-profile/{id}','EmployerController@shortlistview')->name('shortlistprofile');
 Route::get('/talentpool','EmployerController@talentpool')->name('pooltalent');
 Route::get('/your-applicants','EmployerController@applicantss')->name('viewapplicants');
 Route::get('/Employer-dashboard','EmployerController@employerdash')->name('employdashboard');

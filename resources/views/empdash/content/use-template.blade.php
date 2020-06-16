@@ -12,7 +12,7 @@
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/Employer-dashboard" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="{{route('picktemplate')}}" class="breadcrumb-link">Job Templates</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Use Template: {{$jobpost->job_title}}</li>
                             </ol>

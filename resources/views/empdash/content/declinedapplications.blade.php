@@ -13,7 +13,7 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Declined Applications</li>
                                         </ol>
                                     </nav>
@@ -60,7 +60,7 @@
                                         <td>{{$applicant->created_at}}</td>
                                         <td>
 											<div class="btn-group" role="group" aria-label="Basic example">
-															<a href="" class="btn btn-primary btn-sm text-white">
+															<a href="/candidate-profile/{{$applicant->user_id}}" class="btn btn-primary btn-sm text-white">
 																<i class="fa fa-eye"></i>View Profile
 															</a>
 															<button type="button" data-toggle="modal" title="" class="btn btn-danger btn-sm text-white" data-target="#removeapplicant-{{$applicant->id}}">

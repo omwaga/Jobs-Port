@@ -12,7 +12,7 @@
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Shortlisted Candidates</li>
                             </ol>
                         </nav>
@@ -61,15 +61,15 @@
                         <div class="table-responsive">
                             <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                 <thead>
-                                 <tr>
-                                     <th>#</th>
-                                     <th>Applicant Name</th>
-                                     <th>Phone Number</th>
-                                     <th>Email Address</th>
-                                     <th style="width: 30%">Action</th>
-                                 </tr>
-                             </thead>
-                             <tbody>
+                                   <tr>
+                                       <th>#</th>
+                                       <th>Applicant Name</th>
+                                       <th>Phone Number</th>
+                                       <th>Email Address</th>
+                                       <th style="width: 30%">Action</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
                                 @php $column_number = 0; @endphp
                                 @foreach($candidates as $candidate)
                                 @php $column_number = $column_number + 1; @endphp
@@ -79,8 +79,8 @@
                                     <td>{{$candidate->jobseeker->phone ?? ''}}</td>
                                     <td>{{$candidate->jobseeker->email ?? ''}}</td>
                                     <td>
-                                       <div class="btn-group">
-                                           <a  href="/applicantprofile/{{$candidate->jobseeker->user_id}}" class="btn btn-info btn-sm text-white">
+                                     <div class="btn-group">
+                                        <a  href="/candidate-profile/{{$candidate->jobseeker->user_id}}" class="btn btn-info btn-sm text-white">
                                             <i class="fa fa-eye"></i>View Profile
                                         </a>
                                         <button type="button" data-toggle="modal" data-id="" class="btn btn-danger btn-sm text-white" data-target="#removeshotlist-{{$candidate->id}}">

@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
-                    <h2 class="pageheader-title">Job Applications</h2>
+                    <h2 class="pageheader-title">Talent Pools</h2>
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Talent Pools</li>
                             </ol>
                         </nav>
@@ -57,7 +57,17 @@
                                        <td>{{$talen->pool_name}}</td>
                                        <td>{{$talen->candidates->count()}}</td>
                                        <td>
-                                        <a href="/talentpool/{{$talen->id}}" class="btn btn-sm btn-info">View Pool</a>
+                                        <div class="dropdown float-right">
+                                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="true">
+                                                <i class="mdi mdi-dots-vertical">Click for Actions</i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <!-- item-->
+                                                <a href="/talentpool/{{$talen->id}}" class="dropdown-item">Browse Candidates</a>
+                                                <!-- item-->
+                                                <a href="javascript:void(0);" class="dropdown-item">Add Candidate</a>
+                                            </div>
+                                        </div>
                                     </td> 
                                 </tr>
                                 @endforeach

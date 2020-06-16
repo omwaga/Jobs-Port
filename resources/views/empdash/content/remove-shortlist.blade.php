@@ -6,13 +6,13 @@
      @method('DELETE')
      <input type="hidden" value="{{$candidate->user_id}}" name="id">
       <div class="modal-header bg-info text-white">
-        <h6 class="modal-title text-white" id="exampleModalLabel">Shortlist Candidate</h6>
+        <h6 class="modal-title text-white" id="exampleModalLabel">Remove Shortlist Candidate</h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to shortlist <b>{{$candidate->jobseeker->name ?? ''}}</b> ? </p>
+        <p>Are you sure you want to remove <b>{{$candidate->jobseeker->name ?? ''}}</b> from the shortlist? </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No,close</button>
