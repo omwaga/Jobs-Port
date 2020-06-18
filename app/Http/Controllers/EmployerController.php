@@ -63,6 +63,7 @@ class EmployerController extends Controller
     }
     
     public function employerdash(){
+        $dashboard_jobs = Jobposts::where('employer_id',auth()->id())->get();
         $jobs = Jobposts::where('employer_id',auth()->id())->orderBy('created_at', 'DESC')->limit(5)->get();
         $applications = JobApplication::where('employer_id', auth()->id())->orderBy('created_at', 'DESC')->get();
         $shortlisted = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
@@ -73,7 +74,7 @@ class EmployerController extends Controller
 
         $jobseekers = User::all()->random(4);
 
-        return view('empdash.content.dashboard',compact('jobs','applications', 'jobseekers', 'shortlisted', 'declined'));
+        return view('empdash.content.dashboard',compact('jobs','applications', 'jobseekers', 'shortlisted', 'declined', 'dashboard_jobs'));
     }
 
 //show all talent pools from the database    
@@ -135,7 +136,7 @@ public function postajob(){
 //Jobseeker profiles route
 public function jobseekerprofiles()
 {
-    $jobseekers = User::paginate(20);
+    $jobseekers = User::orderBy('created_at','desc')->paginate(20);
     $categories = jobcategories::orderBy('jobcategories','asc')->get();
     $industries = Industry::orderBy('name','asc')->get();
 

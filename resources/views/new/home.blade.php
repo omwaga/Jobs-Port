@@ -76,7 +76,7 @@
   <div class="vertical-tabs">
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#pag1" role="tab" aria-controls="home">Latest jobs<span class="badge badge-primary badge-pill">{{$jobs->count()}}</span></a>
+        <a class="nav-link active" data-toggle="tab" href="#pag1" role="tab" aria-controls="home">Latest jobs</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#pag2" role="tab" aria-controls="profile">Jobs by Location</a>

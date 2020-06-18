@@ -40,6 +40,23 @@ class DashboardController extends Controller
         
         // $this->middleware('guest:user',['except' => ['logout', 'getLogout']]);
     }
+
+    public function wizard()
+    {
+        $towns=Town::orderBy('name','asc')->get();
+        $industries=Industry::orderBy('name','asc')->get();
+        $countries = Countrylist::all();
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        
+        return view('dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
+         'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+    }
     
     public function jobseekerprofile()
     {

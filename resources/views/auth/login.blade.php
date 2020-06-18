@@ -20,9 +20,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -33,9 +33,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -60,44 +60,41 @@
                                 <a class="btn btn-danger text-white" href="{{route('google.login')}}"  style="border-radius: 0px;"><i class="fab fa-google-plus-g"></i> Login with Google</a>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
                                 @endif
                             </div>
                         </div>
-                            <div class="row">
-                                <div class="col-md-12" align="center">
+                        <div class="row">
+                            <div class="col-md-12" align="center">
                                 <a href="{{route('Register')}}" class="btn text-white" style="background-color:#0B0B3B ">Not Registered ?</a>
-                                </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-		    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="{{asset('Images/find-better.svg')}}" alt="First slide" style="width:300px; height:300px">
-  <h5 align="center">Find Better</h5>
-  <p align="center">Find Better jobs that match your skills from top Employers in East Africa.</p>
-  </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('Images/quick-apply.svg')}}" alt="Second slide" style="width:300px; height:300px">
-  <h5 align="center">Apply Quickly</h5>
-  <p align="center">Save time and effort with The NetworkedPros Quick Apply.</p>
+            <div class="box-title">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><i class="fa fa-graduation-cap text-info" aria-hidden="true"></i> Get hired (Pros4hire) for regular gigs by leading institutions as well as individuals looking for trusted professionals for assignments </p>
+                        <p><i class="fa fa-users text-info" aria-hidden="true"></i>Sit back, relax and let the networked professionals do the job searching for you! Create your career profile today and be discover by leading employers who visit our service every day to recruit trusted professionals  </p>
+                        <p><i class="fa fa-volume-control-phone text-info" aria-hidden="true"></i> Create compelling CVs and cover letters for your next job applications using our Resume Builder. Over 10 templates available, all for free! </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><i class="fa fa-flag text-info" aria-hidden="true"></i>Discover hundreds of jobs and create alerts to notify you when jobs matching your qualifications are advertised </p>
+                        <p><i class="fa fa-bullseye text-info" aria-hidden="true"></i> Are you a fresh graduate who has not worked before? Enroll for our NP Work Readiness Training worth USD 1,000 in the market for free! </p>
+                        <div class="box-btn">
+                            <a class="btn btn-danger text-white btn-sm" href="{{route('Register')}}">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('Images/job-alerts.svg')}}" alt="Third slide" style="width:300px; height:300px">
-  <h5 align="center">Job Alerts</h5>
-  <p align="center">Get real time alerts for hot new jobs.</p>
-   </div>
-  </div>
 </div>
-		</div>
-	</div>
-	        </div>
-    </div>
+</div>
 </div>
 @endsection

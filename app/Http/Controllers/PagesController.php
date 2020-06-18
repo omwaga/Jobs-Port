@@ -29,12 +29,6 @@ use App\CvUpload;
 use Illuminate\Http\Request;
 class PagesController extends Controller
 {
-  public function test()
-  {
-    return view('employer.index');
-  }
-
-
     //return  the home page
   public function homee(){
     $industries=Industry::orderBy('name','asc')->get();

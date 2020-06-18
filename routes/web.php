@@ -1,23 +1,10 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 Auth::routes(['verify' => true]);
 Route::get('/Login-Page',function(){
     return view('auth.login1');
 });
 
-Route::get('/test', 'PagesController@test');
+Route::get('/wizard', 'DashboardController@wizard');
 
 //AUthenticated jobseeker routes
 Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
@@ -64,7 +51,7 @@ Route::prefix('resume-builder')->group(function(){
     Route::post('/experience','ResumeBuilderController@experience')->name('resume-experience');
 });
 
-//Employercontroller Routes
+//EmployerController Routes
 Route::prefix('employers')->group(function(){
     Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
 });
@@ -82,12 +69,12 @@ Route::resource('/Employer-login','EmployerController');
 Route::get('/Talent-pool','EmployerController@talentp')->name('talentpool');
 Route::post('/jobpost','EmployerController@jobpost')->name('postempjob');
 Route::get('/templates', 'EmployerController@picktemplate')->name('picktemplate');
-Route::get('/searchtemplate', 'Employercontroller@searchtemplate')->name('searchtemplate');
+Route::get('/searchtemplate', 'EmployerController@searchtemplate')->name('searchtemplate');
 Route::get('/use-template/{name}', 'EmployerController@usetemplate')->name('usetemplate');
 Route::patch('/shortlist/{name}', 'EmployerController@shortlist');
 Route::patch('/talentpool/{name}', 'EmployerController@addtalentpool');
-Route::post('/decline-application', 'Employercontroller@decline');
-Route::get('decline-applications', 'Employercontroller@declined')->name('declined');
+Route::post('/decline-application', 'EmployerController@decline');
+Route::get('decline-applications', 'EmployerController@declined')->name('declined');
 Route::get('/shortlisted-candidates', 'EmployerController@shortlistedcandidates')->name('shortlistedcandidates');
 Route::get('/all-jobposts', 'EmployerController@alljobs')->name('employerjobs');
 Route::post('/shortlist-jobs', 'EmployerController@shortlistjobs')->name('shortlistjobs');

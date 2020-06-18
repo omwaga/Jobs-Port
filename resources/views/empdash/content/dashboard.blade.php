@@ -306,7 +306,7 @@
                             <p class="mb-3">{{$jobseeker->jobseekerdetail->email ?? $jobseeker->email}}</p>
                             <p class="mb-1">Skills:<span class="text-dark font-medium ml-2">
                                 @forelse($jobseeker->skills as $skill)
-                                {{$skill->skillname}}
+                                {{$skill->skillname}},
                                 @empty
                                 No skills
                                 @endforelse
