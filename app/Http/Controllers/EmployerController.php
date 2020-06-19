@@ -123,6 +123,12 @@ class EmployerController extends Controller
     return view('empdash.content.poolmembers', compact('poolmembers'));
 }
 
+//return the view to select the job post method
+public function joboptions()
+{
+    return view('empdash.content.jobpost-options');
+}
+
 public function postajob(){
     $jobcategory=jobcategories::orderBy('jobcategories','asc')->get();
     $industry=Industry::orderBy('name','asc')->get();
@@ -347,10 +353,11 @@ public function removedeclined(Request $request)
 // get all data of users from the database for the resumes
 public function resumedatabase()
 {
+    $categories = jobcategories::orderBy('jobcategories','asc')->get();
     $industries = Industry::orderBy('name','asc')->get();
-    $user_industries = Usercategories::all();
+    $jobseekers = JobseekerDetail::paginate(20);
     
-    return view('empdash.content.resume-database', compact('industries', 'user_industries'));
+    return view('empdash.content.resume-database', compact('industries', 'jobseekers', 'categories'));
 }
 
 // search the rsumes

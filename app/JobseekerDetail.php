@@ -17,5 +17,10 @@ class JobseekerDetail extends Model
     {
         $this->HasMany(Shortlis::class);
     }
+
+    public function skills()
+    {
+    	return $this->HasMany(Skills::class, 'user_id', 'user_id');
+    }
    
 }

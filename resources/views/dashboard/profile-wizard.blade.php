@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <div class="image-container set-full-height" style="background-image: url('assets/img/wizard.jpg'); background-color: #005691">
+  <div class="image-container set-full-height" style="background-color: #005691">
     <!--   Creative Tim Branding   -->
     <a href="#">
      <div class="logo-container">
@@ -39,340 +39,334 @@
         <div class="wizard-container">
 
           <div class="card wizard-card" data-color="red" id="wizardProfile">
-            <form action="" method="">
-              <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+            <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
-              <div class="wizard-header">
-               <h3>
-                <b>BUILD</b> YOUR PROFILE <br>
-                <small>This information will let the Employers know more about you.</small>
-              </h3>
+            <div class="wizard-header">
+             <h3>
+              <b>BUILD</b> YOUR PROFILE <br>
+              <small>This information will let the Employers know more about you.</small>
+            </h3>
+          </div>
+
+          <div class="wizard-navigation">
+           <ul>
+             <li><a href="#personalinfo" data-toggle="tab">Basic Information</a></li>
+             <li><a href="#account" data-toggle="tab">Career Objective</a></li>
+             <li><a href="#address" data-toggle="tab">Experience</a></li>
+             <li><a href="#education" data-toggle="tab">Education</a></li>
+             <li><a href="#awards" data-toggle="tab">Awards/Certifications</a></li>
+             <li><a href="#skills" data-toggle="tab">Skills</a></li>
+             <li><a href="#references" data-toggle="tab">References</a></li>
+           </ul>
+
+         </div>
+
+         <div class="tab-content">
+          @include('dashboard.wizard.personal-details')
+          @include('dashboard.wizard.personal-statement')
+
+
+
+          <div class="tab-pane" id="address">
+            <div class="row">
+              @forelse($experience as $experienced)
+              <div class="col-md-6 profile-text">
+                <label><strong>Employer:</strong> {{$experienced->employer}}</label><br>
+                <label><strong>Position:</strong> {{$experienced->position}}</label><br>
+              </div>
+              <div class="col-md-6 profile-text">
+                <label><strong>Stat Date:</strong> {{$experienced->start_date}}</label><br>
+                <label><strong>End Date:</strong> {{$experienced->current_employer ?? $experienced->end_date}}</label>
+
+                <p class="pull-right"><button class="btn btn-danger text-white btn-sm"
+                  data-toggle="modal" data-target="#experience-{{$experienced->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+                </div>
+                <div class="col-md-12">
+                  <h6><b>Duties and Responsibilities</b></h6>
+                  <p>{!!$experienced->roles!!}</p>
+                </div><br>
+                @empty
+                <form method="POST" action="#">
+                  <div class="col-md-3">
+                    <label>Employer:</label>
+                    <input type="text" class="form-control" name="employer" placeholder="Organization" required autofocus style="border-radius:0px;">
+                  </div>
+                  <div class="col-md-3">
+                    <label>Position:</label>
+                    <input type="text" class="form-control" name="position" placeholder="Job Position" required autofocus style="border-radius:0px;">
+                  </div>
+                  <div class="col-md-3">
+                    <label>Employment Start Date:</label>
+                    <div class="input-group date">
+                      <input type="date" name="start_date" class="form-control">
+                      <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Employment End Date:</label>
+                    <div class="input-group date">
+                      <input type="date" name="end_date" class="form-control">
+                      <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                      </div>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="hidden" name="current_employer" value="" id="defaultCheck1">
+                      <input class="form-check-input" type="checkbox" name="current_employer" value="current employer" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Current Employer
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <label>Achievements and Responsibilities:</label>
+                    <textarea name="roles" class="form-control ckeditor" id="duties" required autofocus rows="3"style="border-radius:0px;"></textarea>    
+                  </div>
+
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-danger pull-right">Save</button>   
+                  </div>
+                </form>
+                @endforelse
+              </div>
             </div>
 
-            <div class="wizard-navigation">
-             <ul>
-               <li><a href="#about" data-toggle="tab">Basic Information</a></li>
-               <li><a href="#account" data-toggle="tab">Career Objective</a></li>
-               <li><a href="#address" data-toggle="tab">Experience</a></li>
-               <li><a href="#education" data-toggle="tab">Education</a></li>
-               <li><a href="#awards" data-toggle="tab">Awards/Certifications</a></li>
-               <li><a href="#skills" data-toggle="tab">Skills</a></li>
-               <li><a href="#references" data-toggle="tab">References</a></li>
-             </ul>
-
-           </div>
-
-           <div class="tab-content">
-            <div class="tab-pane" id="about">
+            <!-- education section -->
+            <div class="tab-pane" id="education">
               <div class="row">
-                <h4 class="info-text"> Let's start with the basic information</h4>
-                <form method="POST" action="#">
-                 @csrf
+                @forelse($education as $educated)
+                <div class="col-md-6">
+                  <label><strong>Institution Name:</strong> {{$educated->institution}}</label><br>
+                  <label><strong>Name of Course Studied:</strong> {{$educated->qualification}}</label><br>
+                  <label><strong>Education Level:</strong> {{$educated->level}}</label><br>
+                  <label><strong>Attained Score:</strong>{{$educated->score}}</label>
+                </div>
+                <div class="col-md-6">
+                  <label><strong>Start Date:</strong> {{$educated->start_date}}</label><br>
+                  <label><strong>Graduation Date:</strong> {{$educated->grad_date}}</label><br>
 
-                 <div class="col-sm-4">
-                   <div class="picture-container">
-                    <div class="picture">
-                      <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                      <input type="file" id="wizard-picture">
+                  <p class="pull-right"><button class="btn btn-danger text-white btn-sm"
+                    data-toggle="modal" data-target="#editeducation-{{$educated->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+                  </div>
+                  @empty
+                  <form method="POST" action="">
+                    @csrf
+                    <div class="col-md-4">
+                      <label>Institution Name:</label>
+                      <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
                     </div>
-                    <h6>Choose Picture</h6>
+                    <div class="col-md-4">
+                     <label>Name of Course Studied:</label>
+                     <input type="text" class="form-control" name="qualification" placeholder="Bsc. Computer Science" required autofocus style="border-radius:0px;">
+                   </div>
+
+                   <div class="col-md-4">
+                    <label>Education Level:</label>
+                    <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+                     <option>Select Education Level</option>
+                     <option>Certificate</option>
+                     <option>Diploma</option>
+                     <option>Degree</option>
+                     <option>Masters</option>
+                   </select>
+                 </div>
+
+                 <div class="col-md-4">
+                   <label>Start Date:</label>
+                   <div class="input-group date">
+                    <input type="date" name="start_date" class="form-control">
+                    <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <label>Name:</label>
-                  <input type="text" name="name" class="form-control"style="border-radius:0px;"required autofocus value="{{old('name')}}">
+                <div class="col-md-4" style="margin-left:10px;">
+                 <label>Graduation Date:</label>
+                 <div class="input-group date">
+                  <input type="date" name="grad_date" class="form-control">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <label>Email Address:</label>
-                  <input type="email" name="email" class="form-control"style="border-radius:0px;"required autofocus value="{{old('email')}}">
+              </div>
+
+              <div class="col-md-4" style="margin-left:40px;">
+                <label>Attained Score:<br>
+                  <small>For example: First Class Honors</small></label>
+                  <input type="text" class="form-control" name="score" autofocus style="border-radius:0px;">
                 </div>
-                <div class="col-md-4">
-                  <label>Id/Passport Number:</label>
-                  <input type="number" name="id_pass" class="form-control"style="border-radius:0px;"required autofocus value="{{old('id_pass')}}">
+
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-danger pull-right">Save</button>   
                 </div>
+              </form>
+              @endforelse
+            </div>
+          </div>
+          <!-- end education section -->
+
+
+          <div class="tab-pane" id="awards">
+            <div class="row">
+              @forelse($awards as $award)
+              <div class="col-md-6 profile-text">
+                <label><strong>Award Name:</strong> {{$award->name}}</label><br>
+                <label><strong>Institution:</strong> {{$award->institution}}</label><br>
+              </div>
+              <div class="col-md-6 profile-text">
+                <label><strong>Award Date:</strong> {{$award->award_date}}</label><br>
+                <label><strong>Description:</strong> {!!$award->description!!}</label><br>
                 
-                <div class="col-md-4">
-                  <label>Phone Number:</label>
-                  <input type="text" name="phone" class="form-control"style="border-radius:0px;"required autofocus value="{{old('phone')}}">
+                <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal"
+                  data-target="#editaward-{{$award->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+                  
+                  @include('dashboard.newaward')
+                  @include('dashboard.editaward')
+
                 </div>
-                <div class="col-md-4">
-                  <label>Gender:</label>
-                  <select name="gender" class="form-control" style="border-radius:0px;"required autofocus>
-                   <option>Select Gender</option>
-                   <option>Male</option>
-                   <option>Female</option>
-                 </select>
-               </div>
+                @empty
+                <form method="" action="">
+                  <div class="col-md-4">
+                    <label>Award Name:</label>
+                    <input type="text" class="form-control" name="name" required autofocus style="border-radius:0px;">
+                  </div>
+                  <div class="col-md-4">
+                   <label>Institution:</label>
+                   <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
+                 </div>
 
-               <div class="col-md-4">
-                <label>Online Links:</label>
-                <input type="text" name="links" class="form-control"style="border-radius:0px;" autofocus value="{{old('links')}}">
-              </div>
+                 <div class="col-md-4">
+                   <label>Award/Qualification Date:</label>
+                   <div class="input-group date">
+                    <input type="date" name="award_date" class="form-control">
+                    <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                  </div>
+                </div>
 
-              <div class="col-md-4">
-                <label>Religion:</label>
-                <select name="religion" class="form-control" style="border-radius:0px;" required autofocus value="{{old('religion')}}">
-                 <option>Select religion</option> 
-                 <option>Christianity</option>
-                 <option>Islam</option>
-                 <option>Hinduism</option>
-                 <option>Buddhism</option>
-                 <option>Prefer not to say</option>
-               </select>
-             </div>
-             <div class="col-md-4">
-              <label>Maritial Status:</label>
-              <select name="marital_status" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-               <option>Marital Status</option>
-               <option>Single</option>
-               <option>Married</option>
-               <option>Divorced</option>
-               <option>Widowed</option>
-               <option>Separated</option>
-             </select>
-           </div>
+                <div class="col-md-12">
+                  <label>Description:</label>
+                  <textarea name="description" class="form-control ckeditor" id="award" required autofocus rows="3"style="border-radius:0px;"></textarea> 
+                </div>
 
-           <div class="col-md-4">
-            <label>Date Of Birth:</label>
-            <div class="input-group date">
-              <input type="date" name="dob" class="form-control">
-              <div class="input-group-addon">
-                <span class="glyphicon glyphicon-th"></span>
-              </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-danger pull-right">Save</button>   
+                </div>
+              </form>
+              @endforelse
             </div>
           </div>
 
-          <div class="col-md-4">
-            <label>Nationality:</label>
-            <select name="nationality" class="form-control" style="border-radius:0px;"required autofocus value="{{old('nationality')}}">
-             <option>Select Country</option>
-             @foreach($countries as $country)
-             <option>{{$country->country}}</option>
-             @endforeach
-           </select>
-         </div>
-         <div class="col-md-4">
-          <label>City:</label>
-          <select name="city" class="form-control" style="border-radius:0px;"required autofocus value="{{old('city')}}">
-           <option>Select City</option>
-           <option>Nairobi</option>
-         </select>
-       </div>
-       <div class="col-md-4">
-        <label>Postal Address:</label>
-        <input type="text" name="postal_address" class="form-control"style="border-radius:0px;" required autofocus value="{{old('postal_address')}}">
-      </div>
 
-      <div class="col-md-4">
-        <label>Postal Code:</label>
-        <input type="text" name="postal_code" class="form-control"style="border-radius:0px;" required autofocus value="{{old('postal_code')}}">
-      </div>
+          <div class="tab-pane" id="skills">
+            <div class="row">
+              @forelse($skills as $skill)
+              <div class="col-md-12 profile-text">
+                <label><strong>Skill Name:</strong> {{$skill->skillname}}</label><br>
+                <label><strong>Expertise Level:</strong> {{$skill->level}}</label><br>
+                
+                <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal" 
+                  data-target="#editskill-{{$skill->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+                  
+                  @include('dashboard.newskill')
+                  @include('dashboard.editskill')
 
-    </form>
-  </div>
-</div>
+                </div>
+                @empty
+                <form method="post" action="">
+                  @csrf
+                  <div class="col-md-6">
+                    <label>Skill Name:</label>
+                    <input name="skillname" type="text" class="form-control" required autofocus > 
+                  </div>
+                  <div class="col-md-6">
+                    <label>Expertise Level:</label>
+                    <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+                     <option>Select Skill Level</option>
+                     <option>Beginner</option>
+                     <option>Intermediate</option>
+                     <option>Expert</option>
+                   </select>
+                 </div>
+                 <div class="col-md-12">
+                  <button type="submit" class="btn btn-danger pull-right">Save</button>   
+                </div>
+              </form>
+              @endforelse
+            </div>
+          </div>
 
 
-<div class="tab-pane" id="account">
-  <h4 class="info-text"> What are you doing? (checkboxes) </h4>
-  <div class="row">
+          <div class="tab-pane" id="references">
+            <div class="row">
+              @forelse($references as $reference)
+              <div class="col-md-6 profile-text">
+                <label><strong>Name:</strong> {{$reference->name}}</label><br>
+                <label><strong>Email:</strong> {{$reference->email}}</label><br>
+                <label><strong>Phone Number:</strong> {{$reference->phone}}</label><br>
+              </div>
+              <div class="col-md-6 profile-text">
+                <label><strong>Organization:</strong> {{$reference->organization}}</label><br>
+                <label><strong>Position:</strong> {{$reference->position}}</label><br>
+                
+                <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal" 
+                  data-target="#editref-{{$reference->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+                  
+                  @include('dashboard.newreference')
+                  @include('dashboard.editreference')
 
-    <div class="col-sm-10 col-sm-offset-1">    
-      <label>Personal Statement:</label>
-      <textarea name="statement" class="form-control ckeditor"></textarea>
-    </div>
+                </div>
+                @empty
+                <form method="" action="">
+                  <div class="col-lg-4">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="name" required autofocus placeholder="Full Name" style="border-radius:0px;">
+                  </div>
+                  <div class="col-lg-4">
+                   <label>Title:</label>
+                   <input type="text" name="position" class="form-control" required autofocus placeholder="Title" style="border-radius:0px;">
+                 </div>
+                 <div class="col-lg-4">
+                  <label>Phone Number:</label>
+                  <input type="tel" class="form-control" name="phone" required autofocus placeholder="Phone Number"style="border-radius:0px;">
+                </div>
 
-  </div>
-</div>
-<div class="tab-pane" id="address">
-  <div class="row">
+                <div class="col-lg-4">
+                  <label>Email address:</label>
+                  <input type="email" name="email" class="form-control" required autofocus placeholder="Email Address"style="border-radius:0px;">
+                </div>
+                <div class="col-lg-4">
+                  <label>Organization:</label>
+                  <input type="text" name="organization" class="form-control" required autofocus placeholder=" Organization" style="border-radius:0px;">
+                </div>
 
-    <div class="col-md-3">
-      <label>Employer:</label>
-      <input type="text" class="form-control" name="employer" placeholder="Organization" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-3">
-      <label>Position:</label>
-      <input type="text" class="form-control" name="position" placeholder="Job Position" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-3">
-      <label>Employment Start Date:</label>
-      <div class="input-group date">
-        <input type="date" name="start_date" class="form-control">
-        <div class="input-group-addon">
-          <span class="glyphicon glyphicon-th"></span>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-danger pull-right">Save</button>   
+                </div>
+              </form>
+              @endforelse
+            </div>
+          </div>
+
+        </div>
+        <div class="wizard-footer height-wizard">
+          <div class="pull-right">
+            <input type='button' class='btn btn-next btn-fill btn-danger btn-wd btn-sm' name='next' value='Next' />
+            <input type='button' class='btn btn-finish btn-fill btn-danger btn-wd btn-sm' name='finish' value='Finish' />
+
+          </div>
+
+          <div class="pull-left">
+            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+          </div>
+          <div class="clearfix"></div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <label>Employment End Date:</label>
-      <div class="input-group date">
-        <input type="date" name="end_date" class="form-control">
-        <div class="input-group-addon">
-          <span class="glyphicon glyphicon-th"></span>
-        </div>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="hidden" name="current_employer" value="" id="defaultCheck1">
-        <input class="form-check-input" type="checkbox" name="current_employer" value="current employer" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-          Current Employer
-        </label>
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <label>Achievements and Responsibilities:</label>
-      <textarea name="roles" class="form-control ckeditor" id="duties" required autofocus rows="3"style="border-radius:0px;"></textarea>    
-    </div>
+    </div> <!-- wizard container -->
   </div>
-</div>
-
-<!-- education section -->
-<div class="tab-pane" id="education">
-  <div class="row">
-    <div class="col-md-4">
-      <label>Institution Name:</label>
-      <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-4">
-     <label>Name of Course Studied:</label>
-     <input type="text" class="form-control" name="qualification" placeholder="Bsc. Computer Science" required autofocus style="border-radius:0px;">
-   </div>
-
-   <div class="col-md-4">
-    <label>Education Level:</label>
-    <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-     <option>Select Education Level</option>
-     <option>Certificate</option>
-     <option>Diploma</option>
-     <option>Degree</option>
-     <option>Masters</option>
-   </select>
- </div>
-
- <div class="col-md-4">
-   <label>Start Date:</label>
-   <div class="input-group date">
-    <input type="date" name="start_date" class="form-control">
-    <div class="input-group-addon">
-      <span class="glyphicon glyphicon-th"></span>
-    </div>
-  </div>
-</div>
-<div class="col-md-4" style="margin-left:10px;">
- <label>Graduation Date:</label>
- <div class="input-group date">
-  <input type="date" name="grad_date" class="form-control">
-  <div class="input-group-addon">
-    <span class="glyphicon glyphicon-th"></span>
-  </div>
-</div>
-</div>
-
-<div class="col-md-4" style="margin-left:40px;">
-  <label>Attained Score:<br>
-    <small>For example: First Class Honors</small></label>
-    <input type="text" class="form-control" name="score" autofocus style="border-radius:0px;">
-  </div>
-</div>
-</div>
-<!-- end education section -->
-
-
-<div class="tab-pane" id="awards">
-  <div class="row">
-    <div class="col-md-4">
-      <label>Award Name:</label>
-      <input type="text" class="form-control" name="name" required autofocus style="border-radius:0px;">
-    </div>
-    <div class="col-md-4">
-     <label>Institution:</label>
-     <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
-   </div>
-
-   <div class="col-md-4">
-     <label>Award/Qualification Date:</label>
-     <div class="input-group date">
-      <input type="date" name="award_date" class="form-control">
-      <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <label>Description:</label>
-    <textarea name="description" class="form-control ckeditor" id="award" required autofocus rows="3"style="border-radius:0px;"></textarea> 
-  </div>
-</div>
-</div>
-
-
-<div class="tab-pane" id="skills">
-  <div class="row">
-    <div class="col-md-6">
-      <label>Skill Name:</label>
-      <input name="skillname" type="text" class="form-control" required autofocus > 
-    </div>
-    <div class="col-md-6">
-      <label>Expertise Level:</label>
-      <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-       <option>Select Skill Level</option>
-       <option>Beginner</option>
-       <option>Intermediate</option>
-       <option>Expert</option>
-     </select>
-   </div>
- </div>
-</div>
-
-
-<div class="tab-pane" id="references">
-  <div class="row">
-    <div class="col-lg-4">
-      <label>Name:</label>
-      <input type="text" class="form-control" name="name" required autofocus placeholder="Full Name" style="border-radius:0px;">
-    </div>
-    <div class="col-lg-4">
-     <label>Title:</label>
-     <input type="text" name="position" class="form-control" required autofocus placeholder="Title" style="border-radius:0px;">
-   </div>
-   <div class="col-lg-4">
-    <label>Phone Number:</label>
-    <input type="tel" class="form-control" name="phone" required autofocus placeholder="Phone Number"style="border-radius:0px;">
-  </div>
-
-  <div class="col-lg-4">
-    <label>Email address:</label>
-    <input type="email" name="email" class="form-control" required autofocus placeholder="Email Address"style="border-radius:0px;">
-  </div>
-  <div class="col-lg-4">
-    <label>Organization:</label>
-    <input type="text" name="organization" class="form-control" required autofocus placeholder=" Organization" style="border-radius:0px;">
-  </div>
-</div>
-</div>
-
-</div>
-<div class="wizard-footer height-wizard">
-  <div class="pull-right">
-    <input type='button' class='btn btn-next btn-fill btn-danger btn-wd btn-sm' name='next' value='Next' />
-    <input type='button' class='btn btn-finish btn-fill btn-danger btn-wd btn-sm' name='finish' value='Finish' />
-
-  </div>
-
-  <div class="pull-left">
-    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
-  </div>
-  <div class="clearfix"></div>
-</div>
-
-</form>
-</div>
-</div> <!-- wizard container -->
-</div>
 </div><!-- end row -->
 </div> <!--  big container -->
 

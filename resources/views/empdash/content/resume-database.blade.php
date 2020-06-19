@@ -23,81 +23,115 @@
         <!-- ============================================================== -->
         <!-- end pageheader  -->
         <!-- ============================================================== -->
+        
         <div class="row">
             <!-- ============================================================== -->
-            <!-- data table  -->
+            <!-- search bar  -->
             <!-- ============================================================== -->
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Vetted and Ready for hire candidates </h5>
-                    </div>
                     <div class="card-body">
-                        <div class="col-md-12" align="center">
-                            <div class="card card-sm" action="shortlist-jobs" method="post">
-                                @csrf
-                                <small>Select an industry below to find the candidates based on their industry interests</small>
-                                <div class="card-body row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <i class="fas fa-search h6 text-body"></i>
+                        <form>
+                            <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary search-btn" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end search bar  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                <!-- ============================================================== -->
+                <!-- card influencer one -->
+                <!-- ============================================================== -->
+                @forelse($jobseekers as $jobseeker)
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="user-avatar float-xl-left pr-4 float-none">
+                                    <img src="{{asset('assets/images/avatar.png')}}" alt="User Avatar" class="rounded-circle user-avatar-xl">
+                                </div>
+                                <div class="pl-xl-3">
+                                    <div class="m-b-0">
+                                        <div class="user-avatar-name d-inline-block">
+                                            <h2 class="font-24 m-b-10">{{$jobseeker->name ?? ''}}</h2>
+                                        </div>
+                                        <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
+                                            
+                                        </div>
                                     </div>
-                                    <!--end of col-->
-                                    <div class="col">
-                                        <form method="post" action="/resume-database">
-                                            @csrf
-                                            <select class="form-control" name="industry_id" required id="input-select" onchange='if(this.value != 0) { this.form.submit(); }'>
-                                                <option>Select Industry</option>
-                                                @foreach($industries as $industry)
-                                                <option value="{{$industry->id}}">{{$industry->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </form>
+                                    <div class="user-avatar-address">
+                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>City/State/County, Country <span class="m-l-10">{{$jobseeker->gender ?? ''}}<span class="m-l-20">Age</span></span>
+                                        </p>
+                                        <div class="mt-3">
+                                            @forelse($jobseeker->skills as $skill)
+                                            <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
+                                            @empty
+                                            <p>No skills added.</p>
+                                            @endforelse
+                                        </div>
                                     </div>
-                                    <!--end of col-->
-                                    <div class="col-auto">
-                                        <button class="btn btn-success" type="submit">Search</button>
-                                    </div>
-                                    <!--end of col-->
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="float-xl-right float-none mt-xl-0 mt-4">
+                                    <a href="#" class="btn btn-secondary">Full Profile</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered second" style="width:100%">
-                                <thead>
-                                   <tr>
-                                       <th>#</th>
-                                       <th>Applicant Name</th>
-                                       <th>Industry Interest</th>
-                                       <th style="width: 30%">Action</th>
-                                   </tr>
-                               </thead>
-                               <tbody>
-                                 @php $column_number = 0; @endphp
-                                 @foreach($user_industries as $user_industry)
-                                 @php $column_number = $column_number + 1; @endphp
-                                 <tr>
-                                    <th>{{$column_number}}</th>
-                                    <td>{{$user_industry->jobseeker->name}}</td>
-                                    <td>{{$user_industry->industry->name}}</td>
-                                    <td>
-                                     <div class="btn-group">
-                                         <a  href="/applicantprofile/{{$user_industry->jobseeker->id}}" class="btn btn-info btn-sm text-white">
-                                            <i class="fa fa-eye"></i>View Profile
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
+                    </div>
+                </div>
+                @empty
+                <p>Nothing to show</p>
+                @endforelse
+                {{$jobseekers->links()}}
+                <!-- ============================================================== -->
+                <!-- end card influencer one -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- end content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- influencer sidebar  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="font-16">Sorting By</h3>
+                        <select class="form-control">
+                            <option>Name</option>
+                            <option>Expertise Level</option>
+                        </select>
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Experts by Industry</h3>
+                        @foreach($industries as $industry)
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="industryCheck{{$industry->id}}">
+                            <label class="custom-control-label" for="industryCheck{{$industry->id}}">{{$industry->name}}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Experts by Category</h3>
+                        @foreach($categories as $category)
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="category{{$category->id}}">
+                            <label class="custom-control-label" for="category{{$category->id}}">{{$category->jobcategories}}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="card-body border-top">
+                        <a href="#" class="btn btn-secondary btn-lg btn-block">Submit</a>
+                    </div>
                 </div>
             </div>
+            <!-- ============================================================== -->
+            <!-- end influencer sidebar  -->
+            <!-- ============================================================== -->
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- end data table  -->
-    <!-- ============================================================== -->
-</div>
-</div>
-@endsection
+    @endsection

@@ -1,20 +1,3 @@
-/*!
-
- =========================================================
- * Bootstrap Wizard - v1.1.1
- =========================================================
- 
- * Product Page: https://www.creative-tim.com/product/bootstrap-wizard
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/bootstrap-wizard/blob/master/LICENSE.md)
- 
- =========================================================
- 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- */
-
-// Get Shit Done Kit Bootstrap Wizard Functions
-
 searchVisible = 0;
 transparent = true;
 
@@ -78,7 +61,7 @@ $(document).ready(function(){
 
         onTabClick : function(tab, navigation, index){
 
-            var $valid = $('.wizard-card form').valid();
+            var $valid = $('.wizard-card').valid();
 
             if(!$valid){
                 return false;
