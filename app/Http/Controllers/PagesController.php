@@ -79,6 +79,13 @@ class PagesController extends Controller
     return view('new.empdash');
   }
 }
+//Pros 4 Hire
+public function pros()
+{
+  $industries = Industry::all();
+
+  return view('new.pros-hire', compact('industries'));
+}
 
 public function companies()
 {

@@ -8,7 +8,7 @@
   </div><hr>
     @include('dashboard.wizard.edit-personal-statements')
   @else
-  <form method="POST" action="#">
+  <form method="POST" action="/personalstatements">
     @csrf
     <div class="row">
 

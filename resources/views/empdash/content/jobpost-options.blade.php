@@ -48,7 +48,7 @@
                                 <li><i class="fas fa-check"></i>  Process recruitment</li>
                             </ul>
                         </p>
-                        <a href="{{route('emppostjob')}}" class="btn btn-primary">Post Job</a>
+                        <a href="{{route('employerjobs')}}" class="btn btn-primary">Post and Manage Jobs</a>
                     </div>
                 </div>
             </div>

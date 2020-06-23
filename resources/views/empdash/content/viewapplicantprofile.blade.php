@@ -47,7 +47,7 @@
                 <!-- data table  -->
                 <!-- ============================================================== -->
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                   <div class="card">
+                 <div class="card">
                     <div class="card-body">
                         <div class="user-avatar text-center d-block">
                             <img src="{{asset('assets/images/avatar.png')}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
@@ -178,49 +178,50 @@
                                             <div class="w-100">
                                                 <div class="table-responsive">
                                                   <table id="add-row" class="display table table-striped table-hover" >
-                                                   <thead>
-                                                    <tr>
-                                                     <th>Name</th>
-                                                     <th>Organization</th>
-                                                     <th>Position</th>
-                                                     <th>Phone</th>
-                                                     <th>Email</th>
-                                                 </tr>
-                                             </thead>
-                                             <tbody>
-                                               @foreach($referees as $referee)
-                                               <tr>
-                                                 <td>{{$referee->name}}</td>
-                                                 <td>{{$referee->organization}}</td>
-                                                 <td>{{$referee->position}}</td>
-                                                 <td>{{$referee->phone}}</td>
-                                                 <td>{{$referee->email}}</td>
-                                             </tr>
-                                             @endforeach
-                                         </tbody>
-                                     </table>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 @if(!$jobseekerdetail)
-                 @else
-                 <div class="pull-right">	
-                    <a  href="#" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#shotlist-{{$jobseekerdetail->id}}">
-                        <i class="fa fa-check" aria-hidden="true"></i> Shortlist
-                    </a>
-                    <button type="submit" class="btn btn-info btn-sm text-white" data-id="" data-toggle="modal" data-target="#talent-{{$jobseekerdetail->id}}">
-                        <i class="fa fa-plus"></i>Talent Pool
-                    </button>
-                    <button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#shortlist">
-                        <i class="fa fa-edit"></i>Decline
-                    </button>
-                    @include('empdash.content.addshortlist')
-                    @include('empdash.content.addtalentpool')
+                                                     <thead>
+                                                        <tr>
+                                                           <th>Name</th>
+                                                           <th>Organization</th>
+                                                           <th>Position</th>
+                                                           <th>Phone</th>
+                                                           <th>Email</th>
+                                                       </tr>
+                                                   </thead>
+                                                   <tbody>
+                                                     @foreach($referees as $referee)
+                                                     <tr>
+                                                       <td>{{$referee->name}}</td>
+                                                       <td>{{$referee->organization}}</td>
+                                                       <td>{{$referee->position}}</td>
+                                                       <td>{{$referee->phone}}</td>
+                                                       <td>{{$referee->email}}</td>
+                                                   </tr>
+                                                   @endforeach
+                                               </tbody>
+                                           </table>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       @if(!$jobseekerdetail)
+                       @else
+                       <div class="col-sm-12" align="right"> 
+                        <a  href="#" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#shotlist-{{$jobseekerdetail->id}}">
+                            <i class="fa fa-check" aria-hidden="true"></i> Shortlist
+                        </a>
+                        <button type="submit" class="btn btn-info btn-sm text-white" data-id="" data-toggle="modal" data-target="#talent-{{$jobseekerdetail->id}}">
+                            <i class="fa fa-plus"></i>Talent Pool
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm text-white" data-id="" data-toggle="modal" data-target="#decline-{{$jobseekerdetail->id}}">
+                            <i class="fa fa-edit"></i>Decline
+                        </button>
+                        @include('empdash.content.addshortlist')
+                        @include('empdash.content.addtalentpool')
+                        @include('empdash.content.add-declined')
+                    </div>
+                    @endif
                 </div>
-                @endif
             </div>
         </div>
-    </div>
-    @endsection
+        @endsection

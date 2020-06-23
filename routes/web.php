@@ -4,7 +4,7 @@ Route::get('/Login-Page',function(){
     return view('auth.login1');
 });
 
-Route::get('/wizard', 'DashboardController@wizard');
+Route::get('/profile-builder', 'DashboardController@wizard')->name('profile-wizard');
 
 //AUthenticated jobseeker routes
 Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
@@ -156,6 +156,7 @@ Route::get('/private-company-jobs', 'PagesController@privatejobs')->name('privat
 Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');
 Route::get('/humanitarian-and-ngo-jobs', 'PagesController@humanitarianjobs')->name('humanitarian-jobs');
 Route::get('/consultancies', 'PagesController@consultancies')->name('consultancies');
+Route::get('/pros-4-Hire', 'PagesController@pros')->name('pros');
 
 
 //dashboard on behalf of the employers

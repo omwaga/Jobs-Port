@@ -8,6 +8,7 @@ use App\Jobposts;
 use App\CvUpload;
 use App\Training;
 use App\jobcategories;
+use App\JobApplication;
 use App\Industry;
 use App\Events;
 use App\Locations;
@@ -76,9 +77,10 @@ class DashboardController extends Controller
         $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        $applications = JobApplication::where('user_id', '=', auth()->user()->id)->get();
         
         return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
-         'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+         'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications'));
     }
     
     public function recommended(){

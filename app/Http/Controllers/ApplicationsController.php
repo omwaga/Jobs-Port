@@ -5,7 +5,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-use App\Application;
 use App\Countrylist;
 use App\Skills;
 use App\Reference;

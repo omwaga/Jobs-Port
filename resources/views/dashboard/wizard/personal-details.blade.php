@@ -5,7 +5,7 @@
     @include('dashboard.wizard.display-personal-details')
     @include('dashboard.wizard.edit-personal-details')
     @else
-    <form method="POST" action="#">
+    <form method="POST" action="/personalinfo">
      @csrf
      <div class="col-sm-4">
        <div class="picture-container">

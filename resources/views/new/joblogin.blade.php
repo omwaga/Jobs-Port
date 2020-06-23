@@ -21,7 +21,7 @@
                 <form method="POST" action="{{ route('authuser') }}">
                     @csrf
                     <input type="hidden" name="id" value="{{$job->id}}">
-                    <input type="hidden" name="jobtitle" value="{{$job->jobtitle}}">
+                    <input type="hidden" name="jobtitle" value="{{$job->job_title}}">
                     <div class="form-group row">
                         <label for="login_email" class="col-md-4 col-form-label text-md-right">{{ __('Email address') }}</label>
 
