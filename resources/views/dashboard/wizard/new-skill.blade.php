@@ -9,30 +9,30 @@
         </button>
       </div>
       <div class="modal-body">
-         <form method="POST" action="/jobskills">
-                              @csrf
-                           <div class="row">
-      <div class="col-md-6">
-      <label>Skill Name:</label>
-      <input name="skillname" type="text" class="form-control" required autofocus > 
-      </div>
-      <div class="col-md-6">
-          <label>Expertise Level:</label>
-          <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-               <option>Select Skill Level</option>
-              <option>Beginner</option>
-               <option>Intermediate</option>
-               <option>Expert</option>
-          </select>
-    </div>
-  </div><br>
-                                                   
-      <div class="modal-footer">
+       <form method="POST" action="/jobskills">
+        @csrf
+        <div class="row">
+          <div class="col-md-6">
+            <label>Skill Name:</label>
+            <input name="skillname" type="text" class="form-control" required autofocus > 
+          </div>
+          <div class="col-md-6">
+            <label>Expertise Level:</label>
+            <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+             <option>Select Skill Level</option>
+             <option>Beginner</option>
+             <option>Intermediate</option>
+             <option>Expert</option>
+           </select>
+         </div>
+       </div><br>
+       
+       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                   <button type="submit" class="btn btn-success">Save & Continue</button>
+        <button type="submit" class="btn btn-success">Save & Continue</button>
       </div>
-                                                   </form>
-      </div>
-    </div>
+    </form>
   </div>
+</div>
+</div>
 </div>
