@@ -34,7 +34,7 @@ class AwardsController extends Controller
         $award = request()->id;
         
         Awards::where('id', $award)
-               ->update(request(['institution', 'description', 'name']));
+               ->update(request(['institution', 'description', 'name', 'award_date']));
                
         return back();
     }

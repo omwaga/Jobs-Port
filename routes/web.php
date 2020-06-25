@@ -175,3 +175,7 @@ Route::prefix('super-employer')->group(function(){
 
 // Routes for the countries and the states
 Route::get('dropdownlist/getstates/{id}','DataController@getStates');//Route for the dependentdropdown list fro countries and towns
+
+Route::fallback(function() {
+    return 'Hmmmm, Why did you land here somehow?';
+});

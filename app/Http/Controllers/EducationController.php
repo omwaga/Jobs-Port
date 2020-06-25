@@ -36,7 +36,7 @@ class EducationController extends Controller
         $education = request()->id;
         
         Education::where('id', $education)
-               ->update(request(['institution', 'qualification', 'score']));
+               ->update(request(['institution', 'qualification', 'score', 'level', 'start_date', 'grad_date']));
                
         return back();
     }

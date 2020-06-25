@@ -19,7 +19,7 @@
             <hr>
             <dl class="dl-horizontal">
               <dt>Date of Birth:</dt>
-              <dd>{{$personalinfo->dob ?? ''}}</dd>
+              <dd>{{\Carbon\Carbon::parse($personalinfo->dob)->format('d/m/Y') ?? ''}}</dd>
               <dt>Gender:</dt>
               <dd>{{$personalinfo->gender ?? ''}}</dd>
               <dt>Marital Status:</dt>

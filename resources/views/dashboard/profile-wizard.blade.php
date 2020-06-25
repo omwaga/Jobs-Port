@@ -17,6 +17,19 @@
   <!-- CSS Files -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+  <link href="{{ asset('css/button.css') }}" rel="stylesheet">
+
+  
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+  <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+  <script>
+    $('#duties').ckeditor();
+    $('#edesc').ckeditor();
+    $('#summary').ckeditor();
+    $('#article-ckeditor').ckeditor();
+    $('#editass').ckeditor();
+    $('.textarea').ckeditor(); // if class is prefered.
+  </script>
 </head>
 
 <body>
@@ -70,7 +83,7 @@
              <li><a href="#education" data-toggle="tab">Education</a></li>
              <li><a href="#awards" data-toggle="tab">Awards/Certifications</a></li>
              <li><a href="#skills" data-toggle="tab">Skills</a></li>
-             <li><a href="#references" data-toggle="tab">References</a></li>
+             <li><a href="#references" data-toggle="tab">Referees</a></li>
            </ul>
 
          </div>

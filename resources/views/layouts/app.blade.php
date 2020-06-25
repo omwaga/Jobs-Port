@@ -34,7 +34,7 @@
     <link href="{{ asset('css/package.css') }}" rel="stylesheet">
     <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
-    <!--<link id="theme-style" rel="stylesheet" href="assets/css/pillar-2.css">-->
+    <link href="{{ asset('css/button.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <style type="text/css">
         .how-section1{
@@ -79,10 +79,10 @@
         }
 
         .social-box .box:hover{
-         box-shadow: 0 0 6px #4183D7;
-     }
+           box-shadow: 0 0 6px #4183D7;
+       }
 
-     .social-box .box .box-text{
+       .social-box .box .box-text{
         margin:20px 0px;
         font-size: 15px;
         line-height: 30px;
@@ -155,8 +155,8 @@
     $('#summary').ckeditor();
     $('#article-ckeditor').ckeditor();
     $('#editass').ckeditor();
-        $('.textarea').ckeditor(); // if class is prefered.
-    </script>
+    $('.textarea').ckeditor(); // if class is prefered.
+</script>
 
 
 </head>

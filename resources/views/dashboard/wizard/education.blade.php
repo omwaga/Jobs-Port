@@ -21,7 +21,7 @@
           <div class="panel-body">
             <dl class="dl-horizontal">
               <dt>Dates:</dt>
-              <dd>{{$educated->start_date}}-{{$educated->grad_date}}</dd>
+              <dd>{{\Carbon\Carbon::parse($educated->start_date)->format('Y')}}-{{\Carbon\Carbon::parse($educated->grad_date)->format('Y')}}</dd>
               <dt>Course:</dt>
               <dd>{{$educated->qualification}} from {{$educated->institution}}</dd>
               <dt>Level:</dt></h6>

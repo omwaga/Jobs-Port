@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container" style="padding-top: 7rem">
+	@auth
+	@include('new.pros-hire-jobseekers')
+	@else
 	<div class="row">
 		<div class="col-md-8">
 			<h4 class="text-center">PROS For HIRE</h4>
@@ -25,13 +28,14 @@
 		</div>
 		<div class="col-md-4 text-center">		
 			<div class="card-body border-light shadow-lg p-3 mb-3 bg-danger rounded">
-				<a href="" class="text-white">Register as a Pro</a>
+				<a href="{{route('login')}}" class="text-white">Register as a Pro</a>
 			</div>
 
 			<div class="card-body border-light shadow-lg p-3 mb-3 bg-danger rounded">
-				<a href="" class="text-white">Recruit a pro</a>
+				<a href="{{route('foremployer')}}" class="text-white">Recruit a pro</a>
 			</div>
 		</div>
 	</div>
+	@endauth
 </div>
 @endsection

@@ -1,7 +1,11 @@
 <div class="tab-pane" id="personalinfo">
   <div class="row">
     <div class="col-lg-offset-1 col-lg-10">
-      <h4 class="info-text"> Let's start with the basic information</h4>
+      <div class="switchToggle" align="center">
+      <b>Show Profile</b>
+        <input checked  type="checkbox" id="switch1">
+        <label for="switch1">Toggle</label>
+      </div>
       @if ($personalinfo)
       @include('dashboard.wizard.display-personal-details')
       @include('dashboard.wizard.edit-personal-details')

@@ -20,7 +20,7 @@
           <div class="panel-body">
             <dl class="dl-horizontal">
               <dt>Dates:</dt>
-              <dd>{{$experienced->start_date}}-{{$experienced->current_employer ?? $experienced->end_date}}</dd>
+              <dd>{{ \Carbon\Carbon::parse($experienced->start_date)->format('Y')}}-{{$experienced->current_employer ?? \Carbon\Carbon::parse($experienced->end_date)->format('Y')}}</dd>
               <dt>Position:</dt>
               <dd>{{$experienced->position}} at {{$experienced->employer}}</dd>
               <dt>Responsibilities:</dt></h6>

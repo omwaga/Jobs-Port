@@ -19,7 +19,7 @@
           <div class="panel-body">
             <dl class="dl-horizontal">
               <dt>Dates:</dt>
-              <dd>{{$award->award_date}}</dd>
+              <dd>{{\Carbon\Carbon::parse($award->award_date)->format('d/m/Y')}}</dd>
               <dt>Name:</dt>
               <dd>{{$award->name}} from {{$award->institution}}</dd>
               <dt>Description:</dt></h6>
