@@ -25,56 +25,6 @@
             </div>
             <!-- ============================================================== -->
             <!-- end pageheader  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- content  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- influencer profile  -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card influencer-profile-data">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="text-center">
-                                        <img src="{{asset('storage/logos/'.auth::user()->logo)}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
-                                    </div>
-                                </div>
-                                <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
-                                    <div class="user-avatar-info">
-                                        <div class="m-b-20">
-                                            <div class="user-avatar-name">
-                                                <h2 class="mb-1">{{auth::user()->company_name}}</h2>
-                                            </div>
-                                            <div class="rating-star  d-inline-block">
-                                            </div>
-                                        </div>
-                                        <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
-                                        <div class="user-avatar-address">
-                                            <p class="border-bottom pb-3">
-                                                <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i>{{auth::user()->company_address ?? ''}}</span>
-                                                <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">{{auth::user()->company_location ?? ''}}, </span>
-                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{auth::user()->country ?? ''}} 
-                                                </span>
-                                                <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{auth::user()->employer_type ?? ''}} </span>
-                                            </p>
-                                            <div class="mt-3"><a href="#" class="badge badge-light"><a href="#" class="badge badge-light">{{auth::user()->company_industry ?? ''}}</a></a>
-                                                <a href="#" class="badge badge-light mr-1">{{auth::user()->company_email ?? ''}}</a> <a href="#" class="badge badge-light mr-1">{{auth::user()->company_phone_number ?? ''}}</a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end influencer profile  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
             <!-- widgets   -->
             <!-- ============================================================== -->
             <div class="row">
@@ -176,12 +126,9 @@
                                 <h4 class="mb-0 text-white"> Express Recruitment </h4>
                             </div>
                             <div class="card-body text-center">
-                                <p>Recruit faster through our vetted and ready for hire candidates without the need for advertising and minimize your risks, avoid the time consuming and rigorous interviewing process</p>
+                                <p>Recruit faster through our vetted and ready for hire candidates  minimize your risks.</p>
                             </div>
                             <div class="card-body border-top">
-                                <ul class="list-unstyled bullet-check font-14">
-                                    <li>The vetting includes a professional interview, verification of certificates, reference checks and previous employers check</li>
-                                </ul>
                                 <a href="{{route('resumedatabase')}}" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
@@ -195,9 +142,6 @@
                                 <p>  Receive applications for a job and select candidates from within the portal using the recruitment engine</p>
                             </div>
                             <div class="card-body border-top">
-                                <ul class="list-unstyled bullet-check font-14">
-                                    <li> Receive applications for a job (Whether posted in the portal or elsewhere) and select candidates from within the portal using the recruitment engine. This will save time and the trouble of going through multiple emails</li>
-                                </ul>
                                 <a href="{{route('emppostjob')}}" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>
@@ -211,9 +155,6 @@
                                 <p> Create a talent pool of candidates you’ll need in the future to support your business growth.</p>
                             </div>
                             <div class="card-body border-top">
-                                <ul class="list-unstyled bullet-check font-14">
-                                    <li> Create a talent pool of candidates you’ll need in the future to support your business growth.</li>
-                                </ul>
                                 <a href="{{route('pooltalent')}}" class="btn btn-secondary btn-block btn-lg">Get Started</a>
                             </div>
                         </div>

@@ -15,27 +15,34 @@
 					@csrf
 					<div class="row">
 						<div class="col-md-6">
+							<label>Full Names:</label>
+							<input type="text" class="form-control" name="full_name" required autofocus style="border-radius:0px;">
+						</div>
+						<div class="col-md-6">
+							<label>Email Address:</label>
+							<input type="text" class="form-control" name="email" required autofocus style="border-radius:0px;">
+						</div>
+						<div class="col-md-6">
 							<label>Country:</label>
-							<input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" name="country" required autofocus style="border-radius:0px;">
+						</div>
+						<div class="col-md-6">
+							<label>Phone Number:</label>
+							<input type="text" class="form-control" name="phone_number" required autofocus style="border-radius:0px;">
 						</div>
 						<div class="col-md-6">
 							<label>City:</label>
-							<input type="text" class="form-control" name="qualification" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" name="city" required autofocus style="border-radius:0px;">
 						</div>
 
 						<div class="col-md-6">
 							<label>State:</label>
-							<input type="text" class="form-control" name="score" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" name="state" required autofocus style="border-radius:0px;">
 						</div>
 
 						<div class="col-md-6">
 							<label>ZIP:</label>
-							<select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-								<option>Select Education Level</option>
-								<option>Diploma</option>
-								<option>Degree</option>
-								<option>Masters</option>
-							</select>
+							<input type="text" class="form-control" name="zip_code" required="">
 						</div>
 					</div>
 					<br>
@@ -52,35 +59,39 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label>Title:</label>
-							<input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" name="title" required autofocus style="border-radius:0px;">
 						</div>
 						<div class="col-md-6">
 							<label>Description:</label>
-							<input type="text" class="form-control" name="qualification" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" name="description" required autofocus style="border-radius:0px;">
 						</div>
 
 						<div class="col-md-6">
 							<label>Skills and Expertise:</label>
-							<input type="text" class="form-control" name="score" required autofocus style="border-radius:0px;">
+							<select class="form-control" multiple data-live-search="true">
+								<option>Mustard</option>
+								<option>Ketchup</option>
+								<option>Relish</option>
+							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>Rate/Hour:</label>
-							<select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+							<select name="rate" class="form-control" style="border-radius:0px;"required autofocus value="{{old('rate')}}">
 								<option>Select</option>
 							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>Minimum Budget:</label>
-							<select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+							<select name="minimum_budget" class="form-control" style="border-radius:0px;"required autofocus value="{{old('minimum_budget')}}">
 								<option>Select</option>
 							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>Category:</label>
-							<select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+							<select name="category" class="form-control" style="border-radius:0px;"required autofocus value="{{old('category')}}">
 								<option>Select</option>
 							</select>
 						</div>

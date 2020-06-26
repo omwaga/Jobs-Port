@@ -102,7 +102,7 @@
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
             <input type='button' class='btn btn-next btn-fill btn-danger btn-wd btn-sm' name='next' value='Next' />
-            <input type='button' class='btn btn-finish btn-fill btn-danger btn-wd btn-sm' name='finish' value='Finish' />
+            <input type='button' onclick="window.location='{{route('jobseekeraccount')}}'" class='btn btn-finish btn-fill btn-danger btn-wd btn-sm' name='finish' value='Finish' />
 
           </div>
 
