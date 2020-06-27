@@ -26,7 +26,10 @@ use App\Employer;
 use App\Companies;
 use App\Article;
 use App\CvUpload;
+use App\State;
+use App\ProsSkills;
 use Illuminate\Http\Request;
+
 class PagesController extends Controller
 {
     //return  the home page
@@ -82,9 +85,13 @@ class PagesController extends Controller
 //Pros 4 Hire
 public function pros()
 {
-  $industries = Industry::all();
+  $industries = ProsSkills::all();
+  $countries = Country::all();
+  $cities = Town::all();
+  $states = State::all();
+  $skills = ProsSkills::all();
 
-  return view('new.pros-hire', compact('industries'));
+  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills'));
 }
 
 public function companies()

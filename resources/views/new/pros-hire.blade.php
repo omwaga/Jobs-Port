@@ -2,13 +2,13 @@
 @section('content')
 <div class="container" style="padding-top: 7rem">
 	@auth
-	@include('new.pros-hire-jobseekers')
+	@include('dashboard.pros-hire-jobseekers')
 	@else
 	<div class="row">
 		<div class="col-md-8">
 			<h4 class="text-center">PROS For HIRE</h4>
 			<div class="row">
-				@forelse($industries as $industry)
+				@forelse($industries as $skill)
 				<div class="col-md-6">
 					<div class="card-body border-light shadow-lg p-3 mb-3 bg-white rounded">
 						<div class="row">
@@ -16,7 +16,8 @@
 								<i class="fa fa-users text-secondary"></i>
 							</div>
 							<div class="col-md-9">
-								<a href="" class="h5">{{$industry->name}}</a>
+								<a href="" class="h5">{{$skill->name}}</a><br>
+								<span>{{$skill->pros->count()}}</span>
 							</div>
 						</div>
 					</div>

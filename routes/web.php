@@ -40,6 +40,7 @@ Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresu
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
 Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
 Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
+Route::POST('/pros_details', 'DashboardController@pros_details')->name('pros_details');
 
 //Resume Builder Routes
 Route::prefix('resume-builder')->group(function(){

@@ -56,7 +56,7 @@
                                 <div class="pl-xl-3">
                                     <div class="m-b-0">
                                         <div class="user-avatar-name d-inline-block">
-                                            <h2 class="font-24 m-b-10">{{$jobseeker->jobseekerdetail->name ?? $jobseeker->name}}</h2>
+                                            <h2 class="font-24 m-b-10">{{$jobseeker->full_name ?? ''}}</h2>
                                         </div>
                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
                                             <i class="fa fa-fw fa-star"></i>
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="user-avatar-address">
-                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>City/State/County, Country <span class="m-l-10">Gender<span class="m-l-20">Age</span></span>
+                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{$jobseeker->prostate->name}}/{{$jobseeker->procity->name}}, {{$jobseeker->procountry->name}} <span class="m-l-10">Gender</span>
                                         </p>
                                         <div class="mt-3">
                                             <a href="#" class="mr-1 badge badge-light">Skill 1</a><a href="#" class="mr-1 badge badge-light">Skill 2</a><a href="#" class="mr-1 badge badge-light">Skill 3</a><a href="#" class="badge badge-light">Skill 4</a>

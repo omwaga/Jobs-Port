@@ -11,38 +11,52 @@
 		</ul>
 		<div class="tab-content" id="pills-tabContent">
 			<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-				<form method="POST" action="#">
+				@include('errors')
+				@include('success')
+				<form method="POST" action="{{route('pros_details')}}">
 					@csrf
 					<div class="row">
 						<div class="col-md-6">
 							<label>Full Names:</label>
-							<input type="text" class="form-control" name="full_name" required autofocus style="border-radius:0px;">
+							<input type="text" value="{{old('full_name')}}" class="form-control" name="full_name" required autofocus>
 						</div>
 						<div class="col-md-6">
 							<label>Email Address:</label>
-							<input type="text" class="form-control" name="email" required autofocus style="border-radius:0px;">
+							<input type="text" value="{{old('email')}}" class="form-control" name="email" required autofocus>
 						</div>
 						<div class="col-md-6">
 							<label>Country:</label>
-							<input type="text" class="form-control" name="country" required autofocus style="border-radius:0px;">
+							<select name="country" class="form-control">
+								@foreach($countries as $country)
+								<option value="{{$country->id}}">{{$country->name}}</option>
+								@endforeach
+							</select>
 						</div>
 						<div class="col-md-6">
 							<label>Phone Number:</label>
-							<input type="text" class="form-control" name="phone_number" required autofocus style="border-radius:0px;">
+							<input type="text" value="{{old('phone_number')}}" class="form-control" name="phone_number" required autofocus>
 						</div>
 						<div class="col-md-6">
 							<label>City:</label>
-							<input type="text" class="form-control" name="city" required autofocus style="border-radius:0px;">
+							<select name="city" class="form-control">
+								@foreach($cities as $city)
+								<option value="{{$city->id}}">{{$city->name}}</option>
+								@endforeach
+							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>State:</label>
-							<input type="text" class="form-control" name="state" required autofocus style="border-radius:0px;">
+							<select name="state" class="form-control">
+								@foreach($states as $state)
+								<option value="{{$state->id}}">{{$state->name}}</option>
+								@endforeach
+							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>ZIP:</label>
-							<input type="text" class="form-control" name="zip_code" required="">
+							<input type="text" value="{{old('zip_code')}}" class="form-control" name="zip_code" required="">
 						</div>
 					</div>
 					<br>
@@ -59,39 +73,35 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label>Title:</label>
-							<input type="text" class="form-control" name="title" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" value="{{old('title')}}" name="title" required autofocus>
 						</div>
 						<div class="col-md-6">
 							<label>Description:</label>
-							<input type="text" class="form-control" name="description" required autofocus style="border-radius:0px;">
+							<input type="text" class="form-control" value="{{old('description')}}" name="description" required autofocus>
 						</div>
 
 						<div class="col-md-6">
 							<label>Skills and Expertise:</label>
-							<select class="form-control" multiple data-live-search="true">
-								<option>Mustard</option>
-								<option>Ketchup</option>
-								<option>Relish</option>
+							<select name="skills" class="form-control" multiple data-live-search="true">
+								@foreach($skills as $skill)
+								<option value="{{$skill->id}}">{{$skill->name}}</option>
+								@endforeach
 							</select>
 						</div>
 
 						<div class="col-md-6">
 							<label>Rate/Hour:</label>
-							<select name="rate" class="form-control" style="border-radius:0px;"required autofocus value="{{old('rate')}}">
-								<option>Select</option>
-							</select>
+							<input type="text" class="form-control" name="rate" value="{{old('rate')}}">
 						</div>
 
 						<div class="col-md-6">
 							<label>Minimum Budget:</label>
-							<select name="minimum_budget" class="form-control" style="border-radius:0px;"required autofocus value="{{old('minimum_budget')}}">
-								<option>Select</option>
-							</select>
+							<input type="text" class="form-control" name="minimum_budget" value="{{old('minimum_budget')}}">
 						</div>
 
 						<div class="col-md-6">
 							<label>Category:</label>
-							<select name="category" class="form-control" style="border-radius:0px;"required autofocus value="{{old('category')}}">
+							<select name="category" class="form-control" required autofocus value="{{old('category')}}">
 								<option>Select</option>
 							</select>
 						</div>

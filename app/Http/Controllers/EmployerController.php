@@ -31,6 +31,8 @@ use App\Industry;
 use App\Locations;
 use App\Town;
 Use App\Country;
+use App\ProsDetails;
+
 class EmployerController extends Controller
 {
     public function __construct()
@@ -142,7 +144,7 @@ public function postajob(){
 //Jobseeker profiles route
 public function jobseekerprofiles()
 {
-    $jobseekers = User::orderBy('created_at','desc')->paginate(20);
+    $jobseekers = ProsDetails::orderBy('created_at','desc')->paginate(20);
     $categories = jobcategories::orderBy('jobcategories','asc')->get();
     $industries = Industry::orderBy('name','asc')->get();
 

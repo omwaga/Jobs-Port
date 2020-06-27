@@ -32,6 +32,7 @@ use App\Awards;
 use App\Usercategories;
 use PDF;
 use App;
+use App\ProsDetails;
 use Carbon\Carbon;
 class DashboardController extends Controller
 {
@@ -491,8 +492,20 @@ public function deletesavejob(Request $request)
    return back()->with('message', 'The job has been removed from the saved jobs successfully');
 }
 
-public function theme()
+public function pros_details(Request $request)
 {
-    return view('dashboard.theme');
+    $attributes = request()->validate([
+        'full_name' => 'required|min:3',
+        'email' => 'required|email',
+        'country' => 'required',
+        'phone_number' => 'required|min:9',
+        'city' => 'required',
+        'state' => 'required',
+        'zip_code' => 'required',
+    ]);
+
+    ProsDetails::create($attributes + ['user_id' => auth()->user()->id]);
+
+    return back()->with('message', 'Your Information has been saved successfully!');
 }
 }
