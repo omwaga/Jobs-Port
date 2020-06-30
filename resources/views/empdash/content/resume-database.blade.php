@@ -77,7 +77,7 @@
                             </div>
                             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                    <a href="#" class="btn btn-secondary">Full Profile</a>
+                                    <a href="{{route('candidateprofile', $jobseeker->user_id)}}" class="btn btn-secondary">Full Profile</a>
                                 </div>
                             </div>
                         </div>

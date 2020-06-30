@@ -63,6 +63,22 @@ class EmployerController extends Controller
         return view('empdash.content.viewapplicantprofile', compact( 'jobseekerdetail', 'personalstatement', 
             'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
     }
+
+    // method to show the candidate's  career profile for the resume database access
+    public function candidateprofile($id)
+    {
+        $jobseekerdetail = JobseekerDetail::where('user_id', $id)->first();
+        $personalstatement = PersonalStatement::where('user_id', $id)->first();
+        $academics = Education::where('user_id', $id)->get();
+        $experiences = WorkExperience::where('user_id', $id)->get();
+        $referees = Reference::where('user_id', $id)->get();
+        $certifications = Awards::where('user_id', $id)->get();
+        $skills = Skills::where('user_id', $id)->get();
+        $talent=TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
+
+        return view('empdash.content.resume-view', compact( 'jobseekerdetail', 'personalstatement', 
+            'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
+    }
     
     public function employerdash(){
         $dashboard_jobs = Jobposts::where('employer_id',auth()->id())->get();

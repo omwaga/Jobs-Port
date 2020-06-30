@@ -90,8 +90,14 @@ public function pros()
   $cities = Town::all();
   $states = State::all();
   $skills = ProsSkills::all();
+  $categories = jobcategories::all();
 
-  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills'));
+  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills', 'categories'));
+}
+
+public function candidates($skill)
+{
+  return view('new.pro-skill');
 }
 
 public function companies()

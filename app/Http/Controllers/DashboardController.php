@@ -34,6 +34,8 @@ use PDF;
 use App;
 use App\ProsDetails;
 use Carbon\Carbon;
+use App\ProsServices;
+
 class DashboardController extends Controller
 {
     public function __construct()
@@ -492,6 +494,8 @@ public function deletesavejob(Request $request)
    return back()->with('message', 'The job has been removed from the saved jobs successfully');
 }
 
+
+// Save the pros details
 public function pros_details(Request $request)
 {
     $attributes = request()->validate([
@@ -507,5 +511,22 @@ public function pros_details(Request $request)
     ProsDetails::create($attributes + ['user_id' => auth()->user()->id]);
 
     return back()->with('message', 'Your Information has been saved successfully!');
+}
+
+//Save the pros services
+public function pros_services(Request $request)
+{
+    $attributes = $request->validate([
+        'title' => 'required|min:3',
+        'description' => 'required',
+        'skills' => 'required',
+        'rate' => 'required',
+        'minimum_budget' => 'required',
+        'category' => 'required'
+    ]);
+
+    ProsServices::create($attributes + ['user_id' => auth()->user()->id]);
+
+    return back()->with('message', 'Your Services has been added successfully!');
 }
 }

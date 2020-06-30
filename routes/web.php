@@ -41,6 +41,7 @@ Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-
 Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
 Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
 Route::POST('/pros_details', 'DashboardController@pros_details')->name('pros_details');
+Route::POST('/pros_services', 'DashboardController@pros_services')->name('pros_services');
 
 //Resume Builder Routes
 Route::prefix('resume-builder')->group(function(){
@@ -61,9 +62,9 @@ Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
 Route::resource('jobposts','JobListController');
 Route::get('/applicantprofile/{name}','EmployerController@fullprofile')->name('fullprofile');
+Route::get('/candidate-profile/{name}','EmployerController@candidateprofile')->name('candidateprofile');
 Route::get('/candidate-profile/{id}','EmployerController@shortlistview')->name('shortlistprofile');
 Route::get('/talentpool','EmployerController@talentpool')->name('pooltalent');
-Route::get('/your-applicants','EmployerController@applicantss')->name('viewapplicants');
 Route::get('/Employer-dashboard','EmployerController@employerdash')->name('employdashboard');
 Route::get('/postajob','EmployerController@postajob')->name('emppostjob');
 Route::get('/companyprofile','EmployerController@cprofile')->name('empprofille');
@@ -107,6 +108,8 @@ Route::get('/cover-letters', 'PagesController@coverletter')->name('coverletter')
 Route::get('/admin-resume', 'AdminController@resume')->name('resume');
 Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
 Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
+Route::get('/pro-skills', 'AdminController@skills')->name('pro-skills');
+Route::POST('/pro-skills', 'AdminController@newskill')->name('new-skill');
 Route::resource('cvupload', 'CvUploadsController');
 Route::resource('coverletters', 'CoverLettersController');
 
@@ -158,6 +161,7 @@ Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');
 Route::get('/humanitarian-and-ngo-jobs', 'PagesController@humanitarianjobs')->name('humanitarian-jobs');
 Route::get('/consultancies', 'PagesController@consultancies')->name('consultancies');
 Route::get('/pros-4-Hire', 'PagesController@pros')->name('pros');
+Route::get('/pros-4-Hire/{skill}', 'PagesController@candidates')->name('proscandidates');
 
 
 //dashboard on behalf of the employers

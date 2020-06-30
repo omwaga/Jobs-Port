@@ -2,7 +2,7 @@
 @section('content')
 <!--body wrapper start-->
 <div class="wrapper">
-  
+
   <!--Start Page Title-->
   <div class="page-title-box">
     <h4 class="page-title">Employers</h4>
@@ -22,37 +22,31 @@
   
   <!-- Start row-->
   <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-info pull-right" data-toggle="modal" data-target="#modal-large" type="button">New Skill Set</button>
+      @include('admin.new-skillset')
+    </div><br>
     <div class="calendar-layout clearfix">
-      @foreach($employers as $employer)
+      @include('success')
+      @include('errors')
+      @foreach($skills as $skill)
       <div class="col-md-4">
         <div class="card-profile3">
-          <div class="p-header">
-           <img src="{{asset('storage/logos/'.$employer->logo)}}"  alt="">
-           <h4>{{$employer->company_name}}</h4>
-           <p>{{$employer->company_email}}</p>
-         </div>
          <div class="p-info">
           <div class="row">
-           <div class="col-md-6 co-sm-6 col-xs-6">
+           <div class="col-md-12 co-sm-12 col-xs-12">
              <div class="p-stats">
-              <h4>Posted Jobs</h4>
-              <p>{{$employer->jobs->count()}}</p>
+              <h4><a href="#">{{$skill->name}}</a></h4>
+              <p>{{$skill->pros->count() ?? 0}}</p>
             </div>
           </div>
-          
-          <div class="col-md-6 co-sm-6 col-xs-6">
-           <div class="p-stats last">
-            <h4> Received Applications</h4>
-            <p>{{$employer->applications->count()}}</p>
-          </div>
         </div>
-      </div>
-      
-    </div> <!--/.p-info-->
-    
+
+      </div> <!--/.p-info-->
+
+    </div>
   </div>
-</div>
-@endforeach
+  @endforeach
 </div>      
 </div>
 <!-- End row-->        

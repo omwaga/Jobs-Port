@@ -68,7 +68,7 @@
 			</div>
 			<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 				<p>Get Started by Listing a service that you offer. You need to list services to receive job matches and be found by the employers.</p>
-				<form method="POST" action="#">
+				<form method="POST" action="{{route('pros_services')}}">
 					@csrf
 					<div class="row">
 						<div class="col-md-6">
@@ -102,7 +102,10 @@
 						<div class="col-md-6">
 							<label>Category:</label>
 							<select name="category" class="form-control" required autofocus value="{{old('category')}}">
-								<option>Select</option>
+								<option value="">Select Cateory</option>
+								@foreach($categories as $category)
+								<option value="{{$category->id}}">{{$category->jobcategories}}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>

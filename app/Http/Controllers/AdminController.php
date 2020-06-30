@@ -14,7 +14,7 @@ use App\Town;
 use App\country;
 use App\WorkProgramEnrollment;
 use DB;
-
+use App\ProsSkills;
 use App\CvUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -171,6 +171,26 @@ class AdminController extends Controller
         Jobposts::create($attributes + ['employer_id' => 1]);
 
         return back()->with('message', 'The job post has been created succsefully');
+    }
+
+//return the skills for the pros
+    public function skills()
+    {
+        $skills = ProsSkills::all();
+
+        return view('admin.skills', compact('skills'));
+    }
+
+    //add a new skill
+    public function newskill(Request $request)
+    {
+        $attributes = $request->validate([
+            'name' => 'required|min:3',
+        ]);
+
+        ProsSkills::create($attributes);
+
+        return back()->with('message', 'The Skillset has been created successfully');
     }
 
 }

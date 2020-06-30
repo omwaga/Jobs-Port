@@ -100,6 +100,12 @@
                         <li><a href="{{route('coverletters.index')}}">Cover Letters Designs</a></li>
                     </ul>
                 </li>
+
+                <li class="menu-list"><a href="#"><i class="icon-folder"></i> <span>Pros 4 Hire</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="{{route('pro-skills')}}">Skills Sets</a></li>
+                    </ul>
+                </li>
                 
                 <li class="menu-list"><a href="#"><i class="icon-envelope-open"></i> <span>Mail</span></a>
                     <ul class="sub-menu-list">
