@@ -41,38 +41,45 @@
                     <div class="table-responsive">
                         <table id="example" class="table table-striped table-bordered second" style="width:100%">
                             <thead>
-                               <tr>
-                                 <th>#</th>
-                                 <th>Job Title</th>
-                                 <th>Job Type</th>
-                                 <th>Status</th>
-                                 <th>Applications</th>
-                                 <th style="width: 20%">Action</th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                            @php $column_number = 0; @endphp
-                            @foreach($jobs as $job)
-                            @php $column_number = $column_number + 1; @endphp
-                            <tr>
-                                <td>{{$column_number}}.</td>
-                                <td><a href="/job-withapplications/{{$job->id}}">{{$job->job_title}}</a></td>
-                                <td>{{$job->employment_type}}</td>
-                                <td>{{$job->status}}</td>
-                                <td>{{$job->applications->count()}}</td>
-                                <td>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                   <a href="{{route('jobwithapplications', $job->id)}}" class="btn btn-success btn-sm text-white"><i class="fa fa-eye"></i>View </a>
+                             <tr>
+                               <th>#</th>
+                               <th>Job Title</th>
+                               <th>Job Type</th>
+                               <th>Status</th>
+                               <th>Applications</th>
+                               <th style="width: 20%">Action</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                        @php $column_number = 0; @endphp
+                        @foreach($jobs as $job)
+                        @php $column_number = $column_number + 1; @endphp
+                        <tr>
+                            <td>{{$column_number}}.</td>
+                            <td><a href="/job-withapplications/{{$job->id}}">{{$job->job_title}}</a></td>
+                            <td>{{$job->employment_type}}</td>
+                            <td>{{$job->status}}</td>
+                            <td>{{$job->applications->count()}}</td>
+                            <td>
+                              <div class="btn-group" role="group" aria-label="Basic example">
+                                 <a href="{{route('jobwithapplications', $job->id)}}" class="btn btn-success btn-sm text-white"><i class="fa fa-eye"></i>View </a>
 
 
-                                <a href="/jobposts/{{$job->id}}/edit" class="btn btn-primary btn-sm text-white">
+                                 <a href="/jobposts/{{$job->id}}/edit" class="btn btn-primary btn-sm text-white">
                                     <i class="fa fa-edit"></i>Update
                                 </a>
 
+                                @if($job->status === 'active')
                                 <button  type="button" data-toggle="modal" data-id="{{$job->id}}" class="btn btn-danger btn-sm text-white" data-target="#delete-{{$job->id}}">
-                                    <i class="fa fa-times"></i>Delete
+                                    <i class="fa fa-times"></i> Unpublish
                                 </button>
-                                @include('empdash.content.deletejob')
+                                @include('empdash.content.unpublishjob')
+                                @else
+                                <button  type="button" data-toggle="modal" data-id="{{$job->id}}" class="btn btn-danger btn-sm text-white" data-target="#publish-{{$job->id}}">
+                                    <i class="fa fa-save"></i> Publish
+                                </button>
+                                @include('empdash.content.publishjob')
+                                @endif
 
                             </div>
                         </td>

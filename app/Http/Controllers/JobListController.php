@@ -88,9 +88,19 @@ class JobListController extends Controller
     {
         $job = Jobposts::findOrFail($request->job_id);
 
-        $job->delete();
+        $job->update(['status' => 'inactive']);
         
-        return back()->with('message', 'The Job Post has been deleted successfully!');
+        return back()->with('message', 'The Job Post has been Unpublished successfully!');
+    }
+
+
+    public function publish(Request $request)
+    {
+        $job = Jobposts::findOrFail($request->job_id);
+
+        $job->update(['status' => 'active']);
+        
+        return back()->with('message', 'The Job Post has been published successfully!');
     }
     
         

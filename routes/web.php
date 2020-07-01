@@ -61,6 +61,7 @@ Route::prefix('employers')->group(function(){
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
 Route::resource('jobposts','JobListController');
+Route::PATCH('/publish-job/{id}','JobListController@publish')->name('publish-job');
 Route::get('/applicantprofile/{name}','EmployerController@fullprofile')->name('fullprofile');
 Route::get('/candidate-profile/{name}','EmployerController@candidateprofile')->name('candidateprofile');
 Route::get('/candidate-profile/{id}','EmployerController@shortlistview')->name('shortlistprofile');

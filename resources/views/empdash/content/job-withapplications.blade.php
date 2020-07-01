@@ -100,7 +100,17 @@
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-danger btn-sm text-white float-right">Unpublish</a>
+                @if($job->status === 'active')
+                <button  type="button" data-toggle="modal" data-id="{{$job->id}}" class="btn btn-danger btn-sm text-white" data-target="#delete-{{$job->id}}">
+                    <i class="fa fa-times"></i>Unpublish
+                </button>
+                @include('empdash.content.unpublishjob')
+                @else
+                <button  type="button" data-toggle="modal" data-id="{{$job->id}}" class="btn btn-danger btn-sm text-white" data-target="#publish-{{$job->id}}">
+                    <i class="fa fa-eye"></i>Publish
+                </button>
+                @include('empdash.content.publishjob')
+                @endif
             </div>
         </div>
     </div>

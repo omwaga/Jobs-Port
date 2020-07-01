@@ -28,6 +28,8 @@ use App\Article;
 use App\CvUpload;
 use App\State;
 use App\ProsSkills;
+use App\ProsServices;
+use App\ProsDetails;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -91,13 +93,21 @@ public function pros()
   $states = State::all();
   $skills = ProsSkills::all();
   $categories = jobcategories::all();
+  $pros_details = ProsDetails::where('user_id', auth()->user()->id ?? '')->first();
+  $pro_services = ProsServices::where('user_id', auth()->user()->id ?? '')->first();
 
-  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills', 'categories'));
+  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills', 'categories', 'pros_details', 'pro_services'));
 }
 
 public function candidates($skill)
 {
-  return view('new.pro-skill');
+  $skil = ProsSkills::where('name', ucwords(str_replace('-', ' ', $skill)))->first();
+  $pros = ProsServices::where('skills', $skil->id)
+         ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
+         ->select('pros_details.*', 'pros_services.skills')
+         ->get();
+  
+  return view('new.pro-skill', compact('pros'));
 }
 
 public function companies()
@@ -142,7 +152,7 @@ public function aboutjob(){
 
 //  all jobs available in the database
 public function alljobs(){
-  $jobs=Jobposts::orderBy('created_at', 'DESC')->paginate(10);
+  $jobs=Jobposts::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(12);
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
