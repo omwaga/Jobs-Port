@@ -2,7 +2,7 @@
 @section('content')
 <!--<br>-->
 <section class="section section-top section-full">
-  <div class="jumbotron jumbotron-fluid" style="background:/* linear-gradient(rgba(0, 0, 140, 0), rgba(0, 0, 80, 1)),*/ url({{asset('Images/banner-5.jpg')}})">
+  <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 140, 0), rgba(0, 86, 135, 1)), url({{asset('Images/banner-5.jpg')}})">
     <div class="container">
       <div class="row">
         <div class="col-md-12" style=" padding-top: 7rem;">

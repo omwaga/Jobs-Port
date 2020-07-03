@@ -15,13 +15,13 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto ">
     @guest
-    <li class="nav-item active pl-2">
+    <!-- <li class="nav-item active pl-2">
       <a class="nav-link text-white" href="/">
         <i class="fa fa-home text-white">
         </i>
         Home
       </a>
-    </li>
+    </li> -->
     <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('alljobs')}}">
         <i class="fa fa-search text-white">
@@ -31,7 +31,7 @@
     </li>
     <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('pros')}}">
-        <i class="fa fa-search text-white">
+        <i class="fa fa-database text-white">
         </i>
         Pros4Hire
       </a>
@@ -67,7 +67,7 @@
     </li>
     <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('pros')}}">
-        <i class="fa fa-search text-white">
+        <i class="fa fa-database text-white">
         </i>
         Pros4Hire
       </a>
@@ -120,11 +120,11 @@
   @guest
   <ul class="navbar-nav ml-auto ">
     <li class="nav-item">
-      <a class="btn btn-secondary text-white" href="{{ route('login') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Jobseeker</a>
+      <a class="btn btn-secondary text-white" href="{{ route('jobseekers') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Jobseeker</a>
     </li>
     @if (Route::has('register'))
     <li class="nav-item" style="padding-left:1em;">
-      <a class="btn btn-danger text-white" href="{{route('foremployer')}}" style="border-radius:0px;" type="button"  aria-expanded="false">
+      <a class="btn btn-danger text-white" href="{{route('employers')}}" style="border-radius:0px;" type="button"  aria-expanded="false">
         <i class="fa fa-users"></i> For Employer
       </a>
     </li>

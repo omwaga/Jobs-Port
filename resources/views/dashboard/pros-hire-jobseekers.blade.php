@@ -15,7 +15,9 @@
 				<div class="row">
 					<div class="col-lg-offset-1 col-lg-10">
 						<section class="panel panel-default">
-							<a href="#" class="btn btn-danger btn-sm pull-right"><i class="fa fa-edit"></i> Edit</a>
+							<button class="btn btn-danger text-white btn-sm pull-right"  data-toggle="modal"
+							data-target="#details-{{$pros_details->id}}"><i class="fa fa-edit"></i> Edit </button>
+							@include('dashboard.edit-details')
 							<div class="panel-body">
 								<article class="panel-body">
 									<figure class="text-center">
@@ -96,7 +98,9 @@
 						<strong>Services Details</strong>
 					</h4>
 					<hr>
-					<a href="#" class="btn btn-danger btn-sm pull-right"><i class="fa fa-edit"></i> Edit</a>
+					<button class="btn btn-danger text-white btn-sm pull-right"  data-toggle="modal"
+					data-target="#services"><i class="fa fa-edit"></i> Edit </button>
+					@include('dashboard.edit-services')
 					<dl class="dl-horizontal">
 						<dt>Title:</dt>
 						<dd>{{$pro_services->title ?? ''}}</dd>
@@ -122,7 +126,7 @@
 						</div>
 						<div class="col-md-6">
 							<label>Description:</label>
-							<input type="text" class="form-control" value="{{old('description')}}" name="description" required autofocus>
+							<textarea class="form-control" name="description" required autofocus>{{old('description')}}</textarea>
 						</div>
 
 						<div class="col-md-6">

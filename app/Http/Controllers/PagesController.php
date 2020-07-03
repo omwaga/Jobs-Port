@@ -62,6 +62,18 @@ class PagesController extends Controller
 
   }
 
+//return the page for the jobseekers
+  public function jobseekers()
+  {
+    return view('new.jobseekers');
+  }
+
+//return the page for the employers
+  public function employers()
+  {
+    return view('new.employers');
+  }
+
   public function cprofile(){
     $industry=Industry::orderBy('name','asc')->get();
     $town=Town::orderBy('name','asc')->get();

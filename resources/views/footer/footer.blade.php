@@ -32,7 +32,7 @@
         </div>
     </div><hr>
     <div class="col-12 text-center text-white">
-        <p>©<script>document.write(new Date().getFullYear());</script> The Networked Pros. All Rights Reserved.</p>
+        <p class="text-white">©<script>document.write(new Date().getFullYear());</script> The Networked Pros. All Rights Reserved.</p>
     </div>
 </div>
 </footer>

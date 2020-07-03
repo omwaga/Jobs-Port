@@ -126,6 +126,8 @@ Route::get('login/google', 'Auth\GoogleController@redirectToProvider')->name('go
 Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallback');
 
 //public routes
+Route::get('/jobseekers', 'PagesController@jobseekers')->name('jobseekers');
+Route::get('/employers', 'PagesController@employers')->name('employers');
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
 Route::get('/companyone', 'PagesController@onecompany')->name('onecompany');
 Route::get('/search-result', 'PagesController@searchresult');

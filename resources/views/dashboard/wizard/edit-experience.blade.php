@@ -50,7 +50,7 @@
 						
 						<div class="col-md-12">
 							<label>Achievements and Responsibilities:</label>
-							<textarea name="roles" class="form-control ckeditor" id="duties " required autofocus rows="3"style="border-radius:0px;">{{$experienced->roles}}</textarea>    
+							<textarea name="roles" class="form-control ckeditor" id="duties" required autofocus rows="3"style="border-radius:0px;">{{$experienced->roles}}</textarea>    
 						</div>
 					</div>
 					<br>
