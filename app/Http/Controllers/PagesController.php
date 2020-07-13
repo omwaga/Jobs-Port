@@ -74,10 +74,11 @@ class PagesController extends Controller
     return view('new.employers');
   }
 
+//return the view to register an employer
   public function cprofile(){
-    $industry=Industry::orderBy('name','asc')->get();
-    $town=Town::orderBy('name','asc')->get();
-    $countries=Country::all();
+    $industry = Industry::orderBy('name','asc')->get();
+    $town = Town::orderBy('name','asc')->get();
+    $countries = Country::all();
     
     return view('new.create-employerprofile')->with('industry',$industry)
     ->with('town',$town)
@@ -115,9 +116,9 @@ public function candidates($skill)
 {
   $skil = ProsSkills::where('name', ucwords(str_replace('-', ' ', $skill)))->first();
   $pros = ProsServices::where('skills', $skil->id)
-         ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
-         ->select('pros_details.*', 'pros_services.skills')
-         ->get();
+  ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
+  ->select('pros_details.*', 'pros_services.skills')
+  ->get();
   
   return view('new.pro-skill', compact('pros'));
 }

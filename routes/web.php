@@ -7,6 +7,15 @@ Route::get('/Login-Page',function(){
 Route::get('/profile-builder', 'DashboardController@wizard')->name('profile-wizard');
 
 //AUthenticated jobseeker routes
+
+Route::prefix('jobseeker')->group(function(){
+Route::resource('interests', 'InterestsController', [
+    'names' => [
+        'index' => 'interests',
+    ]]);
+});
+
+Route::get('/user-profile','DashboardController@profile')->name('profile');
 Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
 Route::get('/career-profile','DashboardController@careerprofile')->name('career-profile');
 Route::get('/uploads', 'DashboardController@upload')->name('fileupload');
@@ -57,6 +66,7 @@ Route::prefix('resume-builder')->group(function(){
 Route::prefix('employers')->group(function(){
     Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
     Route::get('job-options', 'EmployerController@joboptions')->name('joboptions');
+    Route::get('/express-recruitment', 'EmployerController@express')->name('express-recruitment');
 });
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');

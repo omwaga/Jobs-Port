@@ -199,7 +199,7 @@
                                       </td>
                                       <td>{{$job->job_title}}</td>
                                       <td>{{$job->employment_type}}</td>
-                                      <td>{{$job->status}}</td>
+                                      <td>{{$job->status}} posted {{$job->created_at->diffForHumans()}}</td>
                                       <td>
                                         <div class="dropdown float-right">
                                             <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="true">

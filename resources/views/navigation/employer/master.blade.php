@@ -113,7 +113,7 @@
                             <a class="nav-link" href="{{route('employerjobs')}}"><i class=" fas fa-align-justify"></i>Manage Jobs</a>
                         </li>
                         <li class="nav-item menu-list">
-                            <a class="nav-link" href="{{route('resumedatabase')}}"><i class=" fas fa-graduation-cap"></i>Express Recruitment</a>
+                            <a class="nav-link" href="{{route('express-recruitment')}}"><i class=" fas fa-graduation-cap"></i>Express Recruitment</a>
                         </li>
                         <li class="nav-item menu-list">
                             <a class="nav-link" href="{{route('allapplicants')}}"><i class="fas fa-address-book"></i>Job Applications</a>

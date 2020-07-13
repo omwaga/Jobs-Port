@@ -368,6 +368,12 @@ public function removedeclined(Request $request)
     return back()->with('message', 'The candidate has been removed from the list succesfully');
 }
 
+//express recruitmentview load
+public function express()
+{
+    return view('empdash.content.express-recruitment');
+}
+
 // get all data of users from the database for the resumes
 public function resumedatabase()
 {

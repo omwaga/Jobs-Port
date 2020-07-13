@@ -45,6 +45,25 @@ class DashboardController extends Controller
         // $this->middleware('guest:user',['except' => ['logout', 'getLogout']]);
     }
 
+//form after the registration by the user
+    public function profile()
+    {
+        $towns=Town::orderBy('name','asc')->get();
+        $industries=Industry::orderBy('name','asc')->get();
+        $countries = Countrylist::all();
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        
+        return view('dashboard.user-profile', compact('countries', 'personalinfo', 'references',
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+    }
+
+//wizard form
     public function wizard()
     {
         $towns=Town::orderBy('name','asc')->get();
@@ -59,9 +78,10 @@ class DashboardController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         
         return view('dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
-         'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
     }
-    
+
+    //create the jobseeker profile
     public function jobseekerprofile()
     {
         $userinfo = User::where('id', auth()->user()->id)->first();
@@ -83,7 +103,7 @@ class DashboardController extends Controller
         $applications = JobApplication::where('user_id', '=', auth()->user()->id)->get();
         
         return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
-         'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications'));
     }
     
     public function recommended(){
@@ -482,16 +502,16 @@ public function savejob(Request $request, $id)
 {
     SavedJob::create(['user_id' => auth()->user()->id, 'job_id' => $request->id]);
 
-     return back()->with('message', 'The job has been added to the saved jobs successfully');
+    return back()->with('message', 'The job has been added to the saved jobs successfully');
 }
 
 //Delete the user saved jobs
 public function deletesavejob(Request $request)
 {
-   $job = SavedJob::where('id', '=', $request->id)->first();
-   $job->delete();
+ $job = SavedJob::where('id', '=', $request->id)->first();
+ $job->delete();
 
-   return back()->with('message', 'The job has been removed from the saved jobs successfully');
+ return back()->with('message', 'The job has been removed from the saved jobs successfully');
 }
 
 

@@ -30,13 +30,6 @@
       </a>
     </li>
     <li class="nav-item active  pl-2">
-      <a class="nav-link text-white" href="{{route('pros')}}">
-        <i class="fa fa-database text-white">
-        </i>
-        Pros4Hire
-      </a>
-    </li>
-    <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('resumesamples')}}">
         <i class="fa fa-check text-white">
         </i>
@@ -63,13 +56,6 @@
         <i class="fa fa-search text-white">
         </i>
         Find a Job
-      </a>
-    </li>
-    <li class="nav-item active  pl-2">
-      <a class="nav-link text-white" href="{{route('pros')}}">
-        <i class="fa fa-database text-white">
-        </i>
-        Pros4Hire
       </a>
     </li>    
     <li class="nav-item active">
@@ -105,6 +91,13 @@
         <i class="fa fa-graduation-cap text-white">
         </i>
         Career Insights
+      </a>
+    </li>
+    <li class="nav-item active  pl-2">
+      <a class="nav-link text-white" href="{{route('interests')}}">
+        <i class="fa fa-database text-white">
+        </i>
+        Career Interests
       </a>
     </li>
     <li class="nav-item active">

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
-                    <h5 class="pageheader-title">Source Candidates</h5>
+                    <h5 class="pageheader-title">Express recruitment -</h5>
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text text-white">Advertise your job and provide a URL or Email Address to receive the applications</p>
-                        <a href="{{route('emppostjob')}}" class="btn btn-primary">Post Job</a>
+                        <a href="{{route('express-recruitment')}}" class="btn btn-primary">Post Job</a>
                     </div>
                 </div>
             </div>

@@ -40,14 +40,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div class="card-body border-light shadow-lg p-3 mb-3 bg-white rounded">
+      <div class="card-body border-light shadow-lg p-3 mb-3 rounded  bg-success">
         <div class="row">
           <div class="col-md-3 h1 text-center">
             <i class="fa fa-users text-secondary"></i>
           </div>
           <div class="col-md-9">
-            <a href="" class="h5">Total Applications</a>
-            <p>{{$applications->count()}}</p>
+            <a href="" class="h5 text-white">Total Applications</a>
+            <p class="text-white">{{$applications->count()}}</p>
           </div>
         </div>
       </div>
@@ -66,14 +66,14 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card-body border-light shadow-lg p-3 mb-3 bg-white rounded">
+      <div class="card-body border-light shadow-lg p-3 mb-3 bg-danger rounded">
         <div class="row">
           <div class="col-md-3 h1 text-center">
             <i class="fa fa-users text-secondary"></i>
           </div>
           <div class="col-md-9">
-            <a href="" class="h5">% of Profile Complete</a><br>
-            <a href="{{route('profile-wizard')}}"><small class="text-danger">Complete Your Profile</small></a>
+            <a href="" class="h5 text-white">% of Profile Complete</a><br>
+            <a href="{{route('profile-wizard')}}"><small class="text-white">Complete Your Profile</small></a>
           </div>
         </div>
       </div>
