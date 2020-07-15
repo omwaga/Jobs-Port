@@ -13,6 +13,7 @@ Route::resource('interests', 'InterestsController', [
     'names' => [
         'index' => 'interests',
     ]]);
+Route::resource('joblevels', 'JobLevelsController');
 });
 
 Route::get('/user-profile','DashboardController@profile')->name('profile');

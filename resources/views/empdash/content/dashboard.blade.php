@@ -207,11 +207,10 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">View</a>
+                                                <a href="/job-withapplications/{{$job->id}}" class="dropdown-item">View</a>
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Update</a>
+                                                <a href="/jobposts/{{$job->id}}/edit" class="dropdown-item">Update</a>
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Delete</a>
                                             </div>
                                         </div>
                                     </td>

@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\jobcategories;
-use App\Interests;
-use App\Level;
 use App\JobLevel;
 
-class InterestsController extends Controller
+class JobLevelsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +15,7 @@ class InterestsController extends Controller
      */
     public function index()
     {
-        $categories = jobcategories::all();
-        $levels = Level::all();
-        $job_levels = JobLevel::all();
-
-        return view('dashboard.interests', compact('categories', 'levels', 'job_levels'));
+        //
     }
 
     /**
@@ -42,10 +35,10 @@ class InterestsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
-      Interests::create($request->all() + ['user_id' => auth()->user()->id]);
+    {
+      JobLevel::create($request->all() + ['user_id' => auth()->user()->id]);
 
-      return back()->with('message', 'Your Career Interests has been saved successfully');
+      return back()->with('message', 'Your Selected Job Levels has been saved successfully');
     }
 
     /**

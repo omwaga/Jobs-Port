@@ -10,7 +10,7 @@
 
           <p class="text-white text-left">Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services.</p>
           <a href="{{route('hirre')}}" class="btn btn-danger">Get Started</a>
-          <a href="{{route('foremployer')}}" class="btn text-white" style="background-color: #005691">Already Registered? Login</a>
+          <a href="{{route('foremployer')}}" class="btn text-white" style="background-color: #005691">Already Registered? Post a Job</a>
       </div>
   </div>
 </div>

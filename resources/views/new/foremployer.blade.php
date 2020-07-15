@@ -44,7 +44,7 @@
 						<div class="form-group row mb-0">
 							<div class="col-md-8 offset-md-2">
 								<button type="submit" class="btn btn-primary btn-block" style="border-radius:0px;">
-									{{ __('Login') }}
+									{{ __('Login to Post a Job') }}
 								</button>
 
 								@if (Route::has('password.request'))

@@ -26,18 +26,27 @@
       </div>
       @endforeach
     </div><br>
+    <button class="btn-danger">SAVE</button>
+  </form>
+  @forelse($job_levels as $job_level)
+  <form method="POST" action="{{route('joblevels.store')}}">
+    @csrf
     <p>Please select the job levels you are interested in. You can also leave this empty</p>
     <div class="row">
+      @foreach($levels as $level)
       <div class="col-md-3">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <input class="form-check-input" name="level{{$level->id}}" type="checkbox" value="{{$level->id}}" id="defaultCheck1">
           <label class="form-check-label" for="defaultCheck1">
-            Job Level
+            {{$level->name}}
           </label>
         </div>
       </div>
+      @endforeach
     </div>
-    <button class="btn-danger">SAVE AND GO TO DASHBOARD</button>
+    <button class="btn-danger">SAVE</button>
   </form>
+  @empty
+  @endforelse
 </div>
 @endsection
