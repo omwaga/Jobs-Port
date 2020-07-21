@@ -40,4 +40,9 @@ class WorkExperiencesController extends Controller
                      
         return back();
     }
+
+    public function destroy(WorkExperience $experience)
+    {
+      return $experience;
+    }
 }

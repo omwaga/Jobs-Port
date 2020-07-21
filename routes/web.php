@@ -28,7 +28,7 @@ Route::get('/jobseekerprofile', 'DashboardController@jobseekerprofile')->name('j
 Route::resource('personalinfo', 'JobseekerDetailsController');
 Route::resource('personalstatements', 'PersonalStatementsController');
 Route::resource('experiences', 'WorkExperiencesController');
-Route::resource('education', 'EducationController');
+Route::resource('educations', 'EducationController');
 Route::resource('awards', 'AwardsController');
 Route::resource('references', 'ReferencesController');
 Route::resource('jobskills', 'SkillsController');

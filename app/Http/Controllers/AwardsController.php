@@ -22,20 +22,25 @@ class AwardsController extends Controller
             'institution' => 'required',
             'award_date' => 'required',
             'description' => 'required',
-            ]);
+        ]);
         
         Awards::create($attributes + ['user_id' => auth()->user()->id]);
         
         return back();
     }
     
-     public function update(Request $request)
+    public function update(Request $request)
     {
         $award = request()->id;
         
         Awards::where('id', $award)
-               ->update(request(['institution', 'description', 'name', 'award_date']));
-               
+        ->update(request(['institution', 'description', 'name', 'award_date']));
+
         return back();
+    }
+
+    public function destroy(Awards $award)
+    {
+       return $award;
     }
 }

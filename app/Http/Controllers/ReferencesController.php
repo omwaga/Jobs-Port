@@ -39,4 +39,9 @@ class ReferencesController extends Controller
                
         return back();
     }
+
+    public function destroy(Reference $reference)
+    {
+        return $reference;
+    }
 }

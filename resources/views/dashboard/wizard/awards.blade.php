@@ -25,48 +25,55 @@
               <dt>Description:</dt></h6>
               <dd>{!!$award->description!!}</dd>
 
-              <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal"
-                data-target="#editaward-{{$award->id}}"><i class="fa fa-edit"></i> Edit </button></p>
-                
-                @include('dashboard.wizard.edit-award')
-              </dl>
-            </div>
-          </section>
+              <p class="pull-right">
+                <button class="btn btn-info text-white btn-sm"  data-toggle="modal"
+                data-target="#editaward-{{$award->id}}"><i class="fa fa-edit"></i> Edit </button>
+                <form method="POST" action="{{route('awards.destroy', $award->id)}}">
+                @csrf
+                @method('DELETE')                  
+                  <button class="btn btn-danger text-white btn-sm" type="submit"><i class="fa fa-edit"></i> Delete </button>
+                </form>
+              </p>
+
+              @include('dashboard.wizard.edit-award')
+            </dl>
+          </div>
+        </section>
+      </div>
+    </div>
+    @empty
+    <div class="col-lg-offset-1 col-lg-10">
+      <form method="POST" action="/awards">
+        @csrf
+        <div class="col-md-4">
+          <label>Award Name:</label>
+          <input type="text" class="form-control" name="name" required autofocus style="border-radius:0px;">
+        </div>
+        <div class="col-md-4">
+         <label>Institution:</label>
+         <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
+       </div>
+
+       <div class="col-md-4">
+         <label>Award/Qualification Date:</label>
+         <div class="input-group date">
+          <input type="date" name="award_date" class="form-control">
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
         </div>
       </div>
-      @empty
-      <div class="col-lg-offset-1 col-lg-10">
-        <form method="POST" action="/awards">
-          @csrf
-          <div class="col-md-4">
-            <label>Award Name:</label>
-            <input type="text" class="form-control" name="name" required autofocus style="border-radius:0px;">
-          </div>
-          <div class="col-md-4">
-           <label>Institution:</label>
-           <input type="text" class="form-control" name="institution" required autofocus style="border-radius:0px;">
-         </div>
 
-         <div class="col-md-4">
-           <label>Award/Qualification Date:</label>
-           <div class="input-group date">
-            <input type="date" name="award_date" class="form-control">
-            <div class="input-group-addon">
-              <span class="glyphicon glyphicon-th"></span>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-12">
+        <label>Description:</label>
+        <textarea name="description" class="form-control ckeditor" id="award" required autofocus rows="3"style="border-radius:0px;"></textarea> 
+      </div>
 
-        <div class="col-md-12">
-          <label>Description:</label>
-          <textarea name="description" class="form-control ckeditor" id="award" required autofocus rows="3"style="border-radius:0px;"></textarea> 
-        </div>
-
-        <div class="col-md-12"><br>
-          <button type="submit" class="btn btn-sm btn-danger pull-right">Save</button>   
-        </div>
-      </form>
-    </div>
-    @endforelse
+      <div class="col-md-12"><br>
+        <button type="submit" class="btn btn-sm btn-danger pull-right">Save</button>   
+      </div>
+    </form>
   </div>
+  @endforelse
+</div>
 </div>

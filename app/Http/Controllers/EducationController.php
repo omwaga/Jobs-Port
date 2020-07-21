@@ -40,4 +40,9 @@ class EducationController extends Controller
                
         return back();
     }
+
+    public function destroy(Education $education)
+    {
+        return $education;
+    }
 }

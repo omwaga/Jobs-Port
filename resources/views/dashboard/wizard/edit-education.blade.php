@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="/education/{{$educated->id}}">
+        <form method="POST" action="/educations/{{$educated->id}}">
           @csrf
           @method('PATCH')
           <div class="row">

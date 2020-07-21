@@ -20,9 +20,10 @@ class InterestsController extends Controller
     {
         $categories = jobcategories::all();
         $levels = Level::all();
-        $job_levels = JobLevel::all();
+        $job_levels = JobLevel::where('user_id', auth()->user()->id)->first();
+        $interests = Interests::where('user_id', auth()->user()->id)->first();
 
-        return view('dashboard.interests', compact('categories', 'levels', 'job_levels'));
+        return view('dashboard.interests', compact('categories', 'levels', 'job_levels', 'interests'));
     }
 
     /**

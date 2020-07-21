@@ -23,37 +23,44 @@
               <dt>Expertise Level:</dt>
               <dd>{{$skill->level}}</dd>
 
-              <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal" 
-                data-target="#editskill-{{$skill->id}}"><i class="fa fa-edit"></i> Edit </button></p>
+              <p class="pull-right">
+                <button class="btn btn-info text-white btn-sm"  data-toggle="modal" 
+                data-target="#editskill-{{$skill->id}}"><i class="fa fa-edit"></i> Edit </button>
+                <form method="POST" action="{{route('jobskills.destroy', $skill->id)}}">
+                @csrf
+                @method('DELETE')                  
+                  <button class="btn btn-danger text-white btn-sm" type="submit"><i class="fa fa-edit"></i> Delete </button>
+                </form>
+              </p>
 
-                @include('dashboard.wizard.edit-skill')
-              </dl>
-            </div>
-          </section>
-        </div>
-      </div>
-      @empty
-      <div class="col-lg-offset-1 col-lg-10">
-        <form method="POST" action="/jobskills">
-          @csrf
-          <div class="col-md-6">
-            <label>Skill Name:</label>
-            <input name="skillname" type="text" class="form-control" required autofocus > 
+              @include('dashboard.wizard.edit-skill')
+            </dl>
           </div>
-          <div class="col-md-6">
-            <label>Expertise Level:</label>
-            <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
-             <option>Select Skill Level</option>
-             <option>Beginner</option>
-             <option>Intermediate</option>
-             <option>Expert</option>
-           </select>
-         </div>
-         <div class="col-md-12"><br>
-          <button type="submit" class="btn btn-sm btn-danger pull-right">Save</button>   
-        </div>
-      </form>
+        </section>
+      </div>
     </div>
-    @endforelse
+    @empty
+    <div class="col-lg-offset-1 col-lg-10">
+      <form method="POST" action="/jobskills">
+        @csrf
+        <div class="col-md-6">
+          <label>Skill Name:</label>
+          <input name="skillname" type="text" class="form-control" required autofocus > 
+        </div>
+        <div class="col-md-6">
+          <label>Expertise Level:</label>
+          <select name="level" class="form-control" style="border-radius:0px;"required autofocus value="{{old('marital_status')}}">
+           <option>Select Skill Level</option>
+           <option>Beginner</option>
+           <option>Intermediate</option>
+           <option>Expert</option>
+         </select>
+       </div>
+       <div class="col-md-12"><br>
+        <button type="submit" class="btn btn-sm btn-danger pull-right">Save</button>   
+      </div>
+    </form>
   </div>
+  @endforelse
+</div>
 </div>

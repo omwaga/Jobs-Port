@@ -32,6 +32,8 @@
               <dd>{{$personalinfo->nationality ?? ''}}, {{$personalinfo->city ?? ''}}</dd>
             </dl>
           </article>
+
+          <button class="btn btn-info pull-right btn-sm text-white" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i>Edit</button>
         </div>
       </section>
     </div>

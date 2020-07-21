@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="/education">
+        <form method="POST" action="/educations">
           @csrf
           <div class="row">
             <div class="col-md-4">

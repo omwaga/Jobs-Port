@@ -36,4 +36,9 @@ class SkillsController extends Controller
              
         return back();
     }
+
+    public function destroy(Skills $jobskill)
+    {
+        return $jobskill;
+    }
 }

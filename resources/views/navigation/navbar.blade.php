@@ -15,25 +15,11 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto ">
     @guest
-    <!-- <li class="nav-item active pl-2">
-      <a class="nav-link text-white" href="/">
-        <i class="fa fa-home text-white">
-        </i>
-        Home
-      </a>
-    </li> -->
     <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('alljobs')}}">
         <i class="fa fa-search text-white">
         </i>
         Job Search
-      </a>
-    </li>
-    <li class="nav-item active  pl-2">
-      <a class="nav-link text-white" href="{{route('resumesamples')}}">
-        <i class="fa fa-check text-white">
-        </i>
-        Resume Builder
       </a>
     </li>
     <li class="nav-item active  pl-2">
@@ -43,13 +29,20 @@
         Work Readiness Program
       </a>
     </li>
-    <li class="nav-item active  pl-2">
-      <a class="nav-link text-white" href="#">
-        <i class="fa fa-sticky-note text-white">
-        </i>
-        Career Insights
-      </a>
-    </li>
+
+    <div class="dropdown">
+      <li class="nav-item active  pl-2" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link text-white" href="#">
+          <i class="fa fa-sticky-note text-white">
+          </i>
+          Career Insights
+        </a>
+      </li>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #005691">
+        <a class="dropdown-item text-white" href="{{route('resumesamples')}}">Resume Builder</a>
+        <a class="dropdown-item text-white" href="#">Career Insights</a>
+      </div>
+    </div>
     @else 
     <li class="nav-item active">
       <a class="nav-link text-white" href="{{route('alljobs')}}">
