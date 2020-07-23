@@ -25,7 +25,7 @@
               <dt>Description:</dt></h6>
               <dd>{!!$award->description!!}</dd>
 
-              <p class="pull-right">
+              <div class="button-group" align="right">
                 <button class="btn btn-info text-white btn-sm"  data-toggle="modal"
                 data-target="#editaward-{{$award->id}}"><i class="fa fa-edit"></i> Edit </button>
                 <form method="POST" action="{{route('awards.destroy', $award->id)}}">
@@ -33,7 +33,7 @@
                 @method('DELETE')                  
                   <button class="btn btn-danger text-white btn-sm" type="submit"><i class="fa fa-edit"></i> Delete </button>
                 </form>
-              </p>
+              </div>
 
               @include('dashboard.wizard.edit-award')
             </dl>

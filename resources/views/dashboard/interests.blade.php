@@ -59,8 +59,8 @@
   @if($job_levels)
   <h4>Your Selected Job Level</h4>
   <div class="row">
-    <div class="col-md-3">{{$job_levels->level1}}</div>
-    <button class="btn-danger">UPDATE JOB LEVELS</button>
+    <div class="col-md-3">{{$job_levels->level1}}</div>    
+      <button class="btn btn-danger text-white btn-sm"  data-toggle="modal" data-target="#editlevel"><i class="fa fa-edit"></i>UPDATE JOB LEVELS</button>
   </div>
   @else
   <form method="POST" action="{{route('joblevels.store')}}">

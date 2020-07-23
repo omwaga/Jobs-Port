@@ -39,6 +39,8 @@ class SkillsController extends Controller
 
     public function destroy(Skills $jobskill)
     {
-        return $jobskill;
+      $jobskill->delete();
+
+      return back()->with('message', 'The Skll has been deleted Successfully!');
     }
 }

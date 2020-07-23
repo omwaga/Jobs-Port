@@ -41,6 +41,8 @@ class AwardsController extends Controller
 
     public function destroy(Awards $award)
     {
-       return $award;
+      $award->delete();
+
+      return back()->with('message', 'The Award has been deleted Successfully!');
     }
 }

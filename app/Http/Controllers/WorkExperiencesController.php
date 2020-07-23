@@ -43,6 +43,8 @@ class WorkExperiencesController extends Controller
 
     public function destroy(WorkExperience $experience)
     {
-      return $experience;
+      $experience->delete();
+
+      return back()->with('message', 'The Experience has been deleted Successfully!');
     }
 }

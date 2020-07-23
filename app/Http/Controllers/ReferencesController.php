@@ -42,6 +42,8 @@ class ReferencesController extends Controller
 
     public function destroy(Reference $reference)
     {
-        return $reference;
+      $reference->delete();
+
+      return back()->with('message', 'The Referee has been deleted Successfully!');
     }
 }

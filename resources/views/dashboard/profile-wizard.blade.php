@@ -44,6 +44,8 @@
             </div>
           </div>
         </a>
+        @include('errors')
+        @include('success')
       </div>
       <div class="col-sm-6" align="right">
         <a class="text-white" href="#"  onclick="event.preventDefault();
@@ -64,7 +66,6 @@
         <div class="wizard-container">
 
           <div class="card wizard-card" data-color="red" id="wizardProfile">
-            <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
             <div class="wizard-header">
              <h3>

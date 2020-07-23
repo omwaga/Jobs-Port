@@ -23,7 +23,7 @@
               <dt>Expertise Level:</dt>
               <dd>{{$skill->level}}</dd>
 
-              <p class="pull-right">
+              <div class="button-group" align="right">
                 <button class="btn btn-info text-white btn-sm"  data-toggle="modal" 
                 data-target="#editskill-{{$skill->id}}"><i class="fa fa-edit"></i> Edit </button>
                 <form method="POST" action="{{route('jobskills.destroy', $skill->id)}}">
@@ -31,7 +31,7 @@
                 @method('DELETE')                  
                   <button class="btn btn-danger text-white btn-sm" type="submit"><i class="fa fa-edit"></i> Delete </button>
                 </form>
-              </p>
+              </div>
 
               @include('dashboard.wizard.edit-skill')
             </dl>

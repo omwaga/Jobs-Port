@@ -42,7 +42,9 @@ class EducationController extends Controller
     }
 
     public function destroy(Education $education)
-    {
-        return $education;
+    {        
+      $education->delete();
+
+      return back()->with('message', 'The Education has been deleted Successfully!');
     }
 }

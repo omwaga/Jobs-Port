@@ -1,4 +1,3 @@
-
 <div class="tab-pane" id="address">
   <div class="row">
     @if($experience->count() > 0)
@@ -26,7 +25,7 @@
               <dt>Responsibilities:</dt></h6>
               <dd>{!!$experienced->roles!!}</dd>
 
-              <p class="pull-right">
+              <div class="button-group" align="right">
                 <button class="btn btn-info text-white btn-sm"
                 data-toggle="modal" data-target="#experience-{{$experienced->id}}"><i class="fa fa-edit"></i> Edit </button>
                 <form method="POST" action="{{route('experiences.destroy', $experienced->id)}}">
@@ -34,7 +33,7 @@
                 @method('DELETE')                  
                   <button class="btn btn-danger text-white btn-sm" type="submit"><i class="fa fa-edit"></i> Delete </button>
                 </form>
-              </p>
+              </div>
             </dl>
           </div>
         </section>
