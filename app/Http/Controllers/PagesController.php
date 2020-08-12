@@ -97,30 +97,24 @@ class PagesController extends Controller
     return view('new.empdash');
   }
 }
-//Pros 4 Hire
-public function pros()
+//Express recruitment
+public function express()
 {
-  $industries = ProsSkills::all();
-  $countries = Country::all();
-  $cities = Town::all();
-  $states = State::all();
-  $skills = ProsSkills::all();
-  $categories = jobcategories::all();
-  $pros_details = ProsDetails::where('user_id', auth()->user()->id ?? '')->first();
-  $pro_services = ProsServices::where('user_id', auth()->user()->id ?? '')->first();
-
-  return view('new.pros-hire', compact('industries', 'countries', 'cities', 'states', 'skills', 'categories', 'pros_details', 'pro_services'));
+  return view('new.express-recruitment');
 }
 
-public function candidates($skill)
+public function expressemployer()
 {
-  $skil = ProsSkills::where('name', ucwords(str_replace('-', ' ', $skill)))->first();
-  $pros = ProsServices::where('skills', $skil->id)
-  ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
-  ->select('pros_details.*', 'pros_services.skills')
-  ->get();
+  // $skil = ProsSkills::where('name', ucwords(str_replace('-', ' ', $skill)))->first();
+  // $pros = ProsServices::where('skills', $skil->id)
+  // ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
+  // ->select('pros_details.*', 'pros_services.skills')
+  // ->get();
+
+  $categories=jobcategories::orderBy('jobcategories','asc')->get();
+  $countries = DB::table('countries')->pluck("name","id");
   
-  return view('new.pro-skill', compact('pros'));
+  return view('new.express-employer', compact('categories', 'countries'));
 }
 
 public function companies()

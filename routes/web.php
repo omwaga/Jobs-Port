@@ -50,8 +50,8 @@ Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresu
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
 Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
 Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
-Route::POST('/pros_details', 'DashboardController@pros_details')->name('pros_details');
-Route::POST('/pros_services', 'DashboardController@pros_services')->name('pros_services');
+// Route::POST('/pros_details', 'DashboardController@pros_details')->name('pros_details');
+// Route::POST('/pros_services', 'DashboardController@pros_services')->name('pros_services');
 
 //Resume Builder Routes
 Route::prefix('resume-builder')->group(function(){
@@ -155,6 +155,8 @@ Route::get('/blog/{name}', 'PagesController@singleblog')->name('singleblog');
 Route::get('/cv-templates', 'PagesController@cv')->name('cv');
 Route::resource('alerts', 'JobAlertsController');
 Route::get('/all-companies', 'PagesController@companies')->name('all-companies');
+Route::get('/public/express-recruitment', 'PagesController@express')->name('express');
+Route::get('/public/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
 Route::get('/work-readiness-program', 'PagesController@workprogram')->name('workprogram');
 Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
 Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');
@@ -174,8 +176,8 @@ Route::get('/private-company-jobs', 'PagesController@privatejobs')->name('privat
 Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');
 Route::get('/humanitarian-and-ngo-jobs', 'PagesController@humanitarianjobs')->name('humanitarian-jobs');
 Route::get('/consultancies', 'PagesController@consultancies')->name('consultancies');
-Route::get('/pros-4-Hire', 'PagesController@pros')->name('pros');
-Route::get('/pros-4-Hire/{skill}', 'PagesController@candidates')->name('proscandidates');
+// Route::get('/pros-4-Hire', 'PagesController@pros')->name('pros');
+// Route::get('/pros-4-Hire/{skill}', 'PagesController@candidates')->name('proscandidates');
 
 
 //dashboard on behalf of the employers

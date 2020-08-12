@@ -23,10 +23,10 @@
       </a>
     </li>
     <li class="nav-item active  pl-2">
-      <a class="nav-link text-white" href="{{route('workprogram')}}">
+      <a class="nav-link text-white" href="{{route('express')}}">
         <i class="fa fa-graduation-cap text-white">
         </i>
-        Work Readiness Program
+        Express Recruitment
       </a>
     </li>
 
@@ -40,6 +40,7 @@
       </li>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #005691">
         <a class="dropdown-item text-white" href="{{route('resumesamples')}}">Resume Builder</a>
+        <a class="dropdown-item text-white" href="{{route('workprogram')}}"> Work Readiness Program</a>
         <a class="dropdown-item text-white" href="#">Career Insights</a>
       </div>
     </div>

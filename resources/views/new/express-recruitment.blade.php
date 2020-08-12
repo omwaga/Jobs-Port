@@ -1,70 +1,28 @@
-@extends('layouts.employer.employer')
+@extends('layouts.app')
 @section('content')
-<div class="dashboard-wrapper">
-    <div class="container-fluid dashboard-content ">
-        <!-- ============================================================== -->
-        <!-- pageheader  -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="page-header">
-                    <h5 class="pageheader-title">Express recruitment -</h5>
-                    <div class="page-breadcrumb">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Source Candidates</li>
-                            </ol>
-                        </nav>
-                    </div>
+<div class="container" style=" padding-top: 5rem;">
+    <h4 class="text-center text-dark">Express Recruitment</h4><br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  align="center">
+                <div class="h1">
+                    <i class="fa fa-sitemap text-danger" aria-hidden="true"></i>
                 </div>
+                <h5> Jobseekers</h5>
+                <p>Sit back, relax and let the networked professionals do the job searching for you! Create your career profile today and be discover by leading employers who visit our service every day to recruit trusted professionals </p>   
+                <a href="{{route('login')}}" class="btn btn-danger">Get Started</a>              
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- end pageheader  -->
-        <!-- ============================================================== -->
-        
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="section-block" id="cardaction">
-                    <h3 class="section-title">Select Job Post Method</h3>
-                    <p>Select one of the options to post your job.</p>
+        <div class="col-md-6">
+            <div class=" card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  align="center">
+                <div class="h1">
+                    <i class="fa fa-graduation-cap text-success" aria-hidden="true"></i>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-1">
-                <div class="card bg-danger" align="center">
-                    <div class="card-header d-flex">
-                        <h4 class="mb-0">Post and Manage Jobs</h4>
-                        <div class="dropdown ml-auto"><i class="fab fa-mixcloud"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text text-white">Post and Manage your posted jobs.
-                            <ul align="left" class="text-white" style="list-style: none">
-                                <li><i class="fas fa-check"></i>  View & Process job applications</li>
-                                <li><i class="fas fa-check"></i>  Shortlist or Decline or Create a talent pool</li>
-                                <li><i class="fas fa-check"></i>  Schedule Interviews for shortlisted</li>
-                                <li><i class="fas fa-check"></i>  Score the candidates</li>
-                                <li><i class="fas fa-check"></i>  Process recruitment</li>
-                            </ul>
-                        </p>
-                        <a href="{{route('employerjobs')}}" class="btn btn-primary">Post and Manage Jobs</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="card" align="center" style="background-color: #005691">
-                    <div class="card-header d-flex">
-                        <h4 class="mb-0">Post a Job</h4>
-                        <div class="dropdown ml-auto"><i class="fab fa-mixcloud"></i>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text text-white">Advertise your job and provide a URL or Email Address to receive the applications</p>
-                        <a href="{{route('express-recruitment')}}" class="btn btn-primary">Post Job</a>
-                    </div>
-                </div>
+                <h5> Employers</h5>
+                <p>Recruit faster through our vetted and ready for hire candidates without the need for advertising and minimize your risks, avoid the time consuming and rigorous interviewing process.</p>     
+                <a href="{{route('expressemployer')}}" class="btn btn-danger">Get Started</a>           
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
