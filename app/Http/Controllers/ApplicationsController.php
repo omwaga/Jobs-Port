@@ -48,33 +48,48 @@ class ApplicationsController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         
         return view('dashboard.apply', compact('countries', 'personalinfo', 'references',
-                  'personalstatements', 'experience', 'education', 'awards', 'skills', 'job'));
+          'personalstatements', 'experience', 'education', 'awards', 'skills', 'job'));
     }
     
     public function store(Request $request)
     {
-     $attributes = request()->validate([
-         'job_id' => 'required',
-         'employer_id' => 'required'
+        $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
+        $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
+        $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
+        $education = Education::where('user_id', '=', auth()->user()->id)->get();
+        $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
+        $references = Reference::where('user_id', '=', auth()->user()->id)->get();
+        $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+
+        if(!$personalinfo ||!$personalstatements || $education = null || $experience = null || $awards = null || $references = null || $skills = null)
+        {
+            return  back()->with('message', 'Please Complete Your Profile before Submitting your application!');
+        }
+        else
+        {
+            $attributes = request()->validate([
+             'job_id' => 'required',
+             'employer_id' => 'required'
          ]);
-         
-         if(JobApplication::where('job_id', $request->input('job_id'))->where('user_id', auth()->user()->id)->count() === 1){
+
+            if(JobApplication::where('job_id', $request->input('job_id'))->where('user_id', auth()->user()->id)->count() === 1){
              return redirect('/already-applied');
          }
          else
          {
-         
-    JobApplication::create($attributes + ['user_id' => auth()->user()->id]);
-    return redirect('/successfullapplication');
-         }
-   
+
+            JobApplication::create($attributes + ['user_id' => auth()->user()->id]);
+            return redirect('/successfullapplication');
+        }
     }
-    
-    public function success()
-    {
-        return view('dashboard.successfulapplication');
-    }
-    public function appalready(){
-       return view('dashboard.appliedalready'); 
-    }
+
+}
+
+public function success()
+{
+    return view('dashboard.successfulapplication');
+}
+public function appalready(){
+   return view('dashboard.appliedalready'); 
+}
 }

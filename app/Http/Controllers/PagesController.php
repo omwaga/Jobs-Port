@@ -105,16 +105,12 @@ public function express()
 
 public function expressemployer()
 {
-  // $skil = ProsSkills::where('name', ucwords(str_replace('-', ' ', $skill)))->first();
-  // $pros = ProsServices::where('skills', $skil->id)
-  // ->join('pros_details','pros_details.user_id', '=', 'pros_services.user_id')
-  // ->select('pros_details.*', 'pros_services.skills')
-  // ->get();
 
+  $jobseekers = JobseekerDetail::orderBy('id', 'DESC')->paginate(20);
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
   
-  return view('new.express-employer', compact('categories', 'countries'));
+  return view('new.express-employer', compact('categories', 'countries', 'jobseekers'));
 }
 
 public function companies()

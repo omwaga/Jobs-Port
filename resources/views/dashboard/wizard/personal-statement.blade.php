@@ -19,11 +19,19 @@
     @csrf
     <div class="row">
 
-      <div class="col-sm-10 col-sm-offset-1">    
-        <label>Personal Statement:</label>
-        <textarea name="statement" class="form-control ckeditor"></textarea>
-        <label>Which job Are you looking for?:</label>
-        <textarea name="statement" class="form-control ckeditor"></textarea>
+      <div class="col-sm-10 col-sm-offset-1">   
+        <div class="form-group">
+          <label>Personal Statement:</label>
+          <textarea name="statement" class="form-control ckeditor"></textarea>
+        </div> 
+        <div class="form-group">
+          <label>Which job Are you looking for?:</label>
+          <input type="text" class="form-control" name="">
+        </div>
+        <div class="form-group">
+          <label>Choose what categories you are interested about. Choose at least one category.</label>
+          <p>Category1 Category 2 Category 3</p>
+        </div>
       </div>
 
     </div><br>

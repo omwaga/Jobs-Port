@@ -10,7 +10,7 @@
     </form>
   </div>
 </div>
-<p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
+<p><i class="text-info fa fa-bell"></i>@include('alert')</p>
 @include('errors')
 <hr>
 <h3 style="color:#0B0B3B;">Personal Information</h3>

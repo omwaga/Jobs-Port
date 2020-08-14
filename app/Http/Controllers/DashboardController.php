@@ -101,9 +101,10 @@ class DashboardController extends Controller
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         $applications = JobApplication::where('user_id', '=', auth()->user()->id)->get();
+        $jobs = Jobposts::limit(8)->get();
         
         return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
-           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications', 'jobs'));
     }
     
     public function recommended(){
