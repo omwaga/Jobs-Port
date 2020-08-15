@@ -4,10 +4,27 @@
 <div class="jumbotron jumbotron-fluid" style="background-color:#2B3856; background-image:url('{{asset('Images/banner-5.jpg')}}');">
   <div class="container">
     <h2 class=" text-danger text-center" style="text-transform: uppercase;">Discover Best job Vacancies <br> from Top Employers</h2>
-    @if(!$personalinfo ||!$personalstatements || $education = null || $experience = null || $awards = null || $references = null || $skills = null)
+    @if(!$personalinfo ||!$personalstatements || $education->count() === 0 || $experience->count() === 0|| $awards->count() === 0 || $references->count() === 0 || $skills->count() === 0)
     {
-      <div class="alert alert-warning">
-        Your Profile is incomplete
+      <!-- profile Modal code -->
+      <!-- Modal -->
+      <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">Incomplete Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Mmmmmmhhh, Your Career Profile is incomplete
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a href="{{route('profile-wizard')}}"><button type="button" class="btn btn-primary">Complete Now</button></a>
+            </div>
+          </div>
+        </div>
       </div>
     }
     @else{}
@@ -48,10 +65,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div class="card-body border-light shadow-lg p-3 mb-3 rounded  bg-success">
+      <div class="card-body border-light shadow-lg p-3 mb-3 rounded" style="background-color:#005691;">
         <div class="row">
           <div class="col-md-3 h1 text-center">
-            <i class="fa fa-users text-secondary"></i>
+            <i class="fa fa-users text-white"></i>
           </div>
           <div class="col-md-9">
             <a href="" class="h5 text-white">Total Applications</a>
@@ -77,7 +94,7 @@
       <div class="card-body border-light shadow-lg p-3 mb-3 bg-danger rounded">
         <div class="row">
           <div class="col-md-3 h1 text-center">
-            <i class="fa fa-users text-secondary"></i>
+            <i class="fa fa-users text-white"></i>
           </div>
           <div class="col-md-9">
             <a href="" class="h5 text-white">% of Profile Complete</a><br>
@@ -88,6 +105,7 @@
     </div>
     <div class="col-md-12">      
       @include('success')
+      <h4>Latest Jobs</h4>
       @forelse($jobs as $job)
       <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -126,7 +144,7 @@
       @endforelse
 
       <div align="center">
-        <a href="#" class="text-center"><button class="btn text-white" style="background-color:#0B0B3B;">Browse All Jobs</button></a>
+        <a href="{{route('alljobs')}}" class="text-center"><button class="btn text-white" style="background-color:#005691;">Browse All Jobs</button></a>
       </div>
     </div>
   </div>

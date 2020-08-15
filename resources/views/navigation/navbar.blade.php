@@ -35,7 +35,7 @@
         <a class="nav-link text-white" href="#">
           <i class="fa fa-sticky-note text-white">
           </i>
-          Career Insights
+          Resources
         </a>
       </li>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #005691">
@@ -51,14 +51,7 @@
         </i>
         Find a Job
       </a>
-    </li>    
-    <li class="nav-item active">
-      <a class="nav-link text-white" href="{{route('resumesamples')}}">
-        <i class="fa fa-check text-white">
-        </i>
-        Resume Builder
-      </a>
-    </li>
+    </li> 
     <li class="nav-item active">
       <a class="nav-link text-white" href="{{route('recommended')}}">
         <i class="fa fa-superpowers text-white">
@@ -80,13 +73,6 @@
         Job Applications
       </a>
     </li>
-    <li class="nav-item active">
-      <a class="nav-link text-white" href="#">
-        <i class="fa fa-graduation-cap text-white">
-        </i>
-        Career Insights
-      </a>
-    </li>
     <li class="nav-item active  pl-2">
       <a class="nav-link text-white" href="{{route('interests')}}">
         <i class="fa fa-database text-white">
@@ -101,6 +87,20 @@
         Career Profile
       </a>
     </li>
+    <div class="dropdown">
+      <li class="nav-item active  pl-2" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link text-white" href="#">
+          <i class="fa fa-sticky-note text-white">
+          </i>
+          Resources
+        </a>
+      </li>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #005691">
+        <a class="dropdown-item text-white" href="{{route('resumesamples')}}">Resume Builder</a>
+        <a class="dropdown-item text-white" href="{{route('workprogram')}}"> Work Readiness Program</a>
+        <a class="dropdown-item text-white" href="#">Career Insights</a>
+      </div>
+    </div>
     @endguest
   </ul>
   <!-- Authentication Links -->

@@ -61,7 +61,7 @@ class ApplicationsController extends Controller
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
 
-        if(!$personalinfo ||!$personalstatements || $education = null || $experience = null || $awards = null || $references = null || $skills = null)
+        if(!$personalinfo ||!$personalstatements || $education->count() === 0 || $experience->count() === 0|| $awards->count() === 0 || $references->count() === 0 || $skills->count() === 0)
         {
             return  back()->with('message', 'Please Complete Your Profile before Submitting your application!');
         }

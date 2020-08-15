@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Jobseeker Profile Builder</title>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Jobseeker Profile Builder</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
 
   <!--     Fonts and icons     -->
@@ -40,7 +40,7 @@
         <a href="{{route('jobseekeraccount')}}">
           <div class="logo-container">
             <div class="logo">
-              <img src="{{asset('Images/logo/log.png')}}">
+              <img src="{{asset('Images/logo/logo.png')}}" style="height:70px">
             </div>
           </div>
         </a>
@@ -72,7 +72,6 @@
               <b>BUILD</b> YOUR PROFILE <br>
               <small>This information will let the Employers know more about you.</small>
               <p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
-              @include('errors')
             </h3>
           </div>
 
@@ -136,7 +135,7 @@
 <!--  Plugin for the Wizard -->
 <script src="assets/js/gsdk-bootstrap-wizard.js"></script>
 
-<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
 <script src="assets/js/jquery.validate.min.js"></script>
 
 </html>

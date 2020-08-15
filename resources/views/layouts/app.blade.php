@@ -158,6 +158,14 @@
     $('.textarea').ckeditor(); // if class is prefered.
 </script>
 
+<!-- profile completion modal alert -->
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#alertModal').modal('show');
+    });
+</script>
+<!-- End the modal script -->
+
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
 
