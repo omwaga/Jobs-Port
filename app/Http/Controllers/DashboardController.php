@@ -34,7 +34,7 @@ use PDF;
 use App;
 use App\ProsDetails;
 use Carbon\Carbon;
-use App\ProsServices;
+use App\ExpressCategory;
 
 class DashboardController extends Controller
 {
@@ -67,7 +67,7 @@ class DashboardController extends Controller
     public function wizard()
     {
         $towns=Town::orderBy('name','asc')->get();
-        $industries=Industry::orderBy('name','asc')->get();
+        $categories = ExpressCategory::orderBy('name','asc')->get();
         $countries = Countrylist::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
@@ -78,7 +78,7 @@ class DashboardController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         
         return view('dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
-           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'categories'));
     }
 
     //create the jobseeker profile

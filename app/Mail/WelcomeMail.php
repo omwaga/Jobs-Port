@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Mail;
-use App\Http\Controllers\Auth;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyMail extends Mailable
+class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
+
 
     public $user;
     /**
@@ -29,8 +30,6 @@ class VerifyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('info@thenetworkedpros.com')
-        ->subject('EMAIL ACCOUNT VERIFICATION')
-        ->view('email.verifyuser');
+        return $this->view('email.welcome');
     }
 }

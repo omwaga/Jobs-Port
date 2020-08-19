@@ -7,7 +7,7 @@ use App\Jobposts;
 use App\jobcategories;
 use App\Locations;
 use App\Industry;
-use App\Training;
+use App\ExpressCategory;
 use App\TrainingCategory;
 use App\Town;
 use DB;
@@ -106,11 +106,25 @@ public function express()
 public function expressemployer()
 {
 
-  $jobseekers = JobseekerDetail::orderBy('id', 'DESC')->paginate(20);
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
+  $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
+  $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
   
-  return view('new.express-employer', compact('categories', 'countries', 'jobseekers'));
+  return view('new.express-employer', compact('categories', 'countries', 'express_categories'));
+}
+
+// Express candidates
+public function expresscandidates($category)
+{
+  $job_category = ucwords(str_replace('-', ' ', $category));
+
+  $jobseekers = PersonalStatement::where('category1', $job_category)
+                 ->orWhere('category2', $job_category)
+                 ->paginate(20);
+  $categories=ExpressCategory::orderBy('name','asc')->get();
+  $countries = DB::table('countries')->pluck("name","id");
+
+  return view('new.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
 }
 
 public function companies()

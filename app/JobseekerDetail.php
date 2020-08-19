@@ -23,7 +23,6 @@ class JobseekerDetail extends Model
     	return $this->HasMany(Skills::class, 'user_id', 'user_id');
     }
 
-
     public function statement()
     {
         return $this->belongsTo(PersonalStatement::class, 'user_id', 'user_id');

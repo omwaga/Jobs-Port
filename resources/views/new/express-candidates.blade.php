@@ -32,19 +32,30 @@
  </div>
 </form>
 </div><br>
-<div class="container">
-  <div class="row">
-    @forelse($express_categories as $category) 
-    <div class="col-md-4">
-      <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
-        @php $cat = str_slug($category->name, '-'); @endphp
-        <a href="{{route('expresscandidates', $cat)}}"><h4>{{$category->name}}</h4></a>
-        <p>{{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
+<div class="row">
+  <div class="col-md-12">
+    @forelse($jobseekers as $jobseeker)
+    <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
+      <div class="row">
+        <div class="col-md-3">
+          <img class="rounded-circle img-fluid" src="{{asset('/Images/profile.png')}}" alt="" width="140" height="140">
+        </div>
+        <div class="col-md-9">
+          <h4>{{str_singular($job_category)}}</h4>
+          <p class="text-dark">{!!str_limit($jobseeker->statement ?? '', $limit = 300, $end = '...')!!}</p>
+          <div class="mt-3">
+          @foreach($jobseeker->skills as $skill)
+            <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
+          @endforeach
+          </div>
+          <a class="btn btn-danger pull-right btn-sm" href="#">View Profile</a>
+        </div>
       </div>
-    </div>
+    </div> 
     @empty
+    <p>No Jobseekers</p>
     @endforelse
-    {{$express_categories->links()}}
+    {{$jobseekers->links()}}
   </div>
 </div>
 </div>

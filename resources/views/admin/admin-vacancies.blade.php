@@ -42,7 +42,7 @@
                                     @php $column = $column + 1 @endphp
                                   <tr>
                                     <td>{{$column}}</td>
-                                    <td>{{$vacancy->jobtitle}}</td>
+                                    <td>{{$vacancy->job_title}}</td>
                                     <td>{{$vacancy->created_at}}</td>
                                     <td>{{$vacancy->expirydate}}</td>
                                     <td>{{$vacancy->employer->company_name}}</td>

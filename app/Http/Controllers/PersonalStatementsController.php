@@ -19,9 +19,13 @@ class PersonalStatementsController extends Controller
     {
         $attributes = request()->validate([
             'statement' => 'required'
-            ]);
-            
-        PersonalStatement::create($attributes + ['user_id' => auth()->user()->id]);
+        ]);
+
+        PersonalStatement::create($attributes + [
+            'category1' => $request->category1,
+            'category2' => $request->category2,
+            'user_id' => auth()->user()->id
+        ]);
         
         return back();
         
@@ -29,9 +33,12 @@ class PersonalStatementsController extends Controller
     
     public function update(Request $request)
     {
-        PersonalStatement::where('user_id', auth()->user()->id)
-                        ->update(request(['statement']));
-        
-        return back();
-    }
+     PersonalStatement::where('user_id', auth()->user()->id)
+     ->update(['category2' => NULL, 'category1' => NULL]);
+
+     PersonalStatement::where('user_id', auth()->user()->id)
+     ->update(request(['statement', 'category2', 'category1']));
+
+     return back();
+ }
 }

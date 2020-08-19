@@ -137,6 +137,11 @@ Route::get('login/google', 'Auth\GoogleController@redirectToProvider')->name('go
 Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallback');
 
 //public routes
+Route::prefix('public')->group(function(){    
+     Route::get('/express-recruitment', 'PagesController@express')->name('express');
+     Route::get('/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
+     Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+});
 Route::get('/jobseekers', 'PagesController@jobseekers')->name('jobseekers');
 Route::get('/employers', 'PagesController@employers')->name('employers');
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
@@ -155,8 +160,6 @@ Route::get('/blog/{name}', 'PagesController@singleblog')->name('singleblog');
 Route::get('/cv-templates', 'PagesController@cv')->name('cv');
 Route::resource('alerts', 'JobAlertsController');
 Route::get('/all-companies', 'PagesController@companies')->name('all-companies');
-Route::get('/public/express-recruitment', 'PagesController@express')->name('express');
-Route::get('/public/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
 Route::get('/work-readiness-program', 'PagesController@workprogram')->name('workprogram');
 Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
 Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');

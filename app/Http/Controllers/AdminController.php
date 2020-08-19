@@ -48,7 +48,7 @@ class AdminController extends Controller
     // All Jobseekers
     public function adminjobseekers()
     {
-        $jobseekers = User::paginate(36);
+        $jobseekers = User::orderBy('created_at', 'DESC')->paginate(20);
         
         return view('admin.admin-jobseekers', compact('jobseekers'));
     }
