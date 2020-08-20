@@ -16,6 +16,13 @@ use App\WorkProgramEnrollment;
 use DB;
 use App\ProsSkills;
 use App\CvUpload;
+use App\JobseekerDetail;
+use App\PersonalStatement;
+use App\Education;
+use App\WorkExperience;
+use App\Reference;
+use App\Awards;
+use App\Skills;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -171,6 +178,21 @@ class AdminController extends Controller
         Jobposts::create($attributes + ['employer_id' => 1]);
 
         return back()->with('message', 'The job post has been created succsefully');
+    }
+
+// return the jobseekerprofile
+    public function jobseekerprofileprofile($name)
+    {
+        $jobseekerdetail = JobseekerDetail::where('user_id', $name)->first();
+        $personalstatement = PersonalStatement::where('user_id', $name)->first();
+        $academics = Education::where('user_id', $name)->get();
+        $experiences = WorkExperience::where('user_id', $name)->get();
+        $referees = Reference::where('user_id', $name)->get();
+        $certifications = Awards::where('user_id', $name)->get();
+        $skills = Skills::where('user_id', $name)->get();
+
+        return view('admin.jobseeker-profile', compact( 'jobseekerdetail', 'personalstatement', 
+            'academics', 'experiences', 'referees', 'certifications','skills'));
     }
 
 //return the skills for the pros

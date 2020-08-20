@@ -31,7 +31,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Registration Date</th>
-                <th>User Profile</th>
+                <th>Profile Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -45,13 +45,13 @@
                 <td>{{$jobseeker->email}}</td>
                 <td>{{$jobseeker->created_at->diffForHumans()}}</td>
                 <td>
-                  @if($jobseeker->experience->count() === 0 || $jobseeker->skills->count() === 0 || !$jobseeker->jobseekerdetail)
+                  @if($jobseeker->experiences->count() === 0 ||$jobseeker->educations->count() === 0 ||$jobseeker->references->count() === 0 || $jobseeker->skills->count() === 0 || !$jobseeker->jobseekerdetail || !$jobseeker->personalstatement)
                   <label class="text-danger">Incomplete</label>
                   @else
                   <label class="text-success">Complete</label>
                   @endif
               </td>
-              <td><a href="#"><button class="btn btn-primary">View Profile</button></a></td>
+              <td><a href="{{route('adminprofile', $jobseeker->id)}}"><button class="btn btn-primary">View Profile</button></a></td>
           </tr>
           @endforeach
       </tbody>

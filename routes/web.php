@@ -103,6 +103,9 @@ Route::post('resume-database', 'EmployerController@searchresume')->name('searchr
 Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplications')->name('jobwithapplications');
 
 // Admin routes
+Route::prefix('admin')->group(function(){
+    Route::get('/jobseeker/{name}','AdminController@jobseekerprofileprofile')->name('adminprofile');
+});
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
 Route::post('/saveadmin-job', 'AdminController@savejob')->name('admin_savejob');

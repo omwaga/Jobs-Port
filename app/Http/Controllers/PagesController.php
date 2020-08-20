@@ -120,6 +120,16 @@ public function expresscandidates($category)
 
   $jobseekers = PersonalStatement::where('category1', $job_category)
                  ->orWhere('category2', $job_category)
+                 ->orWhere('category3', $job_category)
+                 ->orWhere('category4', $job_category)
+                 ->orWhere('category5', $job_category)
+                 ->orWhere('category6', $job_category)
+                 ->orWhere('category7', $job_category)
+                 ->orWhere('category8', $job_category)
+                 ->orWhere('category9', $job_category)
+                 ->orWhere('category10', $job_category)
+                 ->orWhere('category11', $job_category)
+                 ->orWhere('category12', $job_category)
                  ->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
