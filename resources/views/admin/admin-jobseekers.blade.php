@@ -22,7 +22,8 @@
 <!-- Start row-->
 <div class="col-md-12">
     <div class="white-box">
-      <h2 class="header-title"> All Jobseekers </h2>
+      <h2 class="header-title float-left"> All Jobseekers </h2>
+      <button class="btn btn-success"><i class="fa fa-save"></i> Export Excel</button>
       <div class="table-responsive">
           <table class="table table-hover">
             <thead>

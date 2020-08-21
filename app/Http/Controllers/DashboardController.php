@@ -58,9 +58,10 @@ class DashboardController extends Controller
         $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        $categories = ExpressCategory::orderBy('name','asc')->get();
         
         return view('dashboard.user-profile', compact('countries', 'personalinfo', 'references',
-           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'categories'));
     }
 
 //wizard form

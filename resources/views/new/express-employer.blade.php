@@ -6,13 +6,15 @@
   <div class="container">
     <div class="row">
       @forelse($express_categories as $category) 
-      <div class="col-md-4">
-        <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
-          @php $cat = str_slug($category->name, '-'); @endphp
-          <a href="{{route('expresscandidates', $cat)}}"><h4>{{$category->name}}</h4></a>
-          <p>{{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
+      @php $cat = str_slug($category->name, '-'); @endphp
+      <div class="col-md-4">        
+        <a href="{{route('expresscandidates', $cat)}}" class="text-white">
+          <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  style="background: linear-gradient(rgba(0, 0, 60, 1), rgba(0, 0, 230, 0)), url({{asset('Images/afric.jpg')}})">
+            <h5>{{$category->name}}</h5>
+            <p class="text-white"> {{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
+          </div>
         </div>
-      </div>
+      </a>
       @empty
       @endforelse
       {{$express_categories->links()}}
