@@ -25,6 +25,8 @@ use App\Awards;
 use App\Skills;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -213,6 +215,12 @@ class AdminController extends Controller
         ProsSkills::create($attributes);
 
         return back()->with('message', 'The Skillset has been created successfully');
+    }
+
+    //export jobseekers to PDF
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'jobseekers.xlsx');
     }
 
 }

@@ -4,11 +4,21 @@
     <section class="panel panel-default">
       <div class="panel-body">
         <dl class="dl-horizontal">
-          <dt>Career Objective:</dt>
+          <dt>Personal Statement:</dt>
           <dd>{!!$personalstatements->statement!!}</dd>
           <dt>Job Roles:</dt>
           <dd>{{$personalstatements->category1}}</dd>
-          <dd>{{$personalstatements->category2 ?? ''}}</dd>
+          <dd>{{$personalstatements->category2}}</dd>
+          <dd>{{$personalstatements->category3}}</dd>
+          <dd>{{$personalstatements->category4}}</dd>
+          <dd>{{$personalstatements->category5}}</dd>
+          <dd>{{$personalstatements->category6}}</dd>
+          <dd>{{$personalstatements->category7}}</dd>
+          <dd>{{$personalstatements->category8}}</dd>
+          <dd>{{$personalstatements->category9}}</dd>
+          <dd>{{$personalstatements->category10}}</dd>
+          <dd>{{$personalstatements->category11}}</dd>
+          <dd>{{$personalstatements->category12}}</dd>
 
           <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal" data-target="#personal"><i class="fa fa-edit"></i> Edit </button></p>
 

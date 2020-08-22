@@ -7,7 +7,6 @@
     @if(!$personalinfo ||!$personalstatements || $education->count() === 0 || $experience->count() === 0|| $awards->count() === 0 || $references->count() === 0 || $skills->count() === 0)
     {
       <!-- profile Modal code -->
-      <!-- Modal -->
       <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -84,7 +83,7 @@
             <i class="fa fa-users text-secondary"></i>
           </div>
           <div class="col-md-9">
-            <a href="" class="h5">Saved Jobs</a>
+            <a href="" class="h5">Express Recruitment</a>
             <p>{{$applications->count()}}</p>
           </div>
         </div>

@@ -23,7 +23,7 @@
               @foreach($categories as $category)
               <!-- <div class="form-group">           -->
                 <div class="form-check">
-                  <input type="checkbox" name="category{{$category->id}}" class="form-check-input" id="exampleCheck{{$category->id}}" value="{{$category->name}}" @if($category->pluck('name')->contains($category->name)) checked @endif>
+                  <input type="checkbox" name="category{{$category->id}}" class="form-check-input" id="exampleCheck{{$category->id}}" value="{{$category->name}}">
                   <label class="form-check-label" for="exampleCheck{{$category->id}}">{{$category->name}}</label>
                 </div>
                 <!-- </div> -->

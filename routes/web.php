@@ -105,6 +105,7 @@ Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplicatio
 // Admin routes
 Route::prefix('admin')->group(function(){
     Route::get('/jobseeker/{name}','AdminController@jobseekerprofileprofile')->name('adminprofile');
+    Route::get('/export-jobseekers', 'AdminController@export')->name('export-jobseekers');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
