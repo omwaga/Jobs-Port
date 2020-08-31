@@ -14,7 +14,6 @@ use App\Town;
 use App\country;
 use App\WorkProgramEnrollment;
 use DB;
-use App\ProsSkills;
 use App\CvUpload;
 use App\JobseekerDetail;
 use App\PersonalStatement;
@@ -23,6 +22,7 @@ use App\WorkExperience;
 use App\Reference;
 use App\Awards;
 use App\Skills;
+use App\ExpressCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Exports\UsersExport;
@@ -49,7 +49,7 @@ class AdminController extends Controller
     // All Employers
     public function adminemployers()
     {
-        $employers = Employer::all();
+        $employers = Employer::paginate(20);
         
         return view('admin.admin-employers', compact('employers'));
     }
@@ -147,7 +147,7 @@ class AdminController extends Controller
 
         Employer::create($attributes);
 
-        return back()->with('message', 'The employer has been succsefullycreated');
+        return back()->with('message', 'The employer has been created succsefully');
     }
 
     public function createjob()
@@ -198,23 +198,23 @@ class AdminController extends Controller
     }
 
 //return the skills for the pros
-    public function skills()
+    public function expresscategories()
     {
-        $skills = ProsSkills::all();
+        $categories = ExpressCategory::all();
 
-        return view('admin.skills', compact('skills'));
+        return view('admin.express-categories', compact('categories'));
     }
 
     //add a new skill
-    public function newskill(Request $request)
+    public function newcategory(Request $request)
     {
         $attributes = $request->validate([
             'name' => 'required|min:3',
         ]);
 
-        ProsSkills::create($attributes);
+        ExpressCategory::create($attributes);
 
-        return back()->with('message', 'The Skillset has been created successfully');
+        return back()->with('message', 'The Category has been added successfully');
     }
 
     //export jobseekers to PDF

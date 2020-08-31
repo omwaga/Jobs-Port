@@ -44,7 +44,7 @@ class EmployerController extends Controller
         $application=JobApplication::where([
             ['employer_id',Auth::guard('employer')->user()->id],
             ['status', 'applied']
-        ])->orderBy('created_at', 'DESC')->get();
+        ])->orderBy('created_at', 'DESC')->paginate(12);
         return view('empdash.content.allapplicants',compact('application'));
     }
     
@@ -210,18 +210,18 @@ public function jobpost(Request $request){
         'apply_with_us'=>'nullable',
     ]);
 
-    $data=array(
-        'emaill'=>$request->emaill,
-        'jobtitle'=>$request->job_title,
-        'positiontype'=>$request->employment_type,
-        'company'=>$request->company,
+    // $data=array(
+    //     'emaill'=>$request->emaill,
+    //     'jobtitle'=>$request->job_title,
+    //     'positiontype'=>$request->employment_type,
+    //     'company'=>$request->company,
 
-    );
-    Mail::send('email.cemail',$data,function($mess) use($data){
-        $mess->to($data['emaill']);
-        $mess->from('info@thenetworkedpros.com');
-        $mess->subject($data['jobtitle']);
-    });
+    // );
+    // Mail::send('email.company_email',$data,function($mess) use($data){
+    //     $mess->to($data['emaill']);
+    //     $mess->from('info@thenetworkedpros.com');
+    //     $mess->subject($data['job_title']);
+    // });
 
     $jobpost= new Jobposts;
     $jobpost->employer_id=Auth::guard('employer')->user()->id;

@@ -150,7 +150,7 @@ public function onecompany()
   return view('new.company');
 }
 
-public function foremployer()
+public function employerlogin()
 {
   return view('new.foremployer');
 }

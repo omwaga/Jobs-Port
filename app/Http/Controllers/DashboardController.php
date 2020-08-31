@@ -13,7 +13,7 @@ use App\Industry;
 use App\Events;
 use App\Locations;
 use App\Academics;
-use App\Countrylist;
+use App\Country;
 use Mail;
 use App\SavedJob;
 use DB;
@@ -50,7 +50,7 @@ class DashboardController extends Controller
     {
         $towns=Town::orderBy('name','asc')->get();
         $industries=Industry::orderBy('name','asc')->get();
-        $countries = Countrylist::all();
+        $countries = Country::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -69,7 +69,7 @@ class DashboardController extends Controller
     {
         $towns=Town::orderBy('name','asc')->get();
         $categories = ExpressCategory::orderBy('name','asc')->get();
-        $countries = Countrylist::all();
+        $countries = DB::table('countries')->pluck("name","id");
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -93,7 +93,7 @@ class DashboardController extends Controller
     function profilejourney(){
         $towns=Town::orderBy('name','asc')->get();
         $industries=Industry::orderBy('name','asc')->get();
-        $countries = Countrylist::all();
+        $countries = Country::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -179,7 +179,7 @@ class DashboardController extends Controller
 }
 
 public function careerprofile(){
-    $countries = Countrylist::all();
+    $countries = Country::all();
     $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
     $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
     $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -517,38 +517,9 @@ public function deletesavejob(Request $request)
 }
 
 
-// Save the pros details
-public function pros_details(Request $request)
+// Express Recruitment Page
+public function express()
 {
-    $attributes = request()->validate([
-        'full_name' => 'required|min:3',
-        'email' => 'required|email',
-        'country' => 'required',
-        'phone_number' => 'required|min:9',
-        'city' => 'required',
-        'state' => 'required',
-        'zip_code' => 'required',
-    ]);
-
-    ProsDetails::create($attributes + ['user_id' => auth()->user()->id]);
-
-    return back()->with('message', 'Your Information has been saved successfully!');
-}
-
-//Save the pros services
-public function pros_services(Request $request)
-{
-    $attributes = $request->validate([
-        'title' => 'required|min:3',
-        'description' => 'required',
-        'skills' => 'required',
-        'rate' => 'required',
-        'minimum_budget' => 'required',
-        'category' => 'required'
-    ]);
-
-    ProsServices::create($attributes + ['user_id' => auth()->user()->id]);
-
-    return back()->with('message', 'Your Services has been added successfully!');
+    dd('hello');
 }
 }

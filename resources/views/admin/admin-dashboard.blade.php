@@ -37,7 +37,7 @@
             <div class="dash-info">
               <h4>{{$users->count()}}</h4>
               <p>Registered Users</p>
-              <p>Complete Profiles</p>
+              <!-- <p>Complete Profiles</p> -->
             </div>
           </div> 
         </div> <!-- /analytics-box-->

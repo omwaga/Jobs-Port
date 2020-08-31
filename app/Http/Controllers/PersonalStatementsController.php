@@ -34,6 +34,14 @@ class PersonalStatementsController extends Controller
             'category10' => $request->category10,
             'category11' => $request->category11,
             'category12' => $request->category12,
+            'category12' => $request->category13,
+            'category12' => $request->category14,
+            'category12' => $request->category15,
+            'category12' => $request->category16,
+            'category12' => $request->category17,
+            'category12' => $request->category19,
+            'category12' => $request->category19,
+            'category12' => $request->category20,
             'user_id' => auth()->user()->id
         ]);
         
@@ -57,10 +65,18 @@ class PersonalStatementsController extends Controller
         'category10' => NULL, 
         'category11' => NULL, 
         'category12' => NULL,
+        'category13' => NULL,
+        'category14' => NULL,
+        'category15' => NULL,
+        'category16' => NULL,
+        'category17' => NULL,
+        'category18' => NULL,
+        'category19' => NULL,
+        'category20' => NULL,
     ]);
 
      PersonalStatement::where('user_id', auth()->user()->id)
-     ->update(request(['statement', 'category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'category8', 'category9', 'category10', 'category11', 'category12']));
+     ->update(request(['statement', 'category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'category8', 'category9', 'category10', 'category11', 'category12', 'category13', 'category14', 'category15', 'category16', 'category17', 'category18', 'category19', 'category20']));
 
      return back();
  }

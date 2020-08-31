@@ -16,26 +16,26 @@ use DB;
 
 class TheEmployersController extends Controller
 {
-	// return the dashboard for the super employer
+    // return the dashboard for the super employer
     public function dashboard()
     {
-    	$employers = Employer::all();
-    	$jobseekers = User::all();
-    	$jobs = Jobposts::all();
-    	$applications = JobApplication::all();
+        $employers = Employer::all();
+        $jobseekers = User::all();
+        $jobs = Jobposts::all();
+        $applications = JobApplication::all();
 
-    	return view('super-employer.dashboard', compact('employers', 'jobseekers', 'jobs', 'applications'));
+        return view('super-employer.dashboard', compact('employers', 'jobseekers', 'jobs', 'applications'));
     }
     //return the job creatio form for the employer
     public function createjob()
     {
-    	$industries = Industry::all();
-    	$categories = jobcategories::all();
-    	$countries = Country::all();
-    	$towns = Town::all();
-    	$employers = Employer::all();
+        $industries = Industry::all();
+        $categories = jobcategories::all();
+        $countries = Country::all();
+        $towns = Town::all();
+        $employers = Employer::all();
 
-    	return view('super-employer.create-job', compact('industries', 'categories', 'countries', 'towns', 'employers'));
+        return view('super-employer.create-job', compact('industries', 'categories', 'countries', 'towns', 'employers'));
     }
 
 //Save the job created by the super employer to the database
@@ -148,7 +148,7 @@ class TheEmployersController extends Controller
             'location' => 'nullable',
             'salary' => 'nullable',
             'deadline' => 'nullable',
-            'summary' => ['nullable', 'max:350'],
+            'summary' => 'nullable',
             'description'=> ['nullable'],
             'application_details' => ['required'],
             'apply' => 'nullable'
@@ -164,7 +164,7 @@ class TheEmployersController extends Controller
         Jobposts::where('id', $id)->update([
             'job_title' => $request->job_title,
             'employer_name' => $request->employer_name,
-            'employer_logo' => $attributes['employer_logo'],
+            'employer_logo' => $request->employer_logo,
             'job_type' => $request->job_type,
             'jobcategories_id' => $request->jobcategories_id,
             'industry' => $request->industry,
@@ -198,7 +198,7 @@ class TheEmployersController extends Controller
     {
         $vacancies = Jobposts::Orderby('created_at', 'DESC')->paginate(20);
 
-    	return view('super-employer.all-jobs', compact('vacancies'));
+        return view('super-employer.all-jobs', compact('vacancies'));
     }
 
 }

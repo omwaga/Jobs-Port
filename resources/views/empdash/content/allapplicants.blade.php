@@ -41,7 +41,7 @@
                                  <tr>
                                    <th>Applicant Name</th>
                                    <th>Position applied</th>
-                                   <th>Date Applied</th>
+                                   <th> Applied</th>
                                    <th>Applicant Profile</th>
                                </tr>
                            </thead>
@@ -50,7 +50,7 @@
                             <tr>
                                <td>{{$apply->user->name}}</td>
                                <td>{{$apply->job->job_title}}</td>
-                               <td>{{ \Carbon\Carbon::parse($apply->created_at)->format('d/m/Y')}}</td>
+                               <td>{{$apply->created_at->diffForHumans()}}</td>
                                <td>
                                    <a  href="/applicantprofile/{{$apply->user->id}}" class="btn btn-info btn-sm text-white">
                                     <i class="fa fa-eye"></i>View Profile
@@ -58,6 +58,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        {{$application->links()}}
                     </tbody>
                     <tfoot>
                         <tr>

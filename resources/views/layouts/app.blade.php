@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'The NetworkedPros') </title>
-    <link rel="shortcut icon" href="/images/logo/Networked.jpg">
+    <link rel="shortcut icon" href="/Images/logo/Networked.jpg">
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <link rel="shortcut icon" href="{{asset('Images/logo/Networked.jpg')}}">
@@ -158,6 +158,19 @@
     $('.textarea').ckeditor(); // if class is prefered.
 </script>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142371933-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142371933-1');
+</script>
+
+<script data-ad-client="ca-pub-9415122333094581" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
 <!-- profile completion modal alert -->
 <script type="text/javascript">
     $(window).on('load',function(){
@@ -185,6 +198,35 @@
   </script>
   <!-- carousel -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+  <script type="text/javascript">
+  jQuery(document).ready(function ()
+  {
+    jQuery('select[name="country"]').on('change',function(){
+     var countryID = jQuery(this).val();
+     if(countryID)
+     {
+      jQuery.ajax({
+       url : 'dropdownlist/getstates/' +countryID,
+       type : "GET",
+       dataType : "json",
+       success:function(data)
+       {
+        console.log(data);
+        jQuery('select[name="state"]').empty();
+        jQuery.each(data, function(key,value){
+         $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
+       });
+      }
+    });
+    }
+    else
+    {
+      $('select[name="state"]').empty();
+    }
+  });
+  });
+</script>
 
 </body>
 

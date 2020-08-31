@@ -19,6 +19,13 @@
           <dd>{{$personalstatements->category10}}</dd>
           <dd>{{$personalstatements->category11}}</dd>
           <dd>{{$personalstatements->category12}}</dd>
+          <dd>{{$personalstatements->category13}}</dd>
+          <dd>{{$personalstatements->category14}}</dd>
+          <dd>{{$personalstatements->category15}}</dd>
+          <dd>{{$personalstatements->category16}}</dd>
+          <dd>{{$personalstatements->category18}}</dd>
+          <dd>{{$personalstatements->category19}}</dd>
+          <dd>{{$personalstatements->category20}}</dd>
 
           <p class="pull-right"><button class="btn btn-danger text-white btn-sm"  data-toggle="modal" data-target="#personal"><i class="fa fa-edit"></i> Edit </button></p>
 

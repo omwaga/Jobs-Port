@@ -88,9 +88,6 @@
                 @endforelse
                 {{$jobseekers->links()}}
                 <!-- ============================================================== -->
-                <!-- end card influencer one -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
                 <!-- end content -->
                 <!-- ============================================================== -->
             </div>
@@ -99,28 +96,12 @@
             <!-- ============================================================== -->
             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="card">
-                    <div class="card-body">
-                        <h3 class="font-16">Sorting By</h3>
-                        <select class="form-control">
-                            <option>Name</option>
-                            <option>Expertise Level</option>
-                        </select>
-                    </div>
-                    <div class="card-body border-top">
-                        <h3 class="font-16">Experts by Industry</h3>
-                        @foreach($industries as $industry)
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="industryCheck{{$industry->id}}">
-                            <label class="custom-control-label" for="industryCheck{{$industry->id}}">{{$industry->name}}</label>
-                        </div>
-                        @endforeach
-                    </div>
                     <div class="card-body border-top">
                         <h3 class="font-16">Experts by Category</h3>
                         @foreach($categories as $category)
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="category{{$category->id}}">
-                            <label class="custom-control-label" for="category{{$category->id}}">{{$category->jobcategories}}</label>
+                            <label class="custom-control-label" for="category{{$category->id}}">{{$category->name}}</label>
                         </div>
                         @endforeach
                     </div>

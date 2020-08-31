@@ -9,7 +9,7 @@
       @php $cat = str_slug($category->name, '-'); @endphp
       <div class="col-md-4">        
         <a href="{{route('expresscandidates', $cat)}}" class="text-white">
-          <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  style="background: linear-gradient(rgba(0, 0, 60, 1), rgba(0, 0, 230, 0)), url({{asset('Images/afric.jpg')}})">
+          <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  style="background: linear-gradient(rgba(0, 0, 60, 1), rgba(0, 0, 230, 0)), url({{asset('Images/express_categories/graphic.jpg')}})">
             <h5>{{$category->name}}</h5>
             <p class="text-white"> {{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
           </div>

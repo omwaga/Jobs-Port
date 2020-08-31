@@ -5,6 +5,18 @@
  <div class="row">
    <div class="col-md-8">
     @include('success')
+    <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-e5+6n-34-bt+x0"
+     data-ad-client="ca-pub-9415122333094581"
+     data-ad-slot="8953952401"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
      @foreach($jobs as $job)
      <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
       @php $jobtitle = str_slug($job->job_title, '-'); @endphp
@@ -39,6 +51,19 @@
     </div>
   </div>
   @endforeach
+  <div>
+      
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-go-2+1e-3q+3s"
+     data-ad-client="ca-pub-9415122333094581"
+     data-ad-slot="1159222863"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
   {{$jobs->links()}}
 </div>
 <div class="col-md-4">

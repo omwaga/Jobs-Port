@@ -9,11 +9,12 @@ Route::get('/profile-builder', 'DashboardController@wizard')->name('profile-wiza
 //AUthenticated jobseeker routes
 
 Route::prefix('jobseeker')->group(function(){
-Route::resource('interests', 'InterestsController', [
-    'names' => [
-        'index' => 'interests',
-    ]]);
-Route::resource('joblevels', 'JobLevelsController');
+    Route::resource('interests', 'InterestsController', [
+        'names' => [
+            'index' => 'interests',
+        ]]);
+    Route::resource('joblevels', 'JobLevelsController');
+    Route::get('/express-recruitment', 'DashboardController@express')->name('express.jobseeker');
 });
 
 Route::get('/user-profile','DashboardController@profile')->name('profile');
@@ -68,6 +69,7 @@ Route::prefix('employers')->group(function(){
     Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
     Route::get('job-options', 'EmployerController@joboptions')->name('joboptions');
     Route::get('/express-recruitment', 'EmployerController@express')->name('express-recruitment');
+    Route::get('express-recruitment-candidates', 'EmployerController@resumedatabase')->name('resumedatabase');
 });
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
@@ -98,7 +100,6 @@ Route::delete('/remove_talentpoolmember', 'EmployerController@removepoolmember')
 Route::delete('/remove_declined', 'EmployerController@removedeclined')->name('removedeclined');
 Route::post('new-poolname', 'EmployerController@newpool')->name('newpool');
 Route::get('talentpool/{name}', 'EmployerController@poolmembers')->name('poolmembers');
-Route::get('resume-database', 'EmployerController@resumedatabase')->name('resumedatabase');
 Route::post('resume-database', 'EmployerController@searchresume')->name('searchresume');
 Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplications')->name('jobwithapplications');
 
@@ -106,6 +107,8 @@ Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplicatio
 Route::prefix('admin')->group(function(){
     Route::get('/jobseeker/{name}','AdminController@jobseekerprofileprofile')->name('adminprofile');
     Route::get('/export-jobseekers', 'AdminController@export')->name('export-jobseekers');
+    Route::get('/express-recruitment', 'AdminController@expresscategories')->name('admin.express-recruitment');
+    Route::POST('/new-express-category', 'AdminController@newcategory')->name('new-express-category');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
@@ -124,8 +127,6 @@ Route::get('/cover-letters', 'PagesController@coverletter')->name('coverletter')
 Route::get('/admin-resume', 'AdminController@resume')->name('resume');
 Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
 Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
-Route::get('/pro-skills', 'AdminController@skills')->name('pro-skills');
-Route::POST('/pro-skills', 'AdminController@newskill')->name('new-skill');
 Route::resource('cvupload', 'CvUploadsController');
 Route::resource('coverletters', 'CoverLettersController');
 
@@ -142,9 +143,9 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 
 //public routes
 Route::prefix('public')->group(function(){    
-     Route::get('/express-recruitment', 'PagesController@express')->name('express');
-     Route::get('/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
-     Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+ Route::get('/express-recruitment', 'PagesController@express')->name('express');
+ Route::get('/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
+ Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
 });
 Route::get('/jobseekers', 'PagesController@jobseekers')->name('jobseekers');
 Route::get('/employers', 'PagesController@employers')->name('employers');
@@ -154,7 +155,7 @@ Route::get('/search-result', 'PagesController@searchresult');
 Route::get('/job-category/{name}','PagesController@showcategory');
 Route::get('/job-location/{name}','PagesController@filterlocation');
 Route::get('/job-industry/{name}','PagesController@filterindustry');
-Route::get('/employer', 'PagesController@foremployer')->name('foremployer');
+Route::get('/employer-login', 'PagesController@employerlogin')->name('foremployer');
 Route::get('/upload-cv', 'PagesController@uploadcv')->name('uploadcv');
 Route::get('/resume-services', 'PagesController@resume')->name('resume-services');
 Route::get('/resume-samples', 'PagesController@resumesamples')->name('resumesamples');
@@ -205,5 +206,5 @@ Route::prefix('super-employer')->group(function(){
 Route::get('dropdownlist/getstates/{id}','DataController@getStates');//Route for the dependentdropdown list fro countries and towns
 
 Route::fallback(function() {
-    return 'Hmmmm, Why did you land here somehow?';
+    return view('404');
 });

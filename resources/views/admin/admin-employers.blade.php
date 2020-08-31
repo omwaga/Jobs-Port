@@ -2,60 +2,60 @@
 @section('content')
 <!--body wrapper start-->
 <div class="wrapper">
-  
+
   <!--Start Page Title-->
   <div class="page-title-box">
-    <h4 class="page-title">Employers</h4>
+    <h4 class="page-title">Jobseekers</h4>
     <ol class="breadcrumb">
       <li>
         <a href="/admin-dashboard">Dashboard</a>
       </li>
-      
+
       <li class="active">
-        Employers
+        Jobseekers
       </li>
     </ol>
     <div class="clearfix"></div>
   </div>
   <!--End Page Title-->          
-  
-  
+
   <!-- Start row-->
-  <div class="row">
-    <div class="calendar-layout clearfix">
-      @foreach($employers as $employer)
-      <div class="col-md-4">
-        <div class="card-profile3">
-          <div class="p-header">
-           <img src="{{asset('storage/logos/'.$employer->logo)}}"  alt="">
-           <h4>{{$employer->company_name}}</h4>
-           <p>{{$employer->company_email}}</p>
-         </div>
-         <div class="p-info">
-          <div class="row">
-           <div class="col-md-6 co-sm-6 col-xs-6">
-             <div class="p-stats">
-              <h4>Posted Jobs</h4>
-              <p>{{$employer->jobs->count()}}</p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 co-sm-6 col-xs-6">
-           <div class="p-stats last">
-            <h4> Received Applications</h4>
-            <p>{{$employer->applications->count()}}</p>
-          </div>
-        </div>
+  <div class="col-md-12">
+    <div class="white-box">
+      <h2 class="header-title float-left"> All Jobseekers </h2>
+      <a href="#"><button class="btn btn-success"><i class="fa fa-save"></i> Export Excel</button></a>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Jobs Posted</th>
+              <th>Received Applications</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php $column = 0 @endphp
+            @foreach($employers as $employer)
+            @php $column = $column + 1 @endphp
+            <tr>
+              <td>{{$column}}</td>
+              <td>{{$employer->company_name}}</td>
+              <td>{{$employer->company_email}}</td>
+              <td>{{$employer->jobs->count()}}</td>
+              <td>{{$employer->applications->count()}}</td>
+              <td><a href="#"><button class="btn btn-primary">View Profile</button></a></td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
-      
-    </div> <!--/.p-info-->
-    
+    </div>      
   </div>
-</div>
-@endforeach
-</div>      
-</div>
-<!-- End row-->        
+  {{$employers->links()}}
+  <!-- End row-->        
 </div>
 <!-- End Wrapper-->
 @endsection

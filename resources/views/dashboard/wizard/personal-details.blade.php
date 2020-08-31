@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-offset-1 col-lg-10">
       <div class="switchToggle" align="center">
-      <b>Show Profile</b>
+        <b>Show Profile</b>
         <input checked  type="checkbox" id="switch1">
         <label for="switch1">Toggle</label>
       </div>
@@ -15,10 +15,10 @@
        <div class="col-sm-4">
          <div class="picture-container">
           <div class="picture">
-            <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-            <input type="file" id="wizard-picture">
+            <!-- <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/> -->
+            <input type="file" name="profile_picture" id="wizard-picture">
           </div>
-          <h6>Choose Picture</h6>
+          <h6>Choose Profile Picture</h6>
         </div>
       </div>
       <div class="col-md-4">
@@ -87,19 +87,18 @@
 
 <div class="col-md-4">
   <label>Nationality:</label>
-  <select name="nationality" class="form-control" style="border-radius:0px;"required autofocus value="{{old('nationality')}}">
+  <select name="nationality" class="form-control">
    <option value="">Select Country</option>
-   @foreach($countries as $country)
-   <option>{{$country->country}}</option>
+   @foreach ($countries as $key => $value)
+   <option value="{{ $key }}">{{ $value }}</option>
    @endforeach
  </select>
 </div>
 <div class="col-md-4">
   <label>City:</label>
-  <select name="city" class="form-control" style="border-radius:0px;"required autofocus value="{{old('city')}}">
-   <option value="">Select City</option>
-   <option>Nairobi</option>
- </select>
+  <select name="city" class="form-control search-slt">
+   <option>State/Region</option>
+ </select> 
 </div>
 <div class="col-md-4">
   <label>Postal Address:</label>

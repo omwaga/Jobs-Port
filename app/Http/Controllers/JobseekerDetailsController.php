@@ -29,9 +29,16 @@ class JobseekerDetailsController extends Controller
           'dob' => 'required',
           'nationality' => 'required',
           'city' => 'required',
+          'profile_picture' => 'nullable',
           'postal_address' => ['required', 'min:3'],
           'postal_code' => ['required', 'min:3']
           ]);
+
+
+        if ($request->hasFile('profile_picture')) {
+        $attributes['profile_picture'] = $request->profile_picture->getClientOriginalName();
+        $request->profile_picture->storeAs('public/profiles', $attributes['profile_picture']);
+      }
           
        JobseekerDetail::create($attributes + ['user_id' => auth()->user()->id]);
        

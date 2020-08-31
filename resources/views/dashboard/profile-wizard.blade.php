@@ -19,7 +19,6 @@
   <link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
   <link href="{{ asset('css/button.css') }}" rel="stylesheet">
 
-  
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
   <script>
@@ -58,7 +57,7 @@
   </div>
 
   <!--   Big container   -->
-  <div class="container">
+  <div class="container" id="root">
     <div class="row">
       <div class="col-sm-12">
 
@@ -70,7 +69,6 @@
             <div class="wizard-header">
              <h3>
               <b>BUILD</b> YOUR PROFILE <br>
-              <small>This information will let the Employers know more about you.</small>
               <p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
             </h3>
           </div>
@@ -137,5 +135,35 @@
 
 <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
 <script src="assets/js/jquery.validate.min.js"></script>
+
+ <script type="text/javascript">
+  jQuery(document).ready(function ()
+  {
+    jQuery('select[name="nationality"]').on('change',function(){
+     var countryID = jQuery(this).val();
+     if(countryID)
+     {
+      jQuery.ajax({
+       url : 'dropdownlist/getstates/' +countryID,
+       type : "GET",
+       dataType : "json",
+       success:function(data)
+       {
+        console.log(data);
+        jQuery('select[name="city"]').empty();
+        jQuery.each(data, function(key,value){
+         $('select[name="city"]').append('<option value="'+ key +'">'+ value +'</option>');
+       });
+      }
+    });
+    }
+    else
+    {
+      $('select[name="city"]').empty();
+    }
+  });
+  });
+</script>
+
 
 </html>

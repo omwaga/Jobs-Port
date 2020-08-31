@@ -4,7 +4,7 @@
         <div class="panel-body">
           <article class="panel-body">
             <figure class="text-center">
-              <img src="{{asset('assets/images/avatar.png')}}" class="img-thumbnail img-circle img-responsive" alt="me" width="140" height="140">
+              <img src="{{asset('storage/profiles'.$personalinfo->profile_picture)}}" class="img-thumbnail img-circle img-responsive" alt="me" width="140" height="140">
               <figcaption>
                 <h3>{{$personalinfo->name  ?? ''}}</h3> {{$personalinfo->postal_code ?? ''}}. {{$personalinfo->postal_address ?? ''}}
                 <br> Tel. {{$personalinfo->phone ?? ''}} E-mail: {{$personalinfo->email ?? ''}}

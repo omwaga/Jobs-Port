@@ -84,7 +84,7 @@
           </div>
           <div class="col-md-9">
             <a href="" class="h5">Express Recruitment</a>
-            <p>{{$applications->count()}}</p>
+            <a href="{{route('profile-wizard')}}"><button class="btn btn-danger">Get Started</button></a>
           </div>
         </div>
       </div>
