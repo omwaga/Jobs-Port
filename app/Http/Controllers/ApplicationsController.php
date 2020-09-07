@@ -18,6 +18,7 @@ use App\JobApplication;
 use App\Industry;
 use App\Town;
 use App\jobcategories;
+use App\ExpressCategory;
 
 class ApplicationsController extends Controller
 {
@@ -46,9 +47,10 @@ class ApplicationsController extends Controller
         $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        $categories = ExpressCategory::orderBy('name','asc')->get();
         
         return view('dashboard.apply', compact('countries', 'personalinfo', 'references',
-          'personalstatements', 'experience', 'education', 'awards', 'skills', 'job'));
+          'personalstatements', 'experience', 'education', 'awards', 'skills', 'job', 'categories'));
     }
     
     public function store(Request $request)

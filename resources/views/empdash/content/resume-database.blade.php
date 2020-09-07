@@ -41,78 +41,26 @@
             <!-- ============================================================== -->
             <!-- end search bar  -->
             <!-- ============================================================== -->
-            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <!-- ============================================================== -->
                 <!-- card influencer one -->
                 <!-- ============================================================== -->
-                @forelse($jobseekers as $jobseeker)
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="user-avatar float-xl-left pr-4 float-none">
-                                    <img src="{{asset('assets/images/avatar.png')}}" alt="User Avatar" class="rounded-circle user-avatar-xl">
-                                </div>
-                                <div class="pl-xl-3">
-                                    <div class="m-b-0">
-                                        <div class="user-avatar-name d-inline-block">
-                                            <h2 class="font-24 m-b-10">{{$jobseeker->name ?? ''}}</h2>
-                                        </div>
-                                        <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="user-avatar-address">
-                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>City/State/County, Country <span class="m-l-10">{{$jobseeker->gender ?? ''}}<span class="m-l-20">Age</span></span>
-                                        </p>
-                                        <div class="mt-3">
-                                            @forelse($jobseeker->skills as $skill)
-                                            <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
-                                            @empty
-                                            <p>No skills added.</p>
-                                            @endforelse
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                    <a href="{{route('candidateprofile', $jobseeker->user_id)}}" class="btn btn-secondary">Full Profile</a>
-                                </div>
-                            </div>
+                
+                <div class="row">
+                    @forelse($categories as $category) 
+                    @php $cat = str_slug($category->name, '-'); @endphp
+                    <div class="col-md-4">        
+                        <a href="{{route('employer.candidates', $cat)}}" class="text-white">
+                          <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  style="background: linear-gradient(rgba(0, 0, 60, 1), rgba(0, 0, 230, 0)), url({{asset('Images/express_categories/graphic.jpg')}})">
+                            <h5 class="text-white">{{$category->name}}</h5>
+                            <p class="text-white"> {{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
                         </div>
                     </div>
-                </div>
+                </a>
                 @empty
-                <p>Nothing to show</p>
                 @endforelse
-                {{$jobseekers->links()}}
-                <!-- ============================================================== -->
-                <!-- end content -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- influencer sidebar  -->
-            <!-- ============================================================== -->
-            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-body border-top">
-                        <h3 class="font-16">Experts by Category</h3>
-                        @foreach($categories as $category)
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="category{{$category->id}}">
-                            <label class="custom-control-label" for="category{{$category->id}}">{{$category->name}}</label>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="card-body border-top">
-                        <a href="#" class="btn btn-secondary btn-lg btn-block">Submit</a>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end influencer sidebar  -->
-            <!-- ============================================================== -->
         </div>
     </div>
-    @endsection
+</div>
+@endsection

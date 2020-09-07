@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\PersonalStatement;
 use App\Jobposts;
-use App\Training;
 use App\Shortlist;
 use App\Companies;
 use App\Usercategories;
@@ -15,7 +14,6 @@ use App\jobcategories;
 use App\Employer;
 use DB;
 use App\User;
-use App\salary;
 use App\Education;
 use App\WorkExperience;
 use App\Awards;
@@ -31,7 +29,7 @@ use App\Industry;
 use App\Locations;
 use App\Town;
 Use App\Country;
-use App\ProsDetails;
+use App\ExpressCategory;
 
 class EmployerController extends Controller
 {
@@ -377,11 +375,35 @@ public function express()
 // get all data of users from the database for the resumes
 public function resumedatabase()
 {
-    $categories = jobcategories::orderBy('jobcategories','asc')->get();
+    $categories = ExpressCategory::orderBy('name','asc')->get();
     $industries = Industry::orderBy('name','asc')->get();
     $jobseekers = JobseekerDetail::paginate(20);
     
     return view('empdash.content.resume-database', compact('industries', 'jobseekers', 'categories'));
+}
+
+// return the express recruitment candidates
+public function candidates($category)
+{
+  $job_category = ucwords(str_replace('-', ' ', $category));
+
+  $jobseekers = PersonalStatement::where('category1', $job_category)
+                 ->orWhere('category2', $job_category)
+                 ->orWhere('category3', $job_category)
+                 ->orWhere('category4', $job_category)
+                 ->orWhere('category5', $job_category)
+                 ->orWhere('category6', $job_category)
+                 ->orWhere('category7', $job_category)
+                 ->orWhere('category8', $job_category)
+                 ->orWhere('category9', $job_category)
+                 ->orWhere('category10', $job_category)
+                 ->orWhere('category11', $job_category)
+                 ->orWhere('category12', $job_category)
+                 ->paginate(20);
+  $categories=ExpressCategory::orderBy('name','asc')->get();
+  $countries = DB::table('countries')->get();
+
+ return view('empdash.content.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
 }
 
 // search the rsumes

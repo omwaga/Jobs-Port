@@ -27,5 +27,10 @@ class JobseekerDetail extends Model
     {
         return $this->belongsTo(PersonalStatement::class, 'user_id', 'user_id');
     }
+
+    public function country()
+    {
+        return $this->belongsTo(PersonalStatement::class, 'nationality', 'id');
+    }
    
 }

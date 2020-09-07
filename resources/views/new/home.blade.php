@@ -132,7 +132,7 @@
              </ul>
            </div>
            @empty
-            <p>No jobs posted</p>
+           <p>No jobs posted</p>
            @endforelse
          </div>
        </div>
@@ -150,7 +150,7 @@
            </ul>
          </div>
          @empty
-            <p>No jobs posted</p>
+         <p>No jobs posted</p>
          @endforelse
        </div>
      </div>
@@ -158,80 +158,80 @@
    <div class="tab-pane" id="pag4" role="tabpanel">
     <div class="sv-tab-panel" align="left">
      <h4>GOVERNMENT JOBS</h4>
-          <div class="row">
-            @forelse($government_jobs as $job)
-            <div class="col-md-6"> 
-              <ul>
-                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
-                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
-                </a></li>
-              </ul>
-            </div>
-            @empty
-            <p>No jobs posted</p>
-            @endforelse
-          </div>
-   </div>
- </div>
+     <div class="row">
+      @forelse($government_jobs as $job)
+      <div class="col-md-6"> 
+        <ul>
+          @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+            {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+          </a></li>
+        </ul>
+      </div>
+      @empty
+      <p>No jobs posted</p>
+      @endforelse
+    </div>
+  </div>
+</div>
 
- <div class="tab-pane" id="pag5" role="tabpanel">
+<div class="tab-pane" id="pag5" role="tabpanel">
   <div class="sv-tab-panel" align="left">
     <h4>NGO AND HUMANITARIAN SECTOR JOBS</h4>
-          <div class="row">
-            @forelse($ngo_jobs as $job)
-            <div class="col-md-6"> 
-              <ul>
-                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
-                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
-                </a></li>
-              </ul>
-            </div>
-            @empty
-            <p>No jobs posted</p>
-            @endforelse
-          </div>
+    <div class="row">
+      @forelse($ngo_jobs as $job)
+      <div class="col-md-6"> 
+        <ul>
+          @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+            {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+          </a></li>
+        </ul>
+      </div>
+      @empty
+      <p>No jobs posted</p>
+      @endforelse
+    </div>
   </div>
 </div>
 
 <div class="tab-pane" id="pag6" role="tabpanel">
   <div class="sv-tab-panel" align="left">
     <h4>UN JOBS</h4>
-          <div class="row">
-            @forelse($un_jobs as $job)
-            <div class="col-md-6"> 
-              <ul>
-                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
-                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
-                </a></li>
-              </ul>
-            </div>
-            @empty
-            <p>No jobs posted</p>
-            @endforelse
-          </div>
+    <div class="row">
+      @forelse($un_jobs as $job)
+      <div class="col-md-6"> 
+        <ul>
+          @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+            {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+          </a></li>
+        </ul>
+      </div>
+      @empty
+      <p>No jobs posted</p>
+      @endforelse
+    </div>
   </div>
 </div>
 
- <div class="tab-pane" id="pag7" role="tabpanel">
+<div class="tab-pane" id="pag7" role="tabpanel">
   <div class="sv-tab-panel" align="left">
     <h4>CONSULTANCIES</h4>
-          <div class="row">
-            @forelse($consultancies as $job)
-            <div class="col-md-6"> 
-              <ul>
-                @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
-                  {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
-                </a></li>
-              </ul>
-            </div>
-            @empty
-            <p>No consultancies posted</p>
-            @endforelse
-          </div>
+    <div class="row">
+      @forelse($consultancies as $job)
+      <div class="col-md-6"> 
+        <ul>
+          @php $jobtitle = str_slug($job->job_title, '-'); @endphp
+          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+            {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
+          </a></li>
+        </ul>
+      </div>
+      @empty
+      <p>No consultancies posted</p>
+      @endforelse
+    </div>
   </div>
 </div>
 
@@ -258,7 +258,7 @@
     <div class="col-md-4 bg-white pt-2 pb-5 col-offset-md-2">
       <form method="POST" action="{{route('alerts.store')}}">
         @csrf
-      <h4 align="center" style="color:#0B0B3B;"> CREATE JOB ALERTS </h4>
+        <h4 align="center" style="color:#0B0B3B;"> CREATE JOB ALERTS </h4>
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">

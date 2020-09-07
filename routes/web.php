@@ -69,14 +69,15 @@ Route::prefix('employers')->group(function(){
     Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
     Route::get('job-options', 'EmployerController@joboptions')->name('joboptions');
     Route::get('/express-recruitment', 'EmployerController@express')->name('express-recruitment');
-    Route::get('express-recruitment-candidates', 'EmployerController@resumedatabase')->name('resumedatabase');
+    Route::get('express-recruitment-categories', 'EmployerController@resumedatabase')->name('resumedatabase');
+    Route::get('express-recruitment/{category}', 'EmployerController@candidates')->name('employer.candidates');
+    Route::get('/candidate-profile/{name}','EmployerController@candidateprofile')->name('candidateprofile');
 });
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
 Route::resource('jobposts','JobListController');
 Route::PATCH('/publish-job/{id}','JobListController@publish')->name('publish-job');
 Route::get('/applicantprofile/{name}','EmployerController@fullprofile')->name('fullprofile');
-Route::get('/candidate-profile/{name}','EmployerController@candidateprofile')->name('candidateprofile');
 Route::get('/candidate-profile/{id}','EmployerController@shortlistview')->name('shortlistprofile');
 Route::get('/talentpool','EmployerController@talentpool')->name('pooltalent');
 Route::get('/Employer-dashboard','EmployerController@employerdash')->name('employdashboard');

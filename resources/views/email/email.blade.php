@@ -1,31 +1,40 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!DOCTYPE html>
 <html>
-    <body>
-        <div class="card">
-            <div class="card-body">
-            <p>Dear <b style="color: brown;font-family: 'Roboto', sans-serif;">{{$name}}</b></p>
-            <p><b style="color: royalblue">APPLICATION FOR <strong>{{$jobtitle}}</strong> POSITION</b></p>
-            <p>Thank you for applying for the position of <strong>{{$jobtitle}}</strong>
-        at  <b>{{$company}}</b>.This is to inform you that your application has been sent to the
-        hiring team.</p>
-        <p>
-         If you are among the shortlisted candidates, you will receive a call or email from the 
-         hiring team to schedule an interview. If you dont hear from the hiring team within 3 weeks
-         please consider your application unsuccessful.
-            </p>
-            <p>Thank you for showing interest and taking your time to apply for this role.
-                We wish you best of luck.
-            </p>
+<head>
+    <title>Welcome Email</title>
+</head>
+
+<body>
+
+    <p>Dear {{$user['name']}},</p>
+    <h2 style="color:#005691">Welcome to The Networked Pros.</h2>
+
+    <p>Your registered email address is {{$user['email']}}<br>
+
+        Thank you for  signing up on The Networked Pros<br>
+        🎉 Great Job! You’re one step closer to getting your dream job!<p>
+
+            <h4 style="color:#005691">PLEASE REMEMBER TO COMPLETE YOUR PROFILE AND BE DISCOVERED BY EMPLOYERS WHO VISIT OUR SERVICE EVERYDAY TO RECRUIT TRUSTED PROFESSIONALS</h4>
+
+            <p> To log on, please use the user name and password you chose when creating your profile</p>
+            <a href="" ><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
+            <p>Benefits of recruiting through The Networked Pros</p>
+            <ul>
+                <li>You will be available for discovery by employers across East Africa who recruit from our network.</li>
+                <li>You will receive advice or how best to improve your profile to target the best careers and opportunities.</li>
+                <li>You will be connected to mentors who can help walk you through your career journey</li>
+                <li>You qualify to get free training on employability skills in our WorkReady programme and meet accomplished career coaches and industry professionals.</li>
+                <li>You will be able through our Resume Builder to transform your profile to a professional CV and resume formats.</li>
+            </ul>  
+
+            <a href=""><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
+
             <hr>
             <p class="text-danger"><b>Kind Regards</b></p>
             <p  style="color: saddlebrown"><b>Human Resource Officer</b></p>
             <p  style="color: saddlebrown"><b>TheNetWorkedPros, Nairobi- Kenya</b></p>
             <p  style="color: saddlebrown"><b>Njema Court, Suit R2</b></p>
             <p  style="color: saddlebrown"><b>Westlands, Raptha Road</b></p>
-            </div>
-        </div>
-    </body>
-</html>
+        </body>
+
+        </html>

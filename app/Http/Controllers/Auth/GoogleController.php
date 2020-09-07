@@ -28,31 +28,31 @@ class GoogleController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->stateless()->user();
-       $authuser= $this->findorcreateuser($user,'google');
+        $authuser= $this->findorcreateuser($user,'google');
         Auth::login($authuser,true);
         return redirect($this->redirectTo);
     }
     public function findorcreateuser($user){
-$authuser=User::where('provider_id',$user->id)->first();
-if($authuser){
-return $authuser;
-}
-$userr= User::create([
-    'name'=>$user->name,
-    'email'=>$user->email,
-    'provider'=>strtoupper('google'),
-    'provider_id'=>$user->id,
-]);
-$data=array(
-    'name'=>$user->name,
-    'email'=>$user->email,
+        $authuser=User::where('provider_id',$user->id)->first();
+        if($authuser){
+            return $authuser;
+        }
+        $userr= User::create([
+            'name'=>$user->name,
+            'email'=>$user->email,
+            'provider'=>strtoupper('google'),
+            'provider_id'=>$user->id,
+        ]);
+        $data=array(
+            'name'=>$user->name,
+            'email'=>$user->email,
 
-);
-Mail::send('email.email',$data,function($message) use($data){
-$message->to($data['email']);
-$message->from('jamesnyanga@gmail.com');
-$message->subject('The Networked Pros Account Confirmation');
-});
-return $userr;
+        );
+        Mail::send('email.email',$data,function($message) use($data){
+            $message->to($data['email']);
+            $message->from('careers@thenetworkedpros.com');
+            $message->subject('The Networked Pros Account');
+        });
+        return $userr;
     }
 }

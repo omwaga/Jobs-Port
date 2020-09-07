@@ -9,7 +9,7 @@
     <section class="section section-top section-full">
           <div class="container"><br><br><br>
 <div class="panel-body">
-                  <p><i class="text-info fa fa-bell"></i>Tip: A complete profile puts you ahead of other applicants.</p>
+                  <p><i class="text-info fa fa-bell"></i>TComplete your Career profile then browse the available jobs to submit your job application.</p>
                   @include('errors')
                   <hr>
 <h3 style="color:#0B0B3B;">Personal Information</h3>

@@ -57,7 +57,6 @@ class TheEmployersController extends Controller
             'summary' => ['nullable'],
             'description'=> ['required'],
             'application_details' => ['required'],
-            'apply' => 'nullable'
         ]);
 
         if ($request->hasFile('employer_logo')) {
@@ -65,7 +64,7 @@ class TheEmployersController extends Controller
         $request->employer_logo->storeAs('public/job_logos', $attributes['employer_logo']);
     }
 
-        Jobposts::create($attributes + ['employer_id' => 1]);
+        Jobposts::create($attributes + ['employer_id' => 1, 'apply' => 'No',]);
 
         return redirect('/super-employer/all-jobs')->with('message', 'The job post has been created succsefully');
     }
@@ -151,7 +150,6 @@ class TheEmployersController extends Controller
             'summary' => 'nullable',
             'description'=> ['nullable'],
             'application_details' => ['required'],
-            'apply' => 'nullable'
         ]);
 
         $job = Jobposts::findOrFail($id);
@@ -176,7 +174,7 @@ class TheEmployersController extends Controller
             'summary' => $request->summary,
             'description'=> $request->description,
             'application_details' => $request->application_details,
-            'apply' => $request->apply,
+            'apply' => 'No',
             // 'employer_id' => $request->employer_id
     ]);
 

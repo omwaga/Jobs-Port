@@ -103,7 +103,7 @@
 
                   <div class="wizard-header">
                    <h3> FINISH REGISTRATION <br>
-                    <small>Fill in all sections carefully to enable you to be found by recruiters and to guarantee high quality recommendations for jobs </small>
+                    <small class="text-success">Complete your Career profile then browse the available jobs to submit your job application.</small>
                     @include('errors')
                   </h3>
                 </div>

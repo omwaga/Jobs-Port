@@ -49,13 +49,14 @@
               <td>{{$vacancy->applications->count()}}</td>
               <td>
                 <div class="btn-group m-b-20">
-                  <a type="button" href="{{route('updateform', $vacancy->id)}}" class="btn btn-info">Edit</a>
-                  <form method="POST" action="{{route('deletejob', $vacancy->id)}}">
+                  <a type="button" href="{{route('updateform', $vacancy->id)}}" class="btn btn-info float-left">Edit</a>
+                  <a href="{{route('deletejob', $vacancy->id)}}" class="btn btn-danger float-left" onclick="event.preventDefault();
+                  document.getElementById('delete-form').submit();">Delete</a>
+                  <form method="POST" action="{{route('deletejob', $vacancy->id)}}" id="delete-form">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" href="" class="btn btn-danger">Delete</button>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </td>
             </tr>
             @endforeach

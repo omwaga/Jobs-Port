@@ -17,4 +17,9 @@ class PersonalStatement extends Model
     {
        return $this->hasMany(Skills::class, 'user_id', 'user_id');
     }
+
+    public function jobseekerdetail()
+    {
+        return $this->belongsTo(JobseekerDetail::class, 'user_id', 'user_id');
+    }
 }
