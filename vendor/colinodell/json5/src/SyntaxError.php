@@ -14,7 +14,7 @@
 
 namespace ColinODell\Json5;
 
-final class SyntaxError extends \RuntimeException
+final class SyntaxError extends \JsonException
 {
     /** @var int */
     private $lineNumber;
@@ -32,7 +32,7 @@ final class SyntaxError extends \RuntimeException
      */
     public function __construct($message, $linenumber, $columnNumber, $previous = null)
     {
-        $message = sprintf('%s at line %d column %d of the JSON5 data', $message, $linenumber, $columnNumber);
+        $message = \sprintf('%s at line %d column %d of the JSON5 data', $message, $linenumber, $columnNumber);
 
         parent::__construct($message, 0, $previous);
 

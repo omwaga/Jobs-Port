@@ -117,20 +117,9 @@ public function expressemployer()
 public function expresscandidates($category)
 {
   $job_category = ucwords(str_replace('-', ' ', $category));
+  $category = ExpressCategory::where('name', $job_category)->value('id');
 
-  $jobseekers = PersonalStatement::where('category1', $job_category)
-                 ->orWhere('category2', $job_category)
-                 ->orWhere('category3', $job_category)
-                 ->orWhere('category4', $job_category)
-                 ->orWhere('category5', $job_category)
-                 ->orWhere('category6', $job_category)
-                 ->orWhere('category7', $job_category)
-                 ->orWhere('category8', $job_category)
-                 ->orWhere('category9', $job_category)
-                 ->orWhere('category10', $job_category)
-                 ->orWhere('category11', $job_category)
-                 ->orWhere('category12', $job_category)
-                 ->paginate(20);
+  $jobseekers = PersonalStatement::where('category', $category)->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
 
@@ -467,5 +456,10 @@ public function enrollworkreadiness()
   $countries = Country::all();
 
   return view('new.enroll-workprogram', compact('countries'));
+}
+
+public function new()
+{
+  return view('employer.employer-register-jobpost');
 }
 }

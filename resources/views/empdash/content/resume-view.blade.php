@@ -60,7 +60,7 @@
                             <h3 class="font-16">Basic Information</h3>
                             <div class="">
                                 <ul class="list-unstyled mb-0">
-                                    <li>Nationality:  {{$jobseekerdetail->nationality ?? ''}}</li>
+                                    <li>Nationality:  {{$jobseekerdetail->country->name ?? ''}}</li>
                                     <li>Date Of Birth:  {{$jobseekerdetail->dob ?? ''}}</li>
                                     <li>Marital Status:  {{$jobseekerdetail->marital_status ?? ''}}</li>
                                 </ul>

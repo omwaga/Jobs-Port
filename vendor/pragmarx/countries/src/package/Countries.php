@@ -3,10 +3,10 @@
 namespace PragmaRX\Countries\Package;
 
 use PragmaRX\Countries\Package\Data\Repository;
-use PragmaRX\Countries\Package\Services\Helper;
-use PragmaRX\Countries\Package\Services\Hydrator;
 use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
 use PragmaRX\Countries\Package\Services\Countries as CountriesService;
+use PragmaRX\Countries\Package\Services\Helper;
+use PragmaRX\Countries\Package\Services\Hydrator;
 
 class Countries
 {
@@ -45,7 +45,7 @@ class Countries
      */
     public function __call($name, array $arguments = [])
     {
-        return call_user_func_array([$this->countriesService, $name], $arguments);
+        return \call_user_func_array([$this->countriesService, $name], $arguments);
     }
 
     /**
@@ -57,6 +57,6 @@ class Countries
      */
     public static function __callStatic($name, array $arguments = [])
     {
-        return call_user_func_array([new static(), $name], $arguments);
+        return \call_user_func_array([new static(), $name], $arguments);
     }
 }

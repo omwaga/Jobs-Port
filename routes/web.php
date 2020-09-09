@@ -51,8 +51,6 @@ Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresu
 Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
 Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
 Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
-// Route::POST('/pros_details', 'DashboardController@pros_details')->name('pros_details');
-// Route::POST('/pros_services', 'DashboardController@pros_services')->name('pros_services');
 
 //Resume Builder Routes
 Route::prefix('resume-builder')->group(function(){
@@ -173,7 +171,7 @@ Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jo
 // Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
 Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
-Route::get('/Hire','PagesController@hire')->name('hire');
+Route::get('/newdesign','PagesController@new')->name('hire');
 Route::get('/job-search','PagesController@aboutjob')->name('joblisting');
 Route::get('/employerd','PagesController@employerd')->name('emp');
 Route::get('/homesearch','PagesController@searchhome')->name('homesearch');

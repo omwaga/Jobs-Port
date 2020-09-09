@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 
 if (!function_exists('json5_decode')) {
     /**
@@ -17,5 +18,16 @@ if (!function_exists('json5_decode')) {
     function json5_decode($source, $associative = false, $depth = 512, $options = 0)
     {
         return \ColinODell\Json5\Json5Decoder::decode($source, $associative, $depth, $options);
+    }
+}
+
+// PHP 7.3 polyfills
+if (!\defined('JSON_THROW_ON_ERROR')) {
+    \define('JSON_THROW_ON_ERROR', 1 << 22);
+}
+
+if (!\class_exists('JsonException')) {
+    class JsonException extends Exception
+    {
     }
 }

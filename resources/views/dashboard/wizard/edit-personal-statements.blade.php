@@ -15,29 +15,27 @@
           @method('PATCH')
           <div class="row">
             <div class="col-md-12">
-              <label>Personal Statement:</label>
-              <textarea name="statement" class="form-control ckeditor" id="article-ckeditor" required autofocus rows="3"style="border-radius:0px;">{!!$personalstatements->statement!!}</textarea>    
+              <label>Job Role Category: </label>              
+              <select class="form-control" name="category">
+                <option value="{{$personalstatements->category}}">{{$personalstatements->categoryname->name ?? 'Select Category'}}</option>
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="col-md-12">
-              <label>Job Role Category: <small class="text-danger">Select all that apply</small></label>
-              @foreach($categories as $category)
-              <!-- <div class="form-group">           -->
-                <div class="form-check">
-                  <input type="checkbox" name="category{{$category->id}}" class="form-check-input" id="exampleCheck{{$category->id}}" value="{{$category->name}}">
-                  <label class="form-check-label" for="exampleCheck{{$category->id}}">{{$category->name}}</label>
-                </div>
-                <!-- </div> -->
-                @endforeach
-              </div>
+              <label>Personal Statement:</label>
+              <textarea name="statement" class="form-control ckeditor" id="article-ckeditor" required autofocus rows="3"style="border-radius:0px;">{!!$personalstatements->statement ?? ''!!}</textarea>    
             </div>
-            <br>
+          </div>
+          <br>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success">Save & Continue</button>
-            </div>
-          </form>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Save & Continue</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>

@@ -3,12 +3,12 @@
 namespace PragmaRX\Countries\Update;
 
 use Closure;
-use PragmaRX\Countries\Package\Support\Base;
 use PragmaRX\Coollection\Package\Coollection;
 use PragmaRX\Countries\Package\Contracts\Config;
-use PragmaRX\Countries\Package\Services\Command;
 use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
+use PragmaRX\Countries\Package\Services\Command;
 use PragmaRX\Countries\Package\Services\Config as ConfigService;
+use PragmaRX\Countries\Package\Support\Base;
 
 /**
  * @codeCoverageIgnore
@@ -380,7 +380,7 @@ class Updater extends Base
             ['adm0_a3', 'adm0_a3'],
         ];
 
-        list(, $countryCode) = $this->findByFields($this->_countries, $item, $fields, 'cca3');
+        [, $countryCode] = $this->findByFields($this->_countries, $item, $fields, 'cca3');
 
         if (is_null($countryCode)) {
             $countryCode = $this->helper->caseForKey($item['name']);

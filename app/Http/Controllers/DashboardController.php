@@ -10,7 +10,6 @@ use App\Training;
 use App\jobcategories;
 use App\JobApplication;
 use App\Industry;
-use App\Events;
 use App\Locations;
 use App\Academics;
 use App\Country;
@@ -48,7 +47,7 @@ class DashboardController extends Controller
 //form after the registration by the user
     public function profile()
     {
-        $towns=Town::orderBy('name','asc')->get();
+        $states=Town::orderBy('name','asc')->get();
         $industries=Industry::orderBy('name','asc')->get();
         $countries = Country::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
@@ -61,15 +60,15 @@ class DashboardController extends Controller
         $categories = ExpressCategory::orderBy('name','asc')->get();
         
         return view('dashboard.user-profile', compact('countries', 'personalinfo', 'references',
-           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'categories'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'states', 'industries', 'categories'));
     }
 
 //wizard form
     public function wizard()
     {
-        $towns=Town::orderBy('name','asc')->get();
-        $categories = ExpressCategory::orderBy('name','asc')->get();
-        $countries = DB::table('countries')->pluck("name","id");
+        $states=Town::orderBy('name','asc')->get();
+        $industries=Industry::orderBy('name','asc')->get();
+        $countries = Country::all();
         $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
         $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
         $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
@@ -77,9 +76,10 @@ class DashboardController extends Controller
         $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
+        $categories = ExpressCategory::orderBy('name','asc')->get();
         
         return view('dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
-           'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'categories'));
+           'personalstatements', 'experience', 'education', 'awards', 'skills', 'states', 'categories'));
     }
 
     //create the jobseeker profile
@@ -176,20 +176,6 @@ class DashboardController extends Controller
     ->update(['userlevel' => "1"]);
     return redirect('/Employer')->with('status','company created successfully');
 
-}
-
-public function careerprofile(){
-    $countries = Country::all();
-    $personalinfo = JobseekerDetail::where('user_id', '=', auth()->user()->id)->first();
-    $personalstatements = PersonalStatement::where('user_id', '=', auth()->user()->id)->first();
-    $experience = WorkExperience::where('user_id', '=', auth()->user()->id)->get();
-    $education = Education::where('user_id', '=', auth()->user()->id)->get();
-    $awards = Awards::where('user_id', '=', auth()->user()->id)->get();
-    $references = Reference::where('user_id', '=', auth()->user()->id)->get();
-    $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
-
-    return view('dashboard.career-profile', compact( 'personalinfo', 'references',
-      'personalstatements', 'experience', 'education', 'awards', 'skills', 'countries'));
 }
 
 public function jobs()

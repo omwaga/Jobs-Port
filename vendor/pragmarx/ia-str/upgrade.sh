@@ -12,7 +12,7 @@ function main()
 {
     showAppTitle
 
-    prepareEnvironment
+    prepareEnvironment $1
 
     displayVariables
 
@@ -51,6 +51,7 @@ function prepareEnvironment()
     ##
      # Define all variables
      #
+    requestedVersion=$1
     rootDir=.
     baseDir=${rootDir}/src
     vendor=laravel
@@ -88,10 +89,13 @@ carriageReturn="
         'Support/Optional'
         'Support/Pluralizer'
         'Support/Str'
+        'Support/Enumerable'
+        'Support/LazyCollection'
     )
 
     traits=(
         'Support/Traits/Macroable.php'
+        'Support/Traits/EnumeratesValues.php'
     )
 
     contracts=(
@@ -283,7 +287,11 @@ function getCurrentVersionFromGitHub()
 
     echo "reading $repository..."
 
-    collectionVersion=$(git ls-remote $repository | grep tags/ | grep -v {} | cut -d \/ -f 3 | cut -d v -f 2 | sort --version-sort | tail -1)
+    if [ -z "$requestedVersion" ]; then
+        collectionVersion=$(git ls-remote $repository | grep tags/ | grep -v {} | cut -d \/ -f 3 | cut -d v -f 2 | sort --version-sort | tail -1)
+    else
+        collectionVersion=$requestedVersion
+    fi
 
     echo "got $vendor/$project version $collectionVersion"
 }

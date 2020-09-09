@@ -22,4 +22,9 @@ class PersonalStatement extends Model
     {
         return $this->belongsTo(JobseekerDetail::class, 'user_id', 'user_id');
     }
+
+    public function categoryname()
+    {
+        return $this->belongsTo(ExpressCategory::class, 'category', 'id');
+    }
 }

@@ -84,16 +84,19 @@
      <div class="col-md-4">
       <label>Nationality:</label>     
       <select name="nationality" class="form-control">
-       <option value="">Select Country</option>
+       <option value="{{$personalinfo->nationality}}">{{$personalinfo->country->name}}</option>
        @foreach ($countries as $key => $value)
-       <option value="{{ $key }}">{{ $value }}</option>
+       <option value="{{ $value->id }}">{{ $value->name }}</option>
        @endforeach
      </select>
    </div>
    <div class="col-md-4">
     <label>City:</label>
     <select name="city" class="form-control search-slt">
-     <option>State/Region</option>
+     <option value="{{ $personalinfo->city }}">{{ $personalinfo->state->name }}</option>
+     @foreach($states as $state)
+     <option value="{{$state->id}}">{{$state->name}}</option>
+     @endforeach
    </select> 
  </div>
  <div class="col-md-4">

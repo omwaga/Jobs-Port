@@ -2,10 +2,11 @@
 
 namespace PragmaRX\Countries\Package\Data;
 
+use IlluminateAgnostic\Str\Support\Str;
+use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
 use Psr\SimpleCache\CacheInterface as CacheContract;
-use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
 
 class Repository
 {
@@ -84,7 +85,7 @@ class Repository
      */
     public function __call($name, array $arguments = [])
     {
-        return call_user_func_array([$this->all(), $name], $arguments);
+        return \call_user_func_array([$this->all(), $name], $arguments);
     }
 
     /**
@@ -100,7 +101,7 @@ class Repository
             return $value;
         }
 
-        $result = call_user_func_array([$this, $name], $arguments);
+        $result = \call_user_func_array([$this, $name], $arguments);
 
         if ($this->config->get('hydrate.before')) {
             $result = $this->hydrator->hydrate($result);
@@ -148,7 +149,7 @@ class Repository
         $this->countriesJson = $this->loadCountriesJson();
 
         $overload = $this->helper->loadJsonFiles($this->helper->dataDir('countries/overload'))->mapWithKeys(function ($country, $code) {
-            return [upper($code) => $country];
+            return [Str::upper($code) => $country];
         });
 
         $this->countriesJson = $this->countriesJson->overwrite($overload);
@@ -207,11 +208,11 @@ class Repository
     public function currencies()
     {
         $currencies = $this->helper->loadJsonFiles($this->helper->dataDir('currencies/default'))->mapWithKeys(function ($country, $code) {
-            return [upper($code) => $country];
+            return [Str::upper($code) => $country];
         });
 
         $overload = $this->helper->loadJsonFiles($this->helper->dataDir('currencies/overload'))->mapWithKeys(function ($country, $code) {
-            return [upper($code) => $country];
+            return [Str::upper($code) => $country];
         });
 
         return $currencies->overwrite($overload);

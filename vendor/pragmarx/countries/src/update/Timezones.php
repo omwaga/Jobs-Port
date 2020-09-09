@@ -2,10 +2,11 @@
 
 namespace PragmaRX\Countries\Update;
 
-use PragmaRX\Countries\Package\Support\Base;
+use IlluminateAgnostic\Str\Support\Str;
 use PragmaRX\Coollection\Package\Coollection;
-use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
+use PragmaRX\Countries\Package\Services\Config;
+use PragmaRX\Countries\Package\Support\Base;
 
 class Timezones extends Base
 {
@@ -115,23 +116,23 @@ class Timezones extends Base
         })
         ->mapWithKeys(function ($item, $cca2) {
             $fields = [
-               ['cca2', 'cca2'],
-               ['name.common', 'name'],
-               ['name.official', 'name'],
+                ['cca2', 'cca2'],
+                ['name.common', 'name'],
+                ['name.official', 'name'],
             ];
 
-            list($country) = $this->updater->findByFields($this->updater->getCountries(), $item, $fields, 'cca2');
+            [$country] = $this->updater->findByFields($this->updater->getCountries(), $item, $fields, 'cca2');
 
             if ($country->isEmpty()) {
                 return [$cca2 => $item];
             }
 
             return [
-               $country->cca3 => [
-                   'cca2' => $country->cca2,
-                   'cca3' => $country->cca3,
-                   'name' => $item['name'],
-               ],
+                $country->cca3 => [
+                    'cca2' => $country->cca2,
+                    'cca3' => $country->cca3,
+                    'name' => $item['name'],
+                ],
             ];
         })->map(function ($country) use ($zones, $abbreviations) {
             $country['timezones'] = $zones->where('country_code', $country['cca2'])->mapWithKeys(function ($zone) use ($abbreviations, $country) {
@@ -192,6 +193,6 @@ class Timezones extends Base
      */
     public function zoneNameSnake($name)
     {
-        return snake_case(str_replace(['\\', '/', '__'], ['_', ''], $name));
+        return Str::snake(str_replace(['\\', '/', '__'], ['_', ''], $name));
     }
 }

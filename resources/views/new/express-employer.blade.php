@@ -11,7 +11,8 @@
         <a href="{{route('expresscandidates', $cat)}}" class="text-white">
           <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded"  style="background: linear-gradient(rgba(0, 0, 60, 1), rgba(0, 0, 230, 0)), url({{asset('Images/express_categories/graphic.jpg')}})">
             <h5>{{$category->name}}</h5>
-            <p class="text-white"> {{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</p>
+            <p class="text-white"> 
+            {{$category->users->count() ?? 0}} Candidates</p>
           </div>
         </div>
       </a>

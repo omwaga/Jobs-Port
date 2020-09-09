@@ -3,6 +3,7 @@
 namespace PragmaRX\Countries\Package\Services;
 
 use Exception;
+use IlluminateAgnostic\Str\Support\Str;
 
 class Helper
 {
@@ -54,7 +55,7 @@ class Helper
 
         $decoded = json5_decode($this->loadFile($file), true);
 
-        if (is_null($decoded)) {
+        if (\is_null($decoded)) {
             throw new Exception("Error decoding json file: $file");
         }
 
@@ -70,7 +71,7 @@ class Helper
     public function loadJsonFiles($dir)
     {
         return coollect(glob("$dir/*.json*"))->mapWithKeys(function ($file) {
-            $key = str_replace('.json', '', str_replace('.json5', '', basename($file)));
+            $key = str_replace(['.json5', '.json'], '', basename($file));
 
             return [$key => $this->loadJson($file)];
         });
@@ -99,7 +100,7 @@ class Helper
      */
     public function dataDir($path = '')
     {
-        $path = (empty($path) || starts_with($path, DIRECTORY_SEPARATOR)) ? $path : "/{$path}";
+        $path = (empty($path) || Str::startsWith($path, DIRECTORY_SEPARATOR)) ? $path : "/{$path}";
 
         return __COUNTRIES_DIR__.$this->toDir("/src/data$path");
     }

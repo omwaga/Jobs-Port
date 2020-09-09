@@ -15,7 +15,7 @@ class JobseekerDetail extends Model
     
     public function shortlist()
     {
-        $this->HasMany(Shortlis::class);
+        $this->HasMany(Shortlist::class);
     }
 
     public function skills()
@@ -30,7 +30,12 @@ class JobseekerDetail extends Model
 
     public function country()
     {
-        return $this->belongsTo(PersonalStatement::class, 'nationality', 'id');
+        return $this->belongsTo(Country::class, 'nationality', 'id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(Town::class, 'city', 'id');
     }
    
 }
