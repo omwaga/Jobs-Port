@@ -87,14 +87,14 @@
   </div>
 </div>
 <div class="card">
-  <div class="card-header" id="headingThree">
+  <div class="card-header" id="jobtype">
     <h5 class="mb-0">
-      <button style="color:#0B0B3B;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <button style="color:#0B0B3B;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#jobtype" aria-expanded="false" aria-controls="collapseThree">
         <b><i class="fa fa-check"></i> Job Type</b>
       </button>
     </h5>
   </div>
-  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+  <div id="jobtype" class="collapse" aria-labelledby="jobtype" data-parent="#accordionExample">
     <div class="card-body">
      <ul>
        <li class="d-flex justify-content-between align-items-center">

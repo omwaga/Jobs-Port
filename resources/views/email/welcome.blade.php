@@ -17,7 +17,7 @@
 			<h4 style="color:#005691">PLEASE REMEMBER TO COMPLETE YOUR PROFILE AND BE DISCOVERED BY EMPLOYERS WHO VISIT OUR SERVICE EVERYDAY TO RECRUIT TRUSTED PROFESSIONALS</h4>
 
 			<p> To log on, please use the user name and password you chose when creating your profile</p>
-			<a href="" ><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
+			<a href="https://thenetworkedpros.com/login" ><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
 			<p>Benefits of recruiting through The Networked Pros</p>
 			<ul>
 				<li>You will be available for discovery by employers across East Africa who recruit from our network.</li>
@@ -31,7 +31,7 @@
 			<p>With kind regards,</p>
 
 			<p>The Networked Pros</p>
-			<a href=""><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
+			<a href="https://thenetworkedpros.com/login"><button style="background-color:#FF0000; color: #fff">Complete Your Profile Now</button></a>
 
 			<hr>
 			<p class="text-danger"><b>Kind Regards</b></p>

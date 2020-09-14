@@ -54,12 +54,12 @@
       @if($job->apply === "No")
       <p>{!!$job->application_details!!}</p>
       @else
-      <ol>
+      <!-- <ol>
         <li>Register with the networked pros if not registered or login to your account if you had registered.</li>
         <li>Create your career profile: Personal Details, Work Experience, Education History</li>
         <li>Browse the available jobs that match your skill-set and apply</li>
         <li>You can also update your career profile before applying for a vacancy</li>
-      </ol>
+      </ol> -->
 
       <div class="pull-right">
         @auth

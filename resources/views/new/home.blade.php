@@ -69,7 +69,8 @@
     </div>
   </div>
 </section>
-<br>
+
+@include('new.featured-jobs');
 
 <div class="container" id="title_message">
   <div class="vertical-tabs">

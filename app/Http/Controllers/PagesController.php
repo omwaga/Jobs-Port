@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use App\Jobposts;
 use App\jobcategories;
 use App\Locations;
@@ -47,6 +48,7 @@ class PagesController extends Controller
     $countries = DB::table('countries')->pluck("name","id");
     $company=Employer::orderBy('created_at','desc')->limit(6)->get();
     $town=Town::orderBy('name','asc')->get();
+    $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
 
     return view('new.home')->with('industry',$industries)
     ->with('jobs',$jobs)
@@ -58,6 +60,7 @@ class PagesController extends Controller
     ->with('ngo_jobs',$ngo_jobs)
     ->with('un_jobs',$un_jobs)
     ->with('consultancies',$consultancies)
+    ->with('featured_jobs',$featured_jobs)
     ->with('towns',$town);
 
   }
@@ -100,12 +103,13 @@ class PagesController extends Controller
 //Express recruitment
 public function express()
 {
+  SEOMeta::setTitle('Express Recruitment');
   return view('new.express-recruitment');
 }
 
 public function expressemployer()
 {
-
+  SEOMeta::setTitle('Express Recruitment Categories');
   $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
@@ -118,6 +122,7 @@ public function expresscandidates($category)
 {
   $job_category = ucwords(str_replace('-', ' ', $category));
   $category = ExpressCategory::where('name', $job_category)->value('id');
+  SEOMeta::setTitle($job_category);
 
   $jobseekers = PersonalStatement::where('category', $category)->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
@@ -173,8 +178,9 @@ public function alljobs(){
   $locations = Town::all();
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
+  $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
   
-  return view('new.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('new.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
 }
 
 //  jobs after the search
@@ -189,11 +195,13 @@ public function searchresult(Request $request)
 }
 
 public function filterlocation($name){
+  SEOMeta::setTitle('Jobs in'.$name);
   $town_id=Town::where('name',$name)->pluck('id');
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $jobs=Jobposts::whereIn('location',$town_id)->orderBy('created_at', 'desc')->paginate(10);
   $industries=Industry::orderBy('name','asc')->limit(10)->get();
+  SEOMeta::setTitle('Jobs in '.$name);
 
   return view('new.filterlocation')
   ->with('locations',$towns)
@@ -203,6 +211,7 @@ public function filterlocation($name){
 }
 
 public function showcategory($jobcategories){
+  SEOMeta::setTitle($jobcategories.' Jobs');
   $category=jobcategories::where('jobcategories',$jobcategories)->pluck('id')->first();
   $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
@@ -217,6 +226,7 @@ public function showcategory($jobcategories){
 }
 
 public function filterindustry($name){
+  SEOMeta::setTitle($name.' Jobs');
   $industry_id=Industry::where('name',$name)->pluck('id')->first();
   $jobs=Jobposts::where('industry',$industry_id)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
@@ -351,10 +361,9 @@ public function show($id)
   $industries = Industry::all();
   $job = Jobposts::where('id', $id)->first();
   $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
-
   $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
-
   $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
+  SEOMeta::setTitle($job->job_title);
 
   return view('new.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries'));
 } 
@@ -458,8 +467,9 @@ public function enrollworkreadiness()
   return view('new.enroll-workprogram', compact('countries'));
 }
 
-public function new()
+public function faqs()
 {
-  return view('employer.employer-register-jobpost');
+  SEOMeta::setTitle('Frequently Asked Questions');
+  return view('new.faqs');
 }
 }

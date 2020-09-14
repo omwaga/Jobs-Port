@@ -145,6 +145,7 @@ Route::prefix('public')->group(function(){
  Route::get('/express-recruitment', 'PagesController@express')->name('express');
  Route::get('/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
  Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+ Route::get('/faqs', 'PagesController@faqs')->name('faqs');
 });
 Route::get('/jobseekers', 'PagesController@jobseekers')->name('jobseekers');
 Route::get('/employers', 'PagesController@employers')->name('employers');
@@ -171,7 +172,6 @@ Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jo
 // Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
 Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
-Route::get('/newdesign','PagesController@new')->name('hire');
 Route::get('/job-search','PagesController@aboutjob')->name('joblisting');
 Route::get('/employerd','PagesController@employerd')->name('emp');
 Route::get('/homesearch','PagesController@searchhome')->name('homesearch');

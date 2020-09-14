@@ -165,6 +165,7 @@ return [
         Monarobase\CountryList\CountryListServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
       
         /*
          * Package Service Providers...
@@ -236,6 +237,12 @@ return [
         'Countries' => Monarobase\CountryList\CountryListFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PDF'       => Barryvdh\DomPDF\Facade::class,
+        
+        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
        
 
     ],

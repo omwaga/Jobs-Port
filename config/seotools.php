@@ -6,10 +6,10 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Thenetworkedpros-Home", // set false to total remove
-            'description'  => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'        => "Be Discovered By Employers | The Networked Pros", // set false to total remove
+            'description'  => 'Find the job that’s right for you. Search for jobs, read career advice and sign up to receive alerts on the latest job vacancies.', // set false to total remove
             'separator'    => ' - ',
-            'keywords'     => [],
+            'keywords'     => ['latest jobs', 'job in Kenya', 'jobs Kenya', 'Kenya jobs', 'kenyan job', 'kenyan jobs', 'kenyanjobs', 'jobs for Kenya', 'tips for final interview', 'jobs in Nairobi', 'careers'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
