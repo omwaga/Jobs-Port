@@ -23,7 +23,7 @@
                   <p class="text-dark">
                     Answer:<br>
                     The Networked Pro's philosophy is to connect you with resources for job searching & for moving up the career ladder.
-                    Click here to sign up on The Networked Pro!!
+                    <a href="{{route('Register')}}" class="text-primary">Click here to sign up</a> on The Networked Pro!!
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@
                 <div class="col-md-9">
                   <p class="text-dark">
                     Answer:<br>
-                    Visit https://thenetworkedpros.com/Register and add your details to sign up.!
+                    Visit <a href="{{route('Register')}}" class="text-primary">Networked Pros Registration Page</a> and add your details to sign up.!
                   </p>
                 </div>
               </div>
@@ -71,7 +71,8 @@
                 <div class="col-md-9">
                   <p class="text-dark">
                     Answer:<br>
-                    The Networked Pro posts jobs from all industries. Visit https://thenetworkedpros.com/#pag3 to view and apply!
+                    The Networked Pro posts jobs from all industries. Visit 
+                    <a href="{{route('alljobs')}}" class="text-primary">NetworkedPros Jobs Page</a> to view and apply!
                   </p>
                 </div>
               </div>
@@ -85,7 +86,7 @@
                 <div class="col-md-9">
                   <p class="text-dark">
                     Answer:<br>
-                  First visit https://thenetworkedpros.com/Register create a profile as a job seeker.</p>
+                  First visit <a href="{{route('Register')}}" class="text-primary">Registration Page</a> create a profile as a job seeker.</p>
                   <p>
                   Second, ensure that you verify your account in which you will be sent a verification link to your email.</p>
                   <p>
@@ -112,7 +113,7 @@
                 <p class="text-dark">
                   Answer:<br>
                   Employer Dashboard is a Dashboard which provides an overall view of the Employer’s account about the Recent Job Postings by Employer, recently saved search (hiring folders), Account Utilization status.
-                  Click here to see the Employer Dashboard snapshot.
+                    <a href="#" class="text-primary">Click here</a> to see the Employer Dashboard snapshot.
                 </p>
               </div>
             </div>
@@ -148,20 +149,6 @@
         </div>
         <div class="container">
           <div class="card card-body border-light shadow-sm p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
-            <h5 style="color:#0B0B3B;"><a href="#">Where can I see the usage of my account?</a></h5>
-
-            <div class="row">
-              <div class="col-md-9">
-                <p class="text-dark">
-                  Answer:<br>
-                  You can see the usage of your account on Dashboard (Click here to see the snapshot)
-                </p>
-              </div>
-            </div>
-          </div> 
-        </div>
-        <div class="container">
-          <div class="card card-body border-light shadow-sm p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
             <h5 style="color:#0B0B3B;"><a href="#">Can I select Multiple Job Locations while posting a Job?</a></h5>
 
             <div class="row">
@@ -176,13 +163,13 @@
         </div>
         <div class="container">
           <div class="card card-body border-light shadow-sm p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
-            <h5 style="color:#0B0B3B;"><a href="#">How can I contact candidates from Post-n-Hire?</a></h5>
+            <h5 style="color:#0B0B3B;"><a href="#">How can I contact candidates from Express Recruitment?</a></h5>
 
             <div class="row">
               <div class="col-md-9">
                 <p class="text-dark">
                   Answer:<br>
-                  You can contact candidates from Post-n-Hire via
+                  You can contact candidates from Express Reruitment via
                   <ul>
                     <li>Sending E-mail/SMS</li>
                     <li>The candidates contact details in Excel</li>
