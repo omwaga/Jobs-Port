@@ -103,18 +103,11 @@ class PagesController extends Controller
 //Express recruitment
 public function express()
 {
-  SEOMeta::setTitle('Express Recruitment');
-  return view('new.express-recruitment');
-}
-
-public function expressemployer()
-{
   SEOMeta::setTitle('Express Recruitment Categories');
   $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
-  
-  return view('new.express-employer', compact('categories', 'countries', 'express_categories'));
+  return view('new.express-recruitment', compact('categories', 'countries', 'express_categories'));
 }
 
 // Express candidates

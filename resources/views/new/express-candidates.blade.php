@@ -33,7 +33,7 @@
 </form>
 </div><br>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-9">
     @forelse($jobseekers as $jobseeker)
     <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
       <div class="row">
@@ -44,11 +44,11 @@
           <h4>{{str_singular($job_category)}}</h4>
           <p class="text-dark">{!!str_limit($jobseeker->statement ?? '', $limit = 300, $end = '...')!!}</p>
           <div class="mt-3">
-          @foreach($jobseeker->skills as $skill)
+            @foreach($jobseeker->skills as $skill)
             <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
-          @endforeach
+            @endforeach
           </div>
-          <a class="btn btn-danger pull-right btn-sm" href="#">View Profile</a>
+          <a class="btn btn-danger pull-right btn-sm" href="{{route('foremployer')}}">View Profile</a>
         </div>
       </div>
     </div> 
@@ -56,6 +56,9 @@
     <p>No Jobseekers</p>
     @endforelse
     {{$jobseekers->links()}}
+  </div>
+  <div class="col-md-3">
+    @include('new.express-sidebar')
   </div>
 </div>
 </div>

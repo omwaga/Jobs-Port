@@ -143,7 +143,6 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 //public routes
 Route::prefix('public')->group(function(){    
  Route::get('/express-recruitment', 'PagesController@express')->name('express');
- Route::get('/employer-recruitment', 'PagesController@expressemployer')->name('expressemployer');
  Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
  Route::get('/faqs', 'PagesController@faqs')->name('faqs');
 });
