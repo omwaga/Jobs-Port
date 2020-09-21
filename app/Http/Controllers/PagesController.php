@@ -355,7 +355,16 @@ public function show($id)
   $job = Jobposts::where('id', $id)->first();
   $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
   $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
-  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
+  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get(); 
+
+  // count the number of views
+  if($job->viewcount === NULL)
+  {
+    $job->update(['viewcount' => 0]);
+  }
+
+  $job->update(['viewcount' => $job->viewcount + 1]);
+  
   SEOMeta::setTitle($job->job_title);
 
   return view('new.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries'));

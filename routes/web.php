@@ -106,8 +106,9 @@ Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplicatio
 Route::prefix('admin')->group(function(){
     Route::get('/jobseeker/{name}','AdminController@jobseekerprofileprofile')->name('adminprofile');
     Route::get('/export-jobseekers', 'AdminController@export')->name('export-jobseekers');
-    Route::get('/express-recruitment', 'AdminController@expresscategories')->name('admin.express-recruitment');
-    Route::POST('/new-express-category', 'AdminController@newcategory')->name('new-express-category');
+    Route::resource('/expresscategories', 'ExpressCategoriesController');
+    Route::resource('/industries', 'IndustriesController');
+    Route::resource('/categories', 'CategoriesController');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
@@ -124,8 +125,6 @@ Route::resource('resumedomains', 'ResumeDomainController');
 Route::resource('resumesamples', 'ResumeSamplesController');
 Route::get('/cover-letters', 'PagesController@coverletter')->name('coverletter');
 Route::get('/admin-resume', 'AdminController@resume')->name('resume');
-Route::get('/admin-industries', 'AdminController@industry')->name('admin-industry');
-Route::get('/admin-categories', 'AdminController@category')->name('admin-category');
 Route::resource('cvupload', 'CvUploadsController');
 Route::resource('coverletters', 'CoverLettersController');
 

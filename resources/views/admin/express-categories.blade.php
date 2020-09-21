@@ -20,36 +20,52 @@
   <!--End Page Title-->          
   
   
-  <!-- Start row-->
-  <div class="row">
-    <div class="col-md-12">
+  <!-- Start row--> 
+  <div class="col-md-12">
+    <div class="white-box">
+      <h2 class="header-title"> All Express Categories </h2>
+      <a href="#" class="btn btn-success">Export Excel</a>
       <button class="btn btn-info pull-right" data-toggle="modal" data-target="#modal-large" type="button">Add Category</button>
       @include('admin.new-express-category')
-    </div><br>
-    <div class="calendar-layout clearfix">
+
       @include('success')
       @include('errors')
-      @foreach($categories as $category)
-      <div class="col-md-4">
-        <div class="card-profile3">
-         <div class="p-info">
-          <div class="row">
-           <div class="col-md-12 co-sm-12 col-xs-12">
-             <div class="p-stats">
-              <h4><a href="#">{{$category->name}}</a></h4>
-              <h5>{{App\PersonalStatement::where('category'.$category->id, $category->name)->count()}} Candidates</h5>
-            </div>
-          </div>
-        </div>
-
-      </div> <!--/.p-info-->
-
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Candidates</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php $column = 0 @endphp
+            @foreach($categories as $category)
+            @php $column = $column + 1 @endphp
+            <tr>
+              <td>{{$column}}</td>
+              <td>{{$category->name}}</td>
+              <td>{{$category->users->count()}}</td>
+              <td>
+                <div class="btn-group">
+                  <a type="button" href="{{route('expresscategories.edit', $category->id)}}" class="btn btn-info float-left">Edit</a>
+                  <form method="POST" action="{{route('expresscategories.destroy', $category->id)}}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger float-left" >Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+      {{$categories->links()}}  
     </div>
-  </div>
-  @endforeach
-</div>      
-</div>
-<!-- End row-->        
+  </div>        
 </div>
 <!-- End Wrapper-->
 @endsection

@@ -9,7 +9,7 @@
         <h4 class="modal-title">New Category</h4>
       </div>
       <div class="modal-body">
-        <form class="js-validation-bootstrap form-horizontal" action="{{route('new-express-category')}}" method="post">
+        <form class="form-horizontal" action="{{route('expresscategories.store')}}" method="post">
          @csrf
          <div class="form-group">
           <label class="col-md-3 control-label">Category Name: <span class="text-danger">*</span></label>

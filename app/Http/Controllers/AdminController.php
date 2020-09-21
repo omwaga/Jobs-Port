@@ -65,7 +65,7 @@ class AdminController extends Controller
     // All job vacancies
     public function adminvacancies()
     {
-        $vacancies = Jobposts::paginate(10);
+        $vacancies = Jobposts::orderBy('created_at', 'DESC')->paginate(20);
         
         return view('admin.admin-vacancies', compact('vacancies'));
     }
@@ -84,22 +84,6 @@ class AdminController extends Controller
         $resumes = CvUpload::all();
 
         return view('admin.resume', compact('resumes'));
-    }
-
-    // manage industries
-    public function industry()
-    {
-        $industries = Industry::all();
-
-        return view('admin.industries', compact('industries'));
-    }
-
-    // manage categories
-    public function category()
-    {
-        $categories = jobcategories::all();
-
-        return view('admin.categories', compact('categories'));
     }
 
     public function employer()
@@ -195,26 +179,6 @@ class AdminController extends Controller
 
         return view('admin.jobseeker-profile', compact( 'jobseekerdetail', 'personalstatement', 
             'academics', 'experiences', 'referees', 'certifications','skills'));
-    }
-
-//return the skills for the pros
-    public function expresscategories()
-    {
-        $categories = ExpressCategory::all();
-
-        return view('admin.express-categories', compact('categories'));
-    }
-
-    //add a new skill
-    public function newcategory(Request $request)
-    {
-        $attributes = $request->validate([
-            'name' => 'required|min:3',
-        ]);
-
-        ExpressCategory::create($attributes);
-
-        return back()->with('message', 'The Category has been added successfully');
     }
 
     //export jobseekers to PDF

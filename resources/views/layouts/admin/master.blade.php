@@ -66,10 +66,10 @@
               <li><a href="{{route('adminvacancies')}}">All Vacancies</a></li>
             </ul>
             <ul class="sub-menu-list">
-              <li><a href="{{route('admin-industry')}}">Industries</a></li>
+              <li><a href="{{route('industries.index')}}">Industries</a></li>
             </ul>
             <ul class="sub-menu-list">
-              <li><a href="{{route('admin-category')}}">Categories</a></li>
+              <li><a href="{{route('categories.index')}}">Categories</a></li>
             </ul>
           </li>
 
@@ -103,7 +103,7 @@
 
           <li class="menu-list"><a href="#"><i class="icon-folder"></i> <span>Express Recruitment</span></a>
             <ul class="sub-menu-list">
-              <li><a href="{{route('admin.express-recruitment')}}">Categories</a></li>
+              <li><a href="{{route('expresscategories.index')}}">Categories</a></li>
             </ul>
           </li>
 

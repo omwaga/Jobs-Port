@@ -33,6 +33,7 @@
               <th>Vacancy Title</th>
               <th>Date Posted</th>
               <th>Employer</th>
+              <th>View Count</th>
               <th>Applications</th>
             </tr>
           </thead>
@@ -45,6 +46,7 @@
               <td>{{$vacancy->job_title}}</td>
               <td>{{$vacancy->created_at->diffForHumans()}}</td>
               <td>{{$vacancy->employer->company_name}}</td>
+              <td>{{$vacancy->viewcount}}</td>
               <td>{{$vacancy->applications->count()}}</td>
             </tr>
             @endforeach
