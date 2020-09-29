@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use App\Companies;
 use App\Jobposts;
 use App\CvUpload;
@@ -59,7 +60,7 @@ class DashboardController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         $categories = ExpressCategory::orderBy('name','asc')->get();
         
-        return view('dashboard.user-profile', compact('countries', 'personalinfo', 'references',
+        return view('jobseeker-dashboard.user-profile', compact('countries', 'personalinfo', 'references',
            'personalstatements', 'experience', 'education', 'awards', 'skills', 'states', 'industries', 'categories'));
     }
 
@@ -78,7 +79,7 @@ class DashboardController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         $categories = ExpressCategory::orderBy('name','asc')->get();
         
-        return view('dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
+        return view('jobseeker-dashboard.profile-wizard', compact('countries', 'personalinfo', 'references',
            'personalstatements', 'experience', 'education', 'awards', 'skills', 'states', 'categories'));
     }
 
@@ -87,7 +88,7 @@ class DashboardController extends Controller
     {
         $userinfo = User::where('id', auth()->user()->id)->first();
         
-        return view('dashboard.jobseekerprofile', compact('userinfo'));
+        return view('jobseeker-dashboard.jobseekerprofile', compact('userinfo'));
     }
 
     function profilejourney(){
@@ -104,7 +105,7 @@ class DashboardController extends Controller
         $applications = JobApplication::where('user_id', '=', auth()->user()->id)->get();
         $jobs = Jobposts::orderBy('created_at','asc')->limit(8)->get();
         
-        return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
+        return view('jobseeker-dashboard.prof', compact('countries', 'personalinfo', 'references',
            'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications', 'jobs'));
     }
     
@@ -115,7 +116,7 @@ class DashboardController extends Controller
         $user_industries = UserCategories::where('user_id', auth()->user()->id)->get();
         $jobs = Jobposts::orderBy('created_at', 'DESC')->paginate(12);
         
-        return view('dashboard.recommended-jobs', compact('industries', 'locations', 'categories', 'user_industries', 'jobs'));
+        return view('jobseeker-dashboard.recommended-jobs', compact('industries', 'locations', 'categories', 'user_industries', 'jobs'));
     }
     public function saverecommendedjobs(Request $request){
 
@@ -130,53 +131,91 @@ class DashboardController extends Controller
       return redirect()->back()->with('status','You have successfully added the industry');
   }
 
-  public function store(Request $request)
+
+//  all jobs available in the database
+  public function alljobs(){
+      $jobs=Jobposts::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(12);
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
+
+      return view('jobseeker-dashboard.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
+  }
+
+
+  public function showjob($id)
   {
-        //
-    $this->validate($request,[
-        'cname'=>'required',
-        'cwebsite'=>'required',
-        'location'=>'required',
-        'function'=>'required',
-        'logo'=>'required|image|max:1999',
-    ]);
-    if($request->hasFile('logo')){
-        $filewithext= $request->file('logo')->getClientOriginalName();
-        $filename=pathinfo($filewithext,PATHINFO_FILENAME);
-        $extension=$request->file('logo')->getClientOriginalExtension();
-        $filenametostore=$filename.'_'.time().'.'.$extension;
-        $path=$request->file('logo')->storeAs('public/uploads',$filenametostore);
-    }
-    else{
-        $filenametostore='nologo.jpg';
-    }
-    $data=array(
-        'email'=>$request->email,
-        'cname'=>$request->cname,
-        'location'=>$request->location,
-        'namee'=>$request->namee,
-    );
-    Mail::send('dashboard.email',$data,function ($message) use ($data){
-        $message->to($data['email']);
-        $message->from('info@thenetworkedpros.com');
-        $message->subject('COMPANY ACCOUNT CREATION');
-    });
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $job = Jobposts::where('id', $id)->first();
+      $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
+      $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
+      $related_jobs=Jobposts::where('jobcategories_id', $job->jobcategories_id)->orderBy('created_at','desc')->limit(5)->get(); 
+      $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
 
-    $company= new Companies;
-    $company->user_id=auth()->user()->id;
-    $company->companyname=$request->input('cname');
-    $company->website=$request->input('cwebsite');
-    $company->location=$request->input('location');
-    $company->function=$request->input('function');
-    $company->logo=$filenametostore;
-    $company->contactmail=$request->input('email');
-    $company->save();
-    DB::table('users')
-    ->where('id', auth()->user()->id)
-    ->update(['userlevel' => "1"]);
-    return redirect('/Employer')->with('status','company created successfully');
+  // count the number of views
+      if($job->viewcount === NULL)
+      {
+        $job->update(['viewcount' => 0]);
+    }
 
-}
+    $job->update(['viewcount' => $job->viewcount + 1]);
+
+    SEOMeta::setTitle($job->job_title);
+
+    return view('jobseeker-dashboard.single-job', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries', 'related_jobs'));
+} 
+
+//   public function store(Request $request)
+//   {
+//         //
+//     $this->validate($request,[
+//         'cname'=>'required',
+//         'cwebsite'=>'required',
+//         'location'=>'required',
+//         'function'=>'required',
+//         'logo'=>'required|image|max:1999',
+//     ]);
+//     if($request->hasFile('logo')){
+//         $filewithext= $request->file('logo')->getClientOriginalName();
+//         $filename=pathinfo($filewithext,PATHINFO_FILENAME);
+//         $extension=$request->file('logo')->getClientOriginalExtension();
+//         $filenametostore=$filename.'_'.time().'.'.$extension;
+//         $path=$request->file('logo')->storeAs('public/uploads',$filenametostore);
+//     }
+//     else{
+//         $filenametostore='nologo.jpg';
+//     }
+//     $data=array(
+//         'email'=>$request->email,
+//         'cname'=>$request->cname,
+//         'location'=>$request->location,
+//         'namee'=>$request->namee,
+//     );
+//     Mail::send('jobseeker-dashboard.email',$data,function ($message) use ($data){
+//         $message->to($data['email']);
+//         $message->from('info@thenetworkedpros.com');
+//         $message->subject('COMPANY ACCOUNT CREATION');
+//     });
+
+//     $company= new Companies;
+//     $company->user_id=auth()->user()->id;
+//     $company->companyname=$request->input('cname');
+//     $company->website=$request->input('cwebsite');
+//     $company->location=$request->input('location');
+//     $company->function=$request->input('function');
+//     $company->logo=$filenametostore;
+//     $company->contactmail=$request->input('email');
+//     $company->save();
+//     DB::table('users')
+//     ->where('id', auth()->user()->id)
+//     ->update(['userlevel' => "1"]);
+//     return redirect('/Employer')->with('status','company created successfully');
+
+// }
 
 public function jobs()
 {
@@ -186,7 +225,7 @@ public function jobs()
     $datediif=Jobposts::select(DB::raw('CASE WHEN  DATEDIFF(expirydate,curdate())>=0  THEN DATEDIFF(expirydate,curdate()) ELSE DATEDIFF(expirydate,curdate())=0 END  as days'))->distinct('days')->get();
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
     $jobs=Jobposts::orderBy('created_at','desc')->get();
-    return view('dashboard.jobs')->with('industry',$industries)
+    return view('jobseeker-dashboard.jobs')->with('industry',$industries)
     ->with('jobs',$jobs)
     ->with('categories',$categories)
     ->with('towns',$town)
@@ -198,7 +237,7 @@ public function applications()
 { 
     $categories = jobcategories::all();
 
-    return view('dashboard.applications', compact('categories'));
+    return view('jobseeker-dashboard.applications', compact('categories'));
 }
 
 public function savedjobs()
@@ -208,7 +247,7 @@ public function savedjobs()
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
     $jobs = SavedJob::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
 
-    return view('dashboard.savedjobs', compact('categories', 'locations', 'industries', 'jobs'));
+    return view('jobseeker-dashboard.savedjobs', compact('categories', 'locations', 'industries', 'jobs'));
 }
 
 public function viewjob($id)
@@ -216,37 +255,38 @@ public function viewjob($id)
     $job = Jobposts::where('id', $id)->first();
     $categories = jobcategories::all();
 
-    return view('dashboard.viewjob', compact('categories', 'job'));
+    return view('jobseeker-dashboard.viewjob', compact('categories', 'job'));
 }
 
 public function showlocation($name){
-    $location=Town::where('name',$name)->pluck('id');
-    $jobposts=Jobposts::whereIn('location',$location)->get();
-    $towns=Town::orderBy('name','asc')->get();
-    $categories=jobcategories::orderBy('jobcategories','asc')->get();
-    $industry=Industry::orderBy('name','asc')->limit(10)->get();
+  SEOMeta::setTitle('Jobs in'.$name);
+  $town_id=Town::where('name',$name)->pluck('id');
+  $towns=Town::orderBy('name','asc')->get();
+  $categories=jobcategories::orderBy('jobcategories','asc')->get();
+  $jobs=Jobposts::whereIn('location',$town_id)->orderBy('created_at', 'desc')->paginate(10);
+  $industries=Industry::orderBy('name','asc')->limit(10)->get();
+  SEOMeta::setTitle('Jobs in '.$name);
 
-    return view('dashboard.filterlocation')
-    ->with('locations',$towns)
-    ->with('jobposts',$jobposts)
-    ->with('industries',$industry)
-    ->with('categories',$categories);
+  return view('jobseeker-dashboard.filterlocation')
+  ->with('locations',$towns)
+  ->with('industries',$industries)
+  ->with('jobs',$jobs)
+  ->with('categories',$categories);
 }
 
-public function showcategory($name){
-    $category=jobcategories::where('jobcategories',$name)->pluck('id')->first();
-    $jobposts=Jobposts::where('jobcategories_id',$category)->get();
-    $towns=Town::orderBy('name','asc')->get();
-    $categories=jobcategories::orderBy('jobcategories','asc')->get();
-    $gettown=Town::select('name')->where('id',$category)->get();
-    $industry=Industry::orderBy('name','asc')->limit(10)->get();
+public function showcategory($jobcategories){
+  SEOMeta::setTitle($jobcategories.' Jobs');
+  $category=jobcategories::where('jobcategories',$jobcategories)->pluck('id')->first();
+  $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
+  $towns=Town::orderBy('name','asc')->get();
+  $categories=jobcategories::orderBy('jobcategories','asc')->get();
+  $industry=Industry::orderBy('name','asc')->limit(10)->get();
 
-    return view('dashboard.filtercategory')
-    ->with('locations',$towns)
-    ->with('jobposts',$jobposts)
-    ->with('industries',$industry)
-    ->with('gettown',$gettown)
-    ->with('categories',$categories);
+  return view('jobseeker-dashboard.filtercategory')
+  ->with('locations',$towns)
+  ->with('jobs',$jobs)
+  ->with('industries',$industry)
+  ->with('categories',$categories);
 }
 
     // method to search for a jobpost on the jobseekerds dashboard immediately after login
@@ -267,7 +307,7 @@ public function jobsearch(Request $request)
         ->where('industry', '=', $duty)
         ->get();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
         //No job keyword
     else if($request->duty !== 'All Job Functions' && $request->location !== 'All Locations' && $request->keyword === null)
@@ -279,7 +319,7 @@ public function jobsearch(Request $request)
         ->where('industry', '=', $duty)
         ->get();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
         //only the job keyword is provided
     else if($request->duty === 'All Job Functions' && $request->location === 'All Locations' && $request->keyword !== null)
@@ -288,7 +328,7 @@ public function jobsearch(Request $request)
         $keyword = $request->keyword;
         $results = Jobposts::where('jobtitle', 'LIKE', '%'.$keyword.'%')->get();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
         //Only job function is selected
     else if($request->duty !== 'All Job Functions' && $request->location === 'All Locations' && $request->keyword === null)
@@ -298,7 +338,7 @@ public function jobsearch(Request $request)
         $results = Jobposts::where('industry', '=', $duty)
         ->get();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
         //No job keyword
     else if($request->duty === 'All Job Functions' && $request->location !== 'All Locations' && $request->keyword === null)
@@ -308,7 +348,7 @@ public function jobsearch(Request $request)
         $results = Jobposts::where('location', '=', $location)
         ->get();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
         //No keyword is provided by the user
     else if($request->duty === 'All Job Functions' && $request->location === 'All Locations' && $request->keyword === null)
@@ -316,9 +356,22 @@ public function jobsearch(Request $request)
 
         $results = Jobposts::all();
         
-        return view('dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
+        return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }
 
+}
+
+public function workReady()
+{
+    return view('jobseeker-dashboard.work-readiness');
+}
+
+    // resume samples page
+public function resumeTemplates()
+{
+  $samples = CvUpload::all();
+
+  return view('jobseeker-dashboard.resume-samples', compact('samples'));
 }
 
 public function customizeresume()
@@ -332,7 +385,7 @@ public function customizeresume()
     $references = Reference::where('user_id', '=', auth()->user()->id)->get();
     $skills = Skills::where('user_id', '=', auth()->user()->id)->pluck('skillname');
 
-    return view('dashboard.customize-resume', compact( 'personalinfo', 'references',
+    return view('jobseeker-dashboard.customize-resume', compact( 'personalinfo', 'references',
       'personalstatements', 'experience', 'education', 'awards', 'skills', 'countries'));
 }
 
@@ -468,7 +521,7 @@ public function picktheme()
     $references = Reference::where('user_id', '=', auth()->user()->id)->get();
     $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
 
-    return view('dashboard.resume-previews', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
+    return view('jobseeker-dashboard.resume-previews', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
 }
 
 public function downloadresume($id)
@@ -481,7 +534,7 @@ public function downloadresume($id)
     $references = Reference::where('user_id', '=', auth()->user()->id)->get();
     $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
 
-    $pdf = PDF::loadView('dashboard.orbit-template', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
+    $pdf = PDF::loadView('jobseeker-dashboard.orbit-template', compact('personalinfo', 'personalstatements', 'experience', 'education', 'awards', 'references', 'skills'));
     return $pdf->download('The-NetworkedPros-resume.pdf');
 }
 

@@ -101,17 +101,10 @@
             </ul>
           </li>
 
-          <li class="menu-list"><a href="#"><i class="icon-folder"></i> <span>Express Recruitment</span></a>
+          <li class="menu-list"><a href="#"><i class="icon-users"></i> <span>Express Recruitment</span></a>
             <ul class="sub-menu-list">
               <li><a href="{{route('expresscategories.index')}}">Categories</a></li>
-            </ul>
-          </li>
-
-          <li class="menu-list"><a href="#"><i class="icon-envelope-open"></i> <span>Mail</span></a>
-            <ul class="sub-menu-list">
-              <li><a href=""> Inbox</a></li>
-              <li><a href=""> Compose Mail</a></li>
-              <li><a href=""> View Mail</a></li>
+              <li><a href="{{route('express.candidates')}}">Candidates</a></li>
             </ul>
           </li>
         </ul>

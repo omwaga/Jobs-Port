@@ -37,7 +37,14 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'jobcategories' => 'required|unique:jobcategories',
+            'description' => 'nullable'
+        ]);
+
+        jobcategories::create($attributes);
+
+        return back()->with('message', 'The category has been added successfully');
     }
 
     /**
@@ -57,9 +64,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(jobcategories $category)
     {
-        //
+        return view('admin.edit-categories', compact('category'));
     }
 
     /**
@@ -69,9 +76,16 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, jobcategories $category)
     {
-        //
+        $attributes = request()->validate([
+            'jobcategories' => 'required',
+            'description' => 'nullable'
+        ]);
+
+        $category->update(request(['jobcategories', 'description']));
+
+        return redirect(route('categories.index'))->with('message', 'The category has been updated successfully');
     }
 
     /**

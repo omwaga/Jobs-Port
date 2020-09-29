@@ -181,6 +181,12 @@ class AdminController extends Controller
             'academics', 'experiences', 'referees', 'certifications','skills'));
     }
 
+    //Express candidates
+    public function expresscandidates()
+    {
+        return view('admin.express-candidates');
+    }
+
     //export jobseekers to PDF
     public function export()
     {

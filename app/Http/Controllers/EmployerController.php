@@ -43,7 +43,7 @@ class EmployerController extends Controller
             ['employer_id',Auth::guard('employer')->user()->id],
             ['status', 'applied']
         ])->orderBy('created_at', 'DESC')->paginate(12);
-        return view('empdash.content.allapplicants',compact('application'));
+        return view('employer-dashboard.allapplicants',compact('application'));
     }
     
     // method to show the applicants full career profile
@@ -58,7 +58,7 @@ class EmployerController extends Controller
         $skills = Skills::where('user_id', $id)->get();
         $talent=TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
 
-        return view('empdash.content.viewapplicantprofile', compact( 'jobseekerdetail', 'personalstatement', 
+        return view('employer-dashboard.viewapplicantprofile', compact( 'jobseekerdetail', 'personalstatement', 
             'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
     }
 
@@ -74,7 +74,7 @@ class EmployerController extends Controller
         $skills = Skills::where('user_id', $id)->get();
         $talent=TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
 
-        return view('empdash.content.resume-view', compact( 'jobseekerdetail', 'personalstatement', 
+        return view('employer-dashboard.resume-view', compact( 'jobseekerdetail', 'personalstatement', 
             'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
     }
     
@@ -90,14 +90,14 @@ class EmployerController extends Controller
 
         $jobseekers = User::all()->random(4);
 
-        return view('empdash.content.dashboard',compact('jobs','applications', 'jobseekers', 'shortlisted', 'declined', 'dashboard_jobs'));
+        return view('employer-dashboard.dashboard',compact('jobs','applications', 'jobseekers', 'shortlisted', 'declined', 'dashboard_jobs'));
     }
 
 //show all talent pools from the database    
     public function talentpool(){
         $talent=TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
         
-        return view('empdash.content.talentpool',compact(['talent']));
+        return view('employer-dashboard.talentpool',compact(['talent']));
     }
     
 //New talent pool name
@@ -136,13 +136,13 @@ class EmployerController extends Controller
  {
     $poolmembers = TalentpoolCandidates::where('talentpool_id', $id)->get();
 
-    return view('empdash.content.poolmembers', compact('poolmembers'));
+    return view('employer-dashboard.poolmembers', compact('poolmembers'));
 }
 
 //return the view to select the job post method
 public function joboptions()
 {
-    return view('empdash.content.jobpost-options');
+    return view('employer-dashboard.jobpost-options');
 }
 
 public function postajob(){
@@ -152,7 +152,7 @@ public function postajob(){
     $cname=Employer::select('company_name')->where('id',Auth::guard('employer')->user()->id)->get();
     $countries = Country::all();
 
-    return view('empdash.content.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));
+    return view('employer-dashboard.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));
 }
 
 //Jobseeker profiles route
@@ -162,7 +162,7 @@ public function jobseekerprofiles()
     $categories = jobcategories::orderBy('jobcategories','asc')->get();
     $industries = Industry::orderBy('name','asc')->get();
 
-    return view('empdash.content.jobseeker-profiles', compact('jobseekers', 'industries', 'categories'));
+    return view('employer-dashboard.jobseeker-profiles', compact('jobseekers', 'industries', 'categories'));
 }
 
 
@@ -184,7 +184,7 @@ public function declined()
         ['status', 'declined']
     ])->get();
 
-    return view('empdash.content.declinedapplications', compact('applicants'));
+    return view('employer-dashboard.declinedapplications', compact('applicants'));
 }
 
 public function cprofile(){
@@ -265,7 +265,7 @@ public function shortlistedcandidates()
    $candidates = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
    $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
 
-   return view('empdash.content.shortlisted-candidates', compact('candidates', 'jobposts'));
+   return view('employer-dashboard.shortlisted-candidates', compact('candidates', 'jobposts'));
 }
 
 //Method for picking the templates
@@ -273,7 +273,7 @@ public function picktemplate()
 {
     $templates = Jobposts::all();
     $jobcategories = jobcategories::all();
-    return view('empdash.content.templates', compact('templates', 'jobcategories'));
+    return view('employer-dashboard.templates', compact('templates', 'jobcategories'));
 }
 
 // use a template
@@ -285,7 +285,7 @@ public function usetemplate($jobtitle)
    $countries = Country::all();
    $towns = Town::orderBy('name','asc')->get();
 
-   return view('empdash.content.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
+   return view('employer-dashboard.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
 }
 
 //Listing all jobs posted
@@ -293,7 +293,7 @@ public function alljobs()
 {
    $jobs = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->orderBy('created_at','desc')->get();
 
-   return view('empdash.content.jobs', compact('jobs'));
+   return view('employer-dashboard.jobs', compact('jobs'));
 }
 
 //Listing the shortlisted jobs by the job post
@@ -308,7 +308,7 @@ public function shortlistjobs(Request $request)
     ->select('jobseeker_details.*')
     ->get();
 
-    return view('empdash.content.job-shortlists', compact('candidates', 'jobposts', 'job'));
+    return view('employer-dashboard.job-shortlists', compact('candidates', 'jobposts', 'job'));
 }
 
 //Remove the shortlisted candidate
@@ -337,7 +337,7 @@ public function shortlistview($id)
     $skills = Skills::where('user_id', $id)->get();
     $talent = TalentPool::whereIn('employer_id', [0,Auth::guard('employer')->user()->id])->get();
 
-    return view('empdash.content.shortlisted-candidates-view', compact( 'jobseekerdetail', 'personalstatement', 
+    return view('employer-dashboard.shortlisted-candidates-view', compact( 'jobseekerdetail', 'personalstatement', 
         'academics', 'experiences', 'referees', 'certifications','skills', 'talent'));
 }
 
@@ -369,7 +369,7 @@ public function removedeclined(Request $request)
 //express recruitmentview load
 public function express()
 {
-    return view('empdash.content.express-recruitment');
+    return view('employer-dashboard.express-recruitment');
 }
 
 // get all data of users from the database for the resumes
@@ -379,19 +379,17 @@ public function resumedatabase()
     $industries = Industry::orderBy('name','asc')->get();
     $jobseekers = JobseekerDetail::paginate(20);
     
-    return view('empdash.content.resume-database', compact('industries', 'jobseekers', 'categories'));
+    return view('employer-dashboard.resume-database', compact('industries', 'jobseekers', 'categories'));
 }
 
 // return the express recruitment candidates
 public function candidates($category)
 {
-  $job_category = ucwords(str_replace('-', ' ', $category));  
-  $category = ExpressCategory::where('name', $job_category)->value('id');
   $jobseekers = PersonalStatement::where('category', $category)->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->get();
 
- return view('empdash.content.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
+ return view('employer-dashboard.express-candidates', compact('jobseekers', 'countries', 'categories'));
 }
 
 // search the rsumes
@@ -400,7 +398,7 @@ public function searchresume(Request $request)
     $industries = Industry::orderBy('name','asc')->get();
     $user_industries = Usercategories::where('industry_id', $request->industry_id)->get();
     
-    return view('empdash.content.resume-database', compact('industries', 'user_industries'));
+    return view('employer-dashboard.resume-database', compact('industries', 'user_industries'));
 }
 
 // show the jobs with the applications received
@@ -411,7 +409,7 @@ public function jobwithapplications($id)
         ['employer_id', '=', Auth::guard('employer')->user()->id]
     ])->first();
 
-    return view('empdash.content.job-withapplications', compact('job'));
+    return view('employer-dashboard.job-withapplications', compact('job'));
 }
 
 //search the job templates based on the category selected by the employer
@@ -420,6 +418,6 @@ public function searchtemplate(Request $request)
     $jobs = Jobposts::where('jobcategories_id', $request->category)->get();
     $jobcategories = jobcategories::all();
 
-    return view('empdash.content.search-template', compact('jobs', 'jobcategories'));
+    return view('employer-dashboard.search-template', compact('jobs', 'jobcategories'));
 }
 }

@@ -18,6 +18,12 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-md-3 control-label" for="val-skill">Cover Image: <span class="text-danger">*</span></label>
+          <div class="col-md-9">
+            <input type="file" class="form-control" value="cover_image" name="cover_image">
+          </div>
+        </div>
+        <div class="form-group">
           <div class="col-md-8 col-md-offset-3">
             <button class="btn  btn-primary" type="submit">Add</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

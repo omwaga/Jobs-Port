@@ -5,13 +5,13 @@
 
   <!--Start Page Title-->
   <div class="page-title-box">
-    <h4 class="page-title">Industries</h4>
+    <h4 class="page-title">Categories</h4>
     <ol class="breadcrumb">
       <li>
         <a href="{{route('admin')}}">Dashboard</a>
       </li>
       <li class="active">
-        Industries
+        Categories
       </li>
     </ol>
     <div class="clearfix"></div>
@@ -23,7 +23,7 @@
    <div class="col-md-12">
      <div class="row">
 
-       <div class="col-md-8">
+       <div class="col-md-6">
          <div class="white-box">
            <h2 class="header-title">All Categories</h2>
 
@@ -33,7 +33,6 @@
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Job Posts</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -44,15 +43,14 @@
                 <tr>
                   <td>{{$column}}</td>
                   <td>{{$category->jobcategories}}</td>
-                  <td>0</td>
                   <td>
                     <div class="btn-group">
                       <a type="button" href="{{route('categories.edit', $category->id)}}" class="btn btn-info float-left">Edit</a>
-                      <form method="POST" action="{{route('categories.destroy', $category->id)}}">
+                      <!-- <form method="POST" action="{{route('categories.destroy', $category->id)}}">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger float-left" >Delete</button>
-                      </form>
+                      </form> -->
                     </div>
                   </td>
                 </tr>
@@ -65,18 +63,24 @@
       </div> <!--/.col-md-4-->
 
 
-      <div class="col-md-4">
+      <div class="col-md-6">
        <div class="white-box">
          <h2 class="header-title">Add Category</h2>
          <!-- <div class="compose-body"> -->
           @include('errors')
           @include('success')
-          <form class="row" method="post" action="">
+          <form class="row" method="post" action="{{route('categories.store')}}">
             @csrf
             <div class="form-group">
               <label for="to" class="col-md-3 control-label">Category Name:</label>
               <div class="col-md-9">
-                <input type="text" name="name" class="form-control" id="to">
+                <input type="text" name="jobcategories" class="form-control" value="{{old('jobcategories')}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="to" class="col-md-3 control-label">Description:</label>
+              <div class="col-md-9">
+                <textarea class="form-control" name="description">{{old('description')}}</textarea>
               </div>
             </div>
 

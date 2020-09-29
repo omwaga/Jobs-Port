@@ -20,7 +20,7 @@ class JobListController extends Controller
     {
         $jobs = Jobposts::OrderBy('created_at', 'DESC')->where('employer_id',Auth::guard('employer')->user()->id)->get();
         
-        return view('empdash.content.jobs', compact('jobs'));
+        return view('employer-dashboard.jobs', compact('jobs'));
     }
      
     //show view to create a new training
@@ -61,7 +61,7 @@ class JobListController extends Controller
         $countries = Country::all();
         
         
-      return view('empdash.content.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
+      return view('employer-dashboard.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
     }
 
     /**
@@ -71,11 +71,12 @@ class JobListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Jobposts $jobpost)
+    public function update(Jobposts $jobpost, Request $request)
     {
-        $jobpost->update(request(['job_title','jobcategories_id', 'location','employment_type','industry', 'salary', 'deadline', 'summary', 'description', 'application_details']));
+
+        $jobpost->update(request(['job_title', 'job_type', 'jobcategories_id', 'country_id', 'location','employment_type','industry', 'salary', 'deadline', 'summary', 'description', 'application_details', 'apply']));
         
-        return redirect('/jobposts')->with('message', 'Your job has been updated successfully');
+        return redirect('/jobposts')->with('message', 'Job post has been updated successfully');
     }
 
     /**

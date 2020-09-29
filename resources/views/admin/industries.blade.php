@@ -23,7 +23,7 @@
    <div class="col-md-12">
      <div class="row">
 
-       <div class="col-md-8">
+       <div class="col-md-6">
          <div class="white-box">
            <h2 class="header-title">All Industries</h2>
            
@@ -33,7 +33,6 @@
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Job Posts</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -44,15 +43,9 @@
                 <tr>
                   <td>{{$column}}</td>
                   <td>{{$industry->name}}</td>
-                  <td>0</td>
                   <td>
                     <div class="btn-group">
                       <a type="button" href="{{route('industries.edit', $industry->id)}}" class="btn btn-info float-left">Edit</a>
-                      <form method="POST" action="{{route('industries.destroy', $industry->id)}}">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger float-left" >Delete</button>
-                      </form>
                     </div>
                   </td>
                 </tr>
@@ -65,7 +58,7 @@
       </div> <!--/.col-md-4-->
 
 
-      <div class="col-md-4">
+      <div class="col-md-6">
        <div class="white-box">
          <h2 class="header-title">Add Industry</h2>
          <!-- <div class="compose-body"> -->

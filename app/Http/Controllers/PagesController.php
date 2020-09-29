@@ -50,7 +50,7 @@ class PagesController extends Controller
     $town=Town::orderBy('name','asc')->get();
     $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
 
-    return view('new.home')->with('industry',$industries)
+    return view('front.home')->with('industry',$industries)
     ->with('jobs',$jobs)
     ->with('countries',$countries)
     ->with('companies',$company)
@@ -65,16 +65,21 @@ class PagesController extends Controller
 
   }
 
+public function loginoptions()
+{
+  return view('front.login-options');
+}
+
 //return the page for the jobseekers
   public function jobseekers()
   {
-    return view('new.jobseekers');
+    return view('front.jobseekers');
   }
 
 //return the page for the employers
   public function employers()
   {
-    return view('new.employers');
+    return view('front.employers');
   }
 
 //return the view to register an employer
@@ -83,13 +88,13 @@ class PagesController extends Controller
     $town = Town::orderBy('name','asc')->get();
     $countries = Country::all();
     
-    return view('new.create-employerprofile')->with('industry',$industry)
+    return view('front.create-employerprofile')->with('industry',$industry)
     ->with('town',$town)
     ->with('countries',$countries);
   }
 
   public function hire(){
-    return view('new.Employerlogin');
+    return view('front.Employerlogin');
   }
 
   public function employerd(){
@@ -97,7 +102,7 @@ class PagesController extends Controller
      return redirect()->route('employdashboard');
    }
    else{
-    return view('new.empdash');
+    return view('front.empdash');
   }
 }
 //Express recruitment
@@ -107,7 +112,7 @@ public function express()
   $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
-  return view('new.express-recruitment', compact('categories', 'countries', 'express_categories'));
+  return view('front.express-recruitment', compact('categories', 'countries', 'express_categories'));
 }
 
 // Express candidates
@@ -121,31 +126,31 @@ public function expresscandidates($category)
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
+  return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
 }
 
 public function companies()
 {
   $companies = Employer::all();
 
-  return view('new.all-companies', compact('companies'));
+  return view('front.all-companies', compact('companies'));
 }
 
 // function to view a single company profile
 public function onecompany()
 {
-  return view('new.company');
+  return view('front.company');
 }
 
 public function employerlogin()
 {
-  return view('new.foremployer');
+  return view('front.foremployer');
 }
 
 //the jobseeker registration steps.
 public function jobseekerregister()
 {
-  return view('new.jobseeker-steps');
+  return view('front.jobseeker-steps');
 }
 
 public function aboutjob(){
@@ -156,7 +161,7 @@ public function aboutjob(){
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $jobs=Jobposts::orderBy('created_at','desc')->get();
   
-  return view('new.job')->with('industry',$industries)
+  return view('front.job')->with('industry',$industries)
   ->with('jobs',$jobs)
   ->with('categories',$categories)
   ->with('towns',$town)
@@ -173,7 +178,7 @@ public function alljobs(){
   $countries = DB::table('countries')->pluck("name","id");
   $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
   
-  return view('new.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
+  return view('front.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
 }
 
 //  jobs after the search
@@ -184,7 +189,7 @@ public function searchresult(Request $request)
   $locations = Town::all();
   $industries = Industry::all();
   
-  return view('new.job-searchresult',compact('jobs', 'categories', 'locations', 'industries'));
+  return view('front.job-searchresult',compact('jobs', 'categories', 'locations', 'industries'));
 }
 
 public function filterlocation($name){
@@ -196,7 +201,7 @@ public function filterlocation($name){
   $industries=Industry::orderBy('name','asc')->limit(10)->get();
   SEOMeta::setTitle('Jobs in '.$name);
 
-  return view('new.filterlocation')
+  return view('front.filterlocation')
   ->with('locations',$towns)
   ->with('industries',$industries)
   ->with('jobs',$jobs)
@@ -211,7 +216,7 @@ public function showcategory($jobcategories){
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
 
-  return view('new.filtercategory')
+  return view('front.filtercategory')
   ->with('locations',$towns)
   ->with('jobs',$jobs)
   ->with('industries',$industry)
@@ -226,7 +231,7 @@ public function filterindustry($name){
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
 
-  return view('new.filtercategory')
+  return view('front.filtercategory')
   ->with('locations',$towns)
   ->with('jobs',$jobs)
   ->with('industries',$industry)
@@ -234,14 +239,14 @@ public function filterindustry($name){
 }
 
 public function register(){
-  return view('new.registerpage');
+  return view('front.registerpage');
 }
 
     // resume services route
 public function resume(){
   $samples = CvUpload::limit(4)->get();
 
-  return view('new.resume-services', compact('samples'));
+  return view('front.resume-services', compact('samples'));
 }
 
     // resume samples page
@@ -249,25 +254,25 @@ public function resumesamples()
 {
   $samples = CvUpload::all();
 
-  return view('new.resume-samples', compact('samples'));
+  return view('front.resume-samples', compact('samples'));
 }
 
     // Single resume template
 public function singleresume()
 {
-  return view('new.single-resume');
+  return view('front.single-resume');
 }
 
     // function to view the cover letters list
 public function coverletter()
 {
-  return view('new.cover-letter');
+  return view('front.cover-letter');
 }
 
     // function to view the cvs list
 public function cv()
 {
-  return view('new.cv-templates');
+  return view('front.cv-templates');
 }
 
 public function searchhome(Request $request){
@@ -279,7 +284,7 @@ public function searchhome(Request $request){
     $countries = DB::table('countries')->pluck("name","id");
     $jobs = Jobposts::where('industry', $request->industry)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
   elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state === "State/Region"){
     $categories = jobcategories::all();
@@ -288,7 +293,7 @@ public function searchhome(Request $request){
     $countries = DB::table('countries')->pluck("name","id");
     $jobs = Jobposts::where('jobcategories_id', $request->job_category)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
   elseif($request->state !== "State/Region" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
     $categories = jobcategories::all();
@@ -297,7 +302,7 @@ public function searchhome(Request $request){
     $countries = DB::table('countries')->pluck("name","id");
     $jobs = Jobposts::where('location', $request->state)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
 
   }
     //Both Job function and the job industry is selected
@@ -309,7 +314,7 @@ public function searchhome(Request $request){
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
     $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
     //Both Job function and the job location is selected
   elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state !== "State/Region"){
@@ -320,7 +325,7 @@ public function searchhome(Request $request){
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
     $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
     //Both Job industry and the job location is selected
   elseif($request->job_category === "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
@@ -331,7 +336,7 @@ public function searchhome(Request $request){
     $industry_jobs = Jobposts::where('industry', $request->industry);
     $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
     //Both Job industry, job function  and the job location are selected
   elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
@@ -343,7 +348,7 @@ public function searchhome(Request $request){
     $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
     $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
 
-    return view('new.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
   }
 }
 
@@ -355,7 +360,8 @@ public function show($id)
   $job = Jobposts::where('id', $id)->first();
   $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
   $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
-  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get(); 
+  $related_jobs=Jobposts::where('jobcategories_id', $job->jobcategories_id)->orderBy('created_at','desc')->limit(5)->get(); 
+  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
 
   // count the number of views
   if($job->viewcount === NULL)
@@ -367,14 +373,14 @@ public function show($id)
   
   SEOMeta::setTitle($job->job_title);
 
-  return view('new.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries'));
+  return view('front.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries', 'related_jobs'));
 } 
 
 public function loginform($id)
 {
   $job = Jobposts::where('id', $id)->first();
 
-  return view('new.joblogin', compact('job'));
+  return view('front.joblogin', compact('job'));
 }
 
 function applyjob(){
@@ -400,7 +406,7 @@ public function governmentjobs()
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.government-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('front.government-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 // Dispaly the private company jobs page
@@ -412,7 +418,7 @@ public function privatejobs()
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.private-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('front.private-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 // Dispaly the UN jobs page
@@ -424,7 +430,7 @@ public function unjobs()
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.un-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('front.un-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 // Dispaly the Humanitarian and NGO jobs page
@@ -436,7 +442,7 @@ public function humanitarianjobs()
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.humanitarian-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('front.humanitarian-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 // Dispaly the consultancies page
@@ -448,30 +454,30 @@ public function consultancies()
   $industries = Industry::all();
   $countries = DB::table('countries')->pluck("name","id");
 
-  return view('new.consultancies', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  return view('front.consultancies', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
 }
 
 //view to upload the cvs
 public function uploadcv()
 {
-  return view('new.upload-cv');
+  return view('front.upload-cv');
 }
 
 public function workprogram()
 {
-  return view('new.work-program');
+  return view('front.work-program');
 }
 
 public function enrollworkreadiness()
 {
   $countries = Country::all();
 
-  return view('new.enroll-workprogram', compact('countries'));
+  return view('front.enroll-workprogram', compact('countries'));
 }
 
 public function faqs()
 {
   SEOMeta::setTitle('Frequently Asked Questions');
-  return view('new.faqs');
+  return view('front.faqs');
 }
 }

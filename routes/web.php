@@ -9,57 +9,52 @@ Route::get('/profile-builder', 'DashboardController@wizard')->name('profile-wiza
 //AUthenticated jobseeker routes
 
 Route::prefix('jobseeker')->group(function(){
+    Route::get('/dashboard','DashboardController@profilejourney')->name('jobseekeraccount');
     Route::resource('interests', 'InterestsController', [
         'names' => [
             'index' => 'interests',
         ]]);
     Route::resource('joblevels', 'JobLevelsController');
     Route::get('/express-recruitment', 'DashboardController@express')->name('express.jobseeker');
-});
+    Route::get('/jobs', 'DashboardController@alljobs')->name('dashboard.jobs');
+    Route::get('/job/{id}/{jobtitle}','DashboardController@showjob')->name('dashboard.job');
+    Route::get('/category/{jobcategories}','DashboardController@showcategory')->name('dashboard.categories');
 
-Route::get('/user-profile','DashboardController@profile')->name('profile');
-Route::get('/jobseekeraccount','DashboardController@profilejourney')->name('jobseekeraccount');
-Route::get('/career-profile','DashboardController@careerprofile')->name('career-profile');
-Route::get('/uploads', 'DashboardController@upload')->name('fileupload');
-Route::get('/saved-jobs', 'DashboardController@savedjobs')->name('savedjobs');
-Route::get('/viewjob/{id}', 'DashboardController@viewjob');
-Route::get('/apply/{id}/{jobtitle}', 'ApplicationsController@apply')->name('apply');
-Route::resource('jobapplications', 'ApplicationsController');
-Route::get('/jobseekerprofile', 'DashboardController@jobseekerprofile')->name('jobseekerprofile');
-Route::resource('personalinfo', 'JobseekerDetailsController');
-Route::resource('personalstatements', 'PersonalStatementsController');
-Route::resource('experiences', 'WorkExperiencesController');
-Route::resource('educations', 'EducationController');
-Route::resource('awards', 'AwardsController');
-Route::resource('references', 'ReferencesController');
-Route::resource('jobskills', 'SkillsController');
-Route::get('/joblocation/{name}','DashboardController@showlocation');
-Route::get('/jobcategory/{name}','DashboardController@showcategory');
-Route::get('/successfullapplication', 'ApplicationsController@success');
-Route::get('/already-applied', 'ApplicationsController@appalready');
-Route::get('/joblogin/{id}/{jobtitle}', 'PagesController@loginform')->name('joblogin');
-Route::post('/authlogin', 'Auth\ApplyjobController@login')->name('authuser');
-Route::get('/applyforjob', 'PagesController@applyjob');
-Route::get('/search-jobs', 'DashboardController@jobsearch')->name('jobsearch');
-Route::get('/customize-resume','DashboardController@customizeresume')->name('customizeresume');
-Route::get('/recommended-jobs','DashboardController@recommended')->name('recommended');
-Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
-Route::get('/downloadresume/{id}','DashboardController@downloadresume');
-Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview');
-Route::get('/theme', 'DashboardController@theme')->name('theme');
-Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
-Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
-Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
-Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
-
-//Resume Builder Routes
-Route::prefix('resume-builder')->group(function(){
-    Route::get('/experiences','ResumeBuilderController@experiences')->name('resume-experiences');
-    Route::get('/educations','ResumeBuilderController@educations')->name('resume-educations');
-    Route::post('/skills','ResumeBuilderController@skill')->name('resume-skills');
-    Route::get('/skill','ResumeBuilderController@skills')->name('resumeskills');
-    Route::post('/education','ResumeBuilderController@education')->name('resume-education');
-    Route::post('/experience','ResumeBuilderController@experience')->name('resume-experience');
+    Route::get('/finish-registration','DashboardController@profile')->name('profile');
+    Route::get('/career-profile','DashboardController@careerprofile')->name('career-profile');
+    Route::get('/uploads', 'DashboardController@upload')->name('fileupload');
+    Route::get('/saved-jobs', 'DashboardController@savedjobs')->name('savedjobs');
+    Route::get('/viewjob/{id}', 'DashboardController@viewjob');
+    Route::get('/apply/{id}', 'ApplicationsController@apply')->name('apply');
+    Route::resource('jobapplications', 'ApplicationsController');
+    Route::get('/jobseekerprofile', 'DashboardController@jobseekerprofile')->name('jobseekerprofile');
+    Route::resource('personalinfo', 'JobseekerDetailsController');
+    Route::resource('personalstatements', 'PersonalStatementsController');
+    Route::resource('experiences', 'WorkExperiencesController');
+    Route::resource('educations', 'EducationController');
+    Route::resource('awards', 'AwardsController');
+    Route::resource('references', 'ReferencesController');
+    Route::resource('jobskills', 'SkillsController');
+    Route::get('/work-readiness', 'DashboardController@workReady')->name('workReady');
+    Route::get('/resume-templates', 'DashboardController@resumeTemplates')->name('resumeTemplates');
+    Route::get('/joblocation/{name}','DashboardController@showlocation')->name('jobseeker.location');
+    Route::get('/jobcategory/{name}','DashboardController@showcategory');
+    Route::get('/successfullapplication', 'ApplicationsController@success');
+    Route::get('/already-applied', 'ApplicationsController@appalready');
+    Route::get('/joblogin/{id}/{jobtitle}', 'PagesController@loginform')->name('joblogin');
+    Route::post('/authlogin', 'Auth\ApplyjobController@login')->name('authuser');
+    Route::get('/applyforjob', 'PagesController@applyjob');
+    Route::get('/search-jobs', 'DashboardController@jobsearch')->name('jobsearch');
+    Route::get('/customize-resume','DashboardController@customizeresume')->name('customizeresume');
+    Route::get('/recommended-jobs','DashboardController@recommended')->name('recommended');
+    Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
+    Route::get('/downloadresume/{id}','DashboardController@downloadresume');
+    Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview');
+    Route::get('/theme', 'DashboardController@theme')->name('theme');
+    Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
+    Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
+    Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
+    Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
 });
 
 //EmployerController Routes
@@ -109,6 +104,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('/expresscategories', 'ExpressCategoriesController');
     Route::resource('/industries', 'IndustriesController');
     Route::resource('/categories', 'CategoriesController');
+    Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
@@ -141,14 +137,15 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 
 //public routes
 Route::prefix('public')->group(function(){    
- Route::get('/express-recruitment', 'PagesController@express')->name('express');
- Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
- Route::get('/faqs', 'PagesController@faqs')->name('faqs');
+   Route::get('/express-recruitment', 'PagesController@express')->name('express');
+   Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+   Route::get('/faqs', 'PagesController@faqs')->name('faqs');
+   Route::get('/user-options', 'PagesController@loginoptions')->name('options');
+   Route::get('/company-page', 'PagesController@onecompany')->name('onecompany');
 });
 Route::get('/jobseekers', 'PagesController@jobseekers')->name('jobseekers');
 Route::get('/employers', 'PagesController@employers')->name('employers');
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
-Route::get('/companyone', 'PagesController@onecompany')->name('onecompany');
 Route::get('/search-result', 'PagesController@searchresult');
 Route::get('/job-category/{name}','PagesController@showcategory');
 Route::get('/job-location/{name}','PagesController@filterlocation');
@@ -158,8 +155,6 @@ Route::get('/upload-cv', 'PagesController@uploadcv')->name('uploadcv');
 Route::get('/resume-services', 'PagesController@resume')->name('resume-services');
 Route::get('/resume-samples', 'PagesController@resumesamples')->name('resumesamples');
 Route::get('/single-resume', 'PagesController@singleresume')->name('singleresume');
-Route::get('/from-blog', 'PagesController@fromblog')->name('fromblog');
-Route::get('/blog/{name}', 'PagesController@singleblog')->name('singleblog');
 Route::get('/cv-templates', 'PagesController@cv')->name('cv');
 Route::resource('alerts', 'JobAlertsController');
 Route::get('/all-companies', 'PagesController@companies')->name('all-companies');

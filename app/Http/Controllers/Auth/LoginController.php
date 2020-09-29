@@ -38,7 +38,7 @@ class LoginController extends Controller
         }elseif (auth()->user()->user_type == 'Super Employer') {
             return '/super-employer/dashboard';
         }
-        return '/jobseekeraccount';
+        return '/jobseeker/dashboard';
     }
     /**
      * Create a new controller instance.

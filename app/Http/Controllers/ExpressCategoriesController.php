@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ExpressCategory;
-
+use Storage;
 class ExpressCategoriesController extends Controller
 {
     /**
@@ -39,7 +39,15 @@ class ExpressCategoriesController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|min:3',
+            'cover_image' => 'nullable',
         ]);
+
+
+        $category = $request->all();
+        if ($request->hasFile('cover_image')) {
+            $category['cover_image'] = $request->cover_image->getClientOriginalName();
+            $request->cover_image->storeAs('public/expresscategories', $category['cover_image']);
+        }
 
         ExpressCategory::create($attributes);
 
@@ -54,7 +62,6 @@ class ExpressCategoriesController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -77,10 +84,16 @@ class ExpressCategoriesController extends Controller
      */
     public function update(Request $request, ExpressCategory $expresscategory)
     {
-        $expresscategory->update(['name' => $request->name]);
+        $category = $request->all();
+        if ($request->hasFile('cover_image')) {
+            $category['cover_image'] = $request->cover_image->getClientOriginalName();
+            $request->cover_image->storeAs('public/expresscategories', $category['cover_image']);
+        }
 
-        return redirect(route('expresscategories.index'))->with('message', 'The category has been updated successfully');
-    }
+        $expresscategory->update(['name' => $request->name, 'cover_image' => $category['cover_image']]);
+
+    return redirect(route('expresscategories.index'))->with('message', 'The category has been updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.

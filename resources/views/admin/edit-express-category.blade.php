@@ -30,13 +30,19 @@
        </div>
        @include('errors')
        @include('success')
-       <form class="js-validation-bootstrap form-horizontal" action="{{route('expresscategories.update', $expresscategory->id)}}" method="POST">
+       <form class="js-validation-bootstrap form-horizontal" action="{{route('expresscategories.update', $expresscategory->id)}}" method="POST" enctype="multipart/form-data">
          @method('PATCH')
          @csrf
         <div class="form-group">
           <label class="col-md-3 control-label" for="val-skill">Category Name: <span class="text-danger">*</span></label>
           <div class="col-md-9">
             <input type="text" class="form-control" value="{{$expresscategory->name}}" name="name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="val-skill">Cover Image: <span class="text-danger">*</span></label>
+          <div class="col-md-9">
+            <input type="file" class="form-control" value="{{$expresscategory->cover_image}}" name="cover_image">
           </div>
         </div>
         <div class="form-group">

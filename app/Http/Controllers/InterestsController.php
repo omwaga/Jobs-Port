@@ -23,7 +23,7 @@ class InterestsController extends Controller
         $job_levels = JobLevel::where('user_id', auth()->user()->id)->first();
         $interests = Interests::where('user_id', auth()->user()->id)->first();
 
-        return view('dashboard.interests', compact('categories', 'levels', 'job_levels', 'interests'));
+        return view('jobseeker-dashboard.interests', compact('categories', 'levels', 'job_levels', 'interests'));
     }
 
     /**

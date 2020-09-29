@@ -8,7 +8,7 @@ class jobcategories extends Model
 {
     //
     protected $fillable = [
-        ' jobcategories',
+        'jobcategories', 'description'
     ];
     
     public function jobs()

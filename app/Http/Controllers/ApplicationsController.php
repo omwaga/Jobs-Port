@@ -34,7 +34,7 @@ class ApplicationsController extends Controller
         $locations = Town::orderBy('name','asc')->get();
         $categories=jobcategories::orderBy('jobcategories','asc')->get();
         
-        return view('dashboard.applications', compact('applications', 'industries', 'locations', 'categories'));
+        return view('jobseeker-dashboard.applications', compact('applications', 'industries', 'locations', 'categories'));
     }
     
     public function apply($id){
@@ -51,7 +51,7 @@ class ApplicationsController extends Controller
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         $categories = ExpressCategory::orderBy('name','asc')->get();
         
-        return view('dashboard.apply', compact('job', 'countries', 'personalinfo', 'references',
+        return view('jobseeker-dashboard.apply', compact('job', 'countries', 'personalinfo', 'references',
            'personalstatements', 'experience', 'education', 'awards', 'skills', 'states', 'categories'));
     }
     
@@ -91,9 +91,9 @@ class ApplicationsController extends Controller
 
 public function success()
 {
-    return view('dashboard.successfulapplication');
+    return view('jobseeker-dashboard.successfulapplication');
 }
 public function appalready(){
- return view('dashboard.appliedalready'); 
+ return view('jobseeker-dashboard.appliedalready'); 
 }
 }

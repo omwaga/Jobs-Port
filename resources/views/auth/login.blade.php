@@ -74,29 +74,42 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6" style="padding-top: 7rem; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 86, 135, 1)), url({{asset('Images/recruit/background.jpg')}})">
+        <div class="col-md-6">
             <div class="shadow-lg p-3 mb-3">
-                <div class="row" align="center">
+                <div class="row" align="left">
                     <div class="col-md-12">
-                        <h4 class="text-white"> New to NetworkedPros?</h4>
-                        <ul style="list-style: none" class="text-white">
-                            <li><i class="fa fa-check text-danger" aria-hidden="true"></i>One click apply using NetworkedPros profile.</li>
-                            <li><i class="fa fa-check text-danger" aria-hidden="true"></i>Get relevant job recommendations.</li>
-                            <li><i class="fa fa-check text-danger" aria-hidden="true"></i>Showcase profile to top employers and consultants.</li>
-                            <li><i class="fa fa-check text-danger" aria-hidden="true"></i>Know application status on applied jobs.</li>
-                        </ul>
-                        <hr>
+                        <h4 class="text-center"> New to NetworkedPros?</h4>
+                        <div class="list-group">
+                          <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">Express Recruitment</h5>
+                          </div>
+                          <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Sit back, relax and let the networked professionals do the job searching for you! Create your career profile today and be discover by leading employers who visit our service every day to recruit trusted professionals</p>
+                      </div>
+                      <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">Job Vacancies</h5>
+                      </div>
+                      <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Discover hundreds of jobs and create alerts to notify you when jobs matching your qualifications are advertised</p>
+                  </div>
+                  <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Work Readiness Program</h5>
+                  </div>
+                  <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Are you a fresh graduate who has not worked before? Enroll for our NP Work Readiness Training worth USD 1,000 in the market for free!</p>
+              </div>
+          </div>
 
-                        <div class="row">
-                            <div class="col-md-12" align="center">
-                                <a href="{{route('Register')}}" class="btn text-white btn-danger">Register for Free</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="row" style="padding-top: 1rem">
+            <div class="col-md-12" align="center">
+                <a href="{{route('Register')}}" class="btn text-white btn-danger">Register for Free</a>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -98,6 +98,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         '17d016dc52a631c1e74d2eb8fdd57342' => __DIR__ . '/..' . '/laravel/helpers/src/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '55a73b05876de42a378c79a74d7cbb85' => __DIR__ . '/..' . '/lionix/seo-manager/src/helpers/helpers.php',
         '9cf90fe04e875b390427268b191a95f0' => __DIR__ . '/..' . '/pragmarx/countries/src/package/Support/helpers.php',
     );
 
@@ -196,6 +197,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         ),
         'L' => 
         array (
+            'Lionix\\SeoManager\\' => 18,
             'League\\OAuth1\\Client\\' => 21,
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
@@ -497,6 +499,10 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         array (
             0 => __DIR__ . '/..' . '/maatwebsite/excel/src',
         ),
+        'Lionix\\SeoManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lionix/seo-manager/src',
+        ),
         'League\\OAuth1\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth1-client/src',
@@ -693,7 +699,6 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
     public static $classMap = array (
         'App\\Article' => __DIR__ . '/../..' . '/app/Article.php',
         'App\\Awards' => __DIR__ . '/../..' . '/app/Awards.php',
-        'App\\BlogCategory' => __DIR__ . '/../..' . '/app/BlogCategory.php',
         'App\\Companies' => __DIR__ . '/../..' . '/app/Companies.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Country' => __DIR__ . '/../..' . '/app/Country.php',
@@ -722,6 +727,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\Http\\Controllers\\AwardsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AwardsController.php',
         'App\\Http\\Controllers\\BlogArticlesController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogArticlesController.php',
         'App\\Http\\Controllers\\BlogCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogCategoriesController.php',
+        'App\\Http\\Controllers\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CoverLettersController' => __DIR__ . '/../..' . '/app/Http/Controllers/CoverLettersController.php',
         'App\\Http\\Controllers\\CvUploadsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CvUploadsController.php',
@@ -730,7 +736,8 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\Http\\Controllers\\EducationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EducationController.php',
         'App\\Http\\Controllers\\EmployerController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployerController.php',
         'App\\Http\\Controllers\\EnrollWorkController' => __DIR__ . '/../..' . '/app/Http/Controllers/EnrollWorkController.php',
-        'App\\Http\\Controllers\\ExpressCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExpressCategoryController.php',
+        'App\\Http\\Controllers\\ExpressCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExpressCategoriesController.php',
+        'App\\Http\\Controllers\\IndustriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndustriesController.php',
         'App\\Http\\Controllers\\InterestsController' => __DIR__ . '/../..' . '/app/Http/Controllers/InterestsController.php',
         'App\\Http\\Controllers\\JobAlertsController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobAlertsController.php',
         'App\\Http\\Controllers\\JobLevelsController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobLevelsController.php',
@@ -740,7 +747,6 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\Http\\Controllers\\PersonalStatementsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonalStatementsController.php',
         'App\\Http\\Controllers\\ProsDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProsDetailsController.php',
         'App\\Http\\Controllers\\ReferencesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReferencesController.php',
-        'App\\Http\\Controllers\\ResumeBuilderController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResumeBuilderController.php',
         'App\\Http\\Controllers\\ResumeDomainController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResumeDomainController.php',
         'App\\Http\\Controllers\\ResumeSamplesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResumeSamplesController.php',
         'App\\Http\\Controllers\\SkillsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SkillsController.php',
@@ -765,6 +771,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\JobseekerDetail' => __DIR__ . '/../..' . '/app/JobseekerDetail.php',
         'App\\Level' => __DIR__ . '/../..' . '/app/Level.php',
         'App\\Locations' => __DIR__ . '/../..' . '/app/Locations.php',
+        'App\\Mail\\EmployerWelcomeMail' => __DIR__ . '/../..' . '/app/Mail/EmployerWelcomeMail.php',
         'App\\Mail\\VerifyMail' => __DIR__ . '/../..' . '/app/Mail/VerifyMail.php',
         'App\\Mail\\WelcomeMail' => __DIR__ . '/../..' . '/app/Mail/WelcomeMail.php',
         'App\\PersonalStatement' => __DIR__ . '/../..' . '/app/PersonalStatement.php',
@@ -2783,6 +2790,20 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'League\\OAuth1\\Client\\Signature\\RsaSha1Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/RsaSha1Signature.php',
         'League\\OAuth1\\Client\\Signature\\Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/Signature.php',
         'League\\OAuth1\\Client\\Signature\\SignatureInterface' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/SignatureInterface.php',
+        'Lionix\\SeoManager\\Commands\\GenerateSeoManagerData' => __DIR__ . '/..' . '/lionix/seo-manager/src/Commands/GenerateSeoManagerData.php',
+        'Lionix\\SeoManager\\Facades\\SeoManager' => __DIR__ . '/..' . '/lionix/seo-manager/src/Facades/SeoManager.php',
+        'Lionix\\SeoManager\\ImportController' => __DIR__ . '/..' . '/lionix/seo-manager/src/Controllers/ImportController.php',
+        'Lionix\\SeoManager\\LocalesController' => __DIR__ . '/..' . '/lionix/seo-manager/src/Controllers/LocalesController.php',
+        'Lionix\\SeoManager\\ManagerController' => __DIR__ . '/..' . '/lionix/seo-manager/src/Controllers/ManagerController.php',
+        'Lionix\\SeoManager\\Middleware\\ClearViewCache' => __DIR__ . '/..' . '/lionix/seo-manager/src/Middleware/ClearViewCache.php',
+        'Lionix\\SeoManager\\Middleware\\SeoManager' => __DIR__ . '/..' . '/lionix/seo-manager/src/Middleware/SeoManager.php',
+        'Lionix\\SeoManager\\Models\\Locale' => __DIR__ . '/..' . '/lionix/seo-manager/src/Models/Locale.php',
+        'Lionix\\SeoManager\\Models\\SeoManager' => __DIR__ . '/..' . '/lionix/seo-manager/src/Models/SeoManager.php',
+        'Lionix\\SeoManager\\Models\\Translate' => __DIR__ . '/..' . '/lionix/seo-manager/src/Models/Translate.php',
+        'Lionix\\SeoManager\\SeoManager' => __DIR__ . '/..' . '/lionix/seo-manager/src/SeoManager.php',
+        'Lionix\\SeoManager\\SeoManagerServiceProvider' => __DIR__ . '/..' . '/lionix/seo-manager/src/SeoManagerServiceProvider.php',
+        'Lionix\\SeoManager\\Traits\\Appends' => __DIR__ . '/..' . '/lionix/seo-manager/src/Traits/Appends.php',
+        'Lionix\\SeoManager\\Traits\\SeoManagerTrait' => __DIR__ . '/..' . '/lionix/seo-manager/src/Traits/SeoManagerTrait.php',
         'Maatwebsite\\Excel\\Cache\\BatchCache' => __DIR__ . '/..' . '/maatwebsite/excel/src/Cache/BatchCache.php',
         'Maatwebsite\\Excel\\Cache\\CacheManager' => __DIR__ . '/..' . '/maatwebsite/excel/src/Cache/CacheManager.php',
         'Maatwebsite\\Excel\\Cache\\MemoryCache' => __DIR__ . '/..' . '/maatwebsite/excel/src/Cache/MemoryCache.php',

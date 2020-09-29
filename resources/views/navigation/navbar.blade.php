@@ -97,16 +97,19 @@
       @guest
       <ul class="navbar-nav ml-auto ">
         <li class="nav-item">
-          <a class="btn btn-secondary text-white" href="{{ route('jobseekers') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Jobseeker</a>
+          <a class="btn btn-danger text-white" href="{{ route('options') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Login/Register</a>
         </li>
-        @if (Route::has('register'))
+        <!-- <li class="nav-item">
+          <a class="btn btn-secondary text-white" href="{{ route('jobseekers') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Jobseeker</a>
+        </li> -->
+        <!-- @if (Route::has('register'))
         <li class="nav-item">
           <a class="btn btn-danger text-white" href="{{route('employers')}}" style="border-radius:0px;" type="button"  aria-expanded="false">
             <i class="fa fa-users"></i> For Employer
           </a>
         </li>
       </ul>
-      @endif
+      @endif -->
       @else
 
       <ul class="navbar-nav ml-auto ">
