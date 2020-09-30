@@ -36,7 +36,7 @@
         @else
         @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-        <a class="h5 pull-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
+        <a class="h5 pull-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('/jobseeker/joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
         @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
         <a class="h5 pull-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
         @endif
@@ -72,7 +72,7 @@
         @else
         @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-        <a class="h5 float-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
+        <a class="h5 float-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('/jobseeker/joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
         @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
         <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
         @endif

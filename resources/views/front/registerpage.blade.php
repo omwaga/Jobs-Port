@@ -65,10 +65,10 @@
 
                 <div class="form-group row mb-0" style="margin-bottom:3%;">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary btn-block"style="border-radius:0px;">
+                        <button type="submit" class="btn btn-primary btn-block">
                             <i class="fa fa-user-plus"></i> {{ __('Sign Up') }}
                         </button>
-                                <a href="{{route('login')}}" class="btn text-white btn-danger btn-block">Already registered ? Login"</a>
+                                <a href="{{route('login')}}" class="btn text-white btn-danger btn-block">Already registered ? Login</a>
                     </div>
                 </div>
             </form>

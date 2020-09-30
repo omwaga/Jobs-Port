@@ -103,7 +103,7 @@ class DashboardController extends Controller
         $references = Reference::where('user_id', '=', auth()->user()->id)->get();
         $skills = Skills::where('user_id', '=', auth()->user()->id)->get();
         $applications = JobApplication::where('user_id', '=', auth()->user()->id)->get();
-        $jobs = Jobposts::orderBy('created_at','asc')->limit(8)->get();
+        $jobs = Jobposts::orderBy('created_at','desc')->limit(8)->get();
         
         return view('jobseeker-dashboard.prof', compact('countries', 'personalinfo', 'references',
            'personalstatements', 'experience', 'education', 'awards', 'skills', 'towns', 'industries', 'applications', 'jobs'));

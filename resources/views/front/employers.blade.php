@@ -24,7 +24,8 @@
                     <i class="fa fa-users text-danger" aria-hidden="true"></i>
                 </div>
                 <h5>Receive applications for your job Vacancies</h5>
-                <p>(Whether posted in the portal or elsewhere) and select candidates from within the portal using the recruitment engine. </p>                
+                <p>(Whether posted in the portal or elsewhere) and select candidates from within the portal using the recruitment engine. </p>  
+                <a href="{{route('foremployer')}}" class="btn btn-danger">Get Started</a>              
             </div>
         </div>
         <div class="col-md-4">
@@ -33,7 +34,8 @@
                     <i class="fa fa-briefcase text-alert" aria-hidden="true"></i>
                 </div>
                 <h5>Talent Pools</h5>
-                <p>  Create a talent pool of candidates you’ll need in the future to support your business growth. </p>                
+                <p>Create a talent pool of candidates you’ll need in the future to support your business growth. </p>
+                <a href="{{route('foremployer')}}" class="btn btn-danger">Get Started</a>                
             </div>
         </div>
         <div class="col-md-4">
@@ -42,7 +44,8 @@
                     <i class="fa fa-book text-info" aria-hidden="true"></i>
                 </div>
                 <h5>Job Posting Services</h5>
-                <p>Post jobs on the portal and reach widely to the EA region </p>                
+                <p>Post jobs on the portal and reach widely to the EA region </p> 
+                <a href="{{route('foremployer')}}" class="btn btn-danger">Get Started</a>               
             </div>
         </div>
         <div class="col-md-6">
@@ -51,7 +54,8 @@
                     <i class="fa fa-sitemap text-danger" aria-hidden="true"></i>
                 </div>
                 <h5> Express Recruitment </h5>
-                <p>Recruit faster through our vetted and ready for hire candidates without the need for advertising and minimize your risks, avoid the time consuming and rigorous interviewing process. </p>                
+                <p>Recruit faster through our vetted and ready for hire candidates without the need for advertising and minimize your risks, avoid the time consuming and rigorous interviewing process. </p>
+                <a href="{{route('foremployer')}}" class="btn btn-danger">Get Started</a>                
             </div>
         </div>
         <div class="col-md-6">
@@ -60,16 +64,18 @@
                     <i class="fa fa-graduation-cap text-success" aria-hidden="true"></i>
                 </div>
                 <h5> Ready For Hire Professionals </h5>
-                <p>The Pros4hire facility enables you to quickly and on demand hire trusted professionals who are guaranteed to deliver for temporally or periodic assignments (gigs) </p>                
+                <p>The Pros4hire facility enables you to quickly and on demand hire trusted professionals who are guaranteed to deliver for temporally or periodic assignments (gigs) </p> 
+                <a href="{{route('foremployer')}}" class="btn btn-danger">Get Started</a>               
             </div>
         </div>
 
         <div class="col-md-12">
-            <div class=" card-body border-light shadow-lg p-5 mb-3 bg-danger rounded"  align="center">
-                <h3 class="text-white">LET OUR TEAM HELP YOU</h3>
-                <p class="text-white">Let our team of recruitment experts
+            <div class=" card-body p-5 mb-3 rounded"  align="center">
+                <h3 class="">LET OUR TEAM HELP YOU</h3>
+                <p class="">Let our team of recruitment experts
                     assist you every step of the way.<br>
-                Call +254 792516010 </p>                
+                    Call +254 706468123
+                </p>                
             </div>
         </div>
     </div>

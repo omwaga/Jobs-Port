@@ -39,7 +39,8 @@ class CategoriesController extends Controller
     {
         $attributes = request()->validate([
             'jobcategories' => 'required|unique:jobcategories',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'seo_description' => 'nullable'
         ]);
 
         jobcategories::create($attributes);
@@ -80,10 +81,11 @@ class CategoriesController extends Controller
     {
         $attributes = request()->validate([
             'jobcategories' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'seo_description' => 'nullable'
         ]);
 
-        $category->update(request(['jobcategories', 'description']));
+        $category->update(request(['jobcategories', 'description', 'seo_description']));
 
         return redirect(route('categories.index'))->with('message', 'The category has been updated successfully');
     }

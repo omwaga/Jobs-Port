@@ -103,7 +103,7 @@
           <li class="nav-item ">
             <a class="nav-link active" href="{{route('jobseekeraccount')}}"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
           </li> 
-          <li class="nav-divider">
+          <li class="nav-divider text-success">
            Job Vacancies
          </li>
          <li class="nav-item active">
@@ -142,7 +142,7 @@
           </a>
         </li>
 
-        <li class="nav-divider">
+        <li class="nav-divider text-success">
           Express Recruitment
         </li>
         <li class="nav-item active">
@@ -153,7 +153,7 @@
           </a>
         </li>
 
-        <li class="nav-divider">
+        <li class="nav-divider text-success">
           Resources
         </li>
         <li class="nav-item active">

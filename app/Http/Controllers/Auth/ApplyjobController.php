@@ -23,7 +23,7 @@ class ApplyjobController extends Controller
         $jobtitle = str_slug($request->jobtitle, '-');
 
          if (Auth::attempt(['email'=>$request->login_email,'password'=>$request->login_password],$request->remember)) {
-            return redirect(url('apply',[$request->id, $jobtitle]));
+            return redirect(url('/jobseeker/apply',[$request->id]));
          }
 
       return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');

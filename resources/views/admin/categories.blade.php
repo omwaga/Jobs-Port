@@ -78,9 +78,15 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="to" class="col-md-3 control-label">SEO Description:</label>
+              <div class="col-md-9">
+                <textarea class="form-control" name="seo_description">{{old('seo_description')}}</textarea>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="to" class="col-md-3 control-label">Description:</label>
               <div class="col-md-9">
-                <textarea class="form-control" name="description">{{old('description')}}</textarea>
+                <textarea class="form-control ckeditor" name="description">{{old('description')}}</textarea>
               </div>
             </div>
 

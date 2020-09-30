@@ -10,7 +10,7 @@
                 </div>
                 <a href="{{route('jobseekers')}}"><h5> Jobseekers</h5></a>
                 <p>Be discover by leading employers who visit our service every day to recruit trusted professionals </p>   
-                <a href="{{route('login')}}" class="btn btn-danger">Jobseeker Login/Register</a>              
+                <a href="{{route('jobseekers')}}" class="btn btn-danger">Jobseeker Login/Register</a>              
             </div>
         </div>
         <div class="col-md-6">
@@ -21,7 +21,7 @@
                 <a href="{{route('employers')}}"> <h5> Employers</h5></a>
                 <p>
                 Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services.</p>     
-                <a href="{{route('foremployer')}}" class="btn btn-danger">Employer Login/Register</a>           
+                <a href="{{route('employers')}}" class="btn btn-danger">Employer Login/Register</a>           
             </div>
         </div>
     </div>

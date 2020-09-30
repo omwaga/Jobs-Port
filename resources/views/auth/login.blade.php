@@ -2,7 +2,7 @@
 @section('content')
 <div class="container" style=" padding-top: 7rem;">
     <div class="row justify-content-center">
-        <div class="col-md-6"  align="center">
+        <div class="col-md-8"  align="center">
             <div class="shadow-lg p-3">
                 <h5 style="color:#0B0B3B;">{{ __('Login') }}</h5>
                 <p>{{ __('You are just a step away from your dream job.') }}</p>
@@ -65,51 +65,17 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-block"  style="border-radius: 0px;">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Login') }}
                                 </button>
+                                <a href="{{route('Register')}}" class="btn text-white btn-danger btn-block">Register for Free</a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="shadow-lg p-3 mb-3">
-                <div class="row" align="left">
-                    <div class="col-md-12">
-                        <h4 class="text-center"> New to NetworkedPros?</h4>
-                        <div class="list-group">
-                          <div class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Express Recruitment</h5>
-                          </div>
-                          <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Sit back, relax and let the networked professionals do the job searching for you! Create your career profile today and be discover by leading employers who visit our service every day to recruit trusted professionals</p>
-                      </div>
-                      <div class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">Job Vacancies</h5>
-                      </div>
-                      <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Discover hundreds of jobs and create alerts to notify you when jobs matching your qualifications are advertised</p>
-                  </div>
-                  <div class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">Work Readiness Program</h5>
-                  </div>
-                  <p class="mb-1"><i class="fa fa-check text-danger" aria-hidden="true"></i>Are you a fresh graduate who has not worked before? Enroll for our NP Work Readiness Training worth USD 1,000 in the market for free!</p>
-              </div>
-          </div>
-
-          <div class="row" style="padding-top: 1rem">
-            <div class="col-md-12" align="center">
-                <a href="{{route('Register')}}" class="btn text-white btn-danger">Register for Free</a>
-            </div>
-        </div>
     </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -367,78 +367,79 @@
           <div class="our-services-text">
             <h4>Hiring is Simpler, Smarter<br> &
               Faster with The NetworkedPros<br></h4>
-              <p>Sign-up and get access to 1,000s<br> of vetted jobseekers profiles. <br><br>You can also call our outreach team on<br> +254 792516000<br>
-                <a class="btn btn-danger text-white" href="{{route('hirre')}}">Get Started</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" align="center">
-          <div class="our-services-wrapper mb-60">
-            <div class="services-inner">
-              <div class="our-services-text">
-                <h4>LET US HELP YOU HIRE BETTER</h4>
-                <div class="row">
-                  <div class="col-md-6">
-                   <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
-                   <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
-                   <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
-                 </div>
-                 <div class="col-md-6">
-                   <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
-                   <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
-                   <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
-                 </div>
-                 <div class="col-sm-12"><br>
-                  <div class="box-btn">
-                    <a class="btn btn-danger text-white" href="{{route('foremployer')}}">Post a Job</a>
-                  </div>
-                  <p>Don’t have time? Send us your job advert to <a href="mailto:info@thenetworkedpros.com?Subject=POST%20JOB" target="_top"> info@thenetworkedpros.com</a> we will do the rest</p>
-                </div> 
-              </div>
+              <p>Sign-up and get access to 1,000s<br> of vetted jobseekers profiles. <br><br>You can also call our outreach team on<br> +254 706468123
+               <br>
+               <a class="btn btn-danger text-white" href="{{route('hirre')}}">Get Started</a></p>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" align="center">
+        <div class="our-services-wrapper mb-60">
+          <div class="services-inner">
+            <div class="our-services-text">
+              <h4>LET US HELP YOU HIRE BETTER</h4>
+              <div class="row">
+                <div class="col-md-6">
+                 <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
+                 <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
+                 <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
+               </div>
+               <div class="col-md-6">
+                 <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
+                 <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
+                 <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
+               </div>
+               <div class="col-sm-12"><br>
+                <div class="box-btn">
+                  <a class="btn btn-danger text-white" href="{{route('foremployer')}}">Post a Job</a>
+                </div>
+                <p>Don’t have time? Send us your job advert to <a href="mailto:careers@thenetworkedpros.com?Subject=POST%20JOB" target="_top"> careers@thenetworkedpros.com</a> we will do the rest</p>
+              </div> 
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <section class="testimonial_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-         <div class="about_content">
-          <div class="background_layer"></div>
-          <div class="layer_content">
-            <div class="section_title">
-              <h5>WHAT OTHERS HAD TO SAY</h5>
-              <h2>Happy<strong>Jobseekers </strong></h2>
-              <div class="heading_line"><span></span></div>
-              <p>The NetworkedPros gives you a unique way to discover employees with the best talents. </p>
-            </div>
-            <a href="#">Contact Us<i class="icofont-long-arrow-right"></i></a>
+<section class="testimonial_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+       <div class="about_content">
+        <div class="background_layer"></div>
+        <div class="layer_content">
+          <div class="section_title">
+            <h5>WHAT OTHERS HAD TO SAY</h5>
+            <h2>Happy<strong>Jobseekers </strong></h2>
+            <div class="heading_line"><span></span></div>
+            <p>The NetworkedPros gives you a unique way to discover employees with the best talents. </p>
           </div>
+          <a href="#">Contact Us<i class="icofont-long-arrow-right"></i></a>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="testimonial_box">
-          <div class="testimonial_container">
-            <div class="background_layer"></div>
-            <div class="layer_content">
-              <div class="testimonial_owlCarousel owl-carousel">
-                <div class="testimonials"> 
-                  <div class="testimonial_content">
-                    <div class="testimonial_caption">
-                      <h6>Robert Mike</h6>
-                      <span>Software Developer</span>
-                    </div>
-                    <p>"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+    </div>
+    <div class="col-lg-5">
+      <div class="testimonial_box">
+        <div class="testimonial_container">
+          <div class="background_layer"></div>
+          <div class="layer_content">
+            <div class="testimonial_owlCarousel owl-carousel">
+              <div class="testimonials"> 
+                <div class="testimonial_content">
+                  <div class="testimonial_caption">
+                    <h6>Robert Mike</h6>
+                    <span>Software Developer</span>
                   </div>
-                  <div class="images_box">
-                    <div class="testimonial_img">
-                      <img class="img-center" src="https://cdn.pixabay.com/photo/2017/08/30/17/27/business-woman-2697954_960_720.jpg" alt="images not found">
-                    </div>
+                  <p>"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+                </div>
+                <div class="images_box">
+                  <div class="testimonial_img">
+                    <img class="img-center" src="https://cdn.pixabay.com/photo/2017/08/30/17/27/business-woman-2697954_960_720.jpg" alt="images not found">
                   </div>
+                </div>
                                         </div><!-- 
                                         <div class="testimonials"> 
                                             <div class="testimonial_content">
