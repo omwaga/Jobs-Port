@@ -37,6 +37,8 @@ class PagesController extends Controller
 {
     //return  the home page
   public function homee(){
+    $employers = Employer::orderBy('created_at','desc')->limit(4)->get();
+    $employers1 = Employer::limit(4)->get();
     $industries=Industry::orderBy('name','asc')->get();
     $categories=jobcategories::orderBy('jobcategories','asc')->get();
     $alljobs=Jobposts::all();
@@ -61,6 +63,8 @@ class PagesController extends Controller
     ->with('un_jobs',$un_jobs)
     ->with('consultancies',$consultancies)
     ->with('featured_jobs',$featured_jobs)
+    ->with('employers',$employers)
+    ->with('employers1',$employers1)
     ->with('towns',$town);
 
   }
@@ -137,9 +141,12 @@ public function companies()
 }
 
 // function to view a single company profile
-public function onecompany()
+public function employerProfile($name)
 {
-  return view('front.company');
+  $employer = Employer::where('company_name', ucwords(str_replace('-', ' ', $name)))->first();
+  $jobs = Jobposts::where('employer_id', $employer->id)->paginate(10);
+  
+  return view('front.company', compact('employer', 'jobs'));
 }
 
 public function employerlogin()
@@ -209,12 +216,14 @@ public function filterlocation($name){
 }
 
 public function showcategory($jobcategories){
-  SEOMeta::setTitle($jobcategories.' Jobs');
   $category=jobcategories::where('jobcategories',$jobcategories)->pluck('id')->first();
+  $seo_description=jobcategories::where('jobcategories',$jobcategories)->pluck('seo_description')->first();
   $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
+  SEOMeta::setTitle($jobcategories.' Jobs');
+  SEOMeta::setDescription($seo_description);
 
   return view('front.filtercategory')
   ->with('locations',$towns)

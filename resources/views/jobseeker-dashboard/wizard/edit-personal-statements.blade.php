@@ -15,7 +15,8 @@
           @method('PATCH')
           <div class="row">
             <div class="col-md-12">
-              <label>Job Role Category: </label>              
+              <label>Express Recruitment Category:</label><br>
+              <small>Your profile will be displayed to the employers under this category for express recruitment</small>  
               <select class="form-control" name="category">
                 <option value="{{$personalstatements->category}}">{{$personalstatements->categoryname->name ?? 'Select Category'}}</option>
                 @foreach($categories as $category)

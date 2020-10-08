@@ -6,14 +6,14 @@
     <div class="col-md-4">    
       <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-        <h5 style="color:#0B0B3B;"><a href="/jobseeker/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a> 
+        <h3 style="color:#0B0B3B;"><a href="/jobseeker/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a> 
           <a href=""><i class="fa fa-heart text-danger pull-right" align="right" onclick="event.preventDefault();
           document.getElementById('save-job-{{$job->id}}').submit();">
           <form id="save-job-{{$job->id}}" action="{{ route('user-save', $job->id) }}" method="POST" style="display: none;">
             @csrf
             <input type="hidden" name="id" value="{{$job->id}}">
           </form>
-        </i></a></h5>
+        </i></a></h3>
 
         <div class="row">
           <div class="col-md-3">

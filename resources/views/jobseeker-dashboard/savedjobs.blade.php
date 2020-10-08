@@ -7,7 +7,7 @@
     @include('success')
     @forelse($jobs as $job)
     <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
-      <h5 style="color:#0B0B3B;"><a href="#">{{$job->job->job_title ?? ''}}</a>
+      <h3 style="color:#0B0B3B;"><a href="#">{{$job->job->job_title ?? ''}}</a>
         @auth
         <a href=""><i class="fa fa-heartbeat text-danger pull-right" align="right" onclick="event.preventDefault();
         document.getElementById('save-job-{{$job->id}}').submit();">
@@ -18,7 +18,7 @@
         </form>
       </i></a>
       @endauth
-    </h5>
+    </h3>
     <ul style="list-style: none;">
       <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->job->employment_type ?? ''}}</li>
       <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{\Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInDays($job->deadline) ?? ''}} days</span></li>

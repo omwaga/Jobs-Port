@@ -55,6 +55,7 @@ Route::prefix('jobseeker')->group(function(){
     Route::post('/create-resume', 'Auth\ResumeLoginController@login')->name('create-resume');
     Route::post('/saved-jobs/{id}', 'DashboardController@savejob')->name('user-save');
     Route::delete('/delete-saved-jobs/{id}', 'DashboardController@deletesavejob')->name('user-delete');
+    Route::get('/enroll-work-readiness', 'DashboardController@enrollworkreadiness')->name('jobseker.enrollworkreadiness');
 });
 
 //EmployerController Routes
@@ -65,6 +66,10 @@ Route::prefix('employers')->group(function(){
     Route::get('express-recruitment-categories', 'EmployerController@resumedatabase')->name('resumedatabase');
     Route::get('express-recruitment/{category}', 'EmployerController@candidates')->name('employer.candidates');
     Route::get('/candidate-profile/{name}','EmployerController@candidateprofile')->name('candidateprofile');
+    Route::get('/profile/{id}','EmployerProfile@edit')->name('employer-profile.edit');
+    Route::patch('/profile/{id}','EmployerProfile@update')->name('employer-profile.update');
+    Route::patch('/password-update/{id}','EmployerProfile@updatePassword')->name('password.update');
+    Route::resource('teams','TeamManagementController');
 });
 Route::get('/alreadyloggedin','EmployerController@loggedin')->name('loginalready');
 Route::get('/all-applicants','EmployerController@allapplicants')->name('allapplicants');
@@ -105,12 +110,11 @@ Route::prefix('admin')->group(function(){
     Route::resource('/industries', 'IndustriesController');
     Route::resource('/categories', 'CategoriesController');
     Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
+    Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');
 Route::post('/saveadmin-job', 'AdminController@savejob')->name('admin_savejob');
-Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
-Route::resource('blogarticles', 'BlogArticlesController');
 Route::get('/admin-employers', 'AdminController@adminemployers')->name('adminemployers');
 Route::get('/new-employer', 'AdminController@employer')->name('new-employer');
 Route::post('/save-employer', 'AdminController@addemployer')->name('add-employer');
@@ -145,6 +149,7 @@ Route::prefix('public')->group(function(){
  Route::get('/jobseeker', 'PagesController@jobseekers')->name('jobseekers');
  Route::get('/employer', 'PagesController@employers')->name('employers');
  Route::get('/employer-login', 'PagesController@employerlogin')->name('foremployer');
+ Route::get('/employer-profile/{name}', 'PagesController@employerProfile')->name('employerProfile');
 });
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
 Route::get('/search-result', 'PagesController@searchresult');
@@ -162,7 +167,6 @@ Route::get('/work-readiness-program', 'PagesController@workprogram')->name('work
 Route::get('/enroll-work-readiness', 'PagesController@enrollworkreadiness')->name('enrollworkreadiness');
 Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
-// Route::post('/Create-profile','PagesController@createprofile')->name('create.profile');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
 Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
 Route::get('/job-search','PagesController@aboutjob')->name('joblisting');
@@ -176,8 +180,6 @@ Route::get('/private-company-jobs', 'PagesController@privatejobs')->name('privat
 Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');
 Route::get('/humanitarian-and-ngo-jobs', 'PagesController@humanitarianjobs')->name('humanitarian-jobs');
 Route::get('/consultancies', 'PagesController@consultancies')->name('consultancies');
-// Route::get('/pros-4-Hire', 'PagesController@pros')->name('pros');
-// Route::get('/pros-4-Hire/{skill}', 'PagesController@candidates')->name('proscandidates');
 
 
 //dashboard on behalf of the employers

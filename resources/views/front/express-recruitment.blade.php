@@ -12,7 +12,7 @@
           <div class="col-md-4">      
             <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded">
               <a href="{{route('expresscandidates', $cat)}}">  
-                <img src="{{asset('storage/expresscategories/'.$category->cover_image)}}" width=100% height="120">
+                <img src="{{asset('storage/expresscategories/'.$category->cover_image)}}" loading="lazy" width=100% height="120">
                 <h5>{{$category->name}}</h5>
                 <p> 
                   {{$category->users->count() ?? 0}} Candidates</p>

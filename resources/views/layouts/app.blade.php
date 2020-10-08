@@ -1,226 +1,126 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>    
-    {!! SEOMeta::generate() !!}
-    <link rel="shortcut icon" href="/Images/logo/Networked.jpg">
-    <link rel="shortcut icon" href="{{asset('Images/logo/Networked.jpg')}}">
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link type="text/css" rel="stylesheet" href="resume/style.css">
+  {!! SEOMeta::generate() !!}
+  <link rel="shortcut icon" href="/Images/logo/Networked.jpg">
+  <link rel="shortcut icon" href="{{asset('Images/logo/Networked.jpg')}}">
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link type="text/css" rel="stylesheet" href="resume/style.css">
+  
+  <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+  <!-- google fonts -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!--homeslider-->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/jobs.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/testimonials.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/resume-samples.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/accordion.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/package.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/button.css') }}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-    <!-- google fonts -->
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!--homeslider-->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jobs.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/testimonials.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/resume-samples.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/resume.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/accordion.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/package.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/button.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <style type="text/css">
-        .how-section1{
-            margin-top:-15%;
-            padding: 10%;
-        }
-        .how-section1 h4{
-            color: #ffa500;
-            font-weight: bold;
-            font-size: 30px;
-        }
-        .how-section1 .subheading{
-            color: #3931af;
-            font-size: 20px;
-        }
-        .how-section1 .row
-        {
-            margin-top: 10%;
-        }
-        .how-img 
-        {
-            text-align: center;
-        }
-        .how-img img{
-            width: 40%;
-        }
-    </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-
-        h3{
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .social-box .box{
-            background: #FFF;
-            border-radius: 10px; 
-            padding: 40px 10px;
-            margin: 20px 0px;
-            cursor: pointer;
-            transition: all 0.5s ease-out;
-        }
-
-        .social-box .box:hover{
-           box-shadow: 0 0 6px #4183D7;
-       }
-
-       .social-box .box .box-text{
-        margin:20px 0px;
-        font-size: 15px;
-        line-height: 30px;
-    }
-
-    .social-box .box .box-btn a{
-        text-decoration: none;
-        color: #4183D7;
-        font-size: 16px;
-    }
-</style>
-<style type="text/css">
-    #MiCarousel{
-        margin-top: 30px;
-        margin-bottom: 30px;
-        -webkit-box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
-    }
-    .carousel-img{
-        background-color: #000;
-        color: #fff;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        position: absolute;    
-        z-index: 2;
-        -webkit-clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
-        opacity: 0.8;
-    }
-
-    .div-r{
-        padding: 40px;
-    }
-
-    .carousel-title{
-        font-size: 80px;
-        font-weight: bold;
-        margin-left: 20px;
-        margin-top: 20px;
-    }
-
-    .carousel-pagination{
-        background-color: #000 !important;
-        width: 15px !important;
-        height: 15px !important;
-        border-radius: 100%;
-        position: relative;
-        bottom: -50px;
-        opacity: 0.5;
-    }
-
-    .carousel-pagination.active{
-        opacity: 1;   
-    }
-
-    .carousel-controls{
-        display: none;
-    }
-</style>
-
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+ <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "a78997e7-23a2-4b7a-ade4-06223bd21cda",
+    });
+  });
+</script>
+
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+  <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+  <script>
     $('#duties').ckeditor();
     $('#edesc').ckeditor();
     $('#summary').ckeditor();
     $('#article-ckeditor').ckeditor();
     $('#editass').ckeditor();
     $('.textarea').ckeditor(); // if class is prefered.
-</script>
+  </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142371933-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142371933-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-142371933-1');
-</script>
+    gtag('config', 'UA-142371933-1');
+  </script>
 
-<script data-ad-client="ca-pub-9415122333094581" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-9415122333094581" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
-<!-- profile completion modal alert -->
-<script type="text/javascript">
+  <!-- profile completion modal alert -->
+  <script type="text/javascript">
     $(window).on('load',function(){
-        $('#alertModal').modal('show');
+      $('#alertModal').modal('show');
     });
-</script>
-<!-- End the modal script -->
+  </script>
+  <!-- End the modal script -->
 
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">
 
-    <div id="app">
-        @include('navigation.navbar')
-        <main class="py-4">
-            @yield('content')
-        </main>
-        
-    </div>
+  <div id="app">
+    @include('navigation.navbar')
+    <main class="py-4">
+      @yield('content')
+    </main>
     
-    @include('footer.footer')
-    <script>
-      $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').trigger('focus')
-      })
+  </div>
+  
+  @include('footer.footer')
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
   </script>
   <!-- carousel -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
   <script type="text/javascript">
-  jQuery(document).ready(function ()
-  {
-    jQuery('select[name="country"]').on('change',function(){
-     var countryID = jQuery(this).val();
-     if(countryID)
-     {
-      jQuery.ajax({
-       url : 'dropdownlist/getstates/' +countryID,
-       type : "GET",
-       dataType : "json",
-       success:function(data)
+    jQuery(document).ready(function ()
+    {
+      jQuery('select[name="country"]').on('change',function(){
+       var countryID = jQuery(this).val();
+       if(countryID)
        {
-        console.log(data);
-        jQuery('select[name="state"]').empty();
-        jQuery.each(data, function(key,value){
-         $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
-       });
+        jQuery.ajax({
+         url : 'dropdownlist/getstates/' +countryID,
+         type : "GET",
+         dataType : "json",
+         success:function(data)
+         {
+          console.log(data);
+          jQuery('select[name="state"]').empty();
+          jQuery.each(data, function(key,value){
+           $('select[name="state"]').append('<option value="'+ key +'">'+ value +'</option>');
+         });
+        }
+      });
+      }
+      else
+      {
+        $('select[name="state"]').empty();
       }
     });
-    }
-    else
-    {
-      $('select[name="state"]').empty();
-    }
-  });
-  });
-</script>
+    });
+  </script>
 
 </body>
 

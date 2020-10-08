@@ -18,7 +18,7 @@
             @include('success')
             @if($user_industries->count() > 0)
             <button class="btn text-white pull-right" style="background-color:#070A53;" data-toggle="modal" data-target="#newindustry">Add Industry</button>
-            @include('dashboard.add-industrymodal')
+            @include('jobseeker-dashboard.add-industrymodal')
             @else
             <form method="post" action="{{route('rjobs')}}">
               @csrf
@@ -46,7 +46,7 @@
          @forelse($jobs as $job)
          <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <h5 style="color:#0B0B3B;"><a href="/jobseeker/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a> 
+          <h3 style="color:#0B0B3B;"><a href="/jobseeker/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a> 
             @auth
             <i class="fa fa-heart text-danger float-right" align="right" onclick="event.preventDefault();
             document.getElementById('save-job-{{$job->id}}').submit();">
@@ -55,7 +55,7 @@
               <input type="hidden" name="id" value="{{$job->id}}">
             </form>
           </i>
-        @endauth</h5>
+        @endauth</h3>
         <ul style="list-style: none;">
           <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
           <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>

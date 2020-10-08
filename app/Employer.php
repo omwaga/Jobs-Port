@@ -33,4 +33,9 @@ class Employer extends Authenticatable
     public function applications(){
         return $this->hasMany(JobApplication::class,'employer_id');
     }
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class, 'company_industry', 'id');
+    }
 }

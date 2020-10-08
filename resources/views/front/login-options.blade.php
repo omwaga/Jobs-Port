@@ -9,7 +9,7 @@
                     <i class="fa fa-graduation-cap text-danger" aria-hidden="true"></i>
                 </div>
                 <a href="{{route('jobseekers')}}"><h5> Jobseekers</h5></a>
-                <p>Be discover by leading employers who visit our service every day to recruit trusted professionals </p>   
+                <p>Be discovered by leading employers who visit our service every day to recruit trusted professionals </p>   
                 <a href="{{route('jobseekers')}}" class="btn btn-danger">Jobseeker Login/Register</a>              
             </div>
         </div>

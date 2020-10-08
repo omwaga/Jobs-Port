@@ -287,72 +287,50 @@
 </div><br>
 
 <div class="main" align="center">
- <h4 class="mb-0">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
+ <h4 class="mb-5">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
  <div class="container">
-  <div class="row">
+
+  <div class="row blog">
     <div class="col-md-12">
-      <div id="MiCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#MiCarousel" data-slide-to="0" class="carousel-pagination active"></li>
-          <li data-target="#MiCarousel" data-slide-to="1" class="carousel-pagination"></li>
-          <li data-target="#MiCarousel" data-slide-to="2" class="carousel-pagination"></li>
-        </ol>
+      <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel items -->
         <div class="carousel-inner">
+
           <div class="carousel-item active">
             <div class="row">
-              <div class="col-md-6 div-l">
-                <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2014/05/02/21/49/home-office-336373_960_720.jpg">
-                  <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
-                </div>
+              @foreach($employers as $employer)
+              @php $name = str_slug($employer->company_name, '-'); @endphp
+              <div class="col-md-3">
+                <a href="{{route('employerProfile', $name)}}">
+                  <img src="{{asset('storage/logos/'.$employer->logo)}}" class="rounded" alt="Image" style="max-width:60%;">
+                </a>
+                <a href="{{route('employerProfile', $name)}}"><h6>{{$employer->company_name}}</h6></a>
               </div>
-              <div class="col-md-6 div-r">
-                <img src="https://indepthresearch.org/images/logos/New_IRES_Logo.png">
-                <hr>
-                <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
-                <button class="btn btn-primary">View Profile</button>
-              </div>
-            </div>                                
+              @endforeach
+            </div>
+            <!--.row-->
           </div>
+          <!--.item-->
           <div class="carousel-item">
             <div class="row">
-              <div class="col-md-6 div-l">
-                <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/02/11/08/office-620817_960_720.jpg);">
-                  <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
-                </div>
+              @foreach($employers1 as $employer)
+              @php $name = str_slug($employer->company_name, '-'); @endphp
+              <div class="col-md-3">
+                <a href="{{route('employerProfile', $name)}}">
+                  <img src="{{asset('storage/logos/'.$employer->logo)}}" class="rounded" alt="Image" style="max-width:60%;">
+                </a>
+                <a href="{{route('employerProfile', $name)}}"><h6>{{$employer->company_name}}</h6></a>
               </div>
-              <div class="col-md-6 div-r">
-                <img src="/images/logo/Networked.jpg" style="height: 120px">
-                <hr>
-                <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
-                <a href="{{route('onecompany')}}" class="btn btn-primary">View Profile</a>
-              </div>
+              @endforeach
             </div>
+            <!--.row-->
           </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-md-6 div-l">
-                <div class="carousel-img" style="background-image: url(https://cdn.pixabay.com/photo/2015/07/19/10/00/still-life-851328_960_720.jpg);">
-                  <a href="{{route('all-companies')}}" class="p-2 bg-primary text-white text-center breaking-caret"><span class="font-weight-bold">Employers of Choice</span></a>
-                </div>
-              </div>
-              <div class="col-md-6 div-r">
-                <img src="https://indepthresearch.org/images/logos/New_IRES_Logo.png">
-                <hr>
-                <p>Indepth Research Institute is Africa's Leading training and Consultancy centre since 2003.</p>
-                <button class="btn btn-primary">View Profile</button>
-              </div>
-            </div>
-          </div>
+          <!--.item-->
         </div>
-        <a class="carousel-control-prev carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <!--.carousel-inner-->
       </div>
+      <!--.Carousel-->
+
     </div>
   </div>
 </div>

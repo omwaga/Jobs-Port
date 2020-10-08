@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\TeamManagement;
 
-class ProsDetailsController extends Controller
+class TeamManagementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:employer');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,9 @@ class ProsDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $team = TeamManagement::all();
+
+        return view('employer-dashboard.team', compact('team'));
     }
 
     /**
@@ -24,7 +31,7 @@ class ProsDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('employer-dashboard.add-member');
     }
 
     /**

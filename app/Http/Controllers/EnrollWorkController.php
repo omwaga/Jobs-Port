@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\WorkprogramEnrollment;
+use App\WorkProgramEnrollment;
 
 class EnrollWorkController extends Controller
 {
@@ -24,9 +24,9 @@ class EnrollWorkController extends Controller
     		'consultancy_skills' => 'nullable'
     	]);
 
-    	WorkprogramEnrollment::create($attributes);
+    	WorkProgramEnrollment::create($attributes);
 
-    	return redirect('/work-readiness-program')->with('message', 'Your enrollment has been submitted successfully');
+    	return back()->with('message', 'Your enrollment has been submitted successfully');
 
     }
 }

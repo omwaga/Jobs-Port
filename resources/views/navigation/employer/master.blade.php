@@ -1,6 +1,3 @@
-<!-- ============================================================== -->
-<!-- navbar -->
-<!-- ============================================================== -->
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
         <!-- <a class="navbar-brand" href="/">The NetworkedPros</a> -->
@@ -21,14 +18,14 @@
                             <div class="notification-title"> Notifications</div>
                             <div class="notification-list">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action active">
+                                    <!-- <a href="#" class="list-group-item list-group-item-action active">
                                         <div class="notification-info">
                                             <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                             <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>applied to the software developer position.
                                                 <div class="notification-date">2 min ago</div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </li>
@@ -59,14 +56,14 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown nav-user">
-                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('storage/logos/'.auth::user()->logo)}}" alt="" class="user-avatar-md rounded-circle"></a>
+                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('storage/logos/'.auth()->user()->logo)}}" alt="" class="user-avatar-md rounded-circle"></a>
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{auth::user()->company_name}}</h5>
+                            <h5 class="mb-0 text-white nav-user-name">{{auth()->user()->company_name}}</h5>
                             <span class="status"></span><span class="ml-2">Available</span>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                        <a class="dropdown-item" href="{{route('employer-profile.edit', auth::user()->id)}}"><i class="fas fa-cog mr-2"></i>Account Settings</a>
+                        <a class="dropdown-item" href="{{route('teams.index')}}"><i class="fas fa-users mr-2"></i>Team Management</a>
                         <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         <i class="fas fa-power-off mr-2"></i>Logout</a>
@@ -103,7 +100,7 @@
                     <li class="nav-item ">
                         <a class="nav-link active" href="/Employer-dashboard"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                     </li>
-                    <li class="nav-divider">
+                    <li class="nav-divider text-success">
                         Staff Recruitment
                     </li>
                     <li class="nav-item menu-list">
@@ -125,7 +122,7 @@
                         <a class="nav-link" href="{{route('declined')}}"><i class="fas fa-trash-alt"></i>Declined Applications</a>
                     </li>   
 
-                    <li class="nav-divider">
+                    <li class="nav-divider text-success">
                         Express Recruitment
                     </li>
                     <li class="nav-item menu-list">
