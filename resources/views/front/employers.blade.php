@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="jumbotron jumbotron-fluid" style="padding-top: 5rem; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 86, 135, 1)), url({{asset('Images/employee.jpg')}}), no-repeat">
+<div class="jumbotron jumbotron-fluid" style="padding-top: 5rem; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 86, 135, 1)), url({{asset('Images/web-slide.jpg')}}), no-repeat">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-offset-4" style=" padding-top: 7rem;">
@@ -10,7 +10,7 @@
 
           <p class="text-white text-left">Reach out to millions of jobseekers and hire quickly with our fast and easy job posting services.</p>
           <a href="{{route('hirre')}}" class="btn btn-danger">Get Started</a>
-          <a href="{{route('foremployer')}}" class="btn text-white" style="background-color: #005691">Already Registered? Post a Job</a>
+          <a href="{{route('foremployer')}}" class="btn text-white btn-success">Already Registered? Post a Job</a>
       </div>
   </div>
 </div>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Industry;
+use App\Country;
 
-class IndustriesController extends Controller
+class CountriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class IndustriesController extends Controller
      */
     public function index()
     {
-        $industries = Industry::paginate(20);
+        $locations = Country::paginate(25);
 
-        return view('admin.industries', compact('industries'));
+        return view('admin.locations', compact('locations'));
     }
 
     /**
@@ -37,15 +37,7 @@ class IndustriesController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes =  request()->validate([
-            'name' => ['required', 'min:3'],
-            'seo_description' => 'required',
-            'description' => 'required'
-        ]);
-
-        Industry::create($attributes);
-
-        return back()->with('message', 'The industry has been added successfully');
+        //
     }
 
     /**
@@ -65,9 +57,9 @@ class IndustriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Industry $industry)
+    public function edit($id)
     {
-        return view('admin.edit-industry', compact('industry'));
+        //
     }
 
     /**
@@ -77,11 +69,9 @@ class IndustriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Industry $industry)
+    public function update(Request $request, $id)
     {
-        $industry->update(request(['name', 'description', 'seo_description']));
-
-        return redirect(route('industries.index'))->with('message', 'The industry has been updated successfully');
+        //
     }
 
     /**

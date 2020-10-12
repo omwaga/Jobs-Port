@@ -109,6 +109,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('/expresscategories', 'ExpressCategoriesController');
     Route::resource('/industries', 'IndustriesController');
     Route::resource('/categories', 'CategoriesController');
+    Route::resource('/countries', 'CountriesController');
     Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
     Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
 });

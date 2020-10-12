@@ -10,7 +10,7 @@
 
           <p class="text-white text-left">Be discovered by leading employers who visit our service every day to recruit trusted professionals</p>
           <a href="{{route('Register')}}" class="btn btn-danger">Get Started</a>
-          <a href="{{route('login')}}" class="btn text-white" style="background-color: #005691">Already Registered? Login</a>
+          <a href="{{route('login')}}" class="btn text-white btn-success">Already Registered? Login</a>
       </div>
   </div>
 </div>

@@ -5,13 +5,13 @@
 
   <!--Start Page Title-->
   <div class="page-title-box">
-    <h4 class="page-title">Industries</h4>
+    <h4 class="page-title">Countries</h4>
     <ol class="breadcrumb">
       <li>
-        <a href="/admin-dashboard">Dashboard</a>
+        <a href="{{route('admin')}}">Dashboard</a>
       </li>
       <li class="active">
-        Industries
+        Countries
       </li>
     </ol>
     <div class="clearfix"></div>
@@ -25,8 +25,8 @@
 
        <div class="col-md-6">
          <div class="white-box">
-           <h2 class="header-title">All Industries</h2>
-           
+           <h2 class="header-title">All Countries</h2>
+
            <div class="table-responsive">
             <table class="table table-hover">
               <thead>
@@ -38,14 +38,14 @@
               </thead>
               <tbody>
                 @php $column = 0 @endphp
-                @foreach($industries as $industry)
+                @foreach($locations as $location)
                 @php $column = $column + 1 @endphp
                 <tr>
                   <td>{{$column}}</td>
-                  <td>{{$industry->name}}</td>
+                  <td>{{$location->name}}</td>
                   <td>
                     <div class="btn-group">
-                      <a type="button" href="{{route('industries.edit', $industry->id)}}" class="btn btn-info float-left">Edit</a>
+                      <a type="button" href="{{route('countries.edit', $location->id)}}" class="btn btn-info float-left">Edit</a>
                     </div>
                   </td>
                 </tr>
@@ -53,35 +53,55 @@
               </tbody>
             </table>
           </div>
-          {{$industries->links()}}
+          {{$locations->links()}}
         </div>
       </div> <!--/.col-md-4-->
 
 
       <div class="col-md-6">
        <div class="white-box">
-         <h2 class="header-title">Add Industry</h2>
+         <h2 class="header-title">Add Country</h2>
          <!-- <div class="compose-body"> -->
           @include('errors')
           @include('success')
-          <form class="row" method="post" action="{{route('industries.store')}}">
+          <form class="row" method="post" action="{{route('countries.store')}}">
             @csrf
             <div class="form-group">
-              <label class="col-md-3 control-label">Industry Name:</label>
+              <label for="to" class="col-md-3 control-label">Country Name:</label>
               <div class="col-md-9">
-                <input type="text" name="name" class="form-control" id="to">
+                <input type="text" name="jobcategories" class="form-control" value="{{old('jobcategories')}}">
               </div>
             </div>
             <div class="form-group">
-              <label for="to" class="col-md-3 control-label">SEO Description:</label>
+              <label for="to" class="col-md-3 control-label">Code:</label>
               <div class="col-md-9">
                 <textarea class="form-control" name="seo_description">{{old('seo_description')}}</textarea>
               </div>
             </div>
+
+            <div class="compose-options">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Add</button>
+              </div>
+            </div>
+          </form>
+          <!-- </div> -->
+         <h2 class="header-title">Add City/State</h2>
+         <!-- <div class="compose-body"> -->
+          @include('errors')
+          @include('success')
+          <form class="row" method="post" action="{{route('countries.store')}}">
+            @csrf
             <div class="form-group">
-              <label for="to" class="col-md-3 control-label">Description:</label>
+              <label for="to" class="col-md-3 control-label">City/State Name:</label>
               <div class="col-md-9">
-                <textarea class="form-control ckeditor" name="description">{{old('description')}}</textarea>
+                <input type="text" name="jobcategories" class="form-control" value="{{old('jobcategories')}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="to" class="col-md-3 control-label">Country:</label>
+              <div class="col-md-9">
+                <textarea class="form-control" name="seo_description">{{old('seo_description')}}</textarea>
               </div>
             </div>
 
