@@ -69,13 +69,13 @@
             <div class="form-group">
               <label for="to" class="col-md-3 control-label">Country Name:</label>
               <div class="col-md-9">
-                <input type="text" name="jobcategories" class="form-control" value="{{old('jobcategories')}}">
+                <input type="text" name="name" class="form-control" value="{{old('name')}}">
               </div>
             </div>
             <div class="form-group">
               <label for="to" class="col-md-3 control-label">Code:</label>
               <div class="col-md-9">
-                <textarea class="form-control" name="seo_description">{{old('seo_description')}}</textarea>
+                <input type="text" name="country_code" class="form-control" value="{{old('country_code')}}">
               </div>
             </div>
 
@@ -86,22 +86,24 @@
             </div>
           </form>
           <!-- </div> -->
-         <h2 class="header-title">Add City/State</h2>
-         <!-- <div class="compose-body"> -->
-          @include('errors')
-          @include('success')
-          <form class="row" method="post" action="{{route('countries.store')}}">
+          <h2 class="header-title">Add City/State</h2>
+          <form class="row" method="post" action="{{route('countries.addstate')}}">
             @csrf
             <div class="form-group">
               <label for="to" class="col-md-3 control-label">City/State Name:</label>
               <div class="col-md-9">
-                <input type="text" name="jobcategories" class="form-control" value="{{old('jobcategories')}}">
+                <input type="text" name="name" class="form-control" value="{{old('name')}}">
               </div>
             </div>
             <div class="form-group">
               <label for="to" class="col-md-3 control-label">Country:</label>
               <div class="col-md-9">
-                <textarea class="form-control" name="seo_description">{{old('seo_description')}}</textarea>
+                <select class="form-control" name="countries_id">
+                  <option value="">Select Country</option>
+                  @foreach($locations as $location)
+                  <option value="{{$location->id ?? ''}}">{{$location->name ?? 'Select Country'}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
 

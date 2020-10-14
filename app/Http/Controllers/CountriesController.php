@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Country;
+use App\Town;
 
 class CountriesController extends Controller
 {
@@ -37,7 +38,26 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|min:3',
+            'country_code' => 'required',
+        ]);
+
+        Country::create($attributes);
+
+        return back()->with('message', 'Country added successfully');
+    }
+
+    public function addstate(Request $request)
+    {
+        $attributes = $request->validate([
+            'name' => 'required|min:3',
+            'countries_id' => 'required',
+        ]);
+
+        Town::create($attributes);
+
+        return back()->with('message', 'Town added successfully');
     }
 
     /**

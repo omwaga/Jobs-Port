@@ -77,13 +77,14 @@ class ApplicationsController extends Controller
            ]);
 
             if(JobApplication::where('job_id', $request->input('job_id'))->where('user_id', auth()->user()->id)->count() === 1){
-               return redirect('/already-applied');
+               return redirect(route('application.fail'));
            }
            else
            {
 
             JobApplication::create($attributes + ['user_id' => auth()->user()->id]);
-            return redirect('/successfullapplication');
+
+            return redirect(route('application.success'));
         }
     }
 

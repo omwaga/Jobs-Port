@@ -39,8 +39,8 @@ Route::prefix('jobseeker')->group(function(){
     Route::get('/resume-templates', 'DashboardController@resumeTemplates')->name('resumeTemplates');
     Route::get('/joblocation/{name}','DashboardController@showlocation')->name('jobseeker.location');
     Route::get('/jobcategory/{name}','DashboardController@showcategory');
-    Route::get('/successfullapplication', 'ApplicationsController@success');
-    Route::get('/already-applied', 'ApplicationsController@appalready');
+    Route::get('/successfullapplication', 'ApplicationsController@success')->name('application.success');
+    Route::get('/already-applied', 'ApplicationsController@appalready')->name('application.fail');
     Route::get('/joblogin/{id}/{jobtitle}', 'PagesController@loginform')->name('joblogin');
     Route::post('/authlogin', 'Auth\ApplyjobController@login')->name('authuser');
     Route::get('/applyforjob', 'PagesController@applyjob');
@@ -110,6 +110,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('/industries', 'IndustriesController');
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/countries', 'CountriesController');
+    Route::post('/addstate', 'CountriesController@addstate')->name('countries.addstate');
     Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
     Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
 });

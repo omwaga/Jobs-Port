@@ -15,7 +15,7 @@
 				<a href="{{ redirect()->back()->getTargetUrl() }}" class="btn btn-danger"><i class="fa fa-backward"></i>Back to Job Description</a>
 				</div>
 				<div class="col-md-6">
-				<form method="POST" action="/jobapplications">
+				<form method="POST" action="{{route('jobapplications.store')}}">
 					@csrf
 					<input type="hidden" name="job_id" value="{{$job->id}}">
 					<input type="hidden" name="employer_id" value="{{$job->employer_id}}">
