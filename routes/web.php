@@ -3,6 +3,8 @@ Auth::routes(['verify' => true]);
 Route::get('/Login-Page',function(){
     return view('auth.login1');
 });
+Route::get('auth/{provider}', 'SocialController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback');
 
 Route::get('/profile-builder', 'DashboardController@wizard')->name('profile-wizard');
 
@@ -81,7 +83,6 @@ Route::get('/talentpool','EmployerController@talentpool')->name('pooltalent');
 Route::get('/Employer-dashboard','EmployerController@employerdash')->name('employdashboard');
 Route::get('/postajob','EmployerController@postajob')->name('emppostjob');
 Route::get('/companyprofile','EmployerController@cprofile')->name('empprofille');
-// Route::resource('/Employer-login','EmployerController');
 Route::get('/Talent-pool','EmployerController@talentp')->name('talentpool');
 Route::post('/jobpost','EmployerController@jobpost')->name('postempjob');
 Route::get('/templates', 'EmployerController@picktemplate')->name('picktemplate');
@@ -101,6 +102,17 @@ Route::post('new-poolname', 'EmployerController@newpool')->name('newpool');
 Route::get('talentpool/{name}', 'EmployerController@poolmembers')->name('poolmembers');
 Route::post('resume-database', 'EmployerController@searchresume')->name('searchresume');
 Route::get('/job-withapplications/{name}', 'EmployerController@jobwithapplications')->name('jobwithapplications');
+
+Route::get('/team-dashboard','TeamController@home')->name('employer.team');
+Route::prefix('team')->group(function(){
+    Route::get('/job-options','TeamController@joboptions')->name('team.options');
+    Route::get('/all-jobposts', 'TeamController@alljobs')->name('team.jobs');
+    Route::get('/job-post','TeamController@postajob')->name('team.post');
+    Route::post('/job-post','TeamController@postjob')->name('team.postjob');
+    Route::PATCH('/job-post/{id}','TeamController@updatejob')->name('team.updatejob');
+    Route::get('/job-post/{id}/edit','TeamController@editjob')->name('team.edit.post');
+    Route::get('/job-withapplications/{name}', 'TeamController@jobwithapplications')->name('team.view');
+});
 
 // Admin routes
 Route::prefix('admin')->group(function(){
@@ -130,7 +142,6 @@ Route::get('/admin-resume', 'AdminController@resume')->name('resume');
 Route::resource('cvupload', 'CvUploadsController');
 Route::resource('coverletters', 'CoverLettersController');
 
-
 //employer login controllers
 Route::prefix('employer')->group(function(){
     Route::post('/login','Auth\EmployerLoginController@login')->name('admin.login.submit');
@@ -143,15 +154,15 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 
 //public routes
 Route::prefix('public')->group(function(){    
- Route::get('/express-recruitment', 'PagesController@express')->name('express');
- Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
- Route::get('/faqs', 'PagesController@faqs')->name('faqs');
- Route::get('/user-options', 'PagesController@loginoptions')->name('options');
- Route::get('/company-page', 'PagesController@onecompany')->name('onecompany');
- Route::get('/jobseeker', 'PagesController@jobseekers')->name('jobseekers');
- Route::get('/employer', 'PagesController@employers')->name('employers');
- Route::get('/employer-login', 'PagesController@employerlogin')->name('foremployer');
- Route::get('/employer-profile/{name}', 'PagesController@employerProfile')->name('employerProfile');
+   Route::get('/express-recruitment', 'PagesController@express')->name('express');
+   Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+   Route::get('/faqs', 'PagesController@faqs')->name('faqs');
+   Route::get('/user-options', 'PagesController@loginoptions')->name('options');
+   Route::get('/company-page', 'PagesController@onecompany')->name('onecompany');
+   Route::get('/jobseeker', 'PagesController@jobseekers')->name('jobseekers');
+   Route::get('/employer', 'PagesController@employers')->name('employers');
+   Route::get('/employer-login', 'PagesController@employerlogin')->name('foremployer');
+   Route::get('/employer-profile/{name}', 'PagesController@employerProfile')->name('employerProfile');
 });
 Route::get('/all-jobs', 'PagesController@alljobs')->name('alljobs');
 Route::get('/search-result', 'PagesController@searchresult');
@@ -176,7 +187,7 @@ Route::get('/employerd','PagesController@employerd')->name('emp');
 Route::get('/homesearch','PagesController@searchhome')->name('homesearch');
 Route::get('/Register','PagesController@register')->name('Register');
 Route::get('/','PagesController@homee')->name('homee');
-Route::get('/jobview/{id}/{jobtitle}','PagesController@show')->name('viewjob');
+Route::get('/job/{id}/{jobtitle}','PagesController@show')->name('viewjob');
 Route::get('/government-jobs', 'PagesController@governmentjobs')->name('government-jobs');
 Route::get('/private-company-jobs', 'PagesController@privatejobs')->name('private-jobs');
 Route::get('/un-jobs', 'PagesController@unjobs')->name('un-jobs');

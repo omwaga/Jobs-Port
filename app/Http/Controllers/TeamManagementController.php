@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\TeamManagement;
 
 class TeamManagementController extends Controller
@@ -19,7 +20,7 @@ class TeamManagementController extends Controller
      */
     public function index()
     {
-        $team = TeamManagement::all();
+        $team = TeamManagement::where('employer_id', auth()->user()->id)->get();
 
         return view('employer-dashboard.team', compact('team'));
     }
@@ -42,7 +43,19 @@ class TeamManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|min:3',
+            'designation' => 'nullable|min:3',
+            'phone_number' => 'nullable|min:3',
+            'email' => 'required|email|unique:team_management',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $attributes['password'] = Hash::make($attributes['password']);
+
+        TeamManagement::create($attributes + ['employer_id' => auth()->user()->id, 'username' => $request->email]);
+
+        return redirect(route('teams.index'))->with('message', 'Team member added successfully');
     }
 
     /**
@@ -51,9 +64,9 @@ class TeamManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit(TeamManagement $team)
     {
-        //
+        return view('employer-dashboard.edit-team', compact('team'));
     }
 
     /**
@@ -62,7 +75,7 @@ class TeamManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
         //
     }
@@ -74,9 +87,11 @@ class TeamManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TeamManagement $team)
     {
-        //
+        $team->update(request(['name', 'designation', 'phone_number', 'email', 'password']));
+
+        return redirect(route('teams.index'))->with('message', 'Team member details updated successfully');
     }
 
     /**
@@ -85,8 +100,10 @@ class TeamManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TeamManagement $team)
     {
-        //
+        $team->delete();
+
+        return back()->with('message', 'Team member details deleted successfully');
     }
 }

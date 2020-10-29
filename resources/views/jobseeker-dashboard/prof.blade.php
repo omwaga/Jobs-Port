@@ -13,7 +13,7 @@
             <div class="col-md-9">
               <a href="" class="h5 text-white">Job Vacancies</a><br>
               <p class="text-white">Discover hundreds of jobs and create alerts to notify you when jobs matching your qualifications are advertised</p>
-              <a href="#"><button class="btn text-white btn-sm" style="background-color: #005691">Browse Available Jobs</button></a>
+              <a href="{{route('dashboard.jobs')}}"><button class="btn text-white btn-sm" style="background-color: #005691">Browse Available Jobs</button></a>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="col-md-9">
               <a href="" class="h5 text-white">Career Interests</a>
               <p class="text-white pt-4">Provide the settings to be used to find you jobs, and industry insights that match your interests</p>
-              <a href="#"><button class="btn btn-danger btn-sm">Get Started</button></a>
+              <a href="{{route('interests')}}"><button class="btn btn-danger btn-sm">Get Started</button></a>
             </div>
           </div>
         </div>

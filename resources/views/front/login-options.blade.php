@@ -26,4 +26,31 @@
         </div>
     </div>
 </div>
+
+
+<div class="container-fluid">
+  <div class="card">
+     <div class="col-md-12" align="center">
+      <h4 class="mt-5">LET US HELP YOU HIRE BETTER</h4>
+      <div class="row">
+        <div class="col-md-6">
+           <p><i class="fa fa-clock text-success" aria-hidden="true"></i> 2 Minutes to Post</p>
+           <p><i class="fa fa-users text-success" aria-hidden="true"></i> Attract Audience</p>
+           <p><i class="fa fa-volume-control-phone text-success" aria-hidden="true"></i> Contact Directly</p>
+       </div>
+       <div class="col-md-6">
+           <p><i class="fa fa-flag text-success" aria-hidden="true"></i> Unlimited Applies</p>
+           <p><i class="fa fa-bullseye text-success" aria-hidden="true"></i> 30 days Job Visibility</p>
+           <p><i class="fa fa-pied-piper text-success" aria-hidden="true"></i> Manage your Applicants</p>
+       </div>
+       <div class="col-sm-12"><br>
+        <div class="box-btn">
+          <a class="btn btn-danger text-white" href="{{route('foremployer')}}">Post a Job</a>
+      </div>
+      <h4>Don’t have time? Send us your job advert to <a href="mailto:careers@thenetworkedpros.com?Subject=POST%20JOB" target="_top" class="text-info"> careers@thenetworkedpros.com</a> or call +254 706468123 we will do the rest</h4>
+  </div>    
+</div>
+</div>
+</div>
+</div>
 @endsection

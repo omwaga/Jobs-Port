@@ -50,9 +50,9 @@ return [
             'driver' => 'session',
             'provider' => 'employers',
         ],
-        'trainingc' => [
+        'staff' => [
             'driver' => 'session',
-            'provider' => 'trainingc',
+            'provider' => 'staff',
         ],
          'user' => [
             'driver' => 'session',
@@ -86,9 +86,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Employer::class,
         ],
-        'trainingc' => [
+        'staff' => [
             'driver' => 'eloquent',
-            'model' => App\Training_Center::class,
+            'model' => App\TeamManagement::class,
         ],
         
         
@@ -129,8 +129,8 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-         'trainingc' => [
-            'provider' => 'trainingc',
+         'staff' => [
+            'provider' => 'staff',
             'table' => 'password_resets',
             'expire' => 60,
         ],

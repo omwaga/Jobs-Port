@@ -8,12 +8,12 @@
     <div class="row  p-2">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="page-header">
-          <h5 class="pageheader-title">Add Team Member</h5>
+          <h5 class="pageheader-title">Edit Team Member</h5>
           <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('employdashboard')}}" class="breadcrumb-link">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add Team Member</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Team Member</li>
               </ol>
             </nav>
 
@@ -29,22 +29,23 @@
         <div class="card">
           @include('errors')
           @include('success')
-          <form role="form" method="post" action="{{route('teams.store')}}">
+          <form role="form" method="post" action="{{route('teams.update', $team->id)}}">
             @csrf
+            @method('PATCH')
             <div class="row p-3">
               <div class="col-md-6 col-sm-6 col-xs-12">
 
                 <div class="form-group">
                   <label class="col-form-label">Full Name:</label>
-                  <input class="form-control" type="text" name="name" value="{{ old('name') }}" required="" />
+                  <input class="form-control" type="text" name="name" value="{{ $team->name }}" required="" />
                 </div>
                 <div class="form-group">
                   <label>Designation:</label>
-                  <input class="form-control" value="{{old('designation')}}" type="text" name="designation" required />
+                  <input class="form-control" value="{{$team->designation}}" type="text" name="designation" required />
                 </div>
                 <div class="form-group">
                   <label>Password:</label>
-                  <input class="form-control" value="{{old('password')}}" type="text" name="password" required />
+                  <input class="form-control" type="text" name="password" required />
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-12">
@@ -54,7 +55,7 @@
                   <div class="form-group">
                     <label>Email:</label><br>
                     <small>The email will be used for login</small>
-                    <input class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}"  type="email" name="email"/>
+                    <input class="form-control @error('email') is-invalid @enderror" value="{{$team->email}}"  type="email" name="email"/>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -62,7 +63,7 @@
                     @enderror
                   </div>
                   <label>Phone Number:</label>
-                  <input class="form-control @error('phone_number') is-invalid @enderror" value="{{old('phone_number')}}"  type="text" name="phone_number"/>
+                  <input class="form-control @error('phone_number') is-invalid @enderror" value="{{$team->phone_number}}"  type="text" name="phone_number"/>
                   @error('phone_number')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -73,7 +74,7 @@
             </div>
           </div>
           <p class="text-right">
-            <button type="submit" class="btn btn-space btn-primary">Add Member</button>
+            <button type="submit" class="btn btn-space btn-primary">Update Member</button>
           </p><br>
         </form>
       </div>

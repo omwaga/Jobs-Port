@@ -29,7 +29,6 @@
         $('#editass').ckeditor();
         $('.textarea').ckeditor(); // if class is prefered.
     </script>
-
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -51,7 +50,7 @@
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
         
-        @include('navigation.dashboard')
+        @include('navigation.employer.team')
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- wrapper  -->

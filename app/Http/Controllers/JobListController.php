@@ -10,21 +10,16 @@ use App\Town;
 use App\Country;
 
 class JobListController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('auth:employer');
-    }
-    
+{    
     public function index()
     {
         $jobs = Jobposts::OrderBy('created_at', 'DESC')->where('employer_id',Auth::guard('employer')->user()->id)->get();
         
         return view('employer-dashboard.jobs', compact('jobs'));
     }
-     
+
     //show view to create a new training
-     Public function create(){
+    Public function create(){
     }
 
     /**
@@ -61,7 +56,7 @@ class JobListController extends Controller
         $countries = Country::all();
         
         
-      return view('employer-dashboard.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
+        return view('employer-dashboard.updatejob', compact('jobcategory', 'industry', 'towns', 'jobpost', 'countries'));
     }
 
     /**
@@ -104,5 +99,5 @@ class JobListController extends Controller
         return back()->with('message', 'The Job Post has been published successfully!');
     }
     
-        
+
 }

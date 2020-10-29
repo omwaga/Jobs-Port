@@ -35,7 +35,7 @@ class EmployerProfile extends Controller
             $request->logo->storeAs('public/logos', $request['logo']);
         }
 
-        $company->update(request(['company_name', 'employer_type', 'company_phone_number', 'company_email', 'company_website', 'logo', 'company_industry', 'country', 'company_location', 'company_size', 'company_address', 'description']));
+        $company->update(request(['company_name', 'employer_type', 'company_phone_number', 'company_email', 'company_website', 'logo', 'company_industry', 'country', 'state', 'company_size', 'company_address', 'description']));
 
         return back()->with('message', 'The company profile has been updated successfully');
     }

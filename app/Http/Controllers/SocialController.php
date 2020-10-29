@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,11 +10,11 @@ use App\Profiles;
 use App\Jobposts;
 use Mail;
 use Auth;
-class GoogleController extends Controller
+class SocialController extends Controller
 {
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     /**
@@ -25,8 +25,8 @@ class GoogleController extends Controller
     protected $redirectTo= '/jobseeker/dashboard';
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->stateless()->user();
-        $authuser= $this->findorcreateuser($user,'google');
+        $user = Socialite::driver('facebook')->stateless()->user();
+        $authuser= $this->findorcreateuser($user,'facebook');
         Auth::login($authuser,true);
         return redirect($this->redirectTo);
     }
@@ -38,7 +38,7 @@ class GoogleController extends Controller
         $userr= User::create([
             'name'=>$user->name,
             'email'=>$user->email,
-            'provider'=>strtoupper('google'),
+            'provider'=>strtoupper('facebook'),
             'provider_id'=>$user->id,
         ]);
         $data=array(
@@ -46,11 +46,7 @@ class GoogleController extends Controller
             'email'=>$user->email,
 
         );
-        Mail::send('email.email',$data,function($message) use($data){
-            $message->to($data['email']);
-            $message->from('careers@thenetworkedpros.com');
-            $message->subject('The Networked Pros Account');
-        });
+        
         return $userr;
     }
 }

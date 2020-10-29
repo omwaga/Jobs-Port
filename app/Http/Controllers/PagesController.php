@@ -90,7 +90,7 @@ public function loginoptions()
   public function cprofile(){
     $industry = Industry::orderBy('name','asc')->get();
     $town = Town::orderBy('name','asc')->get();
-    $countries = Country::all();
+    $countries = DB::table('countries')->pluck("name","id");
     
     return view('front.create-employerprofile')->with('industry',$industry)
     ->with('town',$town)
@@ -216,16 +216,19 @@ public function filterlocation($name){
 }
 
 public function showcategory($jobcategories){
-  $category=jobcategories::where('jobcategories',$jobcategories)->pluck('id')->first();
+  $job_category = ucwords(str_replace('-', ' ', $jobcategories));
+  $category=jobcategories::where('jobcategories',$job_category)->pluck('id')->first();
+  $cat=jobcategories::where('jobcategories',$job_category)->first();
   $seo_description=jobcategories::where('jobcategories',$jobcategories)->pluck('seo_description')->first();
   $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
-  SEOMeta::setTitle($jobcategories.' Jobs');
+  SEOMeta::setTitle($job_category.' Jobs');
   SEOMeta::setDescription($seo_description);
 
   return view('front.filtercategory')
+  ->with('category',$cat)
   ->with('locations',$towns)
   ->with('jobs',$jobs)
   ->with('industries',$industry)
@@ -233,12 +236,13 @@ public function showcategory($jobcategories){
 }
 
 public function filterindustry($name){
-  SEOMeta::setTitle($name.' Jobs');
-  $industry_id=Industry::where('name',$name)->pluck('id')->first();
+  $ind = ucwords(str_replace('-', ' ', $name));
+  $industry_id=Industry::where('name',$ind)->pluck('id')->first();
   $jobs=Jobposts::where('industry',$industry_id)->orderBy('created_at', 'desc')->paginate(10);
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
   $industry=Industry::orderBy('name','asc')->limit(10)->get();
+  SEOMeta::setTitle($ind.' Jobs');
 
   return view('front.filtercategory')
   ->with('locations',$towns)

@@ -30,16 +30,16 @@
   <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
   <link href="{{ asset('css/button.css') }}" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    
- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "a78997e7-23a2-4b7a-ade4-06223bd21cda",
+  
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "a78997e7-23a2-4b7a-ade4-06223bd21cda",
+      });
     });
-  });
-</script>
+  </script>
 
   <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
   <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
@@ -64,14 +64,19 @@
 
   <script data-ad-client="ca-pub-9415122333094581" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-
-  <!-- profile completion modal alert -->
+  <!--Start of Tawk.to Script-->
   <script type="text/javascript">
-    $(window).on('load',function(){
-      $('#alertModal').modal('show');
-    });
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/5dc0190de4c2fa4b6bd9e3ce/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
   </script>
-  <!-- End the modal script -->
+  <!--End of Tawk.to Script-->
 
 </head>
 <body style="background-color: #fff; padding-top: 2rem;">

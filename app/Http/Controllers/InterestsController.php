@@ -44,9 +44,8 @@ class InterestsController extends Controller
      */
     public function store(Request $request)
     {  
-      Interests::create($request->all() + ['user_id' => auth()->user()->id]);
 
-      return back()->with('message', 'Your Career Interests has been saved successfully');
+        return back()->with('message', 'Your Career Interests has been saved successfully');
     }
 
     /**

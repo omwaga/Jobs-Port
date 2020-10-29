@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Employer;
+use App\TeamManagement;
 use DB;
 class EmployerLoginController extends Controller
 {
     public function __construct(){
-        $this->middleware('guest:employer',['except' => ['logout', 'getLogout']]);
+        $this->middleware(['guest:employer', 'guest:staff'], ['except' => ['logout', 'getLogout']]);
     }
     
     public function login(Request $request){
@@ -20,12 +21,12 @@ class EmployerLoginController extends Controller
             'password'=>'required|min:6',
         ]
     );
- 
-    if (Auth::guard('employer')->attempt(['username'=>$request->email,'password'=>$request->password],$request->remember)) {
+
+        if (Auth::guard('staff')->attempt(['username'=>$request->email,'password'=>$request->password],$request->remember) || Auth::guard('employer')->attempt(['username'=>$request->email,'password'=>$request->password],$request->remember)) {
             return redirect()->intended(route('employdashboard')); 
-     
-    }
-             return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');
+
+        }
+        return redirect()->back()->withInput($request->only('email','remember'))->with('error','wrong email address');
 
     }
         /**
@@ -34,12 +35,12 @@ class EmployerLoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
-    {
-        Auth::guard('employer')->logout();
-        $request->session()->flush();
-        $request->session()->regenerate();
-        return redirect()->guest(route( 'admin.login' ));
-    }
+        public function logout(Request $request)
+        {
+            Auth::guard('employer')->logout();
+            $request->session()->flush();
+            $request->session()->regenerate();
+            return redirect()->guest(route( 'admin.login' ));
+        }
 
-}
+    }

@@ -14,9 +14,10 @@
       <div class="card-body">
         <ul>
           @foreach($categories as $category)
+          @php $cat = str_slug($category->jobcategories, '-'); @endphp
           @if($category->jobs->count() > 0)
           <li class="d-flex justify-content-between align-items-center">
-            <a href="{{url('job-category',[$category->jobcategories])}}" class="nav-link" style="color:#0B0B3B;">
+            <a href="{{url('job-category',[$cat])}}" class="nav-link" style="color:#0B0B3B;">
               <i class="fas fa-angle-right"></i>
               {{$category->jobcategories}}
             </a>
@@ -70,9 +71,10 @@
       <div class="card-body">
        <ul>
          @foreach($industries as $industry)
+         @php $ind = str_slug($industry->name, '-'); @endphp
          @if($industry->jobposts->count() > 0)
          <li class="d-flex justify-content-between align-items-center">
-          <a href="{{url('job-industry',[$industry->name])}}" class="nav-link" style="color:#0B0B3B;">
+          <a href="{{url('job-industry',[$ind])}}" class="nav-link" style="color:#0B0B3B;">
             <i class="fas fa-angle-right"></i>
             {{$industry->name}}
           </a>

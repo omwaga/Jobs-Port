@@ -48,7 +48,7 @@
     @forelse($jobs as $job)
     <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a>
+          <h5 style="color:#0B0B3B;"><a href="/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a>
           <a href=""><i class="fa fa-heart text-danger pull-right" align="right" onclick="event.preventDefault();
                                              document.getElementById('save-job-{{$job->id}}').submit();">
             <form id="save-job-{{$job->id}}" action="{{ route('user-save', $job->id) }}" method="POST" style="display: none;">
@@ -73,7 +73,7 @@
         </div>
         <div class="col-md-9">
           <p class="text-dark">
-            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
+            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/job/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
           </p>
         </div>
       </div>
@@ -85,7 +85,7 @@
   </div>
 
   <div class="col-md-4">
-   @include('new.rightnav')    
+   @include('front.rightnav')    
  </div>
 </div>
 </div>

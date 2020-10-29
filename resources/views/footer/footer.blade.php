@@ -18,6 +18,7 @@
                             <li><a href="{{route('hirre')}}" class="text-white">Create Account</a></li>
                             <li><a href="{{route('foremployer')}}"class="text-white">Post a Job</a></li>
                         </ul>
+                        <p class="text-white">Reach Us through <a href="mailto:careers@thenetworkedpros.com?Subject=POST%20JOB" target="_top " style="color: #F4A506"> careers@thenetworkedpros.com</a> or call +254 706468123</p>
                     </div>
                 </div>
             </div>

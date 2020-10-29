@@ -109,7 +109,7 @@
             <div class="col-md-6"> 
               <ul>
                 @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-                <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+                <li style="list-style: none;" class="pb-2"><a href="/job/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
                   {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
                 </a></li>
               </ul>
@@ -164,7 +164,7 @@
       <div class="col-md-6"> 
         <ul>
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+          <li style="list-style: none;" class="pb-2"><a href="/job/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
             {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
           </a></li>
         </ul>
@@ -184,7 +184,7 @@
       <div class="col-md-6"> 
         <ul>
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+          <li style="list-style: none;" class="pb-2"><a href="/job/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
             {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
           </a></li>
         </ul>
@@ -204,7 +204,7 @@
       <div class="col-md-6"> 
         <ul>
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+          <li style="list-style: none;" class="pb-2"><a href="/job/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
             {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
           </a></li>
         </ul>
@@ -224,7 +224,7 @@
       <div class="col-md-6"> 
         <ul>
           @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-          <li style="list-style: none;" class="pb-2"><a href="/jobview/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
+          <li style="list-style: none;" class="pb-2"><a href="/job/{{$job->id}}/{{$jobtitle}}" style="color:#0B0B3B;">
             {!! str_limit($job->job_title, $limit = 40, $end = '...job') !!}
           </a></li>
         </ul>

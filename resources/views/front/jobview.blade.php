@@ -26,21 +26,12 @@
       </div>
 
       <div class="pull-right">
-        @auth
-        @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
-        @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-        <a class="h5 pull-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('apply',[$job->id, $jobtitle])}}">Apply</a>
-        @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
-        <a class="h5 pull-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
-        @endif
-        @else
         @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
         <a class="h5 pull-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('/jobseeker/joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
         @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
         <a class="h5 pull-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
         @endif
-        @endauth
       </div>
       <hr>
 
@@ -51,34 +42,16 @@
       <p>{!!html_entity_decode($job->description)!!}</p>
 
       <h4 style="color:#0B0B3B; font-weight: bold;">How to Apply</h4>
-      @if($job->apply === "No")
-      <p>{!!$job->application_details!!}</p>
-      @else
-      <!-- <ol>
-        <li>Register with the networked pros if not registered or login to your account if you had registered.</li>
-        <li>Create your career profile: Personal Details, Work Experience, Education History</li>
-        <li>Browse the available jobs that match your skill-set and apply</li>
-        <li>You can also update your career profile before applying for a vacancy</li>
-      </ol> -->
+      <p>{!!$job->application_details ?? '' !!}</p>
 
       <div class="pull-right">
-        @auth
-        @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
-        @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-        <a class="h5 pull-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('apply',[$job->id, $jobtitle])}}">Apply</a>
-        @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
-        <a class="h5 pull-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
-        @endif
-        @else
         @if( $job->deadline > Carbon\Carbon::now() && $job->apply=='Yes')
         @php $jobtitle = str_slug($job->job_title, '-'); @endphp
         <a class="h5 float-right btn text-white"  style="background-color:#0B0B3B;" href="{{url('/jobseeker/joblogin',[$job->id, $jobtitle])}}">Apply with us</a>
         @elseif($job->deadline < Carbon\Carbon::now() && $job->apply=='Yes')
         <a class="h5 float-right btn btn-danger text-white btn-sm"style="border-radius:0px;" href="#">Deadline has elapsed</a>
         @endif
-        @endauth
       </div>
-      @endif
       <div>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle"
@@ -104,7 +77,7 @@
     @forelse($related_jobs as $related_job)
     <ul class="list-group list-group-flush">
       @php $jobtitle = str_slug($related_job->job_title, '-'); @endphp
-      <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/jobview/{{$related_job->id}}/{{$jobtitle}}" style="color:#181557;text-decoration:none;">{{$related_job->job_title}}</a></li>
+      <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/job/{{$related_job->id}}/{{$jobtitle}}" style="color:#181557;text-decoration:none;">{{$related_job->job_title}}</a></li>
     </ul>
     @empty
     <p>No related jobs yet!</p>
@@ -113,7 +86,7 @@
     @foreach($featured as $feature)
     <ul class="list-group list-group-flush">
       @php $jobtitle = str_slug($feature->job_title, '-'); @endphp
-      <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/jobview/{{$feature->id}}/{{$jobtitle}}" style="color:#181557;text-decoration:none;">{{$feature->job_title}}</a></li>
+      <li class="list-group-item"><i class="fas fa-angle-right"></i> <a href="/job/{{$feature->id}}/{{$jobtitle}}" style="color:#181557;text-decoration:none;">{{$feature->job_title}}</a></li>
     </ul>
     @endforeach
 

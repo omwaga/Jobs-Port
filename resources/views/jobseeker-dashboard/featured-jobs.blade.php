@@ -28,7 +28,6 @@
               <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
               <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>
               <li><strong style="font-weight: bold;">Location:</strong> {{$job->town->name ?? ''}} - {{ $job->country->name ?? ''}}</li>
-              <li><b style="font-weight: bold;">Expires In:</b> <span class="badge badge-success badge-pill">{{\Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInDays($job->deadline) ?? ''}} days</span></li>
             </ul>
             <p class="text-dark">
               <a class="btn pull-right text-white btn-sm" href="/jobseeker/job/{{$job->id}}/{{$jobtitle}}"  style="background-color: #005691">Apply</a>
