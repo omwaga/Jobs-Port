@@ -102,7 +102,6 @@
                         </div>
                     </div>
 
-
                     <div class="card-body border-top">
                         <div class="section-block" id="select">
                             <h3 class="section-title" style="color:#071d42;">Experience</h3>

@@ -232,9 +232,9 @@ class Errors {
     },
 
     mounted(){
-      axios.get('/resume-builder/experiences').then(response => this.experiences = response.data);
-      axios.get('/resume-builder/educations').then(response => this.educations = response.data);
-      axios.get('/resume-builder/skill').then(response => this.skills = response.data);
+      axios.get('/jobseeker/experiences').then(response => this.experiences = response.data);
+      axios.get('/jobseeker/educations').then(response => this.educations = response.data);
+      axios.get('/jobseeker/jobskills').then(response => this.skills = response.data);
     },
 
      /**

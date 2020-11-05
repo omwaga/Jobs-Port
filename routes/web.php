@@ -50,7 +50,7 @@ Route::prefix('jobseeker')->group(function(){
     Route::get('/customize-resume','DashboardController@customizeresume')->name('customizeresume');
     Route::get('/recommended-jobs','DashboardController@recommended')->name('recommended');
     Route::post('/save-industry','DashboardController@saverecommendedjobs')->name('rjobs');
-    Route::get('/downloadresume/{id}','DashboardController@downloadresume');
+    Route::get('/downloadresume/{id}','DashboardController@downloadresume')->name('user.downloadresume');
     Route::get('/pick-theme', 'DashboardController@picktheme')->name('themepreview');
     Route::get('/theme', 'DashboardController@theme')->name('theme');
     Route::post('/build-resume', 'DashboardController@buildresume')->name('buildresume');
@@ -62,7 +62,8 @@ Route::prefix('jobseeker')->group(function(){
 
 //EmployerController Routes
 Route::prefix('employers')->group(function(){
-    Route::get('/jobseeker-profiles','EmployerController@jobseekerprofiles')->name('jobseeker-profiles');
+    Route::get('/finish-registration','EmployerController@finishregistration')->name('finish-registration');
+    Route::post('/finish-registration','EmployerController@documentsUpload')->name('employer-upload');
     Route::get('job-options', 'EmployerController@joboptions')->name('joboptions');
     Route::get('/express-recruitment', 'EmployerController@express')->name('express-recruitment');
     Route::get('express-recruitment-categories', 'EmployerController@resumedatabase')->name('resumedatabase');

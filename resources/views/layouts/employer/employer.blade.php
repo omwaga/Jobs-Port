@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/charts/c3charts/c3.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
     <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js')}}"></script> 
-    <title>TheNetworkedPros - Employer Dashboard</title>
+    <title>The NetworkedPros - Employer Dashboard</title>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
     <script>

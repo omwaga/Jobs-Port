@@ -14,6 +14,12 @@ class EducationController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $educations = Education::where('user_id', auth()->user()->id)->get();
+        return $educations;
+    }
     
     public function store(Request $request)
     {

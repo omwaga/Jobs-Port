@@ -20,10 +20,10 @@ class InterestsController extends Controller
     {
         $categories = jobcategories::all();
         $levels = Level::all();
-        $job_levels = JobLevel::where('user_id', auth()->user()->id)->first();
-        $interests = Interests::where('user_id', auth()->user()->id)->first();
+        $job_levels = JobLevel::where('user_id', auth()->user()->id)->get();
+        $user_interests = Interests::where('user_id', auth()->user()->id)->get();
 
-        return view('jobseeker-dashboard.interests', compact('categories', 'levels', 'job_levels', 'interests'));
+        return view('jobseeker-dashboard.interests', compact('categories', 'levels', 'job_levels', 'user_interests'));
     }
 
     /**
@@ -44,6 +44,11 @@ class InterestsController extends Controller
      */
     public function store(Request $request)
     {  
+        $attributes = request()->validate([
+            'interests' => 'required',
+        ]);
+
+        Interests::create($attributes + ['user_id' => auth()->user()->id]);
 
         return back()->with('message', 'Your Career Interests has been saved successfully');
     }
@@ -88,8 +93,10 @@ class InterestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Interests $interest)
     {
-        //
+        $interest->delete();
+
+        return back()->with('message', 'Category removed successfully');
     }
 }

@@ -14,6 +14,12 @@ class WorkExperiencesController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $experiences = WorkExperience::where('user_id', auth()->user()->id)->get();
+        return $experiences;
+    }
     
     public function store(Request $request)
     {

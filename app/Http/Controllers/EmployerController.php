@@ -21,7 +21,7 @@ use App\JobApplication;
 use App\Skills;
 use App\Reference;
 use App\JobseekerDetail;
-use App\Worker;
+use App\EmployerDocument;
 use App\TalentpoolCandidates;
 use App\TalentPool;
 use Mail;
@@ -155,14 +155,32 @@ public function postajob(){
     return view('employer-dashboard.postjob',compact(['towns','industry','jobcategory','cname', 'countries']));
 }
 
-//Jobseeker profiles route
-public function jobseekerprofiles()
+//Employer fininish registration route
+public function finishregistration()
 {
-    $jobseekers = ProsDetails::orderBy('created_at','desc')->paginate(20);
-    $categories = jobcategories::orderBy('jobcategories','asc')->get();
-    $industries = Industry::orderBy('name','asc')->get();
+    return view('employer-dashboard.finish-registration');
+}
 
-    return view('employer-dashboard.jobseeker-profiles', compact('jobseekers', 'industries', 'categories'));
+// upload the registration documents
+public function documentsUpload(Request $request)
+{
+    $attributes = $request->validate([
+        'business_permit' => 'nullable',
+        'certificate' => 'nullable'
+    ]);
+
+        if ($request->hasFile('business_permit')) {
+            $request['business_permit'] = $request->business_permit->getClientOriginalName();
+            $request->business_permit->storeAs('public/employerDocuments', $request['business_permit']);
+        }
+        if ($request->hasFile('certificate')) {
+            $request['certificate'] = $request->certificate->getClientOriginalName();
+            $request->certificate->storeAs('public/employerDocuments', $request['certificate']);
+        }
+
+    EmployerDocument::create($attributes + ['employer_id' => auth()->user()->id]);
+
+    return redirect(route('employdashboard'))->with('message', 'Verification documents submitted successfully');
 }
 
 

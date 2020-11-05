@@ -14,6 +14,12 @@ class SkillsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $skills = Skills::where('user_id', auth()->user()->id)->get();
+        return $skills;
+    }
     
     public function store(Request $request)
     {

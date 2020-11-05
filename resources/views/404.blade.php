@@ -67,8 +67,8 @@ body{
 <div class="container">
     <div class="error-wrapper">
         <div class="man-icon"></div>
-        <h3 class="title">404</h3>
-        <p class="info">Oh! Page not found</p>
-        <a href="{{route('homee')}}"><button type="button" class="home-btn">BACK TO HOME</button></a>
+        <h3 class="title">Wait a Minute</h3>
+        <p class="info">You have ventured into 404 space.</p>
+        <a href="{{route('homee')}}" class="btn btn-info">TAKE ME HOME</a>
     </div>
 </div>

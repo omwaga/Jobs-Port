@@ -18,7 +18,7 @@ class EmployerProfilesController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Employer-dashboard';
+    protected $redirectTo = '/employers/finish-registration';
 
   public function createcompany(Request $request){
     $attributes = request()->validate([

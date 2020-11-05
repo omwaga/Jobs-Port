@@ -36,7 +36,11 @@ class JobLevelsController extends Controller
      */
     public function store(Request $request)
     {
-      JobLevel::create($request->all() + ['user_id' => auth()->user()->id]);
+        $attributes = request()->validate([
+            'level' => 'required'
+        ]);
+
+      JobLevel::create($attributes + ['user_id' => auth()->user()->id]);
 
       return back()->with('message', 'Your Selected Job Levels has been saved successfully');
     }
@@ -81,8 +85,10 @@ class JobLevelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(JobLevel $joblevel)
     {
-        //
+        $joblevel->delete();
+
+        return back()->with('message', 'Job Level removed successfully');
     }
 }

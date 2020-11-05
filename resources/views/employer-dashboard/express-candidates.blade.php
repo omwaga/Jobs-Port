@@ -59,7 +59,7 @@
                                             <h2 class="font-24 m-b-10">{{$jobseeker->jobseekerdetail->name ?? $jobseeker->user->name}}</h2>
                                         </div>
                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="user-avatar-address">
@@ -100,8 +100,7 @@
                         <h3 class="font-16">Candidates by Category</h3>
                         @foreach($categories as $category)
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="category{{$category->id}}">
-                            <label class="custom-control-label" for="category{{$category->id}}">{{$category->name}}</label>
+                            <a href="{{route('employer.candidates', $category->id)}}" class="mb-1 control-label">{{$category->name ?? ''}}</a>
                         </div>
                         @endforeach
                     </div>
