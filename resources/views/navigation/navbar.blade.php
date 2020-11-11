@@ -5,8 +5,8 @@
     <div class="contact-info mr-auto">
     </div>
     <div class="social-links text-white">
-      <i class="fa fa-envelope"></i> <a href="mailto:careers@thenetworkedpros.com" class="text-white">careers@thenetworkedpros.com</a>
-      <i class="fa fa-phone"></i> +254 706468123
+      <small><i class="fa fa-envelope"></i> <a href="mailto:careers@thenetworkedpros.com" class="text-white">careers@thenetworkedpros.com</a></small>
+      <small><i class="fa fa-phone"></i> +254 706468123</small>
     </div>
   </div>
 </nav><br>

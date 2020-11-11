@@ -51,7 +51,7 @@
       <div class="container"><br>
         <!-- <h2 class=" text-danger text-center" style="text-transform: uppercase;">Discover Best job Vacancies <br> from Top Employers</h2> -->
         <div class="p-3">
-          <form action="/search-jobs" method="get" novalidate="novalidate">
+          <form action="{{route('jobsearch')}}" method="get" novalidate="novalidate">
             <div class="row">
               <div class="col-lg-12">
                 <div class="row">

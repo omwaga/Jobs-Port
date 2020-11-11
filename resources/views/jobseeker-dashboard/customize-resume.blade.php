@@ -242,69 +242,66 @@
   </div>
   <div class="col-md-8">
     <div class="card">
-      <div class="mainDetails">
+      <div class="text-center">
         <div id="headshot" class="quickFade">
           <img src="resume/images/profile.png" alt="Profile Pic" />
         </div>
 
         <div id="name">
-          <h4 class="quickFade delayTwo" id="full_name">@{{first_name}} @{{last_name}}</h4>
-          <h2 class="quickFade delayThree" id="position">@{{job_title}}</h2>
+          <h4>@{{first_name}} @{{last_name}}</h4>
+          <h2>@{{job_title}}</h2>
         </div>
 
         <div id="contactDetails" class="quickFade delayFour">
-          <ul>
-            <li>e: <a href="" target="_blank" id="email">@{{email}}</a></li>
-            <li>w: <a>@{{job_title}}</a></li>
-            <li id="phone">m: @{{phone}}</li>
-          </ul>
-        </div>
-        <div class="clear"></div>
-      </div>
+          <p>Email: <a href="" target="_blank">@{{email}}</a></li>
+            <p>Phone Number: @{{phone}}</li>
+            </div>
+            <div class="clear"></div>
+          </div>
 
-      <div id="mainArea" class="quickFade delayFive">
-        <section>
-          <article><div class=""><p >@{{career_summary}}</p></div></article>
-          <div class="clear"></div>
-        </section>
+          <div class="container">
+            <div>
+              <p>@{{career_summary}}</p>
+              <div class="clear"></div>
+            </div>
 
-        <div class="container">
-          <h4 class="text-center">Education</h4>
+            <div class="container">
+              <h4 class="text-center">Education</h4>
 
-          <div class="col-md-10" v-for="education in educations">
-            <h4>Institution: @{{education.institution}}</h4> 
-            <p>Qualification: @{{education.qualification}}</p>
-            <p>description here</p>
-          </div><hr>
-          <div class="clear"></div>
-        </div>
+              <div class="col-md-10" v-for="education in educations">
+                <h4>Institution: @{{education.institution}}</h4> 
+                <p>Qualification: @{{education.qualification}}</p>
+                <p>description here</p>
+              </div><hr>
+              <div class="clear"></div>
+            </div>
 
-        <div class="container">
-          <h4 class="text-center">Work Experience</h4>
-          <div class="resume-content" v-for="experience in experiences">
-            <h5>Position: @{{experience.position}}</h5>
-            <h5>Employer: @{{experience.employer}}</h5>
-            <p>Roles: @{{experience.roles}}</p>
-          </div><hr>
-          <div class="clear"></div>
-        </div>
+            <div class="container">
+              <h4 class="text-center">Work Experience</h4>
+              <div class="resume-content" v-for="experience in experiences">
+                <h5>Position: @{{experience.position}}</h5>
+                <h5>Employer: @{{experience.employer}}</h5>
+                <p>Roles: @{{experience.roles}}</p>
+              </div><hr>
+              <div class="clear"></div>
+            </div>
 
-        <div class="container">
-          <h4 class="text-center">Key Skills</h4>
+            <div class="container">
+              <h4 class="text-center">Key Skills</h4>
 
-          <div >
-            <ul v-for="skill in skills">
-             <li v-text="skill.skillname"></li> <span v-text="skill.level"></span>
-           </ul>
+              <div >
+                <ul v-for="skill in skills">
+                 <li v-text="skill.skillname"></li> <span v-text="skill.level"></span>
+               </ul>
+             </div>
+             <div class="clear"></div>
+           </div>
+           <a href="{{route('user.downloadresume', auth()->user()->id)}}">Download</a>
+
          </div>
-         <div class="clear"></div>
        </div>
-       <a href="{{route('user.downloadresume', auth()->user()->id)}}">Download</a>
-
      </div>
    </div>
  </div>
-</div>
-</div>
 
-@endsection
+ @endsection

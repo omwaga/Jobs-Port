@@ -302,7 +302,7 @@ class DashboardController extends Controller
       $duty = $request->duty;
       $location = $request->location;
       $keyword = $request->keyword;
-      $results = Jobposts::where('jobtitle', 'LIKE', '%'.$keyword.'%')
+      $results = Jobposts::where('job_title', 'LIKE', '%'.$keyword.'%')
       ->where('location', '=', $location)
       ->where('industry', '=', $duty)
       ->get();
@@ -326,7 +326,7 @@ class DashboardController extends Controller
     {
 
       $keyword = $request->keyword;
-      $results = Jobposts::where('jobtitle', 'LIKE', '%'.$keyword.'%')->get();
+      $results = Jobposts::where('job_title', 'LIKE', '%'.$keyword.'%')->get();
       
       return view('jobseeker-dashboard.searchjob', compact('industries', 'locations', 'categories', 'results'));
     }

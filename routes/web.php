@@ -216,3 +216,6 @@ Route::get('dropdownlist/getstates/{id}','DataController@getStates');//Route for
 Route::fallback(function() {
     return view('404');
 });
+Route::get('/policy', function () {
+    return view('policy');
+});

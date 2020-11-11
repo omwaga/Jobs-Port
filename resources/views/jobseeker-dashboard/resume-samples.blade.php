@@ -58,7 +58,6 @@
                   <a class="btn btn-info btn-sm text-white" href="{{route('customizeresume')}}"><i class="fas fa-eye"></i>
                   </a>
                   <div class="box21">
-                    <img src="{{ asset('storage/'.$sample->resume)}}" alt="">
                     <div class="box-content">
                         <h4 class="title">{{$sample->name}}</h4>
                         <p class="text-white">{!!$sample->description!!}</p>

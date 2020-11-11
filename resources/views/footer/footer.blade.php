@@ -10,6 +10,7 @@
                             <li><a href="{{route('alljobs')}}"class="text-white">Browse Latest Jobs Jobs</a></li>
                             <li><a href="{{route('Register')}}" class="text-white">Create Career Profile</a></li>
                             <li><a href="{{route('faqs')}}" class="text-white">FAQs</a></li>
+                            <li><a href="/policy" class="text-white">Privacy Policy</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-sm-6">

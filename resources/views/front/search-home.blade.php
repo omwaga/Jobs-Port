@@ -57,35 +57,35 @@
           <input type="hidden" name="id" value="{{$job->id}}">
         </form>
       </i></a></h5>
-    <ul style="list-style: none;">
-      <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
-      <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>
-      <li><strong style="font-weight: bold;">Location:</strong> {{$job->town->name ?? ''}} - {{ $job->country->name ?? ''}}</li>
-      <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{\Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInDays($job->deadline) ?? ''}} days</span></li>
-    </ul>
+      <ul style="list-style: none;">
+        <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
+        <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>
+        <li><strong style="font-weight: bold;">Location:</strong> {{$job->town->name ?? ''}} - {{ $job->country->name ?? ''}}</li>
+        <li><b style="font-weight: bold;">Job Advert Expires In:</b> <span class="badge badge-success badge-pill">{{\Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInDays($job->deadline) ?? ''}} days</span></li>
+      </ul>
 
-    <div class="row">
-      <div class="col-md-3">
-        @if($job->employer_logo !=="no-logo")
-        <img class="rounded-circle img-fluid" src="{{asset('storage/job_logos/'.$job->employer_logo)}}" alt="{{$job->job_title}}" width="140" height="140">
-        @else
-        <img class="rounded-circle img-fluid" src="{{asset('storage/logos/'.$job->employer->logo)}}" alt="{{$job->job_title}}" width="140" height="140">
-        @endif
-      </div>
-      <div class="col-md-9">
-        <p class="text-dark">
-          {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
-        </p>
+      <div class="row">
+        <div class="col-md-3">
+          @if($job->employer_logo !=="no-logo")
+          <img class="rounded-circle img-fluid" src="{{asset('storage/job_logos/'.$job->employer_logo)}}" alt="{{$job->job_title}}" width="140" height="140">
+          @else
+          <img class="rounded-circle img-fluid" src="{{asset('storage/logos/'.$job->employer->logo)}}" alt="{{$job->job_title}}" width="140" height="140">
+          @endif
+        </div>
+        <div class="col-md-9">
+          <p class="text-dark">
+            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  @endforeach
+    @endforeach
 
-  {{$jobs->links()}}
-</div>
-<div class="col-md-4">
- @include('new.rightnav')    
-</div>
+    {{$jobs->links()}}
+  </div>
+  <div class="col-md-4">
+   @include('front.rightnav')    
+ </div>
 </div>
 
 </div>

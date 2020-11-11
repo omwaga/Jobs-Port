@@ -8,8 +8,8 @@
                 <p>{{ __('You are just a step away from your dream job.') }}</p>
                 
                 <div class="col-md-8">
-                    <a class="btn btn-danger btn-block" href="{{route('google.login')}}"><i class="fa fa-google"></i> Login with Google</a>
-                        <a href="{{ url('/auth/facebook') }}" class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a class="btn btn-danger" href="{{route('google.login')}}"><i class="fa fa-google"></i> Google Login</a>
+                        <a href="{{ url('/auth/facebook') }}" class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook Login</a>
                 </div>
                 <small>All your activity will remain private.</small>
                 <hr>
