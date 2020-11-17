@@ -12,4 +12,9 @@ class Town extends Model
         
         return $this->hasMany(Jobposts::class,'location');
     }
+
+    public function country()
+    {
+    	return $this->belongsTo(Country::class, 'countries_id', 'id');
+    }
 }

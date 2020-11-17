@@ -97,7 +97,8 @@
 <!-- main js -->
 <script src="{{ asset('assets/libs/js/main-js.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ asset('js/main.js')}}"></script>
 </body>

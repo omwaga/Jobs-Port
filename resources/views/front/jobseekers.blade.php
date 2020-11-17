@@ -9,8 +9,8 @@
           <h3 class=" text-white text-left"> CREATE YOUR PROFILE TODAY!</h3>
 
           <p class="text-white text-left">Be discovered by leading employers who visit our service every day to recruit trusted professionals</p>
-          <a href="{{route('Register')}}" class="btn btn-danger">Get Started</a>
-          <a href="{{route('login')}}" class="btn text-white btn-success">Already Registered? Login</a>
+     <!--      <a href="{{route('Register')}}" class="btn btn-danger">Get Started</a> -->
+          <a href="{{route('login')}}" class="btn text-white btn-success"> LOGIN</a>
       </div>
   </div>
 </div>

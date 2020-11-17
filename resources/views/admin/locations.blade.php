@@ -42,10 +42,15 @@
                 @php $column = $column + 1 @endphp
                 <tr>
                   <td>{{$column}}</td>
-                  <td>{{$location->name}}</td>
+                  <td><a href="{{route('countries.show', $location->id)}}">{{$location->name}}</a></td>
                   <td>
                     <div class="btn-group">
                       <a type="button" href="{{route('countries.edit', $location->id)}}" class="btn btn-info float-left">Edit</a>
+                      <form method="POST" action="{{route('countries.destroy', $location->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger float-left">Delete</button>
+                      </form>
                     </div>
                   </td>
                 </tr>
@@ -78,6 +83,12 @@
                 <input type="text" name="country_code" class="form-control" value="{{old('country_code')}}">
               </div>
             </div>
+            <div class="form-group">
+              <label for="to" class="col-md-3 control-label">Description:</label>
+              <div class="col-md-9">
+                <textarea class="form-control ckeditor" name="description">{{old('description')}}</textarea>
+              </div>
+            </div>
 
             <div class="compose-options">
               <div class="pull-right">
@@ -104,6 +115,12 @@
                   <option value="{{$location->id ?? ''}}">{{$location->name ?? 'Select Country'}}</option>
                   @endforeach
                 </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="to" class="col-md-3 control-label">Description:</label>
+              <div class="col-md-9">
+                <textarea class="form-control ckeditor" name="description">{{old('description')}}</textarea>
               </div>
             </div>
 

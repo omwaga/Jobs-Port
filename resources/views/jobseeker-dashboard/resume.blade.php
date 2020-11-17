@@ -38,15 +38,65 @@
 
   </table>
 
-  <h4>Personal Information</h4>
+  <h4  align="center">Career Objective</h4>
   <p>{!!$personalstatements->statement!!}</p>
 
   <br/>
 
   <div class="container">
     <div class="row">
-      <h4>Education History</h4>
+      <h4 align="center">Work Experience</h4>
+      @foreach($experience as $experienced)
+      <div class="col-md-12">
+        <h5>{!!$experienced->position!!}</h5>
+        <h5>{!!$experienced->employer!!}</h5>
+        <p>{!!$experienced->roles!!}</p>
+      </div>
+      @endforeach
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h4 align="center">Education History</h4>
       @foreach($education as $educated)
+      <div class="col-md-12">
+        <h5>{{$educated->institution}}</h5>
+        <h5>{{$educated->qualification}}</h5>
+      </div>
+      @endforeach
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h4 align="center">Awards</h4>
+      <div class="col-md-12">
+          @foreach($awards as $award)
+          <li>{{$award->name}}</li>
+          <p>{!!$award->description!!}</p>
+          @endforeach
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h4 align="center">Skills</h4>
+      <div class="col-md-12">
+        <ul>
+          @foreach($skills as $skill)
+          <li>{{$skill->skillname}}</li>
+          @endforeach
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h4 align="center">References</h4>
+      @foreach($references as $referee)
       <div class="col-md-12">
         <p>Course form institution</p>
       </div>

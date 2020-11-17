@@ -124,6 +124,9 @@ Route::prefix('admin')->group(function(){
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/countries', 'CountriesController');
     Route::post('/addstate', 'CountriesController@addstate')->name('countries.addstate');
+    Route::get('/edit-state/{id}', 'CountriesController@editstate')->name('countries.editstate');
+    Route::PATCH('/update-state/{id}', 'CountriesController@updatestate')->name('countries.updatestate');
+    Route::DELETE('/delete-state/{id}', 'CountriesController@destroystate')->name('countries.deletestate');
     Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
     Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
 });

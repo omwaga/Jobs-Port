@@ -281,7 +281,7 @@
               <div class="resume-content" v-for="experience in experiences">
                 <h5>Position: @{{experience.position}}</h5>
                 <h5>Employer: @{{experience.employer}}</h5>
-                <p>Roles: @{{experience.roles}}</p>
+                <p>Roles: <p v-html="experience.roles"></p></p>
               </div><hr>
               <div class="clear"></div>
             </div>
