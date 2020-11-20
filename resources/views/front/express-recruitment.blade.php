@@ -39,8 +39,8 @@
                     <picture>
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
-                    <p class="text-white">Very helpful when it comes to selection of jobs suiting your personalitye</p>
-                    <h4 class="text-white">Collins Collins</h4><br>
+                    <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
+                    <h4 class="text-white">Collins </h4><br>
                   </div>
                 </div>
                 <div class="carousel-item">
@@ -49,8 +49,8 @@
                     <picture>
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
-                    <p class="text-white">Very helpful when it comes to selection of jobs suiting your personalitye</p>
-                    <h4 class="text-white">Collins Collins</h4><br>
+                    <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
+                    <h4 class="text-white">Collins </h4><br>
                   </div>
                 </div>
                 <div class="carousel-item">
@@ -59,8 +59,8 @@
                     <picture>
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
-                    <p class="text-white">Very helpful when it comes to selection of jobs suiting your personalitye</p>
-                    <h4 class="text-white">Collins Collins</h4><br>
+                    <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
+                    <h4 class="text-white">Collins </h4><br>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\JobPosted;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\PersonalStatement;
 use App\Jobposts;
@@ -24,7 +26,6 @@ use App\JobseekerDetail;
 use App\EmployerDocument;
 use App\TalentpoolCandidates;
 use App\TalentPool;
-use Mail;
 use App\Industry;
 use App\Locations;
 use App\Town;
@@ -115,25 +116,25 @@ class EmployerController extends Controller
 // Add applicant to talentpool
     public function addtalentpool(Request $request, $name)
     {
-     $pool_id = request()->pool_name;
+       $pool_id = request()->pool_name;
 
-     DB::table('job_applications')
-     ->where('user_id', request()->id)
-     ->update(['status' => 'pool']);
+       DB::table('job_applications')
+       ->where('user_id', request()->id)
+       ->update(['status' => 'pool']);
 
-     $shortlist = new TalentpoolCandidates();
-     $shortlist->user_id = request()->id;
-     $shortlist->talentpool_id = $pool_id;
-     $shortlist->employer_id = Auth::guard('employer')->user()->id;
+       $shortlist = new TalentpoolCandidates();
+       $shortlist->user_id = request()->id;
+       $shortlist->talentpool_id = $pool_id;
+       $shortlist->employer_id = Auth::guard('employer')->user()->id;
 
-     $shortlist->save();
+       $shortlist->save();
 
-     return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
- }
+       return redirect('/all-applicants')->with('message', 'The candidate has been added to the talent pool successfully');
+   }
 
     // view the talent pool members
- public function poolmembers($id)
- {
+   public function poolmembers($id)
+   {
     $poolmembers = TalentpoolCandidates::where('talentpool_id', $id)->get();
 
     return view('employer-dashboard.poolmembers', compact('poolmembers'));
@@ -169,14 +170,14 @@ public function documentsUpload(Request $request)
         'certificate' => 'nullable'
     ]);
 
-        if ($request->hasFile('business_permit')) {
-            $request['business_permit'] = $request->business_permit->getClientOriginalName();
-            $request->business_permit->storeAs('public/employerDocuments', $request['business_permit']);
-        }
-        if ($request->hasFile('certificate')) {
-            $request['certificate'] = $request->certificate->getClientOriginalName();
-            $request->certificate->storeAs('public/employerDocuments', $request['certificate']);
-        }
+    if ($request->hasFile('business_permit')) {
+        $request['business_permit'] = $request->business_permit->getClientOriginalName();
+        $request->business_permit->storeAs('public/employerDocuments', $request['business_permit']);
+    }
+    if ($request->hasFile('certificate')) {
+        $request['certificate'] = $request->certificate->getClientOriginalName();
+        $request->certificate->storeAs('public/employerDocuments', $request['certificate']);
+    }
 
     EmployerDocument::create($attributes + ['employer_id' => auth()->user()->id]);
 
@@ -242,35 +243,38 @@ public function jobpost(Request $request){
     $jobpost->apply=$request->input('apply_with_us');
     $jobpost->employment_type=$request->input('employment_type');
     $jobpost->save();
+
+    Mail::to(Auth::guard('employer')->user()->company_email)->send(new JobPosted());
+
     return redirect('/jobposts')->with('message','You have successfully posted your job');
 }
 
 //Method to shortlist the candidates
 public function shortlist(Request $request, $name)
 {
- $applicant_id = request()->id;
- $user_id = Jobseekerdetail::where('user_id', $applicant_id)->value('user_id');
+   $applicant_id = request()->id;
+   $user_id = Jobseekerdetail::where('user_id', $applicant_id)->value('user_id');
 
- $shortlist = new Shortlist();
- $shortlist->user_id = $user_id;
- $shortlist->employer_id = Auth::guard('employer')->user()->id;
+   $shortlist = new Shortlist();
+   $shortlist->user_id = $user_id;
+   $shortlist->employer_id = Auth::guard('employer')->user()->id;
 
- DB::table('job_applications')
- ->where('user_id', $user_id)
- ->update(['status' => 'shortlisted']);
+   DB::table('job_applications')
+   ->where('user_id', $user_id)
+   ->update(['status' => 'shortlisted']);
 
- $shortlist->save();
+   $shortlist->save();
 
- return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
+   return redirect('/all-applicants')->with('message', 'The candidate has been shortlisted successfully');
 }
 
 //Method to show all the shorlisted candidates
 public function shortlistedcandidates()
 {
-   $candidates = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
-   $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
+ $candidates = Shortlist::where('employer_id', Auth::guard('employer')->user()->id)->get();
+ $jobposts = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->get();
 
-   return view('employer-dashboard.shortlisted-candidates', compact('candidates', 'jobposts'));
+ return view('employer-dashboard.shortlisted-candidates', compact('candidates', 'jobposts'));
 }
 
 //Method for picking the templates
@@ -284,21 +288,21 @@ public function picktemplate()
 // use a template
 public function usetemplate($jobtitle)
 {
-   $jobpost = Jobposts::where('job_title', $jobtitle)->first();
-   $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
-   $industries = Industry::orderBy('name','asc')->get();
-   $countries = Country::all();
-   $towns = Town::orderBy('name','asc')->get();
+ $jobpost = Jobposts::where('job_title', $jobtitle)->first();
+ $jobcategories = jobcategories::orderBy('jobcategories','asc')->get();
+ $industries = Industry::orderBy('name','asc')->get();
+ $countries = Country::all();
+ $towns = Town::orderBy('name','asc')->get();
 
-   return view('employer-dashboard.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
+ return view('employer-dashboard.use-template', compact('jobpost', 'industries', 'jobcategories', 'towns', 'countries'));
 }
 
 //Listing all jobs posted
 public function alljobs()
 {
-   $jobs = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->orderBy('created_at','desc')->get();
+ $jobs = Jobposts::where('employer_id', Auth::guard('employer')->user()->id)->orderBy('created_at','desc')->get();
 
-   return view('employer-dashboard.jobs', compact('jobs'));
+ return view('employer-dashboard.jobs', compact('jobs'));
 }
 
 //Listing the shortlisted jobs by the job post
@@ -394,7 +398,7 @@ public function candidates($category)
   $categories=ExpressCategory::orderBy('name','asc')->get();
   $countries = DB::table('countries')->get();
 
- return view('employer-dashboard.express-candidates', compact('jobseekers', 'countries', 'categories'));
+  return view('employer-dashboard.express-candidates', compact('jobseekers', 'countries', 'categories'));
 }
 
 // search the rsumes

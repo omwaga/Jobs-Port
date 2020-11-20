@@ -54,15 +54,16 @@
                             <div class="conntection-footer">Quick Actions</div>
                         </li>
                     </ul>
+
                 </li>
                 <li class="nav-item dropdown nav-user">
-                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('storage/logos/'.auth()->user()->logo)}}" alt="" class="user-avatar-md rounded-circle"></a>
+                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('storage/logos/'.auth()->guard('employer')->user()->logo)}}" alt="" class="user-avatar-md rounded-circle"></a>
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                         <div class="nav-user-info">
-                            <h5 class="mb-0 text-white nav-user-name">{{auth()->user()->company_name}}</h5>
+                            <h5 class="mb-0 text-white nav-user-name">{{auth()->guard('employer')->user()->company_name}}</h5>
                             <span class="status"></span><span class="ml-2">Available</span>
                         </div>
-                        <a class="dropdown-item" href="{{route('employer-profile.edit', auth::user()->id)}}"><i class="fas fa-cog mr-2"></i>Account Settings</a>
+                        <a class="dropdown-item" href="{{route('employer-profile.edit', auth()->guard('employer')->user()->id)}}"><i class="fas fa-cog mr-2"></i>Account Settings</a>
                         <a class="dropdown-item" href="{{route('teams.index')}}"><i class="fas fa-users mr-2"></i>Team Management</a>
                         <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

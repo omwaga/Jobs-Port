@@ -34,23 +34,25 @@
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Candidates</th>
+              <th>Category</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             @php $column = 0 @endphp
+            @foreach($jobseekers as $candidate)
             @php $column = $column + 1 @endphp
             <tr>
               <td>{{$column}}</td>
-              <td>name</td>
-              <td>category</td>
+              <td>{{$candidate->jobseekerdetail->name ?? ''}}</td>
+              <td>{{$candidate->categoryname->name}}</td>
               <td>
                 <div class="btn-group">
-                  <a type="button" href="#" class="btn btn-info float-left">Edit</a>
+                  <a type="button" href="{{route('adminprofile', $candidate->user_id)}}" class="btn btn-info float-left">View Profile</a>
                 </div>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div> 

@@ -23,7 +23,7 @@
         <div class="card-profile2">
           <img src="{{asset('assets/images/avatar.png')}}" class="profile-photo"  alt=""/>
           <h4>{{$jobseekerdetail->name ?? ''}}</h4>
-          <p>Web Designer</p>
+          <!-- <p>Web Designer</p> -->
 
           <div class="row">
             <div class="col-md-4">

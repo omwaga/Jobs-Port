@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use App\Mail\JobApplicationMail;
+use App\Mail\ReceivedApplication;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 use App\Country;
 use App\Skills;
@@ -19,6 +22,7 @@ use App\Industry;
 use App\Town;
 use App\jobcategories;
 use App\ExpressCategory;
+use App\Employer;
 
 class ApplicationsController extends Controller
 {
@@ -82,7 +86,12 @@ class ApplicationsController extends Controller
            else
            {
 
+            $employer_email = Employer::where('id', $request->employer_id)->value('company_email');
+            Mail::to($personalinfo->email)->send(new JobApplicationMail());
+            Mail::to($employer_email)->send(new ReceivedApplication);
+
             JobApplication::create($attributes + ['user_id' => auth()->user()->id]);
+
 
             return redirect(route('application.success'));
         }

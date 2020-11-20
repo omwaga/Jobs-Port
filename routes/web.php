@@ -160,6 +160,7 @@ Route::get('login/google/callback', 'Auth\GoogleController@handleProviderCallbac
 Route::prefix('public')->group(function(){    
    Route::get('/express-recruitment', 'PagesController@express')->name('express');
    Route::get('/express-candidates/{category}', 'PagesController@expresscandidates')->name('expresscandidates');
+   Route::get('/express-filter', 'PagesController@expressfilter')->name('expressfilter');
    Route::get('/faqs', 'PagesController@faqs')->name('faqs');
    Route::get('/user-options', 'PagesController@loginoptions')->name('options');
    Route::get('/company-page', 'PagesController@onecompany')->name('onecompany');

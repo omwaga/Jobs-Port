@@ -184,14 +184,17 @@ class AdminController extends Controller
     //Express candidates
     public function expresscandidates()
     {
-        return view('admin.express-candidates');
-    }
+      $jobseekers = PersonalStatement::whereNotNull('category')->paginate(20);
+      $categories=ExpressCategory::orderBy('name','asc')->get();
+
+      return view('admin.express-candidates', compact('jobseekers'));
+  }
 
     //export jobseekers to PDF
-    public function export()
-    {
-        return Excel::download(new UsersExport, 'jobseekers.xlsx');
-    }
+  public function export()
+  {
+    return Excel::download(new UsersExport, 'jobseekers.xlsx');
+}
 
 }
 

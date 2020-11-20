@@ -69,10 +69,10 @@ class PagesController extends Controller
 
   }
 
-public function loginoptions()
-{
-  return view('front.login-options');
-}
+  public function loginoptions()
+  {
+    return view('front.login-options');
+  }
 
 //return the page for the jobseekers
   public function jobseekers()
@@ -131,6 +131,31 @@ public function expresscandidates($category)
   $countries = DB::table('countries')->pluck("name","id");
 
   return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
+}
+// Express candidates
+public function expressfilter(Request $request)
+{
+  SEOMeta::setTitle('Express Recruitment search Results');
+  if ($request->category !== null) {
+    $job_category = ExpressCategory::where('id', $request->category)->value('name');
+    $jobseekers = PersonalStatement::where('category', $request->category)->paginate(20);
+    $categories=ExpressCategory::orderBy('name','asc')->get();
+    $countries = DB::table('countries')->pluck("name","id");
+
+    return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
+  }
+  else if($request->country !== null)
+  {  
+    $job_category = ExpressCategory::where('id', $request->category)->value('name');
+    $jobseekers = JobseekerDetail::where('nationality', $request->country)->paginate(20);
+    $categories=ExpressCategory::orderBy('name','asc')->get();
+    $countries = DB::table('countries')->pluck("name","id");
+
+    return view('front.express-candidates-filter', compact('jobseekers', 'countries', 'categories', 'job_category'));
+  }else
+  {    
+    return redirect(route('express'));
+  }
 }
 
 public function companies()

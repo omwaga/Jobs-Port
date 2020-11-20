@@ -6,15 +6,12 @@
     <body>
         <div class="card">
             <div class="card-body">
-            <p>Dear <b style="color: brown;font-family: 'Roboto', sans-serif;">{{$emaill}}</b></p>
-            <p><b style="color: royalblue">Thank you for posting your application with us.</b></p>
-            <p>You have successfully posted the following position: <strong>{{$jobtitle}}</strong>
-        on behalf of  <b>{{$company}}</b> company.</p>
-            <p>Thank you for choosing us as your career agents.We appreciate your services.
-                            </p>
+            <p>Dear sir/Madam</p>
+            <p><b style="color: royalblue">You have a new job application from {{auth()->user()->name}}</b></p>
+            <p>Thank you for choosing us for your recruitment.</p>
             <hr>
-            <p class="text-danger"><b>Kind Regards</b></p>
-            <p  style="color: saddlebrown"><b>Human Resource Officer</b></p>
+            <p class="text-danger"><b>Best Regards</b></p>
+            <p  style="color: saddlebrown"><b>NetworkedPros Careers</b></p>
             <p  style="color: saddlebrown"><b>TheNetworkedPros, Nairobi- Kenya</b></p>
             <p  style="color: saddlebrown"><b>Njema Court, Suit R2</b></p>
             <p  style="color: saddlebrown"><b>Westlands, Raptha Road</b></p>
