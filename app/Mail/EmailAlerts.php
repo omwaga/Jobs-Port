@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class JobPosted extends Mailable
+class EmailAlerts extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,6 +28,6 @@ class JobPosted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.job-posted');
+        return $this->markdown('emails.created-alerts');
     }
 }

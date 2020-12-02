@@ -63,8 +63,6 @@
                                         </div>
                                     </div>
                                     <div class="user-avatar-address">
-                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{App\Town::where('id', $jobseeker->jobseekerdetail->city)->value('name') ?? ''}}, {{App\Country::where('id', $jobseeker->jobseekerdetail->nationality)->value('name') ?? ''}} <span class="m-l-10">{{$jobseeker->gender ?? ''}}</span>
-                                        </p>
                                         <div class="mt-3">
                                             @forelse($jobseeker->skills as $skill)
                                             <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
@@ -104,15 +102,14 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="card-body border-top">
+                    <!-- <div class="card-body border-top">
                         <h3 class="font-16">Candidates by Location</h3>
                         @foreach($countries as $country)
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label">{{$country->name}}</label>
+                            <a href="">{{$country->name}}</a>
                         </div>
                         @endforeach
-                    </div>
+                    </div> -->
                     <div class="card-body border-top">
                         <a href="#" class="btn btn-secondary btn-lg btn-block">Submit</a>
                     </div>

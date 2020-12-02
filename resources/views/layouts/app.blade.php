@@ -29,7 +29,10 @@
   <link href="{{ asset('css/beautify.css') }}" rel="stylesheet">
   <link href="{{ asset('css/home-steps.css') }}" rel="stylesheet">
   <link href="{{ asset('css/button.css') }}" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
+
+  <script src="https://www.google.com/recaptcha/api.js"></script>
   
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\JobPostUpdated;
+use Illuminate\Support\Facades\Mail;
 use App\Jobposts;
 use App\jobcategories;
 use App\Industry;
@@ -70,6 +72,8 @@ class JobListController extends Controller
     {
 
         $jobpost->update(request(['job_title', 'job_type', 'jobcategories_id', 'country_id', 'location','employment_type','industry', 'salary', 'deadline', 'summary', 'description', 'application_details', 'apply']));
+
+        Mail::to(Auth::guard('employer')->user()->company_email)->send(new JobPostUpdated());
         
         return redirect('/jobposts')->with('message', 'Job post has been updated successfully');
     }
@@ -98,6 +102,4 @@ class JobListController extends Controller
         
         return back()->with('message', 'The Job Post has been published successfully!');
     }
-    
-
 }

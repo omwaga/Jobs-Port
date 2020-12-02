@@ -129,6 +129,9 @@ Route::prefix('admin')->group(function(){
     Route::DELETE('/delete-state/{id}', 'CountriesController@destroystate')->name('countries.deletestate');
     Route::get('/express-candidates', 'AdminController@expresscandidates')->name('express.candidates');
     Route::get('/enrolled-candidates', 'AdminController@enrolledcandidates')->name('enrolledcandidates');
+    Route::get('/employer-profile/{id}', 'AdminController@employerProfile')->name('employer.profile');
+    Route::get('business-permits/{name}/download', 'AdminController@downloadPermit')->name('permit.download');
+    Route::get('certificates/{name}/download', 'AdminController@downloadCertificate')->name('certificate.download');
 });
 Route::get('/admin-dashboard', 'AdminController@dashboard')->name('admin');
 Route::get('/create-job', 'AdminController@createjob')->name('createjob');

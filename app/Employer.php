@@ -39,4 +39,9 @@ class Employer extends Authenticatable
     {
         return $this->belongsTo(Industry::class, 'company_industry', 'id');
     }
+
+    public function doc()
+    {
+        return $this->hasOne(EmployerDocument::class, 'employer_id', 'id');
+    }
 }

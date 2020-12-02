@@ -46,7 +46,7 @@
               <td>{{$employer->company_email}}</td>
               <td>{{$employer->jobs->count()}}</td>
               <td>{{$employer->applications->count()}}</td>
-              <td><a href="#"><button class="btn btn-primary">View Profile</button></a></td>
+              <td><a href="{{route('employer.profile', $employer->id)}}"><button class="btn btn-primary">View Profile</button></a></td>
             </tr>
             @endforeach
           </tbody>

@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-9">
         <p class="text-dark">
-          {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/job/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
+          {!! Str::limit(strip_tags($job->summary), 300) !!}<a class="btn btn-danger pull-right btn-sm" href="/job/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
         </p>
       </div>
     </div>

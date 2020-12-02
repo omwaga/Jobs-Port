@@ -30,6 +30,6 @@ class JobApplicationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.job-application-mail');
+        return $this->markdown('email.job-application-mail');
     }
 }

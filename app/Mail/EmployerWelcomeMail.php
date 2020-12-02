@@ -11,6 +11,8 @@ class EmployerWelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
+
     /**
      * Create a new message instance.
      *
@@ -28,6 +30,6 @@ class EmployerWelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.employer-welcome-mail');
+        return $this->markdown('email.employer-welcome-mail');
     }
 }

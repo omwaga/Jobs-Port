@@ -268,6 +268,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         array (
             'Artesaos\\SEOTools\\' => 18,
             'App\\' => 4,
+            'Anhskohbo\\NoCaptcha\\' => 20,
         ),
     );
 
@@ -663,6 +664,10 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Anhskohbo\\NoCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/anhskohbo/no-captcha/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -697,6 +702,9 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
     );
 
     public static $classMap = array (
+        'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
         'App\\Article' => __DIR__ . '/../..' . '/app/Article.php',
         'App\\Awards' => __DIR__ . '/../..' . '/app/Awards.php',
         'App\\Companies' => __DIR__ . '/../..' . '/app/Companies.php',
@@ -708,6 +716,7 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\CvUpload' => __DIR__ . '/../..' . '/app/CvUpload.php',
         'App\\Education' => __DIR__ . '/../..' . '/app/Education.php',
         'App\\Employer' => __DIR__ . '/../..' . '/app/Employer.php',
+        'App\\EmployerDocument' => __DIR__ . '/../..' . '/app/EmployerDocument.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Experience' => __DIR__ . '/../..' . '/app/Experience.php',
         'App\\Exports\\UsersExport' => __DIR__ . '/../..' . '/app/Exports/UsersExport.php',
@@ -772,7 +781,12 @@ class ComposerStaticInitca4699ad9e81e75639db606febd00b09
         'App\\JobseekerDetail' => __DIR__ . '/../..' . '/app/JobseekerDetail.php',
         'App\\Level' => __DIR__ . '/../..' . '/app/Level.php',
         'App\\Locations' => __DIR__ . '/../..' . '/app/Locations.php',
+        'App\\Mail\\EmailAlerts' => __DIR__ . '/../..' . '/app/Mail/EmailAlerts.php',
         'App\\Mail\\EmployerWelcomeMail' => __DIR__ . '/../..' . '/app/Mail/EmployerWelcomeMail.php',
+        'App\\Mail\\JobApplicationMail' => __DIR__ . '/../..' . '/app/Mail/JobApplicationMail.php',
+        'App\\Mail\\JobPostUpdated' => __DIR__ . '/../..' . '/app/Mail/JobPostUpdated.php',
+        'App\\Mail\\JobPosted' => __DIR__ . '/../..' . '/app/Mail/JobPosted.php',
+        'App\\Mail\\ReceivedApplication' => __DIR__ . '/../..' . '/app/Mail/ReceivedApplication.php',
         'App\\Mail\\VerifyMail' => __DIR__ . '/../..' . '/app/Mail/VerifyMail.php',
         'App\\Mail\\WelcomeMail' => __DIR__ . '/../..' . '/app/Mail/WelcomeMail.php',
         'App\\PersonalStatement' => __DIR__ . '/../..' . '/app/PersonalStatement.php',

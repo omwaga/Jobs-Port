@@ -108,7 +108,7 @@
                         <a class="nav-link" href="{{route('joboptions')}}"><i class="fas fa-fw fa-database"></i>Source Candidates</a>
                     </li>
                     <li class="nav-item menu-list">
-                        <a class="nav-link" href="{{route('employerjobs')}}"><i class=" fas fa-align-justify"></i>Manage Jobs</a>
+                        <a class="nav-link" href="{{route('employerjobs')}}"><i class=" fas fa-align-justify"></i>Manage Job Postings</a>
                     </li>
                     <li class="nav-item menu-list">
                         <a class="nav-link" href="{{route('allapplicants')}}"><i class="fas fa-address-book"></i>Job Applications Inbox</a>

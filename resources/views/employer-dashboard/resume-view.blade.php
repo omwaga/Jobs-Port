@@ -39,7 +39,7 @@
                         <img src="{{asset('assets/images/avatar.png')}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
                     </div>
                     <div class="text-center">
-                        <h2 class="font-24 mb-0">{{$jobseekerdetail->name ?? 'No name'}}</h2>
+                        <h2 class="font-24 mb-0">{{$jobseekerdetail->name ?? ''}}</h2>
                         <!-- <p>Project Manager @Influnce</p> -->
                     </div>
                 </div>

@@ -166,11 +166,12 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-      
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
-          
+        
         /*
          * Application Service Providers...
          */
@@ -179,8 +180,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-  
-      
+        
+        
 
     ],
 
@@ -243,7 +244,7 @@ return [
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
         'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
-       
+        
 
     ],
 

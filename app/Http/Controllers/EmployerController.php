@@ -171,12 +171,12 @@ public function documentsUpload(Request $request)
     ]);
 
     if ($request->hasFile('business_permit')) {
-        $request['business_permit'] = $request->business_permit->getClientOriginalName();
-        $request->business_permit->storeAs('public/employerDocuments', $request['business_permit']);
+        $attributes['business_permit'] = $request->business_permit->getClientOriginalName();
+        $request->business_permit->storeAs('public/employerDocuments', $attributes['business_permit']);
     }
     if ($request->hasFile('certificate')) {
-        $request['certificate'] = $request->certificate->getClientOriginalName();
-        $request->certificate->storeAs('public/employerDocuments', $request['certificate']);
+        $attributes['certificate'] = $request->certificate->getClientOriginalName();
+        $request->certificate->storeAs('public/employerDocuments', $attributes['certificate']);
     }
 
     EmployerDocument::create($attributes + ['employer_id' => auth()->user()->id]);

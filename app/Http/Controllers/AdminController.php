@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\EmployerDocument;
 
 class AdminController extends Controller
 {
@@ -194,6 +195,27 @@ class AdminController extends Controller
   public function export()
   {
     return Excel::download(new UsersExport, 'jobseekers.xlsx');
+} 
+
+public function employerProfile($id)
+{
+    $employer = Employer::where('id', $id)->first();
+
+    return view('admin.employer-profile', compact('employer'));
+}
+
+public function downloadPermit($id)
+{
+    $permit = EmployerDocument::where('employer_id', $id)->firstOrFail();
+    $pathToFile = storage_path('app/public/employerDocuments/' . $permit->business_permit);
+    return response()->download($pathToFile);
+}
+
+public function downloadCertificate($id)
+{
+    $Certificate = EmployerDocument::where('employer_id', $id)->firstOrFail();
+    $pathToFile = storage_path('app/public/employerDocuments/' . $Certificate->certificate);
+    return response()->download($pathToFile);
 }
 
 }

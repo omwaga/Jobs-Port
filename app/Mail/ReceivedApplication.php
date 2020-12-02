@@ -28,6 +28,6 @@ class ReceivedApplication extends Mailable
      */
     public function build()
     {
-        return $this->view('email.received-application');
+        return $this->markdown('email.received-application');
     }
 }

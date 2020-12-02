@@ -25,22 +25,7 @@
         <!-- ============================================================== -->
         
         <div class="row">
-            <!-- ============================================================== -->
-            <!-- search bar  -->
-            <!-- ============================================================== -->
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form>
-                            <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-primary search-btn" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end search bar  -->
-            <!-- ============================================================== -->
+            
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <!-- ============================================================== -->
                 <!-- card influencer one -->

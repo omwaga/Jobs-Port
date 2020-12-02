@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
     'App\\Article' => $baseDir . '/app/Article.php',
     'App\\Awards' => $baseDir . '/app/Awards.php',
     'App\\Companies' => $baseDir . '/app/Companies.php',
@@ -17,6 +20,7 @@ return array(
     'App\\CvUpload' => $baseDir . '/app/CvUpload.php',
     'App\\Education' => $baseDir . '/app/Education.php',
     'App\\Employer' => $baseDir . '/app/Employer.php',
+    'App\\EmployerDocument' => $baseDir . '/app/EmployerDocument.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Experience' => $baseDir . '/app/Experience.php',
     'App\\Exports\\UsersExport' => $baseDir . '/app/Exports/UsersExport.php',
@@ -81,7 +85,12 @@ return array(
     'App\\JobseekerDetail' => $baseDir . '/app/JobseekerDetail.php',
     'App\\Level' => $baseDir . '/app/Level.php',
     'App\\Locations' => $baseDir . '/app/Locations.php',
+    'App\\Mail\\EmailAlerts' => $baseDir . '/app/Mail/EmailAlerts.php',
     'App\\Mail\\EmployerWelcomeMail' => $baseDir . '/app/Mail/EmployerWelcomeMail.php',
+    'App\\Mail\\JobApplicationMail' => $baseDir . '/app/Mail/JobApplicationMail.php',
+    'App\\Mail\\JobPostUpdated' => $baseDir . '/app/Mail/JobPostUpdated.php',
+    'App\\Mail\\JobPosted' => $baseDir . '/app/Mail/JobPosted.php',
+    'App\\Mail\\ReceivedApplication' => $baseDir . '/app/Mail/ReceivedApplication.php',
     'App\\Mail\\VerifyMail' => $baseDir . '/app/Mail/VerifyMail.php',
     'App\\Mail\\WelcomeMail' => $baseDir . '/app/Mail/WelcomeMail.php',
     'App\\PersonalStatement' => $baseDir . '/app/PersonalStatement.php',

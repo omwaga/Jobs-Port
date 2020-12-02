@@ -26,7 +26,7 @@
   <table width="100%">
     <tr>
       <td align="center">
-        <h3>Full Name : {{$personalinfo->name}}</h3>
+        <h3>{{$personalinfo->name}}</h3>
         <pre>
           Email: {{$personalinfo->email}}
           Phone Number: {{$personalinfo->phone}}
@@ -44,16 +44,53 @@
   <br/>
 
   <div class="container">
-    <div class="row">
-      <h4 align="center">Work Experience</h4>
-      @foreach($experience as $experienced)
-      <div class="col-md-12">
-        <h5>{!!$experienced->position!!}</h5>
-        <h5>{!!$experienced->employer!!}</h5>
-        <p>{!!$experienced->roles!!}</p>
-      </div>
-      @endforeach
-    </div>
+    <h4 align="center">Work Experience</h4>
+    @foreach($experience as $experienced)
+    <table cellspacing="40">
+      <tr>
+        <td>
+          <table class="table-border" cellpadding="5">
+            <tr>
+              <td>
+                <strong>
+                  {{$experienced->start_date}} - {{$experienced->end_date}}
+                </strong>
+              </td>
+              <td>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="table-border" cellpadding="5">
+            <tr>
+              <td>
+                <strong>
+                  Employer: {!!$experienced->position!!}
+                </strong>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  Position: {!!$experienced->position!!}
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {!!$experienced->roles!!}
+              </td>
+              <td>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    @endforeach
   </div>
 
   <div class="container">
@@ -72,10 +109,10 @@
     <div class="row">
       <h4 align="center">Awards</h4>
       <div class="col-md-12">
-          @foreach($awards as $award)
-          <li>{{$award->name}}</li>
-          <p>{!!$award->description!!}</p>
-          @endforeach
+        @foreach($awards as $award)
+        <li>{{$award->name}}</li>
+        <p>{!!$award->description!!}</p>
+        @endforeach
       </div>
     </div>
   </div>
