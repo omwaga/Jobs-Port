@@ -114,6 +114,9 @@
         <li class="nav-item">
           <a class="btn btn-danger text-white" href="{{ route('options') }}" style="border-radius:0px;"><i class="fa fa-user"></i> Login/Register</a>
         </li>
+        <li class="nav-item pl-1">
+          <a class="btn btn-danger text-white" href="{{route('employers')}}" style="border-radius:0px;"><i class="fa fa-send"></i> Post a Job</a>
+        </li>
         @else
 
         <ul class="navbar-nav ml-auto ">
@@ -126,6 +129,7 @@
             @csrf
           </form>
         </li>
+      </ul>
       </ul>
 
       @endguest

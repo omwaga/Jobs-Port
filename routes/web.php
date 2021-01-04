@@ -190,8 +190,6 @@ Route::post('/enroll', 'EnrollWorkController@register')->name('enrollwork');
 Route::get('/jobseeker-register', 'PagesController@jobseekerregister')->name('jobseekerregister');
 Route::get('/employerprofile','PagesController@cprofile')->name('hirre');
 Route::post('/create-profile','Auth\EmployerProfilesController@createcompany')->name('createcompany');
-Route::get('/job-search','PagesController@aboutjob')->name('joblisting');
-Route::get('/employerd','PagesController@employerd')->name('emp');
 Route::get('/homesearch','PagesController@searchhome')->name('homesearch');
 Route::get('/Register','PagesController@register')->name('Register');
 Route::get('/','PagesController@homee')->name('homee');

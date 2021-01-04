@@ -101,14 +101,6 @@ class PagesController extends Controller
     return view('front.Employerlogin');
   }
 
-  public function employerd(){
-   if(Auth::guard('employer')->check()){
-     return redirect()->route('employdashboard');
-   }
-   else{
-    return view('front.empdash');
-  }
-}
 //Express recruitment
 public function express()
 {
@@ -183,22 +175,6 @@ public function employerlogin()
 public function jobseekerregister()
 {
   return view('front.jobseeker-steps');
-}
-
-public function aboutjob(){
-  $industries=Industry::orderBy('name','asc')->get();
-  $indacount=Jobposts::join('industries','industries.name','=','jobposts.industry')->whereIn('jobposts.industry',$industries)->get();
-  $town=Town::orderBy('name','asc')->get();
-  $datediif=Jobposts::select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $jobs=Jobposts::orderBy('created_at','desc')->get();
-  
-  return view('front.job')->with('industry',$industries)
-  ->with('jobs',$jobs)
-  ->with('categories',$categories)
-  ->with('towns',$town)
-  ->With('indacount',$indacount)
-  ->with('datediff',$datediif);
 }
 
 //  all jobs available in the database
