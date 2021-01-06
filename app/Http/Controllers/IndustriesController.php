@@ -90,8 +90,10 @@ class IndustriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Industry $industry)
     {
-        //
+        $industry->delete();
+
+        return back()->with('message', 'Industry deleted successfully');
     }
 }

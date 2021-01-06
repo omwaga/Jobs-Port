@@ -46,6 +46,11 @@
                   <td>
                     <div class="btn-group">
                       <a type="button" href="{{route('industries.edit', $industry->id)}}" class="btn btn-info float-left">Edit</a>
+                      <form method="POST" action="{{route('industries.destroy', $industry->id)}}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger float-left" >Delete</button>
+                      </form>
                     </div>
                   </td>
                 </tr>

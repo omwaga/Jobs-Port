@@ -46,11 +46,11 @@
                   <td>
                     <div class="btn-group">
                       <a type="button" href="{{route('categories.edit', $category->id)}}" class="btn btn-info float-left">Edit</a>
-                      <!-- <form method="POST" action="{{route('categories.destroy', $category->id)}}">
+                      <form method="POST" action="{{route('categories.destroy', $category->id)}}">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger float-left" >Delete</button>
-                      </form> -->
+                      </form>
                     </div>
                   </td>
                 </tr>
