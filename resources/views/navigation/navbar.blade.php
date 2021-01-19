@@ -32,7 +32,7 @@
       <li class="nav-item active">
         <a class="nav-link text-white" href="{{route('express')}}">
           <i class="fa fa-graduation-cap text-white">
-          </i>Express Recruitment
+          </i>Quick Hire
         </a>
       </li>
       <li class="nav-item active">

@@ -34,12 +34,38 @@
         @endif
       </div>
       <hr>
+      
+      <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-e5+6n-34-bt+x0"
+      data-ad-client="ca-pub-9415122333094581"
+      data-ad-slot="8953952401"></ins>
+      <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+   </div>
 
       <h4 style="color:#0B0B3B; font-weight: bold;">Job Description</h4>
       <p>{!!$job->summary!!}</p>
 
       <h4 style="color:#0B0B3B; font-weight: bold;">Job Requirements</h4>
       <p>{!!html_entity_decode($job->description)!!}</p>
+      
+      <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-e5+6n-34-bt+x0"
+      data-ad-client="ca-pub-9415122333094581"
+      data-ad-slot="8953952401"></ins>
+      <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+   </div>
 
       <h4 style="color:#0B0B3B; font-weight: bold;">How to Apply</h4>
       <p>{!!$job->application_details ?? '' !!}</p>
@@ -82,6 +108,20 @@
     @empty
     <p>No related jobs yet!</p>
     @endforelse
+    
+  <div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- verticaladd -->
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-9415122333094581"
+    data-ad-slot="5481420996"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+ </div>
     <h4 class="text-center" >Latest Jobs</h4>
     @foreach($featured as $feature)
     <ul class="list-group list-group-flush">

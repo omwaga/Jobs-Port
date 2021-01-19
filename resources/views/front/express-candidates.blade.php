@@ -36,11 +36,9 @@
           <img class="rounded-circle img-fluid" src="{{asset('/Images/profile.png')}}" alt="" width="140" height="140">
         </div>
         <div class="col-md-9">
-          <h4>{{str_singular($job_category) ?? 'Candidate'}}</h4>
+          <h4>{{str_singular($job_category) ?? 'Candidate'}} Candidate</h4>
           <p class="text-dark">{!!str_limit($jobseeker->statement ?? '', $limit = 300, $end = '...')!!}</p>
           <div class="mt-3">
-            <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{App\Town::where('id', $jobseeker->jobseekerdetail->city)->value('name') ?? ''}}, {{App\Country::where('id', $jobseeker->jobseekerdetail->nationality)->value('name') ?? ''}} <span class="m-l-10">{{$jobseeker->gender ?? ''}}</span>
-            </p>
             @foreach($jobseeker->skills as $skill)
             <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
             @endforeach
