@@ -93,10 +93,10 @@
                     </li>   
 
                     <li class="nav-divider text-success">
-                        Express Recruitment
+                        Quick Hire
                     </li>
                     <li class="nav-item menu-list">
-                        <a class="nav-link" href="#"><i class=" fas fa-graduation-cap"></i>Express Recruitment</a>
+                        <a class="nav-link" href="#"><i class=" fas fa-graduation-cap"></i>Quick Hire</a>
                     </li>                       
                 </ul>
             </div>

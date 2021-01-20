@@ -143,7 +143,7 @@
         </li>
 
         <li class="nav-divider text-success">
-          Express Recruitment
+          Quick Hire
         </li>
         <li class="nav-item active">
           <a class="nav-link text-white" href="{{route('profile-wizard')}}">

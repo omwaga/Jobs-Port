@@ -2,6 +2,7 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{asset('Images/cv2.jpg')}})" style=" padding-top: 5rem;">
   <div class="container" style=" padding-top: 3rem;">
+<p class="text-white">Are you looking for a job? We list up to date jobs in East Africa from top Kenyan, Tanzanian, Ugandan and Rwandese employers. This is a free service to Kenyan, Tanzanian, Ugandan and Rwandese job seekers. Never pay to attend an interview or for psychometric tests. </p>
     <form method="get" action="{{route('homesearch')}}">
      <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">

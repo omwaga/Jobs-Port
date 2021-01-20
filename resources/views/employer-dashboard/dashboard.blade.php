@@ -198,7 +198,7 @@
                                               @endif
                                           </div>
                                       </td>
-                                      <td>{{$job->job_title}}</td>
+                                      <td><a href="{{route('jobwithapplications', $job->id)}}">{{$job->job_title}}</a></td>
                                       <td>{{$job->employment_type}}</td>
                                       <td>{{$job->status}} posted {{$job->created_at->diffForHumans()}}</td>
                                       <td>
@@ -208,9 +208,9 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <!-- item-->
-                                                <a href="/job-withapplications/{{$job->id}}" class="dropdown-item">View</a>
+                                                <a href="{{route('jobwithapplications', $job->id)}}" class="dropdown-item">View</a>
                                                 <!-- item-->
-                                                <a href="/jobposts/{{$job->id}}/edit" class="dropdown-item">Update</a>
+                                                <a href="{{route('jobposts.edit', $job->id)}}" class="dropdown-item">Update</a>
                                                 <!-- item-->
                                             </div>
                                         </div>

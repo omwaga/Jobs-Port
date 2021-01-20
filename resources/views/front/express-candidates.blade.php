@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-9">
           <h4>{{str_singular($job_category) ?? 'Candidate'}} Candidate</h4>
-          <p class="text-dark">{!!str_limit($jobseeker->statement ?? '', $limit = 300, $end = '...')!!}</p>
+          <p class="text-dark">{!! Str::limit(strip_tags($jobseeker->statement), 300) !!}</p>
           <div class="mt-3">
             @foreach($jobseeker->skills as $skill)
             <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>

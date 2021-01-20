@@ -61,10 +61,15 @@
 <section class="boot-elemant-bg ">
   <div class="container position-relative py-md-3 py-0">
     <div class="row">
-      <div class="col-lg-8 offset-lg-2 text-center">
+      <div class="col-lg-4 offset-lg-1 text-center">
         <h4 class="display-6 font-weight-bold">BE DISCOVERED BY EMPLOYERS</h4>
-        <p class="f-16 mb-4">Create your career profile and let us match you to your dream job.</p>
+        <p>The Networked Pros is a leading job search and employee recruitment platform in East Africa. Are you looking for your next job? Register today for free job alerts. </p>
         <a href="{{route('Register')}}" class="btn btn-outline-primary btn-lg px-4"> REGISTER NOW </a>
+      </div>
+      <div class="col-lg-4 offset-lg-1 text-center">
+        <h4 class="display-6 font-weight-bold">FREE JOB POSTING</h4>
+        <p>Are you an employer looking to hire the best? It’s FREE. Post your vacancy & reach over 500,000 professionals.</p>
+        <a href="{{route('employers')}}" class="btn btn-outline-primary btn-lg px-4"> GET STARTED </a>
       </div>
     </div>
   </div>

@@ -56,7 +56,9 @@
                                 <div class="pl-xl-3">
                                     <div class="m-b-0">
                                         <div class="user-avatar-name d-inline-block">
-                                            <h2 class="font-24 m-b-10">{{$jobseeker->jobseekerdetail->name ?? $jobseeker->user->name}}</h2>
+                                            <a href="{{route('candidateprofile', $jobseeker->user_id)}}">
+                                                <h2 class="font-24 m-b-10">{{$jobseeker->jobseekerdetail->name ?? $jobseeker->user->name}}</h2>
+                                            </a>
                                         </div>
                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
 
@@ -65,7 +67,7 @@
                                     <div class="user-avatar-address">
                                         <div class="mt-3">
                                             @forelse($jobseeker->skills as $skill)
-                                            <a href="#" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
+                                            <a href="{{route('candidateprofile', $jobseeker->user_id)}}" class="mr-1 badge badge-light">{{$skill->skillname}}</a>
                                             @empty
                                             <p>No skills added.</p>
                                             @endforelse

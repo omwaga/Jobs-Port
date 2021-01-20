@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="container" style=" padding-top: 5rem;">
-  <h4 class="text-center text-dark">Express Recruitment</h4><br>
-  <p class="text-center">Connecting Jobseekers with potential Employers</p>
+<div class="container" style=" padding-top: 6rem;">
+  <h4 class="text-center text-dark">Quick Hire</h4><br>
+  <p class="text-center">Trying to find employees? Looking to hire the right staff? We can help you hire the right person quickly through our Quick Hire!
+
+Quick hire is career profiles with prescreened candidates, who have been vetted, pass aptitude test, technical competency and reference check.</p>
   <div class="container">
     <div class="row">
       <div class="col-md-9">
