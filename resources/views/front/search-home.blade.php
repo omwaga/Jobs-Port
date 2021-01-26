@@ -2,6 +2,7 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{asset('Images/cv2.jpg')}})" style=" padding-top: 5rem;">
   <div class="container">
+    <br><br>
     <form method="get" action="{{route('homesearch')}}">
      <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -49,7 +50,7 @@
 
     <div class="card card-body border-light shadow-lg p-3 mb-3 bg-white rounded" style="background-color:#aaa;">
       @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-      <h5 style="color:#0B0B3B;"><a href="/jobview/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a>
+      <h5 style="color:#0B0B3B;"><a href="/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}}</a>
         <a href=""><i class="fa fa-heart text-danger pull-right" align="right" onclick="event.preventDefault();
         document.getElementById('save-job-{{$job->id}}').submit();">
         <form id="save-job-{{$job->id}}" action="{{ route('user-save', $job->id) }}" method="POST" style="display: none;">
@@ -74,7 +75,7 @@
         </div>
         <div class="col-md-9">
           <p class="text-dark">
-            {!! str_limit($job->summary, $limit = 300, $end = '...') !!}<a class="btn btn-danger pull-right btn-sm" href="/jobview/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
+            {!! Str::limit(strip_tags($job->summary), 300) !!}<a class="btn btn-danger pull-right btn-sm" href="/job/{{$job->id}}/{{$jobtitle}}">View Job Details</a>
           </p>
         </div>
       </div>

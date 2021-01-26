@@ -50,6 +50,19 @@
 
       <h4 style="color:#0B0B3B; font-weight: bold;">Job Description</h4>
       <p>{!!$job->summary!!}</p>
+      
+      <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="fluid"
+      data-ad-layout-key="-e5+6n-34-bt+x0"
+      data-ad-client="ca-pub-9415122333094581"
+      data-ad-slot="8953952401"></ins>
+      <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+   </div>
 
       <h4 style="color:#0B0B3B; font-weight: bold;">Job Requirements</h4>
       <p>{!!html_entity_decode($job->description)!!}</p>
