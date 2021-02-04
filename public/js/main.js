@@ -169,7 +169,6 @@ class Errors {
       });
     }
 
-
     /**
      * Handle a successful form submission.
      *

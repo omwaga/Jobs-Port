@@ -96,6 +96,7 @@ class PagesController extends Controller
     ->with('town',$town)
     ->with('countries',$countries);
   }
+  
 
   public function hire(){
     return view('front.Employerlogin');

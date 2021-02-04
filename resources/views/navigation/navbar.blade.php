@@ -26,13 +26,13 @@
       <li class="nav-item active">
         <a class="nav-link text-white" href="{{route('alljobs')}}">
           <i class="fa fa-search text-white">
-          </i>Job Search
+          </i>Jobs
         </a>
       </li>
       <li class="nav-item active">
         <a class="nav-link text-white" href="{{route('express')}}">
           <i class="fa fa-graduation-cap text-white">
-          </i>Quick Hire
+          </i>Recruitment
         </a>
       </li>
       <li class="nav-item active">
