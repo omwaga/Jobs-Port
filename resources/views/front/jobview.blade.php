@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-9">
           <ul style="list-style: none;">
-            <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
+            <li class="text-danger">{{$job->employer->company_name ?? $job->employer_name}}</li>
             <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type ?? ''}}</li>
             <li><b style="font-weight: bold;">Salary:</b> {{$job->salary ?? ''}}</li>
             <li><b style="font-weight: bold;">Deadline:</b> {{$job->deadline ?? ''}}</li>

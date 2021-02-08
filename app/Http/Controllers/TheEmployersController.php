@@ -44,13 +44,13 @@ class TheEmployersController extends Controller
     {
         $attributes = request()->validate([
             'job_title' => ['required', 'min:3'],
-            'employer_name' => 'required',
+            'employer_name' => 'nullable',
             'employer_logo' => 'nullable',
             'job_type' => 'required',
             'employment_type' => 'nullable',
             'jobcategories_id' => 'nullable',
             'industry' => 'nullable',
-            'employer_name'=> 'nullable',
+            'employer_id'=> 'nullable',
             'country_id' => 'nullable',
             'location' => 'nullable',
             'salary' => 'nullable',

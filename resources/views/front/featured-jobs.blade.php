@@ -25,7 +25,7 @@
           </div>
           <div class="col-md-9">
             <ul style="list-style: none;">
-              <li class="text-danger" style="font-size: 1.2em; font-weight: bold">{{$job->employer_name ?? $job->employer->company_name}}</li>
+              <li class="text-danger">{{$job->employer->company_name ?? $job->employer_name}}</li>
               <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type}}</li>
               <li><strong style="font-weight: bold;">Location:</strong> {{$job->town->name ?? ''}} - {{ $job->country->name ?? ''}}</li>
             </ul>
