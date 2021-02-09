@@ -5,7 +5,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" style="color:#0B0B3B;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <b><i class="fa fa-bars"></i>  Job Categories</b>
+          <b><i class="fa fa-bars"></i> Job Categories</b>
         </button>
       </h5>
     </div>
@@ -18,7 +18,7 @@
           @if($category->jobs->count() > 0)
           <li class="d-flex justify-content-between align-items-center">
             <a href="{{url('job-category',[$cat])}}" class="nav-link" style="color:#0B0B3B;">
-              <i class="fas fa-angle-right"></i>
+              <i class="fa fa-angle-right"></i>
               {{$category->jobcategories}}
             </a>
             <span class="badge badge-primary badge-pill">
@@ -46,7 +46,7 @@
           @if($location->jobposts->count() > 0)
           <li class="d-flex justify-content-between align-items-center">
             <a href="{{url('job-location',[$location->name])}}" class="nav-link" style="color:#0B0B3B;">
-              <i class="fas fa-angle-right"></i>
+              <i class="fa fa-angle-right"></i>
               {{$location->name}}
             </a>
             <span class="badge badge-primary badge-pill">
@@ -75,7 +75,7 @@
          @if($industry->jobposts->count() > 0)
          <li class="d-flex justify-content-between align-items-center">
           <a href="{{url('job-industry',[$ind])}}" class="nav-link" style="color:#0B0B3B;">
-            <i class="fas fa-angle-right"></i>
+            <i class="fa fa-angle-right"></i>
             {{$industry->name}}
           </a>
           <span class="badge badge-primary badge-pill">
@@ -101,31 +101,31 @@
      <ul>
        <li class="d-flex justify-content-between align-items-center">
         <a href="{{route('government-jobs')}}" class="nav-link" style="color:#0B0B3B;">
-          <i class="fas fa-angle-right"></i>
+          <i class="fa fa-angle-right"></i>
           Government Jobs
         </a>
       </li>
       <li class="d-flex justify-content-between align-items-center">
         <a href="{{route('private-jobs')}}" class="nav-link" style="color:#0B0B3B;">
-          <i class="fas fa-angle-right"></i>
+          <i class="fa fa-angle-right"></i>
           Private Company Jobs
         </a>
       </li>
       <li class="d-flex justify-content-between align-items-center">
         <a href="{{route('un-jobs')}}" class="nav-link" style="color:#0B0B3B;">
-          <i class="fas fa-angle-right"></i>
+          <i class="fa fa-angle-right"></i>
           UN Jobs
         </a>
       </li>
       <li class="d-flex justify-content-between align-items-center">
         <a href="{{route('humanitarian-jobs')}}" class="nav-link" style="color:#0B0B3B;">
-          <i class="fas fa-angle-right"></i>
+          <i class="fa fa-angle-right"></i>
           Humanitarian and NGO Jobs
         </a>
       </li>
       <li class="d-flex justify-content-between align-items-center">
         <a href="{{route('consultancies')}}" class="nav-link" style="color:#0B0B3B;">
-          <i class="fas fa-angle-right"></i>
+          <i class="fa fa-angle-right"></i>
           Consultancies
         </a>
       </li>
@@ -135,7 +135,7 @@
 </div>
 
 <div class="card">
-  <div class="card-header" id="headingThree">
+  <!-- <div class="card-header" id="headingThree">
     <h5 class="mb-0">
       <button class="btn btn-link collapsed" style="color:#0B0B3B;" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
         <b><i class="fa fa-list"></i> Order by</b>
@@ -150,7 +150,7 @@
         <li>Most Popular</li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- verticaladd -->
