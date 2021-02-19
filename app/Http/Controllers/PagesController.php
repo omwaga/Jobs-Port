@@ -386,7 +386,7 @@ public function show($id)
 
   $job->update(['viewcount' => $job->viewcount + 1]);
   
-  SEOMeta::setTitle($job->job_title);
+  SEOMeta::setTitle($job->job_title. ' Job');
 
   return view('front.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries', 'related_jobs'));
 } 

@@ -72,7 +72,7 @@
          @foreach($industries as $industry)
          @if($industry->jobposts->count() > 0)
          <li class="d-flex justify-content-between align-items-center">
-          <a href="#" class="nav-link" style="color:#0B0B3B;">
+          <a href="{{route('dashboard.categories', $category->jobcategories)}}" class="nav-link" style="color:#0B0B3B;">
             <i class="fas fa-angle-right"></i>
             {{$industry->name}}
           </a>
@@ -88,7 +88,7 @@
 </div>
 
 <div class="card">
-  <div class="card-header" id="headingThree">
+  <!-- <div class="card-header" id="headingThree">
     <h5 class="mb-0">
       <button class="btn btn-link collapsed" style="color:#0B0B3B;" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
         <b><i class="fa fa-list"></i> Order by</b>
@@ -103,6 +103,6 @@
         <li>Most Popular</li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </div>
 </div>

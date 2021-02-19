@@ -48,7 +48,7 @@
     @forelse($jobs as $job)
     <div class="card card-body border-light shadow-lg p-3 mb-5 bg-white rounded" style="background-color:#aaa;">
       @php $jobtitle = str_slug($job->job_title, '-'); @endphp
-      <h4><a href="/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}} at {{$job->employer_name ?? $job->employer->company_name}}</a>
+      <h4><a href="/job/{{$job->id}}/{{$jobtitle}}">{{$job->job_title}} job at {{$job->employer_name ?? $job->employer->company_name}}</a>
         <a href=""><i class="fa fa-heart text-danger pull-right" align="right" onclick="event.preventDefault();
         document.getElementById('save-job-{{$job->id}}').submit();">
         <form id="save-job-{{$job->id}}" action="{{ route('user-save', $job->id) }}" method="POST" style="display: none;">

@@ -1,6 +1,6 @@
 @extends("layouts.dashboard")
 @section("content")
-<div class="dashboard-wrapper"><br>
+<div class="dashboard-wrapper mt-5">
 <div class="container">
  <div class="row">
    <div class="col-md-8">
@@ -17,7 +17,7 @@
   </div>
 
   <div class="col-md-4">
-   @include('front.rightnav')    
+   @include('jobseeker-dashboard.rightnav')    
  </div>
 </div>
 </div>

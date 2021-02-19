@@ -3,12 +3,12 @@
 <div class="container" style="padding-top: 6rem;">
   <div class="row">
     <div class="col-md-8 card card-body border-light shadow-lg bg-white rounded" >
-      <p><b class="h3">{{$job->job_title}}</b></p>
+      <h1><b class="h3">{{$job->job_title}} Job at {{$job->employer_name ?? $job->employer->company_name}}</b></h1>
 
       <div class="row">
         <div class="col-md-9">
           <ul style="list-style: none;">
-            <li class="text-danger">{{$job->employer->company_name ?? $job->employer_name}}</li>
+            <li class="text-danger">{{$job->employer_name ?? $job->employer->company_name}}</li>
             <li><strong style="font-weight: bold;">Employment Type:</strong> {{$job->employment_type ?? ''}}</li>
             <li><b style="font-weight: bold;">Salary:</b> {{$job->salary ?? ''}}</li>
             <li><b style="font-weight: bold;">Deadline:</b> {{$job->deadline ?? ''}}</li>

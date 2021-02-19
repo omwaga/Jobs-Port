@@ -1,6 +1,6 @@
 @extends("layouts.dashboard")
 @section("content")
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper mt-5">
   <div class="container">
 
    <div class="row">

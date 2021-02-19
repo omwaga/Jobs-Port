@@ -68,7 +68,7 @@
    {{$jobs->links()}}
  </div>
  <div class="col-md-4">
-  @include('front.rightnav')     
+  @include('jobseeker-dashboard.rightnav')     
 </div>
 </div>
 
