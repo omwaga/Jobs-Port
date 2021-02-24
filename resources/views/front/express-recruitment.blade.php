@@ -34,7 +34,7 @@ Quick hire is career profiles with prescreened candidates, who have been vetted,
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
               </ol>
-              <div class="carousel-inner bg-secondary">
+              <div class="carousel-inner bg-theme">
                 <div class="carousel-item active">
                   <div class="container text-center">​
                     <br>
@@ -42,7 +42,7 @@ Quick hire is career profiles with prescreened candidates, who have been vetted,
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
                     <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
-                    <h4 class="text-white">Collins </h4><br>
+                    <h4 class="text-white">John </h4><br>
                   </div>
                 </div>
                 <div class="carousel-item">
@@ -52,7 +52,7 @@ Quick hire is career profiles with prescreened candidates, who have been vetted,
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
                     <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
-                    <h4 class="text-white">Collins </h4><br>
+                    <h4 class="text-white">Micahel </h4><br>
                   </div>
                 </div>
                 <div class="carousel-item">
@@ -62,7 +62,7 @@ Quick hire is career profiles with prescreened candidates, who have been vetted,
                       <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
                     </picture>
                     <p class="text-white">I love how NetworkedPros connects jobseekers to employers and gives us an opportunity to work together on just about any project imaginable. I am excited to continue growing my business here!</p>
-                    <h4 class="text-white">Collins </h4><br>
+                    <h4 class="text-white">Michael </h4><br>
                   </div>
                 </div>
               </div>

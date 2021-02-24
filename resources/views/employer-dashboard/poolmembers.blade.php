@@ -35,7 +35,7 @@
                             <button class="btn btn-info btn-sm text-white float-right" data-id="" data-toggle="modal" data-target="#poolname">
                                 <i class="fa fa-plus"></i>Add Pool
                             </button>
-                            @include('empdash.content.add-poolname')
+                            @include('employer-dashboard.add-poolname')
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

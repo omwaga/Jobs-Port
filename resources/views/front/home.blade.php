@@ -245,51 +245,45 @@
 </div>
 </div><br>
 
-<div class="container-fluid position-relative py-md-5 py-0" style="background-color:#005691;">
+<div class="container position-relative py-md-5 py-0 bg-theme">
   <div class="row">
     <div class="col-lg-12 text-center">
       <h3 class="text-white display-5 font-weight-bold">RESUME BUILDER</h3>
       <p class="f-16 mb-4 text-white">Build professional resumes and cover letters using the networkedpros resume builder</p>
-      <a href="{{route('resumesamples')}}" class="btn btn-outline-primary btn-lg px-4"> GET STARTED </a>
+      <a href="{{route('resumesamples')}}" class="btn text-white btn-outline-danger btn-lg px-4"> GET STARTED </a>
     </div>
   </div><br>
 </div>
 
-<div class="container-fluid position-relative py-md-3 py-0 bg-danger"><br>
-  <div class="row">
-    <div class="col-lg-6 pt-5 text-center">
-      <h2 class="text-white display-5 font-weight-bold">FREE JOB ALERTS </h2>
-      <p class="f-w-16 mb-4 text-white">Get an Email on jobs matching your criteria <br> No Registration Required</p></p>
-    </div>
-    <div class="col-md-4 bg-white pt-2 pb-5 col-offset-md-2">
+<div class="container bg-danger card mb-5 text-white mt-5"><br>
+    <div class="col-md-6 pt-2 pb-5  offset-md-3">
       <form method="POST" action="{{route('alerts.store')}}">
         @csrf
-        <h4 align="center" style="color:#0B0B3B;"> CREATE JOB ALERTS </h4>
+        <h4 align="center" class="text-white"> CREATE FREE JOB ALERTS </h4>
+        <p class="text-white">Get an Email on jobs matching your criteria. No Registration Required.</p>
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="name">Full Name</label>
+              <label for="name">Full Name:</label>
               <input type="text" name="full_name" class="form-control" id="name" placeholder="Enter Full Name" required="">
             </div>
           </div>
           <div class="col-lg-6">
             <div class="form-group">
-              <label for="name">Phone Number</label>
-              <input type="text" name="phone_number" class="form-control" id="name" placeholder="Enter Full Name" required="">
+              <label for="name">Phone Number:</label>
+              <input type="text" name="phone_number" class="form-control" id="name" placeholder="Enter Phone Number" required="">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="exampleInputEmail1">Email Address:</label>
           <input type="email" name="email_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required="">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</small>
         </div>
-        <button type="submit" class="btn btn-primary" style="background-color:#005691;">Create Alerts</button>
+        <button type="submit" class="btn btn-primary pull-right">Create Alerts</button>
       </form>
     </div>
-  </div>
-
-</div><br>
+</div>
 
 <div class="main" align="center">
  <h4 class="mb-5">TOP COMPANIES HIRING AT THE NETWORKEDPROS NOW</h4>
@@ -387,80 +381,62 @@
   </div>
 </div>
 
-<section class="testimonial_section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7">
-       <div class="about_content">
-        <div class="background_layer"></div>
-        <div class="layer_content">
-          <div class="section_title">
+<div class="text-center">
+<div class="col-md-8 offset-md-2">
             <h5>WHAT OTHERS HAD TO SAY</h5>
-            <h2>Happy<strong>Jobseekers </strong></h2>
-            <div class="heading_line"><span></span></div>
-            <p>The NetworkedPros gives you a unique way to discover employees with the best talents. </p>
-          </div>
-          <a href="#">Contact Us<i class="icofont-long-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-5">
-      <div class="testimonial_box">
-        <div class="testimonial_container">
-          <div class="background_layer"></div>
-          <div class="layer_content">
-            <div class="testimonial_owlCarousel owl-carousel">
-              <div class="testimonials"> 
-                <div class="testimonial_content">
-                  <div class="testimonial_caption">
-                    <h6>Robert Mike</h6>
-                    <span>Software Developer</span>
-                  </div>
-                  <p>"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
-                </div>
-                <div class="images_box">
-                  <div class="testimonial_img">
-                    <img class="img-center" src="https://cdn.pixabay.com/photo/2017/08/30/17/27/business-woman-2697954_960_720.jpg" alt="images not found">
-                  </div>
-                </div>
-                                        </div><!-- 
-                                        <div class="testimonials"> 
-                                            <div class="testimonial_content">
-                                                <div class="testimonial_caption">
-                                                    <h6>Robert Clarkson</h6>
-                                                    <span>CEO, Axura</span>
-                                                </div>
-                                                <p>The team at Tectxon industry is very talented, dedicated, well organized and knowledgeable. I was most satisfied with the quality of the workmanship. They did excellent work.</p>
-                                            </div>
-                                            <div class="images_box">
-                                                <div class="testimonial_img">
-                                                    <img class="img-center" src="https://cdn.pixabay.com/photo/2016/02/19/10/56/man-1209494_960_720.jpg" alt="images not found">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonials"> 
-                                            <div class="testimonial_content">
-                                                <div class="testimonial_caption">
-                                                    <h6>Robert Clarkson</h6>
-                                                    <span>CEO, Axura</span>
-                                                </div>
-                                                <p>The team at Tectxon industry is very talented, dedicated, well organized and knowledgeable. I was most satisfied with the quality of the workmanship. They did excellent work.</p>
-                                            </div>
-                                            <div class="images_box">
-                                                <div class="testimonial_img">
-                                                    <img class="img-center" src="https://cdn.pixabay.com/photo/2017/09/21/19/06/woman-2773007_960_720.jpg" alt="images not found">
-                                                </div>
-                                            </div>
-                                          </div> -->
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
+            <h3>Happy<strong> Jobseekers </strong></h3>
+<p>The NetworkedPros gives you a unique way to discover employees with the best talents. </p>
 
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner bg-theme">
+                <div class="carousel-item active">
+                  <div class="container text-center">​
+                    <br>
+                    <picture>
+                      <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
+                    </picture>
+                    <p class="text-white">"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+                    <h4 class="text-white">Robert Mike, Marketer </h4><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="container text-center">​
+                    <br>
+                    <picture>
+                      <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
+                    </picture>
+                    <p class="text-white">"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+                    <h4 class="text-white">Robert  , Marketer </h4><br>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="container text-center">​
+                    <br>
+                    <picture>
+                      <img src="{{asset('/Images/profile.png')}}" class="img-fluid img-thumbnail rounded-circle" alt="..." width="100px">
+                    </picture>
+                    <p class="text-white">"The NetworkedPros is very helpful when it comes to selection of jobs suiting your personality. This aspect landed me my current job"</p>
+                    <h4 class="text-white">Robert Mike, </h4><br>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+</div> 
+</div>
 
                           @include('front.create-alertsmodal')
                           <script type="text/javascript">
