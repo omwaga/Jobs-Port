@@ -180,7 +180,9 @@ public function jobseekerregister()
 
 //  all jobs available in the database
 public function alljobs(){
-  $jobs=Jobposts::where('status', 'active')->orderBy('created_at', 'DESC')->paginate(12);
+  $jobs=Jobposts::whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
+                  ->orderBy('created_at', 'DESC')
+                  ->paginate(12);
   $categories = jobcategories::all();
   $locations = Town::all();
   $industries = Industry::all();
@@ -190,23 +192,15 @@ public function alljobs(){
   return view('front.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
 }
 
-//  jobs after the search
-public function searchresult(Request $request)
-{
-  $jobs=DB::table('jobposts')->where('jobtitle', 'LIKE', "%{$request->jobtitle}%")->orderBy('created_at', 'desc')->paginate(10);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  
-  return view('front.job-searchresult',compact('jobs', 'categories', 'locations', 'industries'));
-}
-
 public function filterlocation($name){
   SEOMeta::setTitle('Jobs in'.$name);
   $town_id=Town::where('name',$name)->pluck('id');
   $towns=Town::orderBy('name','asc')->get();
   $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $jobs=Jobposts::whereIn('location',$town_id)->orderBy('created_at', 'desc')->paginate(10);
+  $jobs=Jobposts::whereIn('location',$town_id)                  
+                  ->whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
+                  ->orderBy('created_at', 'desc')
+                  ->paginate(10);
   $industries=Industry::orderBy('name','asc')->limit(10)->get();
   SEOMeta::setTitle('Jobs in '.$name);
 

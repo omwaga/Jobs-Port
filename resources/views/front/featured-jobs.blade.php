@@ -16,12 +16,8 @@
         </i></a></h5>
 
         <div class="row">
-          <div class="col-md-3">
-            @if($job->employer_logo !=="no-logo")
-            <img class="rounded-circle img-fluid" src="{{asset('storage/job_logos/'.$job->employer_logo)}}" alt="{{$job->job_title}}" width="140" height="140">
-            @else
-            <img class="rounded-circle img-fluid" src="{{asset('storage/logos/'.$job->employer->logo)}}" alt="{{$job->job_title}}" width="140" height="140">
-            @endif
+          <div class="col-md-3">            
+          <img class="rounded-circle img-fluid" src="{{asset('storage/logos/'.$job->employer->logo)}}" alt="{{$job->job_title}}" width="140" height="140">
           </div>
           <div class="col-md-9">
             <ul style="list-style: none;">

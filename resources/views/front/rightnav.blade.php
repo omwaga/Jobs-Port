@@ -21,9 +21,6 @@
               <i class="fa fa-angle-right"></i>
               {{$category->jobcategories}}
             </a>
-            <span class="badge badge-primary badge-pill">
-              {{$category->jobs->count()}}
-            </span>
           </li>
           @endif
           @endforeach
@@ -49,9 +46,6 @@
               <i class="fa fa-angle-right"></i>
               {{$location->name}}
             </a>
-            <span class="badge badge-primary badge-pill">
-              {{$location->jobposts->count()}}
-            </span>
           </li>
           @endif
           @endforeach
@@ -78,9 +72,6 @@
             <i class="fa fa-angle-right"></i>
             {{$industry->name}}
           </a>
-          <span class="badge badge-primary badge-pill">
-            {{$industry->jobposts->count()}}
-          </span>
         </li>
         @endif
         @endforeach
