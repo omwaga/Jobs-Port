@@ -35,7 +35,7 @@
           </i>Recruitment
         </a>
       </li>
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link text-white" href="/blog">
           <i class="fa fa-book text-white">
           </i>Career Insights
@@ -52,7 +52,7 @@
           <i class="fa fa-users text-white">
           </i>Work Readiness Program
         </a>
-      </li>
+      </li> -->
       @else 
       <li class="nav-item active">
         <a class="nav-link text-white" href="{{route('alljobs')}}">
