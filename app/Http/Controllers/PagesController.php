@@ -52,6 +52,9 @@ class PagesController extends Controller
     $town=Town::orderBy('name','asc')->get();
     $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
 
+    // SEO Tags
+    SEOMeta::setTitle('Be Discovered By Employers');
+
     return view('front.home')->with('industry',$industries)
     ->with('jobs',$jobs)
     ->with('countries',$countries)
@@ -71,18 +74,24 @@ class PagesController extends Controller
 
   public function loginoptions()
   {
+    SEOMeta::setTitle('Login');
+
     return view('front.login-options');
   }
 
 //return the page for the jobseekers
   public function jobseekers()
   {
+    SEOMeta::setTitle('Jobseekers Register - Login');
+
     return view('front.jobseekers');
   }
 
 //return the page for the employers
   public function employers()
   {
+    SEOMeta::setTitle('Employers Register - Login');
+
     return view('front.employers');
   }
 
@@ -91,402 +100,443 @@ class PagesController extends Controller
     $industry = Industry::orderBy('name','asc')->get();
     $town = Town::orderBy('name','asc')->get();
     $countries = DB::table('countries')->pluck("name","id");
-    
+
+    SEOMeta::setTitle('Employer Registration');
+
     return view('front.create-employerprofile')->with('industry',$industry)
     ->with('town',$town)
     ->with('countries',$countries);
   }
-  
+
 
   public function hire(){
+    SEOMeta::setTitle('Employer Login');
+
     return view('front.Employerlogin');
   }
 
 //Express recruitment
-public function express()
-{
-  SEOMeta::setTitle('Express Recruitment Categories');
-  $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
-  $categories=ExpressCategory::orderBy('name','asc')->get();
-  $countries = DB::table('countries')->pluck("name","id");
-  return view('front.express-recruitment', compact('categories', 'countries', 'express_categories'));
-}
+  public function express()
+  {
+    SEOMeta::setTitle('Express Recruitment Categories');
 
-// Express candidates
-public function expresscandidates($category)
-{
-  $job_category = ucwords(str_replace('-', ' ', $category));
-  $category = ExpressCategory::where('name', $job_category)->value('id');
-  SEOMeta::setTitle($job_category);
-
-  $jobseekers = PersonalStatement::where('category', $category)->paginate(20);
-  $categories=ExpressCategory::orderBy('name','asc')->get();
-  $countries = DB::table('countries')->pluck("name","id");
-
-  return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
-}
-// Express candidates
-public function expressfilter(Request $request)
-{
-  SEOMeta::setTitle('Express Recruitment search Results');
-  if ($request->category !== null) {
-    $job_category = ExpressCategory::where('id', $request->category)->value('name');
-    $jobseekers = PersonalStatement::where('category', $request->category)->paginate(20);
+    $express_categories = ExpressCategory::orderBy('id', 'DESC')->paginate(20);
     $categories=ExpressCategory::orderBy('name','asc')->get();
     $countries = DB::table('countries')->pluck("name","id");
+    return view('front.express-recruitment', compact('categories', 'countries', 'express_categories'));
+  }
+
+// Express candidates
+  public function expresscandidates($category)
+  {
+    $job_category = ucwords(str_replace('-', ' ', $category));
+    $category = ExpressCategory::where('name', $job_category)->value('id');
+    $jobseekers = PersonalStatement::where('category', $category)->paginate(20);
+    $categories=ExpressCategory::orderBy('name','asc')->get();
+    $countries = DB::table('countries')->pluck("name","id");
+
+    SEOMeta::setTitle($job_category);
 
     return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
   }
-  else if($request->country !== null)
-  {  
-    $job_category = ExpressCategory::where('id', $request->category)->value('name');
-    $jobseekers = JobseekerDetail::where('nationality', $request->country)->paginate(20);
-    $categories=ExpressCategory::orderBy('name','asc')->get();
-    $countries = DB::table('countries')->pluck("name","id");
+// Express candidates
+  public function expressfilter(Request $request)
+  {
+    SEOMeta::setTitle('Express recruitment search results');
 
-    return view('front.express-candidates-filter', compact('jobseekers', 'countries', 'categories', 'job_category'));
-  }else
-  {    
-    return redirect(route('express'));
+    if ($request->category !== null) {
+      $job_category = ExpressCategory::where('id', $request->category)->value('name');
+      $jobseekers = PersonalStatement::where('category', $request->category)->paginate(20);
+      $categories=ExpressCategory::orderBy('name','asc')->get();
+      $countries = DB::table('countries')->pluck("name","id");
+
+      return view('front.express-candidates', compact('jobseekers', 'countries', 'categories', 'job_category'));
+    }
+    else if($request->country !== null)
+    {
+      $job_category = ExpressCategory::where('id', $request->category)->value('name');
+      $jobseekers = JobseekerDetail::where('nationality', $request->country)->paginate(20);
+      $categories=ExpressCategory::orderBy('name','asc')->get();
+      $countries = DB::table('countries')->pluck("name","id");
+
+      return view('front.express-candidates-filter', compact('jobseekers', 'countries', 'categories', 'job_category'));
+    }else
+    {
+      return redirect(route('express'));
+    }
   }
-}
 
-public function companies()
-{
-  $companies = Employer::all();
+  public function companies()
+  {
+    $companies = Employer::all();
+    SEOMeta::setTitle('Employers');
 
-  return view('front.all-companies', compact('companies'));
-}
+    return view('front.all-companies', compact('companies'));
+  }
 
 // function to view a single company profile
-public function employerProfile($name)
-{
-  $employer = Employer::where('company_name', ucwords(str_replace('-', ' ', $name)))->first();
-  $jobs = Jobposts::where('employer_id', $employer->id)->paginate(10);
-  
-  return view('front.company', compact('employer', 'jobs'));
-}
+  public function employerProfile($name)
+  {
+    $employer = Employer::where('company_name', ucwords(str_replace('-', ' ', $name)))
+                         ->first();
+    $jobs = Jobposts::where('employer_id', $employer->id)->paginate(10);
 
-public function employerlogin()
-{
-  return view('front.foremployer');
-}
+    SEOMeta::setTitle($employer->company_name ?? 'Employer');
+
+    return view('front.company', compact('employer', 'jobs'));
+  }
+
+  public function employerlogin()
+  {
+    SEOMeta::setTitle('Employer Login');
+
+    return view('front.foremployer');
+  }
 
 //the jobseeker registration steps.
-public function jobseekerregister()
-{
-  return view('front.jobseeker-steps');
-}
+  public function jobseekerregister()
+  {
+    SEOMeta::setTitle('Jobseeker Register');
+
+    return view('front.jobseeker-steps');
+  }
 
 //  all jobs available in the database
-public function alljobs(){
-  $jobs=Jobposts::whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
-                  ->orderBy('created_at', 'DESC')
-                  ->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
-  $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])->orderBy('created_at', 'DESC')->limit(3)->get();
-  
-  return view('front.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
-}
+  public function alljobs(){
+    $jobs=Jobposts::whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
+                    ->orderBy('created_at', 'DESC')
+                    ->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
+    $featured_jobs = Jobposts::whereIn('employer_id', [8, 21])
+                              ->orderBy('created_at', 'DESC')
+                              ->limit(3)->get();
 
-public function filterlocation($name){
-  SEOMeta::setTitle('Jobs in'.$name);
-  $town_id=Town::where('name',$name)->pluck('id');
-  $towns=Town::orderBy('name','asc')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $jobs=Jobposts::whereIn('location',$town_id)                  
-                  ->whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
-                  ->orderBy('created_at', 'desc')
-                  ->paginate(10);
-  $industries=Industry::orderBy('name','asc')->limit(10)->get();
-  SEOMeta::setTitle('Jobs in '.$name);
+    SEOMeta::setTitle('Latest Jobs in Kenya');
 
-  return view('front.filterlocation')
-  ->with('locations',$towns)
-  ->with('industries',$industries)
-  ->with('jobs',$jobs)
-  ->with('categories',$categories);
-}
+    return view('front.all-jobs',compact('jobs', 'categories', 'locations', 'industries', 'countries', 'featured_jobs'));
+  }
 
-public function showcategory($jobcategories){
-  $job_category = ucwords(str_replace('-', ' ', $jobcategories));
-  $category=jobcategories::where('jobcategories',$job_category)->pluck('id')->first();
-  $cat=jobcategories::where('jobcategories',$job_category)->first();
-  $seo_description=jobcategories::where('jobcategories',$jobcategories)->pluck('seo_description')->first();
-  $jobs=Jobposts::where('jobcategories_id',$category)->orderBy('created_at', 'desc')->paginate(10);
-  $towns=Town::orderBy('name','asc')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $industry=Industry::orderBy('name','asc')->limit(10)->get();
-  SEOMeta::setTitle($job_category.' Jobs');
-  SEOMeta::setDescription($seo_description);
+  public function filterlocation($name){
+    $town_id=Town::where('name',$name)->pluck('id');
+    $towns=Town::orderBy('name','asc')->get();
+    $categories=jobcategories::orderBy('jobcategories','asc')->get();
+    $jobs=Jobposts::whereIn('location',$town_id)
+                    ->whereDate('created_at', '>', Carbon::today()->subDays( 60 ))
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
+    $industries=Industry::orderBy('name','asc')->limit(10)->get();
 
-  return view('front.filtercategory')
-  ->with('category',$cat)
-  ->with('locations',$towns)
-  ->with('jobs',$jobs)
-  ->with('industries',$industry)
-  ->with('categories',$categories);
-}
+    SEOMeta::setTitle('Jobs in '.$name);
 
-public function filterindustry($name){
-  $ind = ucwords(str_replace('-', ' ', $name));
-  $industry_id=Industry::where('name',$ind)->pluck('id')->first();
-  $jobs=Jobposts::where('industry',$industry_id)->orderBy('created_at', 'desc')->paginate(10);
-  $towns=Town::orderBy('name','asc')->get();
-  $categories=jobcategories::orderBy('jobcategories','asc')->get();
-  $industry=Industry::orderBy('name','asc')->limit(10)->get();
-  SEOMeta::setTitle($ind.' Jobs');
+    return view('front.filterlocation')
+    ->with('locations',$towns)
+    ->with('industries',$industries)
+    ->with('jobs',$jobs)
+    ->with('categories',$categories);
+  }
 
-  return view('front.filtercategory')
-  ->with('locations',$towns)
-  ->with('jobs',$jobs)
-  ->with('industries',$industry)
-  ->with('categories',$categories);
-}
+  public function showcategory($jobcategories){
+    $job_category = ucwords(str_replace('-', ' ', $jobcategories));
+    $category=jobcategories::where('jobcategories',$job_category)->pluck('id')->first();
+    $cat=jobcategories::where('jobcategories',$job_category)->first();
+    $seo_description=jobcategories::where('jobcategories',$jobcategories)
+                                   ->pluck('seo_description')->first();
+    $jobs=Jobposts::where('jobcategories_id',$category)
+                     ->orderBy('created_at', 'desc')->paginate(10);
+    $towns=Town::orderBy('name','asc')->get();
+    $categories=jobcategories::orderBy('jobcategories','asc')->get();
+    $industry=Industry::orderBy('name','asc')->limit(10)->get();
 
-public function register(){
-  return view('front.registerpage');
-}
+    SEOMeta::setTitle($job_category.' Jobs');
+    SEOMeta::setDescription($seo_description);
+
+    return view('front.filtercategory')
+    ->with('category',$cat)
+    ->with('locations',$towns)
+    ->with('jobs',$jobs)
+    ->with('industries',$industry)
+    ->with('categories',$categories);
+  }
+
+  public function filterindustry($name){
+    $ind = ucwords(str_replace('-', ' ', $name));
+    $industry_id=Industry::where('name',$ind)->pluck('id')->first();
+    $jobs=Jobposts::where('industry',$industry_id)->orderBy('created_at', 'desc')->paginate(10);
+    $towns=Town::orderBy('name','asc')->get();
+    $categories=jobcategories::orderBy('jobcategories','asc')->get();
+    $industry=Industry::orderBy('name','asc')->limit(10)->get();
+
+    SEOMeta::setTitle($ind.' Jobs');
+
+    return view('front.filtercategory')
+    ->with('locations',$towns)
+    ->with('jobs',$jobs)
+    ->with('industries',$industry)
+    ->with('categories',$categories);
+  }
+
+  public function register(){
+    SEOMeta::setTitle('Register');
+
+    return view('front.registerpage');
+  }
 
     // resume services route
-public function resume(){
-  $samples = CvUpload::limit(4)->get();
+  public function resume(){
+    $samples = CvUpload::limit(4)->get();
 
-  return view('front.resume-services', compact('samples'));
-}
+    SEOMeta::setTitle('Resumes');
+
+    return view('front.resume-services', compact('samples'));
+  }
 
     // resume samples page
-public function resumesamples()
-{
-  $samples = CvUpload::all();
+  public function resumesamples()
+  {
+    $samples = CvUpload::all();
 
-  return view('front.resume-samples', compact('samples'));
-}
+    SEOMeta::setTitle('Resume Samples');
+
+    return view('front.resume-samples', compact('samples'));
+  }
 
     // Single resume template
-public function singleresume()
-{
-  return view('front.single-resume');
-}
+  public function singleresume()
+  {
+    SEOMeta::setTitle('Resume Template');
+
+    return view('front.single-resume');
+  }
 
     // function to view the cover letters list
-public function coverletter()
-{
-  return view('front.cover-letter');
-}
+  public function coverletter()
+  {
+    SEOMeta::setTitle('Cover Letters');
+
+    return view('front.cover-letter');
+  }
 
     // function to view the cvs list
-public function cv()
-{
-  return view('front.cv-templates');
-}
+  public function cv()
+  {
+    SEOMeta::setTitle('CV Designs');
 
-public function searchhome(Request $request){
-  if($request->industry !== "All Job Industries" && $request->job_category === "All Job Functions" && $request->state === "State/Region")
+    return view('front.cv-templates');
+  }
+
+  public function searchhome(Request $request){
+    SEOMeta::setTitle('Jobs Filter');
+
+    if($request->industry !== "All Job Industries" && $request->job_category === "All Job Functions" && $request->state === "State/Region")
+    {
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('industry', $request->industry)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state === "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('jobcategories_id', $request->job_category)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    elseif($request->state !== "State/Region" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $jobs = Jobposts::where('location', $request->state)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+
+    }
+    //Both Job function and the job industry is selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state === "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job function and the job location is selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job industry and the job location is selected
+    elseif($request->job_category === "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $industry_jobs = Jobposts::where('industry', $request->industry);
+      $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+    //Both Job industry, job function  and the job location are selected
+    elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
+      $categories = jobcategories::all();
+      $locations = Town::all();
+      $industries = Industry::all();
+      $countries = DB::table('countries')->pluck("name","id");
+      $industry_jobs = Jobposts::where('industry', $request->industry);
+      $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
+      $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
+
+      return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
+    }
+  }
+
+  public function show($id)
   {
     $categories = jobcategories::all();
     $locations = Town::all();
     $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('industry', $request->industry)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-  elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state === "State/Region"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('jobcategories_id', $request->job_category)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-  elseif($request->state !== "State/Region" && $request->job_category === "All Job Functions" && $request->industry === "All Job Industries"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $jobs = Jobposts::where('location', $request->state)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-
-  }
-    //Both Job function and the job industry is selected
-  elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state === "State/Region"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('industry', $request->industry)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-    //Both Job function and the job location is selected
-  elseif($request->job_category !== "All Job Functions" && $request->industry === "All Job Industries" && $request->state !== "State/Region"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('location', $request->state)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-    //Both Job industry and the job location is selected
-  elseif($request->job_category === "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $industry_jobs = Jobposts::where('industry', $request->industry);
-    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-    //Both Job industry, job function  and the job location are selected
-  elseif($request->job_category !== "All Job Functions" && $request->industry !== "All Job Industries" && $request->state !== "State/Region"){
-    $categories = jobcategories::all();
-    $locations = Town::all();
-    $industries = Industry::all();
-    $countries = DB::table('countries')->pluck("name","id");
-    $industry_jobs = Jobposts::where('industry', $request->industry);
-    $category_jobs = Jobposts::where('jobcategories_id', $request->job_category);
-    $jobs = Jobposts::where('location', $request->state)->union($industry_jobs)->union($category_jobs)->orderBy('created_at', 'desc')->paginate(12);
-
-    return view('front.search-home', compact('categories', 'locations', 'industries', 'countries', 'jobs'));
-  }
-}
-
-public function show($id)
-{
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $job = Jobposts::where('id', $id)->first();
-  $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
-  $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
-  $related_jobs=Jobposts::where('jobcategories_id', $job->jobcategories_id)->orderBy('created_at','desc')->limit(5)->get(); 
-  $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
+    $job = Jobposts::where('id', $id)->first();
+    $expirydate=Jobposts::whereIn('deadline',$job)->select(DB::raw('CASE WHEN  DATEDIFF(deadline,curdate())>=0  THEN DATEDIFF(deadline,curdate()) ELSE DATEDIFF(deadline,curdate())=0 END  as days'))->distinct('days')->get();
+    $days_to_deadline = Carbon::parse(Carbon::now())->diffInDays($job->deadline);
+    $related_jobs=Jobposts::where('jobcategories_id', $job->jobcategories_id)->orderBy('created_at','desc')->limit(5)->get();
+    $featured=Jobposts::orderBy('created_at','desc')->limit(5)->get();
 
   // count the number of views
-  if($job->viewcount === NULL)
-  {
-    $job->update(['viewcount' => 0]);
+    if($job->viewcount === NULL)
+    {
+      $job->update(['viewcount' => 0]);
+    }
+
+    $job->update(['viewcount' => $job->viewcount + 1]);
+
+    SEOMeta::setTitle($job->job_title. ' Job');
+
+    return view('front.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries', 'related_jobs'));
   }
 
-  $job->update(['viewcount' => $job->viewcount + 1]);
-  
-  SEOMeta::setTitle($job->job_title. ' Job');
+  public function loginform($id)
+  {
+    $job = Jobposts::where('id', $id)->first();
 
-  return view('front.jobview', compact('job', 'expirydate', 'days_to_deadline', 'featured', 'categories', 'locations', 'industries', 'related_jobs'));
-} 
+    SEOMeta::setTitle('Login and Apply');
 
-public function loginform($id)
-{
-  $job = Jobposts::where('id', $id)->first();
-
-  return view('front.joblogin', compact('job'));
-}
-
-function applyjob(){
-  $countries = Country::all();
-  $personalinfo = JobseekerDetail::where('user_id', '=', auth()->id())->first();
-  $personalstatements = PersonalStatement::where('user_id', '=', auth()->id())->first();
-  $experience = WorkExperience::where('user_id', '=', auth()->id())->get();
-  $education = Education::where('user_id', '=', auth()->id())->get();
-  $awards = Awards::where('user_id', '=', auth()->id())->get();
-  $references = Reference::where('user_id', '=', auth()->id())->get();
-  $skills = Skills::where('user_id', '=', auth()->id())->get();
-
-  return view('dashboard.prof', compact('countries', 'personalinfo', 'references',
-   'personalstatements', 'experience', 'education', 'awards', 'skills'));
-}
+    return view('front.joblogin', compact('job'));
+  }
 
 // Dispaly the government jobs page
-public function governmentjobs()
-{
-  $jobs=Jobposts::where('job_type', 'Government Jobs')->orderBy('created_at', 'DESC')->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
+  public function governmentjobs()
+  {
+    $jobs=Jobposts::where('job_type', 'Government Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
 
-  return view('front.government-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
-}
+    SEOMeta::setTitle('Government Jobs');
+
+    return view('front.government-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  }
 
 // Dispaly the private company jobs page
-public function privatejobs()
-{
-  $jobs=Jobposts::where('job_type', 'Private Company Jobs')->orderBy('created_at', 'DESC')->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
+  public function privatejobs()
+  {
+    $jobs=Jobposts::where('job_type', 'Private Company Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
 
-  return view('front.private-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
-}
+    SEOMeta::setTitle('Private company jobs');
+
+    return view('front.private-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  }
 
 // Dispaly the UN jobs page
-public function unjobs()
-{
-  $jobs=Jobposts::where('job_type', 'UN Jobs')->orderBy('created_at', 'DESC')->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
+  public function unjobs()
+  {
+    $jobs=Jobposts::where('job_type', 'UN Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
 
-  return view('front.un-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
-}
+    SEOMeta::setTitle('United Nations(UN) jobs');
+
+    return view('front.un-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  }
 
 // Dispaly the Humanitarian and NGO jobs page
-public function humanitarianjobs()
-{
-  $jobs=Jobposts::where('job_type', 'NGO and Humanitarian Jobs')->orderBy('created_at', 'DESC')->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
+  public function humanitarianjobs()
+  {
+    $jobs=Jobposts::where('job_type', 'NGO and Humanitarian Jobs')->orderBy('created_at', 'DESC')->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
 
-  return view('front.humanitarian-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
-}
+    SEOMeta::setTitle('Humanitarian jobs');
+
+    return view('front.humanitarian-jobs', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  }
 
 // Dispaly the consultancies page
-public function consultancies()
-{
-  $jobs=Jobposts::where('job_type', 'Consultancy')->orderBy('created_at', 'DESC')->paginate(12);
-  $categories = jobcategories::all();
-  $locations = Town::all();
-  $industries = Industry::all();
-  $countries = DB::table('countries')->pluck("name","id");
+  public function consultancies()
+  {
+    $jobs=Jobposts::where('job_type', 'Consultancy')->orderBy('created_at', 'DESC')->paginate(12);
+    $categories = jobcategories::all();
+    $locations = Town::all();
+    $industries = Industry::all();
+    $countries = DB::table('countries')->pluck("name","id");
 
-  return view('front.consultancies', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
-}
+    SEOMeta::setTitle('Consultancies and Tenders');
+
+    return view('front.consultancies', compact('jobs', 'categories', 'locations', 'industries', 'countries'));
+  }
 
 //view to upload the cvs
-public function uploadcv()
-{
-  return view('front.upload-cv');
-}
+  public function uploadcv()
+  {
+    SEOMeta::setTitle('Upload Resume');
 
-public function workprogram()
-{
-  return view('front.work-program');
-}
+    return view('front.upload-cv');
+  }
 
-public function enrollworkreadiness()
-{
-  $countries = Country::all();
+  public function workprogram()
+  {
+    SEOMeta::setTitle('Work Readiness Program');
 
-  return view('front.enroll-workprogram', compact('countries'));
-}
+    return view('front.work-program');
+  }
 
-public function faqs()
-{
-  SEOMeta::setTitle('Frequently Asked Questions');
-  return view('front.faqs');
-}
+  public function enrollworkreadiness()
+  {
+    $countries = Country::all();
+
+    SEOMeta::setTitle('Enroll Work Readiness Program');
+
+    return view('front.enroll-workprogram', compact('countries'));
+  }
+
+  public function faqs()
+  {
+    SEOMeta::setTitle('Frequently Asked Questions');
+
+    return view('front.faqs');
+  }
 }

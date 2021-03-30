@@ -6,7 +6,7 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Be Discovered By Employers | The Networked Pros", // set false to total remove
+            'title'        => "The Networked Pros", // set false to total remove
             'description'  => 'Find the job that’s right for you. Search for jobs, read career advice and sign up to receive alerts on the latest job vacancies.', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => ['latest jobs', 'job in Kenya', 'jobs Kenya', 'Kenya jobs', 'kenyan job', 'kenyan jobs', 'kenyanjobs', 'jobs for Kenya', 'tips for final interview', 'jobs in Nairobi', 'careers'],
