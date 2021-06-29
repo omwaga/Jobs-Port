@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68d0f858eebaed9fe49fb8068bf4d537",
+    "content-hash": "d2984ec2929a1be417e61ed0c66d63e6",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -1533,16 +1533,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a"
+                "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9be3b16c877d477357c015cec057548cf9b2a14a",
-                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
+                "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
                 "shasum": ""
             },
             "require": {
@@ -1558,7 +1558,6 @@
                 "phpunit/phpunit": "^8.5.8"
             },
             "suggest": {
-                "ext-fileinfo": "Required for MimeType",
                 "ext-ftp": "Allows you to use FTP server storage",
                 "ext-openssl": "Allows you to use FTPS server storage",
                 "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
@@ -1620,20 +1619,20 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-08-23T07:39:11+00:00"
+            "time": "2021-06-23T21:56:05+00:00"
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.4.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69"
+                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/fda190b62b962d96a069fcc414d781db66d65b69",
-                "reference": "fda190b62b962d96a069fcc414d781db66d65b69",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
+                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
                 "shasum": ""
             },
             "require": {
@@ -1641,8 +1640,9 @@
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.36",
-                "phpunit/phpunit": "^8.5.8"
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "phpstan/phpstan": "^0.12.68",
+                "phpunit/phpunit": "^8.5.8 || ^9.3"
             },
             "type": "library",
             "autoload": {
@@ -1671,7 +1671,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-09T10:34:01+00:00"
+            "time": "2021-01-18T20:58:21+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -1743,70 +1743,6 @@
                 "twitter"
             ],
             "time": "2020-09-04T11:07:03+00:00"
-        },
-        {
-            "name": "lionix/seo-manager",
-            "version": "v1.3.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lionix-team/seo-manager.git",
-                "reference": "e3f4bc9ba691ca01ab91b272929991a61e7e3170"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lionix-team/seo-manager/zipball/e3f4bc9ba691ca01ab91b272929991a61e7e3170",
-                "reference": "e3f4bc9ba691ca01ab91b272929991a61e7e3170",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.5.* || 5.6.* || 5.7.* || 5.8.* || 6.* || 7.*",
-                "php": "^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Lionix\\SeoManager\\SeoManagerServiceProvider"
-                    ],
-                    "aliases": {
-                        "SeoManager": "Lionix\\SeoManager\\Facades\\SeoManager"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Lionix\\SeoManager\\": "src"
-                },
-                "files": [
-                    "src/helpers/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lionix Team",
-                    "email": "packages@lionix-team.com"
-                },
-                {
-                    "name": "Sergey Karakhanyan",
-                    "email": "karakhanyansa@gmail.com"
-                }
-            ],
-            "description": "SEO Manager for Laravel Framework",
-            "keywords": [
-                "laravel",
-                "lionix",
-                "meta",
-                "meta-data",
-                "og-data",
-                "open-graph",
-                "seo",
-                "seo-manager"
-            ],
-            "time": "2020-07-28T02:32:56+00:00"
         },
         {
             "name": "maatwebsite/excel",
@@ -6361,6 +6297,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -6409,6 +6346,70 @@
                 "test"
             ],
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "lionix/seo-manager",
+            "version": "v1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lionix-team/seo-manager.git",
+                "reference": "e3f4bc9ba691ca01ab91b272929991a61e7e3170"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lionix-team/seo-manager/zipball/e3f4bc9ba691ca01ab91b272929991a61e7e3170",
+                "reference": "e3f4bc9ba691ca01ab91b272929991a61e7e3170",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.5.* || 5.6.* || 5.7.* || 5.8.* || 6.* || 7.*",
+                "php": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lionix\\SeoManager\\SeoManagerServiceProvider"
+                    ],
+                    "aliases": {
+                        "SeoManager": "Lionix\\SeoManager\\Facades\\SeoManager"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lionix\\SeoManager\\": "src"
+                },
+                "files": [
+                    "src/helpers/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lionix Team",
+                    "email": "packages@lionix-team.com"
+                },
+                {
+                    "name": "Sergey Karakhanyan",
+                    "email": "karakhanyansa@gmail.com"
+                }
+            ],
+            "description": "SEO Manager for Laravel Framework",
+            "keywords": [
+                "laravel",
+                "lionix",
+                "meta",
+                "meta-data",
+                "og-data",
+                "open-graph",
+                "seo",
+                "seo-manager"
+            ],
+            "time": "2020-07-28T02:32:56+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -7858,12 +7859,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
